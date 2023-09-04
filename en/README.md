@@ -16,7 +16,3 @@ The WASDK Postman Collection and Environment requires the installation of [Postm
 3) Once imported, a new API collection will be created, along with the environment.
 
 See [docs](https://wasdk.pro/en/docs/) for details.
-
-## License
-
-Please refer to the [LICENSE](/LICENSE) file. 
