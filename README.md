@@ -1,8 +1,5 @@
 # WASDK - Postman Collection
 
-- [English documentation](en/README.md)
-- [Документация на русском языке](ru/README.md)
-
 This is a Postman collection of [WASDK](https://wasdk.pro/). It provides access to the WhatsApp API to send and receive messages and media by HTTP-API requests. The provided environment contains the list of variables referenced by the API collection.
 
 See docs for usage.
