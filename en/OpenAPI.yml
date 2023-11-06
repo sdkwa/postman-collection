@@ -6,7 +6,7 @@ info:
 servers:
   - url: https://wasdk.pro
 paths:
-  /waInstance{idInstance}/getSettings/{apiTokenInstance}:
+  /whatsapp/{idInstance}/getSettings:
     get:
       tags:
         - Account
@@ -94,7 +94,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/setSettings/{apiTokenInstance}:
+  /whatsapp/{idInstance}/setSettings:
     post:
       tags:
         - Account
@@ -197,7 +197,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/getStateInstance/{apiTokenInstance}:
+  /whatsapp/{idInstance}/getStateInstance:
     get:
       tags:
         - Account
@@ -249,7 +249,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/getWarmingPhoneStatus/{apiTokenInstance}:
+  /whatsapp/{idInstance}/getWarmingPhoneStatus:
     get:
       tags:
         - Account
@@ -301,7 +301,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/reboot/{apiTokenInstance}:
+  /whatsapp/{idInstance}/reboot:
     get:
       tags:
         - Account
@@ -351,7 +351,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/logout/{apiTokenInstance}:
+  /whatsapp/{idInstance}/logout:
     get:
       tags:
         - Account
@@ -401,7 +401,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/qr/{apiTokenInstance}:
+  /whatsapp/{idInstance}/qr:
     get:
       tags:
         - Account
@@ -422,7 +422,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/requestRegistrationCode/{apiTokenInstance}:
+  /whatsapp/{idInstance}/requestRegistrationCode:
     post:
       tags:
         - Account
@@ -458,7 +458,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/sendRegistrationCode/{apiTokenInstance}:
+  /whatsapp/{idInstance}/sendRegistrationCode:
     post:
       tags:
         - Account
@@ -490,7 +490,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/SendButtons/{apiTokenInstance}:
+  /whatsapp/{idInstance}/SendButtons:
     post:
       tags:
         - Sending
@@ -593,7 +593,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/SendListMessage/{apiTokenInstance}:
+  /whatsapp/{idInstance}/SendListMessage:
     post:
       tags:
         - Sending
@@ -731,7 +731,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/SendTemplateButtons/{apiTokenInstance}:
+  /whatsapp/{idInstance}/SendTemplateButtons:
     post:
       tags:
         - Sending
@@ -874,7 +874,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/sendMessage/{apiTokenInstance}:
+  /whatsapp/{idInstance}/sendMessage:
     post:
       tags:
         - Sending
@@ -941,7 +941,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/sendContact/{apiTokenInstance}:
+  /whatsapp/{idInstance}/sendContact:
     post:
       tags:
         - Sending
@@ -1028,7 +1028,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/sendFileByUpload/{apiTokenInstance}:
+  /whatsapp/{idInstance}/sendFileByUpload:
     post:
       tags:
         - Sending
@@ -1101,7 +1101,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/sendFileByUrl/{apiTokenInstance}:
+  /whatsapp/{idInstance}/sendFileByUrl:
     post:
       tags:
         - Sending
@@ -1178,7 +1178,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/sendLocation/{apiTokenInstance}:
+  /whatsapp/{idInstance}/sendLocation:
     post:
       tags:
         - Sending
@@ -1257,7 +1257,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/sendLink/{apiTokenInstance}:
+  /whatsapp/{idInstance}/sendLink:
     post:
       tags:
         - Sending
@@ -1322,7 +1322,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/uploadFile/{apiTokenInstance}:
+  /whatsapp/{idInstance}/uploadFile:
     post:
       tags:
         - Sending
@@ -1377,7 +1377,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/receiveNotification/{apiTokenInstance}:
+  /whatsapp/{idInstance}/receiveNotification:
     get:
       tags:
         - Receiving
@@ -1401,7 +1401,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/deleteNotification/{apiTokenInstance}/{receiptId}:
+  /whatsapp/{idInstance}/deleteNotification/{receiptId}:
     delete:
       tags:
         - Receiving
@@ -1430,7 +1430,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/downloadFile/{idMessage}:
+  /whatsapp/{idInstance}/downloadFile/{idMessage}:
     get:
       tags:
         - Receiving
@@ -1454,7 +1454,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/getChatHistory/{apiTokenInstance}:
+  /whatsapp/{idInstance}/getChatHistory:
     post:
       tags:
         - Journals
@@ -1562,7 +1562,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/lastOutgoingMessages/{apiTokenInstance}:
+  /whatsapp/{idInstance}/lastOutgoingMessages:
     get:
       tags:
         - Journals
@@ -1655,7 +1655,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/lastIncomingMessages/{apiTokenInstance}:
+  /whatsapp/{idInstance}/lastIncomingMessages:
     get:
       tags:
         - Journals
@@ -1755,7 +1755,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/clearMessagesQueue/{apiTokenInstance}:
+  /whatsapp/{idInstance}/clearMessagesQueue:
     get:
       tags:
         - Queues
@@ -1807,7 +1807,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/showMessagesQueue/{apiTokenInstance}:
+  /whatsapp/{idInstance}/showMessagesQueue:
     get:
       tags:
         - Queues
@@ -1891,7 +1891,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/updateGroupName/{apiTokenInstance}:
+  /whatsapp/{idInstance}/updateGroupName:
     post:
       tags:
         - Groups
@@ -1958,7 +1958,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/getGroupData/{apiTokenInstance}:
+  /whatsapp/{idInstance}/getGroupData:
     post:
       tags:
         - Groups
@@ -2079,7 +2079,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/leaveGroup/{apiTokenInstance}:
+  /whatsapp/{idInstance}/leaveGroup:
     post:
       tags:
         - Groups
@@ -2142,7 +2142,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/setGroupAdmin/{apiTokenInstance}:
+  /whatsapp/{idInstance}/setGroupAdmin:
     post:
       tags:
         - Groups
@@ -2209,7 +2209,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/removeGroupParticipant/{apiTokenInstance}:
+  /whatsapp/{idInstance}/removeGroupParticipant:
     post:
       tags:
         - Groups
@@ -2276,7 +2276,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/removeAdmin/{apiTokenInstance}:
+  /whatsapp/{idInstance}/removeAdmin:
     post:
       tags:
         - Groups
@@ -2343,7 +2343,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/createGroup/{apiTokenInstance}:
+  /whatsapp/{idInstance}/createGroup:
     post:
       tags:
         - Groups
@@ -2425,7 +2425,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/addGroupParticipant/{apiTokenInstance}:
+  /whatsapp/{idInstance}/addGroupParticipant:
     post:
       tags:
         - Groups
@@ -2492,7 +2492,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/setGroupPicture/{apiTokenInstance}:
+  /whatsapp/{idInstance}/setGroupPicture:
     post:
       tags:
         - Groups
@@ -2567,7 +2567,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/readChat/{apiTokenInstance}:
+  /whatsapp/{idInstance}/readChat:
     post:
       tags:
         - Read mark
@@ -2628,7 +2628,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/getDeviceInfo/{apiTokenInstance}:
+  /whatsapp/{idInstance}/getDeviceInfo:
     get:
       tags:
         - Device (phone)
@@ -2700,7 +2700,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/getContacts/{apiTokenInstance}:
+  /whatsapp/{idInstance}/getContacts:
     get:
       tags:
         - Service methods
@@ -2778,7 +2778,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/getChats/{apiTokenInstance}:
+  /whatsapp/{idInstance}/getChats:
     get:
       tags:
         - Service methods
@@ -2874,7 +2874,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/GetContactInfo/{apiTokenInstance}:
+  /whatsapp/{idInstance}/GetContactInfo:
     get:
       tags:
         - Service methods
@@ -3047,7 +3047,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/setProfilePicture/{apiTokenInstance}:
+  /whatsapp/{idInstance}/setProfilePicture:
     post:
       tags:
         - Service methods
@@ -3106,7 +3106,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/archiveChat/{apiTokenInstance}:
+  /whatsapp/{idInstance}/archiveChat:
     post:
       tags:
         - Service methods
@@ -3162,7 +3162,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/unarchiveChat/{apiTokenInstance}:
+  /whatsapp/{idInstance}/unarchiveChat:
     post:
       tags:
         - Service methods
@@ -3218,7 +3218,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/deleteMessage/{apiTokenInstance}:
+  /whatsapp/{idInstance}/deleteMessage:
     post:
       tags:
         - Service methods
@@ -3278,7 +3278,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/getAvatar/{apiTokenInstance}:
+  /whatsapp/{idInstance}/getAvatar:
     post:
       tags:
         - Service methods
@@ -3345,7 +3345,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/checkWhatsapp/{apiTokenInstance}:
+  /whatsapp/{idInstance}/checkWhatsapp:
     post:
       tags:
         - Service methods
@@ -3408,7 +3408,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/setProfileName/{apiTokenInstance}:
+  /whatsapp/{idInstance}/setProfileName:
     post:
       tags:
         - Service methods
@@ -3469,7 +3469,7 @@ paths:
         required: true
         schema:
           type: string
-  /waInstance{idInstance}/setProfileStatus/{apiTokenInstance}:
+  /whatsapp/{idInstance}/setProfileStatus:
     post:
       tags:
         - Service methods
