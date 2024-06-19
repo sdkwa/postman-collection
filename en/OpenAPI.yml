@@ -878,7 +878,7 @@ paths:
     post:
       tags:
         - Sending
-      summary: Send text to group
+      summary: Send text message
       description: >-
         Документация
         [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
@@ -891,12 +891,12 @@ paths:
               properties:
                 chatId:
                   type: string
-                  example: 123456789012345678@g.us
+                  example: 123456789012345678@c.us
                 message:
                   type: string
                   example: test
             example:
-              chatId: 123456789012345678@g.us
+              chatId: 123456789012345678@c.us
               message: test
       responses:
         '200':
