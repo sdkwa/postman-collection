@@ -1,10 +1,10 @@
 openapi: 3.0.3
 info:
-  title: WASDK
+  title: SDKWA
   version: 1.0.0
   contact: {}
 servers:
-  - url: https://wasdk.pro
+  - url: https://sdkwa.pro
 paths:
   /whatsapp/{idInstance}/getSettings:
     get:
@@ -13,7 +13,7 @@ paths:
       summary: Get account settings
       description: >-
         Документация
-        [GetSettings](https://wasdk.pro/en/docs/api/account/GetSettings/)
+        [GetSettings](https://sdkwa.pro/en/docs/api/account/GetSettings/)
       operationId: getAccountSettings
       responses:
         '200':
@@ -66,7 +66,7 @@ paths:
                     example: vip
                   webhookUrl:
                     type: string
-                    example: https://mysite.com/webhook/wasdk/
+                    example: https://mysite.com/webhook/sdkwa/
                   wid:
                     type: string
                     example: 79001234567@c.us
@@ -81,7 +81,7 @@ paths:
                     outgoingWebhook: 'yes'
                     stateWebhook: 'yes'
                     typeAccount: vip
-                    webhookUrl: https://mysite.com/webhook/wasdk/
+                    webhookUrl: https://mysite.com/webhook/sdkwa/
                     wid: 79001234567@c.us
     parameters:
       - name: idInstance
@@ -101,7 +101,7 @@ paths:
       summary: Set account settings
       description: >-
         Документация
-        [SetSettings](https://wasdk.pro/en/docs/api/account/SetSettings/)
+        [SetSettings](https://sdkwa.pro/en/docs/api/account/SetSettings/)
       operationId: setAccountSettings
       requestBody:
         content:
@@ -204,7 +204,7 @@ paths:
       summary: Get account state
       description: >-
         Документация
-        [GetStateInstance](https://wasdk.pro/en/docs/api/account/GetStateInstance/)
+        [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)
       operationId: getAccountState
       responses:
         '200':
@@ -256,7 +256,7 @@ paths:
       summary: Get warming phone status
       description: >-
         Документация
-        [GetStateInstance](https://wasdk.pro/en/docs/api/account/GetStateInstance/)
+        [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)
       operationId: getWarmingPhoneStatus
       responses:
         '200':
@@ -306,7 +306,7 @@ paths:
       tags:
         - Account
       summary: Reboot account
-      description: Документация [Reboot](https://wasdk.pro/en/docs/api/account/Reboot/)
+      description: Документация [Reboot](https://sdkwa.pro/en/docs/api/account/Reboot/)
       operationId: rebootAccount
       responses:
         '200':
@@ -356,7 +356,7 @@ paths:
       tags:
         - Account
       summary: Logout account
-      description: Документация [Logout](https://wasdk.pro/en/docs/api/account/Logout/)
+      description: Документация [Logout](https://sdkwa.pro/en/docs/api/account/Logout/)
       operationId: logoutAccount
       responses:
         '200':
@@ -406,7 +406,7 @@ paths:
       tags:
         - Account
       summary: Get QR code
-      description: Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)
+      description: Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)
       operationId: getQrCode
       responses:
         '200':
@@ -427,7 +427,7 @@ paths:
       tags:
         - Account
       summary: Request registration code
-      description: Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)
+      description: Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)
       operationId: requestRegistrationCode
       requestBody:
         content:
@@ -463,7 +463,7 @@ paths:
       tags:
         - Account
       summary: Send registration code
-      description: Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)
+      description: Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)
       operationId: sendRegistrationCode
       requestBody:
         content:
@@ -498,7 +498,7 @@ paths:
       summary: Send Buttons
       description: >-
         Документация
-        [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)
+        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
       operationId: sendButtons
       parameters:
         - name: x-uiid-instance-account
@@ -601,7 +601,7 @@ paths:
       summary: Send List Message
       description: >-
         Документация
-        [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)
+        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
       operationId: sendListMessage
       requestBody:
         content:
@@ -739,7 +739,7 @@ paths:
       summary: Send Template Buttons
       description: >-
         Документация
-        [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)
+        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
       operationId: sendTemplateButtons
       parameters:
         - name: x-uiid-instance-account
@@ -881,7 +881,7 @@ paths:
       summary: Send text to group
       description: >-
         Документация
-        [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)
+        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
       operationId: sendTextToGroup
       requestBody:
         content:
@@ -948,7 +948,7 @@ paths:
       summary: Send contact
       description: >-
         Документация
-        [SendContact](https://wasdk.pro/en/docs/api/sending/SendContact/)
+        [SendContact](https://sdkwa.pro/en/docs/api/sending/SendContact/)
       operationId: sendContact
       requestBody:
         content:
@@ -1035,7 +1035,7 @@ paths:
       summary: Send video, audio, image, document
       description: >-
         Документация
-        [SendFileByUpload](https://wasdk.pro/en/docs/api/sending/SendFileByUpload/)
+        [SendFileByUpload](https://sdkwa.pro/en/docs/api/sending/SendFileByUpload/)
       operationId: sendVideoAudioImageDocument
       requestBody:
         content:
@@ -1108,7 +1108,7 @@ paths:
       summary: Send video, audio, image, document via URL
       description: >-
         Документация
-        [SendFileByUrl](https://wasdk.pro/en/docs/api/sending/SendFileByUrl/)
+        [SendFileByUrl](https://sdkwa.pro/en/docs/api/sending/SendFileByUrl/)
       operationId: sendVideoAudioImageDocumentViaUrl
       requestBody:
         content:
@@ -1185,7 +1185,7 @@ paths:
       summary: Send location
       description: >-
         Документация
-        [SendLocation](https://wasdk.pro/en/docs/api/sending/SendLocation/)
+        [SendLocation](https://sdkwa.pro/en/docs/api/sending/SendLocation/)
       operationId: sendLocation
       requestBody:
         content:
@@ -1262,7 +1262,7 @@ paths:
       tags:
         - Sending
       summary: Send link
-      description: Документация [SendLink](https://wasdk.pro/en/docs/api/sending/SendLink/)
+      description: Документация [SendLink](https://sdkwa.pro/en/docs/api/sending/SendLink/)
       operationId: sendLink
       requestBody:
         content:
@@ -1275,10 +1275,10 @@ paths:
                   example: 790012345672@c.us
                 urlLink:
                   type: string
-                  example: https://wasdk.pro
+                  example: https://sdkwa.pro
             example:
               chatId: 790012345672@c.us
-              urlLink: https://wasdk.pro
+              urlLink: https://sdkwa.pro
       responses:
         '200':
           description: message.sendLink
@@ -1329,7 +1329,7 @@ paths:
       summary: Upload file
       description: >-
         Документация
-        [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)
+        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
       operationId: uploadFile
       requestBody:
         content:
@@ -1385,7 +1385,7 @@ paths:
       summary: Receive notification
       description: >-
         Документация
-        [ReceiveNotification](https://wasdk.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)
+        [ReceiveNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)
       operationId: receiveNotification
       responses:
         '200':
@@ -1409,7 +1409,7 @@ paths:
       summary: Delete notification
       description: >-
         Документация
-        [DeleteNotification](https://wasdk.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)
+        [DeleteNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)
       operationId: deleteNotification
       responses:
         '200':
@@ -1438,7 +1438,7 @@ paths:
       summary: Download file from incoming message
       description: >-
         Документация
-        [DownloadFile](https://wasdk.pro/en/docs/api/receiving/files/DownloadFile/)
+        [DownloadFile](https://sdkwa.pro/en/docs/api/receiving/files/DownloadFile/)
       operationId: downloadFileFromIncomingMessage
       responses:
         '200':
@@ -1461,7 +1461,7 @@ paths:
       summary: Get chat history
       description: >-
         Документация
-        [GetChatHistory](https://wasdk.pro/en/docs/api/journals/GetChatHistory/)
+        [GetChatHistory](https://sdkwa.pro/en/docs/api/journals/GetChatHistory/)
       operationId: getChatHistory
       requestBody:
         content:
@@ -1569,7 +1569,7 @@ paths:
       summary: Get outgoing messages journal
       description: >-
         Документация
-        [LastOutgoingMessages](https://wasdk.pro/en/docs/api/journals/LastOutgoingMessages/)
+        [LastOutgoingMessages](https://sdkwa.pro/en/docs/api/journals/LastOutgoingMessages/)
       operationId: getOutgoingMessagesJournal
       responses:
         '200':
@@ -1662,7 +1662,7 @@ paths:
       summary: Get incoming messages journal
       description: >-
         Документация
-        [LastIncomingMessages](https://wasdk.pro/en/docs/api/journals/LastIncomingMessages/)
+        [LastIncomingMessages](https://sdkwa.pro/en/docs/api/journals/LastIncomingMessages/)
       operationId: getIncomingMessagesJournal
       responses:
         '200':
@@ -1762,7 +1762,7 @@ paths:
       summary: Clear messages queue
       description: >-
         Документация
-        [ClearMessagesQueue](https://wasdk.pro/en/docs/api/queues/ClearMessagesQueue/)
+        [ClearMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ClearMessagesQueue/)
       operationId: clearMessagesQueue
       responses:
         '200':
@@ -1814,7 +1814,7 @@ paths:
       summary: Show messages queue
       description: >-
         Документация
-        [ShowMessagesQueue](https://wasdk.pro/en/docs/api/queues/ShowMessagesQueue/)
+        [ShowMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ShowMessagesQueue/)
       operationId: showMessagesQueue
       responses:
         '200':
@@ -1898,7 +1898,7 @@ paths:
       summary: Change group name
       description: >-
         Документация
-        [UpdateGroupName](https://wasdk.pro/en/docs/api/groups/UpdateGroupName/)
+        [UpdateGroupName](https://sdkwa.pro/en/docs/api/groups/UpdateGroupName/)
       operationId: changeGroupName
       requestBody:
         content:
@@ -1911,10 +1911,10 @@ paths:
                   example: 79001234567-1587570015@g.us
                 groupName:
                   type: string
-                  example: Group created by WASDK+
+                  example: Group created by SDKWA+
             example:
               groupId: 79001234567-1587570015@g.us
-              groupName: Group created by WASDK+
+              groupName: Group created by SDKWA+
       responses:
         '200':
           description: group.updateGroupName
@@ -1965,7 +1965,7 @@ paths:
       summary: Get group data
       description: >-
         Документация
-        [GetGroupData](https://wasdk.pro/en/docs/api/groups/GetGroupData/)
+        [GetGroupData](https://sdkwa.pro/en/docs/api/groups/GetGroupData/)
       operationId: getGroupData
       requestBody:
         content:
@@ -2041,7 +2041,7 @@ paths:
                         isSuperAdmin: false
                   subject:
                     type: string
-                    example: WASDK Group
+                    example: SDKWA Group
                   subjectOwner:
                     type: string
                     example: 79001234567@c.us
@@ -2065,7 +2065,7 @@ paths:
                       - id: 79001234569@c.us
                         isAdmin: false
                         isSuperAdmin: false
-                    subject: WASDK Group
+                    subject: SDKWA Group
                     subjectOwner: 79001234567@c.us
                     subjectTime: 1587737715
     parameters:
@@ -2086,7 +2086,7 @@ paths:
       summary: Leave group
       description: >-
         Документация
-        [LeaveGroup](https://wasdk.pro/en/docs/api/groups/LeaveGroup/)
+        [LeaveGroup](https://sdkwa.pro/en/docs/api/groups/LeaveGroup/)
       operationId: leaveGroup
       requestBody:
         content:
@@ -2149,7 +2149,7 @@ paths:
       summary: Set group admin rights
       description: >-
         Документация
-        [SetGroupAdmin](https://wasdk.pro/en/docs/api/groups/SetGroupAdmin/)
+        [SetGroupAdmin](https://sdkwa.pro/en/docs/api/groups/SetGroupAdmin/)
       operationId: setGroupAdminRights
       requestBody:
         content:
@@ -2216,7 +2216,7 @@ paths:
       summary: Delete group participant
       description: >-
         Документация
-        [RemoveGroupParticipant](https://wasdk.pro/en/docs/api/groups/RemoveGroupParticipant/)
+        [RemoveGroupParticipant](https://sdkwa.pro/en/docs/api/groups/RemoveGroupParticipant/)
       operationId: deleteGroupParticipant
       requestBody:
         content:
@@ -2283,7 +2283,7 @@ paths:
       summary: Remove group admin rights
       description: >-
         Документация
-        [RemoveAdmin](https://wasdk.pro/en/docs/api/groups/RemoveAdmin/)
+        [RemoveAdmin](https://sdkwa.pro/en/docs/api/groups/RemoveAdmin/)
       operationId: removeGroupAdminRights
       requestBody:
         content:
@@ -2350,7 +2350,7 @@ paths:
       summary: Create group
       description: >-
         Документация
-        [CreateGroup](https://wasdk.pro/en/docs/api/groups/CreateGroup/)
+        [CreateGroup](https://sdkwa.pro/en/docs/api/groups/CreateGroup/)
       operationId: createGroup
       requestBody:
         content:
@@ -2368,12 +2368,12 @@ paths:
                     - 79001234569@c.us
                 groupName:
                   type: string
-                  example: Group created by WASDK
+                  example: Group created by SDKWA
             example:
               chatIds:
                 - 79001234568@c.us
                 - 79001234569@c.us
-              groupName: Group created by WASDK
+              groupName: Group created by SDKWA
       responses:
         '200':
           description: group.createGroup
@@ -2432,7 +2432,7 @@ paths:
       summary: Add group participant
       description: >-
         Документация
-        [AddGroupParticipant](https://wasdk.pro/en/docs/api/groups/AddGroupParticipant/)
+        [AddGroupParticipant](https://sdkwa.pro/en/docs/api/groups/AddGroupParticipant/)
       operationId: addGroupParticipant
       requestBody:
         content:
@@ -2499,7 +2499,7 @@ paths:
       summary: Set group picture
       description: >-
         Документация
-        [SetGroupPicture](https://wasdk.pro/en/docs/api/account/SetGroupPicture/)
+        [SetGroupPicture](https://sdkwa.pro/en/docs/api/account/SetGroupPicture/)
       operationId: setGroupPicture
       requestBody:
         content:
@@ -2572,7 +2572,7 @@ paths:
       tags:
         - Read mark
       summary: Mark chat as read
-      description: Документация [ReadChat](https://wasdk.pro/en/docs/api/marks/ReadChat/)
+      description: Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)
       operationId: markChatAsRead
       requestBody:
         content:
@@ -2635,7 +2635,7 @@ paths:
       summary: Get device info
       description: >-
         Документация
-        [GetDeviceInfo](https://wasdk.pro/en/docs/api/phone/GetDeviceInfo/)
+        [GetDeviceInfo](https://sdkwa.pro/en/docs/api/phone/GetDeviceInfo/)
       operationId: getDeviceInfo
       responses:
         '200':
@@ -2707,7 +2707,7 @@ paths:
       summary: Get contacts
       description: >-
         Документация
-        [GetContacts](https://wasdk.pro/en/docs/api/service/GetContacts/)
+        [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)
       operationId: getContacts
       responses:
         '200':
@@ -2785,7 +2785,7 @@ paths:
       summary: Get chats
       description: >-
         Документация
-        [GetContacts](https://wasdk.pro/en/docs/api/service/GetContacts/)
+        [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)
       operationId: getChats
       responses:
         '200':
@@ -2881,7 +2881,7 @@ paths:
       summary: Get contact info
       description: >-
         Документация
-        [GetContacts](https://wasdk.pro/en/docs/api/service/GetContacts/)
+        [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)
       operationId: getContactInfo
       requestBody:
         content:
@@ -3054,7 +3054,7 @@ paths:
       summary: Set profile picture
       description: >-
         Документация
-        [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)
+        [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)
       operationId: setProfilePicture
       requestBody:
         content:
@@ -3113,7 +3113,7 @@ paths:
       summary: Archive chat
       description: >-
         Документация
-        [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)
+        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
       operationId: archiveChat
       requestBody:
         content:
@@ -3169,7 +3169,7 @@ paths:
       summary: Unarchive chat
       description: >-
         Документация
-        [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)
+        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
       operationId: unarchiveChat
       requestBody:
         content:
@@ -3225,7 +3225,7 @@ paths:
       summary: Delete message
       description: >-
         Документация
-        [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)
+        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
       operationId: deleteMessage
       requestBody:
         content:
@@ -3285,7 +3285,7 @@ paths:
       summary: Get avatar group
       description: >-
         Документация
-        [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)
+        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
       operationId: getAvatarGroup
       requestBody:
         content:
@@ -3352,7 +3352,7 @@ paths:
       summary: Check WhatsApp availability
       description: >-
         Документация
-        [CheckWhatsapp](https://wasdk.pro/en/docs/api/service/CheckWhatsapp/)
+        [CheckWhatsapp](https://sdkwa.pro/en/docs/api/service/CheckWhatsapp/)
       operationId: checkWhatsappAvailability
       requestBody:
         content:
@@ -3415,7 +3415,7 @@ paths:
       summary: Set profile name
       description: >-
         Документация
-        [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)
+        [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)
       operationId: setProfileName
       requestBody:
         content:
@@ -3476,7 +3476,7 @@ paths:
       summary: Set profile status
       description: >-
         Документация
-        [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)
+        [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)
       operationId: setProfileStatus
       requestBody:
         content:
@@ -3611,7 +3611,7 @@ paths:
                           example: true
                         emailUser:
                           type: string
-                          example: admin@wasdk.pro
+                          example: admin@sdkwa.pro
                         idInstance:
                           type: number
                           example: 1101000001
@@ -3633,7 +3633,7 @@ paths:
                     example:
                       - apiTokenInstance: 3e03ea9ff3324e228ae3dfdf4d48e409bfa1b1ad0b0c46bf8c
                         deleted: true
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000001
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:00'
@@ -3642,7 +3642,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 94237c81721f421da7f4dceb51b91aca027f991e86334d67a9
                         deleted: true
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000002
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:35'
@@ -3651,7 +3651,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: c397c24ed9b94e608c8fb0a0d16515bad86354d4990c499183
                         deleted: true
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000003
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:35'
@@ -3660,7 +3660,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: d94a4fa25e76472ab32f8bb6a453d9d0395e6a55b9f5461a88
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000004
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:36'
@@ -3669,7 +3669,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 046da3264bd441958792349a1bb79eed5b7c945a348c4057a6
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000005
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:37'
@@ -3678,7 +3678,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: bfe93e44ddcd4a4d8969ad69017b29704846f60c1990417a82
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000006
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:38'
@@ -3687,7 +3687,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: ea6b2d0e32e24d0b85ef9aa1492e5f663045a191f1354f5d81
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000007
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:38'
@@ -3696,7 +3696,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: d1d5b09cdd7548419153f058eddf2cb963af841295354432b2
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000008
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:40'
@@ -3705,7 +3705,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 5ea7c6bc10e742fd881ffd3521271aee01613b2d5d6147f7bd
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000009
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:41'
@@ -3714,7 +3714,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 396bf172115c4a1cafbc4ab12bff6ab3294066c0902b4f31a5
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000010
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:42'
@@ -3723,7 +3723,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: cfc10c1d4ab349beb6b087f7c8a44a61b285ccc12e69443090
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000011
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:43'
@@ -3732,7 +3732,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 14b13a3733ba4caeb26145b9f5efb510a37a7822293147d4a0
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000012
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:43'
@@ -3741,7 +3741,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 8ab8604c7abf484cb46ad58bc8f6fb9ab5aaa46f5b7d42f9be
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000013
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:44'
@@ -3750,7 +3750,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 39464e0d33f245008d9ed5ef1e15892dde7aa0e84586416d9b
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000014
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:45'
@@ -3759,7 +3759,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 6901a04c100d43e396420f4c90273b71bd42abefe7bd407d84
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000015
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:46'
@@ -3768,7 +3768,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 4a8f7e3cc4c14acfa01c43eb6735d81dfe304591c25e4aa29d
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000016
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:47'
@@ -3777,7 +3777,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 48bc986a5fba41949cd80326252307065cd1cb5682fc4cbc98
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000017
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:48'
@@ -3786,7 +3786,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 0ca9dfc385694c059084b78d1afbf76f76db8f59499e40ca86
                         deleted: true
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000018
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:53'
@@ -3795,7 +3795,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 9b289b55f2964fd0b1852f375fdd8f233eac324a79ee46a89a
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000019
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:49:46'
@@ -3804,7 +3804,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 2be110d129b144ecb2a867e487daa960b43b8acc24dc467988
                         deleted: true
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000037
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T06:22:59'
@@ -3823,7 +3823,7 @@ paths:
                     data:
                       - apiTokenInstance: 3e03ea9ff3324e228ae3dfdf4d48e409bfa1b1ad0b0c46bf8c
                         deleted: true
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000001
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:00'
@@ -3832,7 +3832,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 94237c81721f421da7f4dceb51b91aca027f991e86334d67a9
                         deleted: true
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000002
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:35'
@@ -3841,7 +3841,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: c397c24ed9b94e608c8fb0a0d16515bad86354d4990c499183
                         deleted: true
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000003
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:35'
@@ -3850,7 +3850,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: d94a4fa25e76472ab32f8bb6a453d9d0395e6a55b9f5461a88
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000004
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:36'
@@ -3859,7 +3859,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 046da3264bd441958792349a1bb79eed5b7c945a348c4057a6
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000005
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:37'
@@ -3868,7 +3868,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: bfe93e44ddcd4a4d8969ad69017b29704846f60c1990417a82
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000006
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:38'
@@ -3877,7 +3877,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: ea6b2d0e32e24d0b85ef9aa1492e5f663045a191f1354f5d81
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000007
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:38'
@@ -3886,7 +3886,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: d1d5b09cdd7548419153f058eddf2cb963af841295354432b2
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000008
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:40'
@@ -3895,7 +3895,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 5ea7c6bc10e742fd881ffd3521271aee01613b2d5d6147f7bd
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000009
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:41'
@@ -3904,7 +3904,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 396bf172115c4a1cafbc4ab12bff6ab3294066c0902b4f31a5
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000010
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:42'
@@ -3913,7 +3913,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: cfc10c1d4ab349beb6b087f7c8a44a61b285ccc12e69443090
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000011
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:43'
@@ -3922,7 +3922,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 14b13a3733ba4caeb26145b9f5efb510a37a7822293147d4a0
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000012
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:43'
@@ -3931,7 +3931,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 8ab8604c7abf484cb46ad58bc8f6fb9ab5aaa46f5b7d42f9be
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000013
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:44'
@@ -3940,7 +3940,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 39464e0d33f245008d9ed5ef1e15892dde7aa0e84586416d9b
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000014
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:45'
@@ -3949,7 +3949,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 6901a04c100d43e396420f4c90273b71bd42abefe7bd407d84
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000015
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:46'
@@ -3958,7 +3958,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 4a8f7e3cc4c14acfa01c43eb6735d81dfe304591c25e4aa29d
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000016
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:47'
@@ -3967,7 +3967,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 48bc986a5fba41949cd80326252307065cd1cb5682fc4cbc98
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000017
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:48'
@@ -3976,7 +3976,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 0ca9dfc385694c059084b78d1afbf76f76db8f59499e40ca86
                         deleted: true
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000018
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:41:53'
@@ -3985,7 +3985,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 9b289b55f2964fd0b1852f375fdd8f233eac324a79ee46a89a
                         deleted: false
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000019
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T05:49:46'
@@ -3994,7 +3994,7 @@ paths:
                         typeInstance: whatsapp
                       - apiTokenInstance: 2be110d129b144ecb2a867e487daa960b43b8acc24dc467988
                         deleted: true
-                        emailUser: admin@wasdk.pro
+                        emailUser: admin@sdkwa.pro
                         idInstance: 1101000037
                         partnerUserUiid: ''
                         timeCreated: '2021-12-02T06:22:59'

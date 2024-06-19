@@ -1,8 +1,10 @@
 {
 	"info": {
-		"_postman_id": "1469f76f-a4dc-4039-be0f-5b20e7297e09",
-		"name": "WASDK",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "60221fd7-7fcc-4596-b670-43c1f2ea20dc",
+		"name": "SDK WA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27883198",
+		"_collection_link": "https://universal-eclipse-719239.postman.co/workspace/test~2784e00c-181a-41d3-a403-612582d524b2/collection/27883198-60221fd7-7fcc-4596-b670-43c1f2ea20dc?action=share&source=collection_link&creator=27883198"
 	},
 	"item": [
 		{
@@ -14,17 +16,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getSettings/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/getSettings",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getSettings",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"getSettings"
 							]
 						},
-						"description": "Документация [GetSettings](https://wasdk.pro/en/docs/api/account/GetSettings/)"
+						"description": "Документация [GetSettings](https://sdkwa.pro/en/docs/api/account/GetSettings/)"
 					},
 					"response": [
 						{
@@ -70,7 +72,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"wid\": \"79001234567@c.us\", \n    \"countryInstance\": \"ru\",\n    \"typeAccount\": \"vip\",\n    \"webhookUrl\": \"https://mysite.com/webhook/wasdk/\",\n    \"delaySendMessagesMilliseconds\": 3000,\n    \"markIncomingMessagesReaded\": \"yes\",\n    \"outgoingWebhook\": \"yes\",\n    \"stateWebhook\": \"yes\",\n    \"incomingWebhook\": \"yes\",\n    \"deviceWebhook\": \"no\"\n}"
+							"body": "{\n    \"wid\": \"79001234567@c.us\", \n    \"countryInstance\": \"ru\",\n    \"typeAccount\": \"vip\",\n    \"webhookUrl\": \"https://mysite.com/webhook/sdkwa/\",\n    \"delaySendMessagesMilliseconds\": 3000,\n    \"markIncomingMessagesReaded\": \"yes\",\n    \"outgoingWebhook\": \"yes\",\n    \"stateWebhook\": \"yes\",\n    \"incomingWebhook\": \"yes\",\n    \"deviceWebhook\": \"no\"\n}"
 						}
 					]
 				},
@@ -89,17 +91,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/setSettings",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setSettings",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"setSettings"
 							]
 						},
-						"description": "Документация [SetSettings](https://wasdk.pro/en/docs/api/account/SetSettings/)"
+						"description": "Документация [SetSettings](https://sdkwa.pro/en/docs/api/account/SetSettings/)"
 					},
 					"response": [
 						{
@@ -164,17 +166,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getStateInstance/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/getStateInstance",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getStateInstance",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"getStateInstance"
 							]
 						},
-						"description": "Документация [GetStateInstance](https://wasdk.pro/en/docs/api/account/GetStateInstance/)"
+						"description": "Документация [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)"
 					},
 					"response": [
 						{
@@ -230,17 +232,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getWarmingPhoneStatus/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/getWarmingPhoneStatus",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getWarmingPhoneStatus",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"getWarmingPhoneStatus"
 							]
 						},
-						"description": "Документация [GetStateInstance](https://wasdk.pro/en/docs/api/account/GetStateInstance/)"
+						"description": "Документация [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)"
 					},
 					"response": [
 						{
@@ -296,17 +298,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/reboot/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/reboot",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"reboot",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"reboot"
 							]
 						},
-						"description": "Документация [Reboot](https://wasdk.pro/en/docs/api/account/Reboot/)"
+						"description": "Документация [Reboot](https://sdkwa.pro/en/docs/api/account/Reboot/)"
 					},
 					"response": [
 						{
@@ -359,20 +361,30 @@
 				{
 					"name": "Logout account",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/logout/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/logout",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"logout",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"logout"
 							]
 						},
-						"description": "Документация [Logout](https://wasdk.pro/en/docs/api/account/Logout/)"
+						"description": "Документация [Logout](https://sdkwa.pro/en/docs/api/account/Logout/)"
 					},
 					"response": [
 						{
@@ -428,17 +440,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/qr/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/qr",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"qr",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"qr"
 							]
 						},
-						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
 					},
 					"response": []
 				},
@@ -457,17 +469,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/requestRegistrationCode/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/requestRegistrationCode",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"requestRegistrationCode",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"requestRegistrationCode"
 							]
 						},
-						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
 					},
 					"response": []
 				},
@@ -486,17 +498,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendRegistrationCode/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/sendRegistrationCode/",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
+								"whatsapp",
+								"{{idInstance}}",
 								"sendRegistrationCode",
-								"{{apiTokenInstance}}"
+								""
 							]
 						},
-						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
 					},
 					"response": []
 				}
@@ -529,17 +542,17 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/SendButtons/{{apiTokenInstance}}",
+									"raw": "{{host}}/whatsapp/{{idInstance}}/SendButtons",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"waInstance{{idInstance}}",
-										"SendButtons",
-										"{{apiTokenInstance}}"
+										"whatsapp",
+										"{{idInstance}}",
+										"SendButtons"
 									]
 								},
-								"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
 							},
 							"response": [
 								{
@@ -616,17 +629,17 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/SendListMessage/{{apiTokenInstance}}",
+									"raw": "{{host}}/whatsapp/{{idInstance}}/SendListMessage",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"waInstance{{idInstance}}",
-										"SendListMessage",
-										"{{apiTokenInstance}}"
+										"whatsapp",
+										"{{idInstance}}",
+										"SendListMessage"
 									]
 								},
-								"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
 							},
 							"response": [
 								{
@@ -706,17 +719,17 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/SendTemplateButtons/{{apiTokenInstance}}",
+									"raw": "{{host}}/whatsapp/{{idInstance}}/SendTemplateButtons",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"waInstance{{idInstance}}",
-										"SendTemplateButtons",
-										"{{apiTokenInstance}}"
+										"whatsapp",
+										"{{idInstance}}",
+										"SendTemplateButtons"
 									]
 								},
-								"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
 							},
 							"response": [
 								{
@@ -780,11 +793,21 @@
 				{
 					"name": "Send text",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"chatId\": \"7912345678910@c.us\",\r\n\t\"message\": \"Hello\"\r\n}",
+							"raw": "{\r\n\t\"chatId\": \"79192533586@c.us\",\r\n\t\"message\": \"Hello\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -792,17 +815,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/sendMessage",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendMessage",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -879,17 +902,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp{{idInstance}}/sendMessage",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendMessage",
-								"{{apiTokenInstance}}"
+								"whatsapp{{idInstance}}",
+								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -966,17 +988,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp{{idInstance}}/sendMessage",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendMessage",
-								"{{apiTokenInstance}}"
+								"whatsapp{{idInstance}}",
+								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -1050,17 +1071,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendContact/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp{{idInstance}}/sendContact",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendContact",
-								"{{apiTokenInstance}}"
+								"whatsapp{{idInstance}}",
+								"sendContact"
 							]
 						},
-						"description": "Документация [SendContact](https://wasdk.pro/en/docs/api/sending/SendContact/)"
+						"description": "Документация [SendContact](https://sdkwa.pro/en/docs/api/sending/SendContact/)"
 					},
 					"response": [
 						{
@@ -1157,17 +1177,17 @@
 							]
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendFileByUpload/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/sendFileByUpload",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendFileByUpload",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"sendFileByUpload"
 							]
 						},
-						"description": "Документация [SendFileByUpload](https://wasdk.pro/en/docs/api/sending/SendFileByUpload/)"
+						"description": "Документация [SendFileByUpload](https://sdkwa.pro/en/docs/api/sending/SendFileByUpload/)"
 					},
 					"response": [
 						{
@@ -1257,17 +1277,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendFileByUrl/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp{{idInstance}}/sendFileByUrl",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendFileByUrl",
-								"{{apiTokenInstance}}"
+								"whatsapp{{idInstance}}",
+								"sendFileByUrl"
 							]
 						},
-						"description": "Документация [SendFileByUrl](https://wasdk.pro/en/docs/api/sending/SendFileByUrl/)"
+						"description": "Документация [SendFileByUrl](https://sdkwa.pro/en/docs/api/sending/SendFileByUrl/)"
 					},
 					"response": [
 						{
@@ -1341,17 +1360,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendLocation/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp{{idInstance}}/sendLocation",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendLocation",
-								"{{apiTokenInstance}}"
+								"whatsapp{{idInstance}}",
+								"sendLocation"
 							]
 						},
-						"description": "Документация [SendLocation](https://wasdk.pro/en/docs/api/sending/SendLocation/)"
+						"description": "Документация [SendLocation](https://sdkwa.pro/en/docs/api/sending/SendLocation/)"
 					},
 					"response": [
 						{
@@ -1411,90 +1429,6 @@
 					]
 				},
 				{
-					"name": "Send link",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"chatId\": \"790012345672@c.us\",\r\n\t\"urlLink\": \"https://wasdk.pro\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendLink/{{apiTokenInstance}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"waInstance{{idInstance}}",
-								"sendLink",
-								"{{apiTokenInstance}}"
-							]
-						},
-						"description": "Документация [SendLink](https://wasdk.pro/en/docs/api/sending/SendLink/)"
-					},
-					"response": [
-						{
-							"name": "message.sendLink",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\t\"chatId\": \"790012345672@c.us\",\r\n\t\"urlLink\": \"https://www.youtube.com/watch?v=00000000000\"\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/sendLink/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"sendLink",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 06 May 2020 20:26:45 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "41"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"idMessage\": \"3EB0160E742127137282\"\n}"
-						}
-					]
-				},
-				{
 					"name": "Upload file",
 					"request": {
 						"method": "POST",
@@ -1504,17 +1438,17 @@
 							"file": {}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/uploadFile/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/uploadFile",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"uploadFile",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"uploadFile"
 							]
 						},
-						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -1587,17 +1521,17 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/receiveNotification/{{apiTokenInstance}}",
+									"raw": "{{host}}/whatsapp/{{idInstance}}/receiveNotification",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"waInstance{{idInstance}}",
-										"receiveNotification",
-										"{{apiTokenInstance}}"
+										"whatsapp",
+										"{{idInstance}}",
+										"receiveNotification"
 									]
 								},
-								"description": "Документация [ReceiveNotification](https://wasdk.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)"
+								"description": "Документация [ReceiveNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)"
 							},
 							"response": []
 						},
@@ -1607,18 +1541,18 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/deleteNotification/{{apiTokenInstance}}/{{receiptId}}",
+									"raw": "{{host}}/whatsapp/{{idInstance}}/deleteNotification/{{receiptId}}",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"waInstance{{idInstance}}",
+										"whatsapp",
+										"{{idInstance}}",
 										"deleteNotification",
-										"{{apiTokenInstance}}",
 										"{{receiptId}}"
 									]
 								},
-								"description": "Документация [DeleteNotification](https://wasdk.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)"
+								"description": "Документация [DeleteNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)"
 							},
 							"response": []
 						}
@@ -1643,7 +1577,7 @@
 										"{{idMessage}}"
 									]
 								},
-								"description": "Документация [DownloadFile](https://wasdk.pro/en/docs/api/receiving/files/DownloadFile/)"
+								"description": "Документация [DownloadFile](https://sdkwa.pro/en/docs/api/receiving/files/DownloadFile/)"
 							},
 							"response": []
 						}
@@ -1669,17 +1603,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getChatHistory/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/getChatHistory",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getChatHistory",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"getChatHistory"
 							]
 						},
-						"description": "Документация [GetChatHistory](https://wasdk.pro/en/docs/api/journals/GetChatHistory/)"
+						"description": "Документация [GetChatHistory](https://sdkwa.pro/en/docs/api/journals/GetChatHistory/)"
 					},
 					"response": [
 						{
@@ -1744,17 +1678,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/lastOutgoingMessages/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/lastOutgoingMessages",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"lastOutgoingMessages",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"lastOutgoingMessages"
 							]
 						},
-						"description": "Документация [LastOutgoingMessages](https://wasdk.pro/en/docs/api/journals/LastOutgoingMessages/)"
+						"description": "Документация [LastOutgoingMessages](https://sdkwa.pro/en/docs/api/journals/LastOutgoingMessages/)"
 					},
 					"response": [
 						{
@@ -1810,17 +1744,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/lastIncomingMessages/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/lastIncomingMessages",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"lastIncomingMessages",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"lastIncomingMessages"
 							]
 						},
-						"description": "Документация [LastIncomingMessages](https://wasdk.pro/en/docs/api/journals/LastIncomingMessages/)"
+						"description": "Документация [LastIncomingMessages](https://sdkwa.pro/en/docs/api/journals/LastIncomingMessages/)"
 					},
 					"response": [
 						{
@@ -1901,17 +1835,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/clearMessagesQueue/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/clearMessagesQueue",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"clearMessagesQueue",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"clearMessagesQueue"
 							]
 						},
-						"description": "Документация [ClearMessagesQueue](https://wasdk.pro/en/docs/api/queues/ClearMessagesQueue/)"
+						"description": "Документация [ClearMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ClearMessagesQueue/)"
 					},
 					"response": [
 						{
@@ -1967,17 +1901,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/showMessagesQueue/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/showMessagesQueue",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"showMessagesQueue",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"showMessagesQueue"
 							]
 						},
-						"description": "Документация [ShowMessagesQueue](https://wasdk.pro/en/docs/api/queues/ShowMessagesQueue/)"
+						"description": "Документация [ShowMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ShowMessagesQueue/)"
 					},
 					"response": [
 						{
@@ -2039,7 +1973,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"groupId\": \"79001234567-1587570015@g.us\",\r\n\t\"groupName\": \"Group created by WASDK+\"\r\n}",
+							"raw": "{\r\n\t\"groupId\": \"79001234567-1587570015@g.us\",\r\n\t\"groupName\": \"Group created by SDKWA+\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2047,17 +1981,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/updateGroupName/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/updateGroupName",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"updateGroupName",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"updateGroupName"
 							]
 						},
-						"description": "Документация [UpdateGroupName](https://wasdk.pro/en/docs/api/groups/UpdateGroupName/)"
+						"description": "Документация [UpdateGroupName](https://sdkwa.pro/en/docs/api/groups/UpdateGroupName/)"
 					},
 					"response": [
 						{
@@ -2131,17 +2065,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getGroupData/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/getGroupData",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getGroupData",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"getGroupData"
 							]
 						},
-						"description": "Документация [GetGroupData](https://wasdk.pro/en/docs/api/groups/GetGroupData/)"
+						"description": "Документация [GetGroupData](https://sdkwa.pro/en/docs/api/groups/GetGroupData/)"
 					},
 					"response": [
 						{
@@ -2196,7 +2130,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n\t\"groupId\": \"79001234567-1587570015@g.us\",\n\t\"owner\": \"79001234567@c.us\",\n\t\"subject\": \"WASDK Group\",\n\t\"creation\": 1587570015,\n\t\"participants\": [\n\t\t{\n\t\t\t\"id\": \"79001234567@c.us\",\n\t\t\t\"isAdmin\": true,\n\t\t\t\"isSuperAdmin\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"79001234568@c.us\",\n\t\t\t\"isAdmin\": true,\n\t\t\t\"isSuperAdmin\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": \"79001234569@c.us\",\n\t\t\t\"isAdmin\": false,\n\t\t\t\"isSuperAdmin\": false\n\t\t}\n\t],\n\t\"subjectTime\": 1587737715,\n\t\"subjectOwner\": \"79001234567@c.us\",\n\t\"groupInviteLink\": \"https://chat.whatsapp.com/xxxxxxxxxxxxxxxxxxxxxx\"\n}"
+							"body": "{\n\t\"groupId\": \"79001234567-1587570015@g.us\",\n\t\"owner\": \"79001234567@c.us\",\n\t\"subject\": \"SDKWA Group\",\n\t\"creation\": 1587570015,\n\t\"participants\": [\n\t\t{\n\t\t\t\"id\": \"79001234567@c.us\",\n\t\t\t\"isAdmin\": true,\n\t\t\t\"isSuperAdmin\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"79001234568@c.us\",\n\t\t\t\"isAdmin\": true,\n\t\t\t\"isSuperAdmin\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": \"79001234569@c.us\",\n\t\t\t\"isAdmin\": false,\n\t\t\t\"isSuperAdmin\": false\n\t\t}\n\t],\n\t\"subjectTime\": 1587737715,\n\t\"subjectOwner\": \"79001234567@c.us\",\n\t\"groupInviteLink\": \"https://chat.whatsapp.com/xxxxxxxxxxxxxxxxxxxxxx\"\n}"
 						}
 					]
 				},
@@ -2225,7 +2159,7 @@
 								"{{apiTokenInstance}}"
 							]
 						},
-						"description": "Документация [LeaveGroup](https://wasdk.pro/en/docs/api/groups/LeaveGroup/)"
+						"description": "Документация [LeaveGroup](https://sdkwa.pro/en/docs/api/groups/LeaveGroup/)"
 					},
 					"response": [
 						{
@@ -2299,17 +2233,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setGroupAdmin/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/setGroupAdmin",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setGroupAdmin",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"setGroupAdmin"
 							]
 						},
-						"description": "Документация [SetGroupAdmin](https://wasdk.pro/en/docs/api/groups/SetGroupAdmin/)"
+						"description": "Документация [SetGroupAdmin](https://sdkwa.pro/en/docs/api/groups/SetGroupAdmin/)"
 					},
 					"response": [
 						{
@@ -2383,17 +2317,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/removeGroupParticipant/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/removeGroupParticipant",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"removeGroupParticipant",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"removeGroupParticipant"
 							]
 						},
-						"description": "Документация [RemoveGroupParticipant](https://wasdk.pro/en/docs/api/groups/RemoveGroupParticipant/)"
+						"description": "Документация [RemoveGroupParticipant](https://sdkwa.pro/en/docs/api/groups/RemoveGroupParticipant/)"
 					},
 					"response": [
 						{
@@ -2467,17 +2401,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/removeAdmin/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp{{idInstance}}/removeAdmin",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"removeAdmin",
-								"{{apiTokenInstance}}"
+								"whatsapp{{idInstance}}",
+								"removeAdmin"
 							]
 						},
-						"description": "Документация [RemoveAdmin](https://wasdk.pro/en/docs/api/groups/RemoveAdmin/)"
+						"description": "Документация [RemoveAdmin](https://sdkwa.pro/en/docs/api/groups/RemoveAdmin/)"
 					},
 					"response": [
 						{
@@ -2543,7 +2476,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"groupName\": \"Group created by WASDK\",\r\n    \"chatIds\": [\r\n        \"79001234568@c.us\",\r\n        \"79001234569@c.us\"\r\n    ]\r\n}\r\n",
+							"raw": "{\r\n\t\"groupName\": \"Group created by SDKWA\",\r\n    \"chatIds\": [\r\n        \"79001234568@c.us\",\r\n        \"79001234569@c.us\"\r\n    ]\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2551,17 +2484,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/createGroup/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/createGroup",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"createGroup",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"createGroup"
 							]
 						},
-						"description": "Документация [CreateGroup](https://wasdk.pro/en/docs/api/groups/CreateGroup/)"
+						"description": "Документация [CreateGroup](https://sdkwa.pro/en/docs/api/groups/CreateGroup/)"
 					},
 					"response": [
 						{
@@ -2571,7 +2504,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\t\"groupName\": \"Group created by WASDK\",\r\n    \"chatIds\": [\r\n        \"79001234568@c.us\",\r\n        \"79001234569@c.us\"\r\n    ]\r\n}\r\n",
+									"raw": "{\r\n\t\"groupName\": \"Group created by SDKWA\",\r\n    \"chatIds\": [\r\n        \"79001234568@c.us\",\r\n        \"79001234569@c.us\"\r\n    ]\r\n}\r\n",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -2635,17 +2568,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/addGroupParticipant/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/addGroupParticipant",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"addGroupParticipant",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"addGroupParticipant"
 							]
 						},
-						"description": "Документация [AddGroupParticipant](https://wasdk.pro/en/docs/api/groups/AddGroupParticipant/)"
+						"description": "Документация [AddGroupParticipant](https://sdkwa.pro/en/docs/api/groups/AddGroupParticipant/)"
 					},
 					"response": [
 						{
@@ -2715,7 +2648,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/E:/WASDK_docs/wasdk-logo.png"
+									"src": "/E:/WASDK_docs/sdkwa-logo.png"
 								},
 								{
 									"key": "groupId",
@@ -2726,17 +2659,17 @@
 							]
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setGroupPicture/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/setGroupPicture",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setGroupPicture",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"setGroupPicture"
 							]
 						},
-						"description": "Документация [SetGroupPicture](https://wasdk.pro/en/docs/api/account/SetGroupPicture/)"
+						"description": "Документация [SetGroupPicture](https://sdkwa.pro/en/docs/api/account/SetGroupPicture/)"
 					},
 					"response": [
 						{
@@ -2826,17 +2759,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/readChat/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/readChat",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"readChat",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"readChat"
 							]
 						},
-						"description": "Документация [ReadChat](https://wasdk.pro/en/docs/api/marks/ReadChat/)"
+						"description": "Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)"
 					},
 					"response": [
 						{
@@ -2910,17 +2843,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/readChat/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/readChat/",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
+								"whatsapp",
+								"{{idInstance}}",
 								"readChat",
-								"{{apiTokenInstance}}"
+								""
 							]
 						},
-						"description": "Документация [ReadChat](https://wasdk.pro/en/docs/api/marks/ReadChat/)"
+						"description": "Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)"
 					},
 					"response": [
 						{
@@ -3002,97 +2936,6 @@
 			]
 		},
 		{
-			"name": "Device (phone)",
-			"item": [
-				{
-					"name": "Get device info",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getDeviceInfo/{{apiTokenInstance}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"waInstance{{idInstance}}",
-								"getDeviceInfo",
-								"{{apiTokenInstance}}"
-							]
-						},
-						"description": "Документация [GetDeviceInfo](https://wasdk.pro/en/docs/api/phone/GetDeviceInfo/)"
-					},
-					"response": [
-						{
-							"name": "getDeviceInfo",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/getDeviceInfo/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"getDeviceInfo",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 17 Apr 2020 14:32:54 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "123"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"platform\": \"iphone\",\n    \"deviceManufacturer\": \"Apple\",\n    \"deviceModel\": \"iPhone 11\",\n    \"osVersion\": \"13.4.1\",\n    \"waVersion\": \"2.20.42\",\n    \"battery\": 90\n}"
-						}
-					]
-				}
-			],
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			]
-		},
-		{
 			"name": "Service methods",
 			"item": [
 				{
@@ -3101,17 +2944,17 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getContacts/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/getContacts",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getContacts",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"getContacts"
 							]
 						},
-						"description": "Документация [GetContacts](https://wasdk.pro/en/docs/api/service/GetContacts/)"
+						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
 					},
 					"response": [
 						{
@@ -3177,7 +3020,7 @@
 								"{{apiTokenInstance}}"
 							]
 						},
-						"description": "Документация [GetContacts](https://wasdk.pro/en/docs/api/service/GetContacts/)"
+						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
 					},
 					"response": [
 						{
@@ -3245,17 +3088,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/GetContactInfo/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/GetContactInfo",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"GetContactInfo",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"GetContactInfo"
 							]
 						},
-						"description": "Документация [GetContacts](https://wasdk.pro/en/docs/api/service/GetContacts/)"
+						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
 					},
 					"response": [
 						{
@@ -3321,17 +3164,17 @@
 							]
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setProfilePicture/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/setProfilePicture",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setProfilePicture",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"setProfilePicture"
 							]
 						},
-						"description": "Документация [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)"
+						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
 					},
 					"response": [
 						{
@@ -3411,17 +3254,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/archiveChat/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/archiveChat",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"archiveChat",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"archiveChat"
 							]
 						},
-						"description": "Документация [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3495,17 +3338,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/unarchiveChat/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/unarchiveChat",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"unarchiveChat",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"unarchiveChat"
 							]
 						},
-						"description": "Документация [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3579,17 +3422,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/deleteMessage/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/deleteMessage",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"deleteMessage",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"deleteMessage"
 							]
 						},
-						"description": "Документация [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3663,17 +3506,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/getAvatar",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getAvatar",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"getAvatar"
 							]
 						},
-						"description": "Документация [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3684,90 +3527,6 @@
 								"body": {
 									"mode": "raw",
 									"raw": "{\r\n{\r\n    \"chatId\": \"7900123456732@c.us\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"getAvatar",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 17 Apr 2020 14:40:40 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "190"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"existsWhatsapp\": true,\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/avatar.jpg\"\n}"
-						}
-					]
-				},
-				{
-					"name": "Get avatar group",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"chatId\": \"79001234567-1581234048@g.us\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"waInstance{{idInstance}}",
-								"getAvatar",
-								"{{apiTokenInstance}}"
-							]
-						},
-						"description": "Документация [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)"
-					},
-					"response": [
-						{
-							"name": "getAvatar",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"chatId\": \"79001234567-1581234048@g.us\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3831,17 +3590,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/checkWhatsapp/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/checkWhatsapp",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"checkWhatsapp",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"checkWhatsapp"
 							]
 						},
-						"description": "Документация [CheckWhatsapp](https://wasdk.pro/en/docs/api/service/CheckWhatsapp/)"
+						"description": "Документация [CheckWhatsapp](https://sdkwa.pro/en/docs/api/service/CheckWhatsapp/)"
 					},
 					"response": [
 						{
@@ -3915,17 +3674,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setProfileName/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/setProfileName",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setProfileName",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"setProfileName"
 							]
 						},
-						"description": "Документация [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)"
+						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
 					},
 					"response": [
 						{
@@ -4005,17 +3764,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setProfileStatus/{{apiTokenInstance}}",
+							"raw": "{{host}}/whatsapp/{{idInstance}}/setProfileStatus",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setProfileStatus",
-								"{{apiTokenInstance}}"
+								"whatsapp",
+								"{{idInstance}}",
+								"setProfileStatus"
 							]
 						},
-						"description": "Документация [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)"
+						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
 					},
 					"response": [
 						{
@@ -4214,7 +3973,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"result\": true,\n    \"data\": [\n        {\n            \"idInstance\": 1101000001,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:00\",\n            \"timeDeleted\": \"2021-12-02T05:50:21\",\n            \"apiTokenInstance\": \"3e03ea9ff3324e228ae3dfdf4d48e409bfa1b1ad0b0c46bf8c\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000002,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:35\",\n            \"timeDeleted\": \"2021-12-02T05:51:08\",\n            \"apiTokenInstance\": \"94237c81721f421da7f4dceb51b91aca027f991e86334d67a9\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000003,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:35\",\n            \"timeDeleted\": \"2021-12-02T05:51:14\",\n            \"apiTokenInstance\": \"c397c24ed9b94e608c8fb0a0d16515bad86354d4990c499183\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000004,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:36\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"d94a4fa25e76472ab32f8bb6a453d9d0395e6a55b9f5461a88\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000005,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:37\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"046da3264bd441958792349a1bb79eed5b7c945a348c4057a6\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000006,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:38\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"bfe93e44ddcd4a4d8969ad69017b29704846f60c1990417a82\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000007,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:38\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"ea6b2d0e32e24d0b85ef9aa1492e5f663045a191f1354f5d81\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000008,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:40\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"d1d5b09cdd7548419153f058eddf2cb963af841295354432b2\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000009,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:41\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"5ea7c6bc10e742fd881ffd3521271aee01613b2d5d6147f7bd\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000010,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:42\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"396bf172115c4a1cafbc4ab12bff6ab3294066c0902b4f31a5\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000011,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:43\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"cfc10c1d4ab349beb6b087f7c8a44a61b285ccc12e69443090\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000012,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:43\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"14b13a3733ba4caeb26145b9f5efb510a37a7822293147d4a0\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000013,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:44\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"8ab8604c7abf484cb46ad58bc8f6fb9ab5aaa46f5b7d42f9be\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000014,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:45\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"39464e0d33f245008d9ed5ef1e15892dde7aa0e84586416d9b\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000015,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:46\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"6901a04c100d43e396420f4c90273b71bd42abefe7bd407d84\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000016,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:47\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"4a8f7e3cc4c14acfa01c43eb6735d81dfe304591c25e4aa29d\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000017,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:48\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"48bc986a5fba41949cd80326252307065cd1cb5682fc4cbc98\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000018,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:53\",\n            \"timeDeleted\": \"2021-12-02T05:56:01\",\n            \"apiTokenInstance\": \"0ca9dfc385694c059084b78d1afbf76f76db8f59499e40ca86\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000019,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:49:46\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"9b289b55f2964fd0b1852f375fdd8f233eac324a79ee46a89a\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000037,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T06:22:59\",\n            \"timeDeleted\": \"2021-12-02T06:23:49\",\n            \"apiTokenInstance\": \"2be110d129b144ecb2a867e487daa960b43b8acc24dc467988\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@wasdk.pro\"\n        }\n    ],\n    \"error\": {}\n}"
+							"body": "{\n    \"result\": true,\n    \"data\": [\n        {\n            \"idInstance\": 1101000001,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:00\",\n            \"timeDeleted\": \"2021-12-02T05:50:21\",\n            \"apiTokenInstance\": \"3e03ea9ff3324e228ae3dfdf4d48e409bfa1b1ad0b0c46bf8c\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000002,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:35\",\n            \"timeDeleted\": \"2021-12-02T05:51:08\",\n            \"apiTokenInstance\": \"94237c81721f421da7f4dceb51b91aca027f991e86334d67a9\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000003,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:35\",\n            \"timeDeleted\": \"2021-12-02T05:51:14\",\n            \"apiTokenInstance\": \"c397c24ed9b94e608c8fb0a0d16515bad86354d4990c499183\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000004,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:36\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"d94a4fa25e76472ab32f8bb6a453d9d0395e6a55b9f5461a88\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000005,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:37\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"046da3264bd441958792349a1bb79eed5b7c945a348c4057a6\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000006,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:38\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"bfe93e44ddcd4a4d8969ad69017b29704846f60c1990417a82\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000007,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:38\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"ea6b2d0e32e24d0b85ef9aa1492e5f663045a191f1354f5d81\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000008,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:40\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"d1d5b09cdd7548419153f058eddf2cb963af841295354432b2\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000009,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:41\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"5ea7c6bc10e742fd881ffd3521271aee01613b2d5d6147f7bd\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000010,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:42\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"396bf172115c4a1cafbc4ab12bff6ab3294066c0902b4f31a5\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000011,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:43\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"cfc10c1d4ab349beb6b087f7c8a44a61b285ccc12e69443090\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000012,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:43\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"14b13a3733ba4caeb26145b9f5efb510a37a7822293147d4a0\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000013,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:44\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"8ab8604c7abf484cb46ad58bc8f6fb9ab5aaa46f5b7d42f9be\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000014,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:45\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"39464e0d33f245008d9ed5ef1e15892dde7aa0e84586416d9b\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000015,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:46\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"6901a04c100d43e396420f4c90273b71bd42abefe7bd407d84\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000016,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:47\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"4a8f7e3cc4c14acfa01c43eb6735d81dfe304591c25e4aa29d\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000017,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:48\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"48bc986a5fba41949cd80326252307065cd1cb5682fc4cbc98\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000018,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:53\",\n            \"timeDeleted\": \"2021-12-02T05:56:01\",\n            \"apiTokenInstance\": \"0ca9dfc385694c059084b78d1afbf76f76db8f59499e40ca86\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000019,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:49:46\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"9b289b55f2964fd0b1852f375fdd8f233eac324a79ee46a89a\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        },\n        {\n            \"idInstance\": 1101000037,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T06:22:59\",\n            \"timeDeleted\": \"2021-12-02T06:23:49\",\n            \"apiTokenInstance\": \"2be110d129b144ecb2a867e487daa960b43b8acc24dc467988\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@sdkwa.pro\"\n        }\n    ],\n    \"error\": {}\n}"
 						}
 					]
 				},
@@ -5090,6 +4849,16 @@
 			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{apiTokenInstance}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
