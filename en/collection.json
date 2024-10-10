@@ -26,7 +26,7 @@
 								"getSettings"
 							]
 						},
-						"description": "Документация [GetSettings](https://sdkwa.pro/en/docs/api/account/GetSettings/)"
+						"description": "Документация [GetSettings](https://api.sdkwa.pro/en/docs/api/account/GetSettings/)"
 					},
 					"response": [
 						{
@@ -101,7 +101,7 @@
 								"setSettings"
 							]
 						},
-						"description": "Документация [SetSettings](https://sdkwa.pro/en/docs/api/account/SetSettings/)"
+						"description": "Документация [SetSettings](https://api.sdkwa.pro/en/docs/api/account/SetSettings/)"
 					},
 					"response": [
 						{
@@ -176,7 +176,7 @@
 								"getStateInstance"
 							]
 						},
-						"description": "Документация [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)"
+						"description": "Документация [GetStateInstance](https://api.sdkwa.pro/en/docs/api/account/GetStateInstance/)"
 					},
 					"response": [
 						{
@@ -242,7 +242,7 @@
 								"getWarmingPhoneStatus"
 							]
 						},
-						"description": "Документация [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)"
+						"description": "Документация [GetStateInstance](https://api.sdkwa.pro/en/docs/api/account/GetStateInstance/)"
 					},
 					"response": [
 						{
@@ -308,7 +308,7 @@
 								"reboot"
 							]
 						},
-						"description": "Документация [Reboot](https://sdkwa.pro/en/docs/api/account/Reboot/)"
+						"description": "Документация [Reboot](https://api.sdkwa.pro/en/docs/api/account/Reboot/)"
 					},
 					"response": [
 						{
@@ -384,7 +384,7 @@
 								"logout"
 							]
 						},
-						"description": "Документация [Logout](https://sdkwa.pro/en/docs/api/account/Logout/)"
+						"description": "Документация [Logout](https://api.sdkwa.pro/en/docs/api/account/Logout/)"
 					},
 					"response": [
 						{
@@ -450,7 +450,7 @@
 								"qr"
 							]
 						},
-						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
+						"description": "Документация [QR](https://api.sdkwa.pro/en/docs/api/account/QR/)"
 					},
 					"response": []
 				},
@@ -479,7 +479,7 @@
 								"requestRegistrationCode"
 							]
 						},
-						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
+						"description": "Документация [QR](https://api.sdkwa.pro/en/docs/api/account/QR/)"
 					},
 					"response": []
 				},
@@ -509,7 +509,7 @@
 								""
 							]
 						},
-						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
+						"description": "Документация [QR](https://api.sdkwa.pro/en/docs/api/account/QR/)"
 					},
 					"response": []
 				}
@@ -552,7 +552,7 @@
 										"SendButtons"
 									]
 								},
-								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+								"description": "Документация [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)"
 							},
 							"response": [
 								{
@@ -639,7 +639,7 @@
 										"SendListMessage"
 									]
 								},
-								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+								"description": "Документация [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)"
 							},
 							"response": [
 								{
@@ -729,7 +729,7 @@
 										"SendTemplateButtons"
 									]
 								},
-								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+								"description": "Документация [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)"
 							},
 							"response": [
 								{
@@ -825,7 +825,7 @@
 								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -911,7 +911,7 @@
 								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -997,7 +997,7 @@
 								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -1080,7 +1080,7 @@
 								"sendContact"
 							]
 						},
-						"description": "Документация [SendContact](https://sdkwa.pro/en/docs/api/sending/SendContact/)"
+						"description": "Документация [SendContact](https://api.sdkwa.pro/en/docs/api/sending/SendContact/)"
 					},
 					"response": [
 						{
@@ -1187,7 +1187,7 @@
 								"sendFileByUpload"
 							]
 						},
-						"description": "Документация [SendFileByUpload](https://sdkwa.pro/en/docs/api/sending/SendFileByUpload/)"
+						"description": "Документация [SendFileByUpload](https://api.sdkwa.pro/en/docs/api/sending/SendFileByUpload/)"
 					},
 					"response": [
 						{
@@ -1286,7 +1286,7 @@
 								"sendFileByUrl"
 							]
 						},
-						"description": "Документация [SendFileByUrl](https://sdkwa.pro/en/docs/api/sending/SendFileByUrl/)"
+						"description": "Документация [SendFileByUrl](https://api.sdkwa.pro/en/docs/api/sending/SendFileByUrl/)"
 					},
 					"response": [
 						{
@@ -1369,7 +1369,7 @@
 								"sendLocation"
 							]
 						},
-						"description": "Документация [SendLocation](https://sdkwa.pro/en/docs/api/sending/SendLocation/)"
+						"description": "Документация [SendLocation](https://api.sdkwa.pro/en/docs/api/sending/SendLocation/)"
 					},
 					"response": [
 						{
@@ -1448,7 +1448,7 @@
 								"uploadFile"
 							]
 						},
-						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -1531,7 +1531,7 @@
 										"receiveNotification"
 									]
 								},
-								"description": "Документация [ReceiveNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)"
+								"description": "Документация [ReceiveNotification](https://api.sdkwa.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)"
 							},
 							"response": []
 						},
@@ -1552,7 +1552,7 @@
 										"{{receiptId}}"
 									]
 								},
-								"description": "Документация [DeleteNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)"
+								"description": "Документация [DeleteNotification](https://api.sdkwa.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)"
 							},
 							"response": []
 						}
@@ -1577,7 +1577,7 @@
 										"{{idMessage}}"
 									]
 								},
-								"description": "Документация [DownloadFile](https://sdkwa.pro/en/docs/api/receiving/files/DownloadFile/)"
+								"description": "Документация [DownloadFile](https://api.sdkwa.pro/en/docs/api/receiving/files/DownloadFile/)"
 							},
 							"response": []
 						}
@@ -1613,7 +1613,7 @@
 								"getChatHistory"
 							]
 						},
-						"description": "Документация [GetChatHistory](https://sdkwa.pro/en/docs/api/journals/GetChatHistory/)"
+						"description": "Документация [GetChatHistory](https://api.sdkwa.pro/en/docs/api/journals/GetChatHistory/)"
 					},
 					"response": [
 						{
@@ -1688,7 +1688,7 @@
 								"lastOutgoingMessages"
 							]
 						},
-						"description": "Документация [LastOutgoingMessages](https://sdkwa.pro/en/docs/api/journals/LastOutgoingMessages/)"
+						"description": "Документация [LastOutgoingMessages](https://api.sdkwa.pro/en/docs/api/journals/LastOutgoingMessages/)"
 					},
 					"response": [
 						{
@@ -1754,7 +1754,7 @@
 								"lastIncomingMessages"
 							]
 						},
-						"description": "Документация [LastIncomingMessages](https://sdkwa.pro/en/docs/api/journals/LastIncomingMessages/)"
+						"description": "Документация [LastIncomingMessages](https://api.sdkwa.pro/en/docs/api/journals/LastIncomingMessages/)"
 					},
 					"response": [
 						{
@@ -1845,7 +1845,7 @@
 								"clearMessagesQueue"
 							]
 						},
-						"description": "Документация [ClearMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ClearMessagesQueue/)"
+						"description": "Документация [ClearMessagesQueue](https://api.sdkwa.pro/en/docs/api/queues/ClearMessagesQueue/)"
 					},
 					"response": [
 						{
@@ -1911,7 +1911,7 @@
 								"showMessagesQueue"
 							]
 						},
-						"description": "Документация [ShowMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ShowMessagesQueue/)"
+						"description": "Документация [ShowMessagesQueue](https://api.sdkwa.pro/en/docs/api/queues/ShowMessagesQueue/)"
 					},
 					"response": [
 						{
@@ -1991,7 +1991,7 @@
 								"updateGroupName"
 							]
 						},
-						"description": "Документация [UpdateGroupName](https://sdkwa.pro/en/docs/api/groups/UpdateGroupName/)"
+						"description": "Документация [UpdateGroupName](https://api.sdkwa.pro/en/docs/api/groups/UpdateGroupName/)"
 					},
 					"response": [
 						{
@@ -2075,7 +2075,7 @@
 								"getGroupData"
 							]
 						},
-						"description": "Документация [GetGroupData](https://sdkwa.pro/en/docs/api/groups/GetGroupData/)"
+						"description": "Документация [GetGroupData](https://api.sdkwa.pro/en/docs/api/groups/GetGroupData/)"
 					},
 					"response": [
 						{
@@ -2159,7 +2159,7 @@
 								"{{apiTokenInstance}}"
 							]
 						},
-						"description": "Документация [LeaveGroup](https://sdkwa.pro/en/docs/api/groups/LeaveGroup/)"
+						"description": "Документация [LeaveGroup](https://api.sdkwa.pro/en/docs/api/groups/LeaveGroup/)"
 					},
 					"response": [
 						{
@@ -2243,7 +2243,7 @@
 								"setGroupAdmin"
 							]
 						},
-						"description": "Документация [SetGroupAdmin](https://sdkwa.pro/en/docs/api/groups/SetGroupAdmin/)"
+						"description": "Документация [SetGroupAdmin](https://api.sdkwa.pro/en/docs/api/groups/SetGroupAdmin/)"
 					},
 					"response": [
 						{
@@ -2327,7 +2327,7 @@
 								"removeGroupParticipant"
 							]
 						},
-						"description": "Документация [RemoveGroupParticipant](https://sdkwa.pro/en/docs/api/groups/RemoveGroupParticipant/)"
+						"description": "Документация [RemoveGroupParticipant](https://api.sdkwa.pro/en/docs/api/groups/RemoveGroupParticipant/)"
 					},
 					"response": [
 						{
@@ -2410,7 +2410,7 @@
 								"removeAdmin"
 							]
 						},
-						"description": "Документация [RemoveAdmin](https://sdkwa.pro/en/docs/api/groups/RemoveAdmin/)"
+						"description": "Документация [RemoveAdmin](https://api.sdkwa.pro/en/docs/api/groups/RemoveAdmin/)"
 					},
 					"response": [
 						{
@@ -2494,7 +2494,7 @@
 								"createGroup"
 							]
 						},
-						"description": "Документация [CreateGroup](https://sdkwa.pro/en/docs/api/groups/CreateGroup/)"
+						"description": "Документация [CreateGroup](https://api.sdkwa.pro/en/docs/api/groups/CreateGroup/)"
 					},
 					"response": [
 						{
@@ -2578,7 +2578,7 @@
 								"addGroupParticipant"
 							]
 						},
-						"description": "Документация [AddGroupParticipant](https://sdkwa.pro/en/docs/api/groups/AddGroupParticipant/)"
+						"description": "Документация [AddGroupParticipant](https://api.sdkwa.pro/en/docs/api/groups/AddGroupParticipant/)"
 					},
 					"response": [
 						{
@@ -2669,7 +2669,7 @@
 								"setGroupPicture"
 							]
 						},
-						"description": "Документация [SetGroupPicture](https://sdkwa.pro/en/docs/api/account/SetGroupPicture/)"
+						"description": "Документация [SetGroupPicture](https://api.sdkwa.pro/en/docs/api/account/SetGroupPicture/)"
 					},
 					"response": [
 						{
@@ -2769,7 +2769,7 @@
 								"readChat"
 							]
 						},
-						"description": "Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)"
+						"description": "Документация [ReadChat](https://api.sdkwa.pro/en/docs/api/marks/ReadChat/)"
 					},
 					"response": [
 						{
@@ -2854,7 +2854,7 @@
 								""
 							]
 						},
-						"description": "Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)"
+						"description": "Документация [ReadChat](https://api.sdkwa.pro/en/docs/api/marks/ReadChat/)"
 					},
 					"response": [
 						{
@@ -2954,7 +2954,7 @@
 								"getContacts"
 							]
 						},
-						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
+						"description": "Документация [GetContacts](https://api.sdkwa.pro/en/docs/api/service/GetContacts/)"
 					},
 					"response": [
 						{
@@ -3020,7 +3020,7 @@
 								"{{apiTokenInstance}}"
 							]
 						},
-						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
+						"description": "Документация [GetContacts](https://api.sdkwa.pro/en/docs/api/service/GetContacts/)"
 					},
 					"response": [
 						{
@@ -3098,7 +3098,7 @@
 								"GetContactInfo"
 							]
 						},
-						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
+						"description": "Документация [GetContacts](https://api.sdkwa.pro/en/docs/api/service/GetContacts/)"
 					},
 					"response": [
 						{
@@ -3174,7 +3174,7 @@
 								"setProfilePicture"
 							]
 						},
-						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
+						"description": "Документация [SetProfilePicture](https://api.sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
 					},
 					"response": [
 						{
@@ -3264,7 +3264,7 @@
 								"archiveChat"
 							]
 						},
-						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3348,7 +3348,7 @@
 								"unarchiveChat"
 							]
 						},
-						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3432,7 +3432,7 @@
 								"deleteMessage"
 							]
 						},
-						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3516,7 +3516,7 @@
 								"getAvatar"
 							]
 						},
-						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3600,7 +3600,7 @@
 								"checkWhatsapp"
 							]
 						},
-						"description": "Документация [CheckWhatsapp](https://sdkwa.pro/en/docs/api/service/CheckWhatsapp/)"
+						"description": "Документация [CheckWhatsapp](https://api.sdkwa.pro/en/docs/api/service/CheckWhatsapp/)"
 					},
 					"response": [
 						{
@@ -3684,7 +3684,7 @@
 								"setProfileName"
 							]
 						},
-						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
+						"description": "Документация [SetProfilePicture](https://api.sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
 					},
 					"response": [
 						{
@@ -3774,7 +3774,7 @@
 								"setProfileStatus"
 							]
 						},
-						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
+						"description": "Документация [SetProfilePicture](https://api.sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
 					},
 					"response": [
 						{

@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   contact: {}
 servers:
-  - url: https://sdkwa.pro
+  - url: https://api.sdkwa.pro
 paths:
   /whatsapp/{idInstance}/getSettings:
     get:
@@ -12,41 +12,7 @@ paths:
         - Account
       summary: Get account settings
       description: >-
-        # GetSettings
-
-        Метод предназначен для получения текущих настроек аккаунта.
-
-        ## Запрос {#request}
-
-        Для получения текущих настроек аккаунта требуется выполнить запрос по адресу:
-        ```
-        GET https://{{apiHost}}/waInstance{{idInstance}}/GetSettings/{{apiTokenInstance}}
-        ```
-
-        Для получения параметров запроса `idInstance` и `apiTokenInstance` обратитесь к разделу [Перед началом работы](../../before-start.md#parameters).
-
-        ## Ответ {#response}
-
-        ### Поля ответа {#response-parameters}
-
-        Поле | Тип |  Описание
-        ----- | ----- | ----- 
-        `wid` | **string** | Идентификатор аккаунта в WhatsApp
-        `countryInstance` | **string** | Код страны аккаунта по стандарту [ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2)
-        `typeAccount` | **string** | Тип аккаунта, возможные значения: `WA_DESKTOP`, `WA_MOBILE`
-        `releaseType` | **string** | Тип релиза, возможные значения: `STABLE`, `LATEST`
-        `webhookUrl` | **string** | URL для получения входящих уведомлений
-        `webhookUrlToken` | **string** | Токен для подключения к вашему вебхук серверу
-        `delaySendMessagesMilliseconds` | **integer** | [Минимальный интервал отправки сообщений](../send-messages-delay.md) в миллисекундах
-        `delaySendMessagesMaxMs` | **integer** | [Максимальный интервал отправки сообщений](../send-messages-delay.md) в миллисекундах
-        `markIncomingMessagesReaded` | **string** | Отмечать входящие сообщения прочитанными или нет, возможные значения: `yes`, `no`. Игнорируется, если markIncomingMessagesReadedOnReply в значении 'yes'.
-        `markIncomingMessagesReadedOnReply` | **string** | Отмечать входящие сообщения прочитанными при отправке сообщения в чат через API, возможные значения: `yes`, `no`. Если в значении 'yes', то настройка markIncomingMessagesReaded игнорируется.
-        `outgoingWebhook` | **string** | Получать уведомления о статусах отправки/доставки/прочтении исходящих сообщений, возможные значения: `yes`, `no`
-        `outgoingMessageWebhook` | **string** | Получать уведомления о сообщениях, отправленных с телефона, возможные значения: `yes`, `no`
-        `stateWebhook` | **string** | Получать уведомления об изменении состояния авторизации аккаунта, возможные значения: `yes`, `no`
-        `incomingWebhook` | **string** | Получать уведомления о входящих сообщениях и файлах, возможные значения: `yes`, `no`
-        `deviceWebhook` | **string** | Получать уведомления об устройстве (телефоне) и уровне заряда батареи, возможные значения: `yes`, `no`
-        `statusInstanceWebhook` | **string** | Получать уведомления об изменении состояния соединения сокета аккаунта, возможные значения: `yes`, `no`
+        The method is aimed for getting the current account settings.
       operationId: getAccountSettings
       responses:
         '200':
@@ -134,7 +100,7 @@ paths:
       summary: Set account settings
       description: >-
         Документация
-        [SetSettings](https://sdkwa.pro/en/docs/api/account/SetSettings/)
+        [SetSettings](https://api.sdkwa.pro/en/docs/api/account/SetSettings/)
       operationId: setAccountSettings
       requestBody:
         content:
@@ -237,7 +203,7 @@ paths:
       summary: Get account state
       description: >-
         Документация
-        [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)
+        [GetStateInstance](https://api.sdkwa.pro/en/docs/api/account/GetStateInstance/)
       operationId: getAccountState
       responses:
         '200':
@@ -289,7 +255,7 @@ paths:
       summary: Get warming phone status
       description: >-
         Документация
-        [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)
+        [GetStateInstance](https://api.sdkwa.pro/en/docs/api/account/GetStateInstance/)
       operationId: getWarmingPhoneStatus
       responses:
         '200':
@@ -339,7 +305,7 @@ paths:
       tags:
         - Account
       summary: Reboot account
-      description: Документация [Reboot](https://sdkwa.pro/en/docs/api/account/Reboot/)
+      description: Документация [Reboot](https://api.sdkwa.pro/en/docs/api/account/Reboot/)
       operationId: rebootAccount
       responses:
         '200':
@@ -389,7 +355,7 @@ paths:
       tags:
         - Account
       summary: Logout account
-      description: Документация [Logout](https://sdkwa.pro/en/docs/api/account/Logout/)
+      description: Документация [Logout](https://api.sdkwa.pro/en/docs/api/account/Logout/)
       operationId: logoutAccount
       responses:
         '200':
@@ -439,7 +405,7 @@ paths:
       tags:
         - Account
       summary: Get QR code
-      description: Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)
+      description: Документация [QR](https://api.sdkwa.pro/en/docs/api/account/QR/)
       operationId: getQrCode
       responses:
         '200':
@@ -460,7 +426,7 @@ paths:
       tags:
         - Account
       summary: Request registration code
-      description: Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)
+      description: Документация [QR](https://api.sdkwa.pro/en/docs/api/account/QR/)
       operationId: requestRegistrationCode
       requestBody:
         content:
@@ -496,7 +462,7 @@ paths:
       tags:
         - Account
       summary: Send registration code
-      description: Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)
+      description: Документация [QR](https://api.sdkwa.pro/en/docs/api/account/QR/)
       operationId: sendRegistrationCode
       requestBody:
         content:
@@ -531,7 +497,7 @@ paths:
       summary: Send Buttons
       description: >-
         Документация
-        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
+        [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)
       operationId: sendButtons
       parameters:
         - name: x-uiid-instance-account
@@ -634,7 +600,7 @@ paths:
       summary: Send List Message
       description: >-
         Документация
-        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
+        [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)
       operationId: sendListMessage
       requestBody:
         content:
@@ -772,7 +738,7 @@ paths:
       summary: Send Template Buttons
       description: >-
         Документация
-        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
+        [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)
       operationId: sendTemplateButtons
       parameters:
         - name: x-uiid-instance-account
@@ -914,7 +880,7 @@ paths:
       summary: Send text message
       description: >-
         Документация
-        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
+        [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)
       operationId: sendTextToGroup
       requestBody:
         content:
@@ -981,7 +947,7 @@ paths:
       summary: Send contact
       description: >-
         Документация
-        [SendContact](https://sdkwa.pro/en/docs/api/sending/SendContact/)
+        [SendContact](https://api.sdkwa.pro/en/docs/api/sending/SendContact/)
       operationId: sendContact
       requestBody:
         content:
@@ -1068,7 +1034,7 @@ paths:
       summary: Send video, audio, image, document
       description: >-
         Документация
-        [SendFileByUpload](https://sdkwa.pro/en/docs/api/sending/SendFileByUpload/)
+        [SendFileByUpload](https://api.sdkwa.pro/en/docs/api/sending/SendFileByUpload/)
       operationId: sendVideoAudioImageDocument
       requestBody:
         content:
@@ -1141,7 +1107,7 @@ paths:
       summary: Send video, audio, image, document via URL
       description: >-
         Документация
-        [SendFileByUrl](https://sdkwa.pro/en/docs/api/sending/SendFileByUrl/)
+        [SendFileByUrl](https://api.sdkwa.pro/en/docs/api/sending/SendFileByUrl/)
       operationId: sendVideoAudioImageDocumentViaUrl
       requestBody:
         content:
@@ -1218,7 +1184,7 @@ paths:
       summary: Send location
       description: >-
         Документация
-        [SendLocation](https://sdkwa.pro/en/docs/api/sending/SendLocation/)
+        [SendLocation](https://api.sdkwa.pro/en/docs/api/sending/SendLocation/)
       operationId: sendLocation
       requestBody:
         content:
@@ -1295,7 +1261,7 @@ paths:
       tags:
         - Sending
       summary: Send link
-      description: Документация [SendLink](https://sdkwa.pro/en/docs/api/sending/SendLink/)
+      description: Документация [SendLink](https://api.sdkwa.pro/en/docs/api/sending/SendLink/)
       operationId: sendLink
       requestBody:
         content:
@@ -1308,10 +1274,10 @@ paths:
                   example: 790012345672@c.us
                 urlLink:
                   type: string
-                  example: https://sdkwa.pro
+                  example: https://api.sdkwa.pro
             example:
               chatId: 790012345672@c.us
-              urlLink: https://sdkwa.pro
+              urlLink: https://api.sdkwa.pro
       responses:
         '200':
           description: message.sendLink
@@ -1362,7 +1328,7 @@ paths:
       summary: Upload file
       description: >-
         Документация
-        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
+        [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)
       operationId: uploadFile
       requestBody:
         content:
@@ -1418,7 +1384,7 @@ paths:
       summary: Receive notification
       description: >-
         Документация
-        [ReceiveNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)
+        [ReceiveNotification](https://api.sdkwa.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)
       operationId: receiveNotification
       responses:
         '200':
@@ -1442,7 +1408,7 @@ paths:
       summary: Delete notification
       description: >-
         Документация
-        [DeleteNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)
+        [DeleteNotification](https://api.sdkwa.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)
       operationId: deleteNotification
       responses:
         '200':
@@ -1471,7 +1437,7 @@ paths:
       summary: Download file from incoming message
       description: >-
         Документация
-        [DownloadFile](https://sdkwa.pro/en/docs/api/receiving/files/DownloadFile/)
+        [DownloadFile](https://api.sdkwa.pro/en/docs/api/receiving/files/DownloadFile/)
       operationId: downloadFileFromIncomingMessage
       responses:
         '200':
@@ -1494,7 +1460,7 @@ paths:
       summary: Get chat history
       description: >-
         Документация
-        [GetChatHistory](https://sdkwa.pro/en/docs/api/journals/GetChatHistory/)
+        [GetChatHistory](https://api.sdkwa.pro/en/docs/api/journals/GetChatHistory/)
       operationId: getChatHistory
       requestBody:
         content:
@@ -1602,7 +1568,7 @@ paths:
       summary: Get outgoing messages journal
       description: >-
         Документация
-        [LastOutgoingMessages](https://sdkwa.pro/en/docs/api/journals/LastOutgoingMessages/)
+        [LastOutgoingMessages](https://api.sdkwa.pro/en/docs/api/journals/LastOutgoingMessages/)
       operationId: getOutgoingMessagesJournal
       responses:
         '200':
@@ -1695,7 +1661,7 @@ paths:
       summary: Get incoming messages journal
       description: >-
         Документация
-        [LastIncomingMessages](https://sdkwa.pro/en/docs/api/journals/LastIncomingMessages/)
+        [LastIncomingMessages](https://api.sdkwa.pro/en/docs/api/journals/LastIncomingMessages/)
       operationId: getIncomingMessagesJournal
       responses:
         '200':
@@ -1795,7 +1761,7 @@ paths:
       summary: Clear messages queue
       description: >-
         Документация
-        [ClearMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ClearMessagesQueue/)
+        [ClearMessagesQueue](https://api.sdkwa.pro/en/docs/api/queues/ClearMessagesQueue/)
       operationId: clearMessagesQueue
       responses:
         '200':
@@ -1847,7 +1813,7 @@ paths:
       summary: Show messages queue
       description: >-
         Документация
-        [ShowMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ShowMessagesQueue/)
+        [ShowMessagesQueue](https://api.sdkwa.pro/en/docs/api/queues/ShowMessagesQueue/)
       operationId: showMessagesQueue
       responses:
         '200':
@@ -1931,7 +1897,7 @@ paths:
       summary: Change group name
       description: >-
         Документация
-        [UpdateGroupName](https://sdkwa.pro/en/docs/api/groups/UpdateGroupName/)
+        [UpdateGroupName](https://api.sdkwa.pro/en/docs/api/groups/UpdateGroupName/)
       operationId: changeGroupName
       requestBody:
         content:
@@ -1998,7 +1964,7 @@ paths:
       summary: Get group data
       description: >-
         Документация
-        [GetGroupData](https://sdkwa.pro/en/docs/api/groups/GetGroupData/)
+        [GetGroupData](https://api.sdkwa.pro/en/docs/api/groups/GetGroupData/)
       operationId: getGroupData
       requestBody:
         content:
@@ -2119,7 +2085,7 @@ paths:
       summary: Leave group
       description: >-
         Документация
-        [LeaveGroup](https://sdkwa.pro/en/docs/api/groups/LeaveGroup/)
+        [LeaveGroup](https://api.sdkwa.pro/en/docs/api/groups/LeaveGroup/)
       operationId: leaveGroup
       requestBody:
         content:
@@ -2182,7 +2148,7 @@ paths:
       summary: Set group admin rights
       description: >-
         Документация
-        [SetGroupAdmin](https://sdkwa.pro/en/docs/api/groups/SetGroupAdmin/)
+        [SetGroupAdmin](https://api.sdkwa.pro/en/docs/api/groups/SetGroupAdmin/)
       operationId: setGroupAdminRights
       requestBody:
         content:
@@ -2249,7 +2215,7 @@ paths:
       summary: Delete group participant
       description: >-
         Документация
-        [RemoveGroupParticipant](https://sdkwa.pro/en/docs/api/groups/RemoveGroupParticipant/)
+        [RemoveGroupParticipant](https://api.sdkwa.pro/en/docs/api/groups/RemoveGroupParticipant/)
       operationId: deleteGroupParticipant
       requestBody:
         content:
@@ -2316,7 +2282,7 @@ paths:
       summary: Remove group admin rights
       description: >-
         Документация
-        [RemoveAdmin](https://sdkwa.pro/en/docs/api/groups/RemoveAdmin/)
+        [RemoveAdmin](https://api.sdkwa.pro/en/docs/api/groups/RemoveAdmin/)
       operationId: removeGroupAdminRights
       requestBody:
         content:
@@ -2383,7 +2349,7 @@ paths:
       summary: Create group
       description: >-
         Документация
-        [CreateGroup](https://sdkwa.pro/en/docs/api/groups/CreateGroup/)
+        [CreateGroup](https://api.sdkwa.pro/en/docs/api/groups/CreateGroup/)
       operationId: createGroup
       requestBody:
         content:
@@ -2465,7 +2431,7 @@ paths:
       summary: Add group participant
       description: >-
         Документация
-        [AddGroupParticipant](https://sdkwa.pro/en/docs/api/groups/AddGroupParticipant/)
+        [AddGroupParticipant](https://api.sdkwa.pro/en/docs/api/groups/AddGroupParticipant/)
       operationId: addGroupParticipant
       requestBody:
         content:
@@ -2532,7 +2498,7 @@ paths:
       summary: Set group picture
       description: >-
         Документация
-        [SetGroupPicture](https://sdkwa.pro/en/docs/api/account/SetGroupPicture/)
+        [SetGroupPicture](https://api.sdkwa.pro/en/docs/api/account/SetGroupPicture/)
       operationId: setGroupPicture
       requestBody:
         content:
@@ -2605,7 +2571,7 @@ paths:
       tags:
         - Read mark
       summary: Mark chat as read
-      description: Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)
+      description: Документация [ReadChat](https://api.sdkwa.pro/en/docs/api/marks/ReadChat/)
       operationId: markChatAsRead
       requestBody:
         content:
@@ -2668,7 +2634,7 @@ paths:
       summary: Get device info
       description: >-
         Документация
-        [GetDeviceInfo](https://sdkwa.pro/en/docs/api/phone/GetDeviceInfo/)
+        [GetDeviceInfo](https://api.sdkwa.pro/en/docs/api/phone/GetDeviceInfo/)
       operationId: getDeviceInfo
       responses:
         '200':
@@ -2740,7 +2706,7 @@ paths:
       summary: Get contacts
       description: >-
         Документация
-        [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)
+        [GetContacts](https://api.sdkwa.pro/en/docs/api/service/GetContacts/)
       operationId: getContacts
       responses:
         '200':
@@ -2818,7 +2784,7 @@ paths:
       summary: Get chats
       description: >-
         Документация
-        [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)
+        [GetContacts](https://api.sdkwa.pro/en/docs/api/service/GetContacts/)
       operationId: getChats
       responses:
         '200':
@@ -2914,7 +2880,7 @@ paths:
       summary: Get contact info
       description: >-
         Документация
-        [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)
+        [GetContacts](https://api.sdkwa.pro/en/docs/api/service/GetContacts/)
       operationId: getContactInfo
       requestBody:
         content:
@@ -3087,7 +3053,7 @@ paths:
       summary: Set profile picture
       description: >-
         Документация
-        [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)
+        [SetProfilePicture](https://api.sdkwa.pro/en/docs/api/account/SetProfilePicture/)
       operationId: setProfilePicture
       requestBody:
         content:
@@ -3146,7 +3112,7 @@ paths:
       summary: Archive chat
       description: >-
         Документация
-        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
+        [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)
       operationId: archiveChat
       requestBody:
         content:
@@ -3202,7 +3168,7 @@ paths:
       summary: Unarchive chat
       description: >-
         Документация
-        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
+        [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)
       operationId: unarchiveChat
       requestBody:
         content:
@@ -3258,7 +3224,7 @@ paths:
       summary: Delete message
       description: >-
         Документация
-        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
+        [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)
       operationId: deleteMessage
       requestBody:
         content:
@@ -3318,7 +3284,7 @@ paths:
       summary: Get avatar group
       description: >-
         Документация
-        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
+        [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)
       operationId: getAvatarGroup
       requestBody:
         content:
@@ -3385,7 +3351,7 @@ paths:
       summary: Check WhatsApp availability
       description: >-
         Документация
-        [CheckWhatsapp](https://sdkwa.pro/en/docs/api/service/CheckWhatsapp/)
+        [CheckWhatsapp](https://api.sdkwa.pro/en/docs/api/service/CheckWhatsapp/)
       operationId: checkWhatsappAvailability
       requestBody:
         content:
@@ -3448,7 +3414,7 @@ paths:
       summary: Set profile name
       description: >-
         Документация
-        [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)
+        [SetProfilePicture](https://api.sdkwa.pro/en/docs/api/account/SetProfilePicture/)
       operationId: setProfileName
       requestBody:
         content:
@@ -3509,7 +3475,7 @@ paths:
       summary: Set profile status
       description: >-
         Документация
-        [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)
+        [SetProfilePicture](https://api.sdkwa.pro/en/docs/api/account/SetProfilePicture/)
       operationId: setProfileStatus
       requestBody:
         content:
