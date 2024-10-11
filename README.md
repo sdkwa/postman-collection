@@ -2,9 +2,12 @@
 
 This is a Postman collection of [SDKWA](https://api.sdkwa.pro/). It provides access to the WhatsApp API to send and receive messages and media by HTTP-API requests. The provided environment contains the list of variables referenced by the API collection.
 
+See [docs](https://api.sdkwa.pro/en/docs/) for details.
+
 ## Requirements
 
 The SDKWA Postman Collection and Environment requires the installation of [Postman](https://www.getpostman.com/).
+
 
 ## Installation
 
