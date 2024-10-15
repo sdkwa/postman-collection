@@ -16,3 +16,10 @@ The SDKWA Postman Collection and Environment requires the installation of [Postm
 3) Once imported, a new API collection will be created, along with the environment.
 
 See [docs](https://api.sdkwa.pro/en/docs/) for details.
+
+
+## Convert Postman to OpenAPI
+```
+npm i postman-to-openapi -g
+p2o ./collection.json -f ./openApi2.yml -o ./convertOptions.json
+```

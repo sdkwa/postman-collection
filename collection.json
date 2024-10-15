@@ -3543,7 +3543,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/E:/download/тест 2.jpg"
+									"src": []
 								}
 							]
 						},
@@ -3619,7 +3619,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"reason\": '',\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
+							"body": "{\n    \"reason\": \"\",\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
 						}
 					]
 				},
@@ -4130,68 +4130,7 @@
 						},
 						"description": "Документация [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)"
 					},
-					"response": [
-						{
-							"name": "setProfilePicture",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": []
-										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"setSettings",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 21 Apr 2020 13:16:18 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "26"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"reason\": '',\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "Set profile status",
@@ -4230,68 +4169,7 @@
 						},
 						"description": "Документация [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)"
 					},
-					"response": [
-						{
-							"name": "setProfilePicture",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": []
-										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"setSettings",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 21 Apr 2020 13:16:18 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "26"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"reason\": '',\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
-						}
-					]
+					"response": []
 				}
 			]
 		},

@@ -1,0 +1,8 @@
+{
+  "additionalVars": {
+      "host" : "https://api.sdkwa.pro",
+      "idInstance" : "your instance id",
+      "apiTokenInstance": "your api token"
+  }
+}
+

@@ -1,0 +1,4436 @@
+openapi: 3.0.3
+info:
+  title: SDKWA
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://api.sdkwa.pro
+paths:
+  /whatsapp/{idInstance}/getSettings:
+    get:
+      tags:
+        - Account
+      summary: Get account settings
+      description: >-
+        The method is aimed for getting the current account settings.
+      operationId: getAccountSettings
+      responses:
+        '200':
+          description: getSettings
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '85'
+            Date:
+              schema:
+                type: string
+                example: Mon, 20 Apr 2020 19:48:22 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  countryInstance:
+                    type: string
+                    example: ru
+                  delaySendMessagesMilliseconds:
+                    type: number
+                    example: 3000
+                  deviceWebhook:
+                    type: string
+                    example: 'no'
+                  incomingWebhook:
+                    type: string
+                    example: 'yes'
+                  markIncomingMessagesReaded:
+                    type: string
+                    example: 'yes'
+                  outgoingWebhook:
+                    type: string
+                    example: 'yes'
+                  stateWebhook:
+                    type: string
+                    example: 'yes'
+                  typeAccount:
+                    type: string
+                    example: vip
+                  webhookUrl:
+                    type: string
+                    example: https://mysite.com/webhook/sdkwa/
+                  wid:
+                    type: string
+                    example: 79001234567@c.us
+              examples:
+                getSettings:
+                  value:
+                    countryInstance: ru
+                    delaySendMessagesMilliseconds: 3000
+                    deviceWebhook: 'no'
+                    incomingWebhook: 'yes'
+                    markIncomingMessagesReaded: 'yes'
+                    outgoingWebhook: 'yes'
+                    stateWebhook: 'yes'
+                    typeAccount: vip
+                    webhookUrl: https://mysite.com/webhook/sdkwa/
+                    wid: 79001234567@c.us
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/setSettings:
+    post:
+      tags:
+        - Account
+      summary: Set account settings
+      description: >-
+        Документация
+        [SetSettings](https://api.sdkwa.pro/en/docs/api/account/SetSettings/)
+      operationId: setAccountSettings
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                delaySendMessagesMilliseconds:
+                  type: number
+                  example: 1000
+                incomingWebhook:
+                  type: string
+                  example: 'yes'
+                keepOnlineStatus:
+                  type: string
+                  example: 'no'
+                markIncomingMessagesReaded:
+                  type: string
+                  example: 'no'
+                markIncomingMessagesReadedOnReply:
+                  type: string
+                  example: 'no'
+                outgoingAPIMessageWebhook:
+                  type: string
+                  example: 'no'
+                outgoingMessageWebhook:
+                  type: string
+                  example: 'yes'
+                outgoingWebhook:
+                  type: string
+                  example: 'yes'
+                stateWebhook:
+                  type: string
+                  example: 'yes'
+                webhookUrl:
+                  type: string
+                  example: ''
+                webhookUrlToken:
+                  type: string
+                  example: ''
+            example:
+              delaySendMessagesMilliseconds: 1000
+              incomingWebhook: 'yes'
+              keepOnlineStatus: 'no'
+              markIncomingMessagesReaded: 'no'
+              markIncomingMessagesReadedOnReply: 'no'
+              outgoingAPIMessageWebhook: 'no'
+              outgoingMessageWebhook: 'yes'
+              outgoingWebhook: 'yes'
+              stateWebhook: 'yes'
+              webhookUrl: ''
+              webhookUrlToken: ''
+      responses:
+        '200':
+          description: setSettings
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '26'
+            Date:
+              schema:
+                type: string
+                example: Tue, 21 Apr 2020 13:16:18 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  saveSettings:
+                    type: boolean
+                    example: true
+              examples:
+                setSettings:
+                  value:
+                    saveSettings: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/getStateInstance:
+    get:
+      tags:
+        - Account
+      summary: Get account state
+      description: >-
+        Документация
+        [GetStateInstance](https://api.sdkwa.pro/en/docs/api/account/GetStateInstance/)
+      operationId: getAccountState
+      responses:
+        '200':
+          description: getStateInstance authorized
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '35'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 14:31:40 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stateInstance:
+                    type: string
+                    example: authorized
+              examples:
+                getStateInstance authorized:
+                  value:
+                    stateInstance: authorized
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/getWarmingPhoneStatus:
+    get:
+      tags:
+        - Account
+      summary: Get warming phone status
+      description: >-
+        Документация
+        [GetStateInstance](https://api.sdkwa.pro/en/docs/api/account/GetStateInstance/)
+      operationId: getWarmingPhoneStatus
+      responses:
+        '200':
+          description: getStateInstance authorized
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '35'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 14:31:40 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  stateInstance:
+                    type: string
+                    example: authorized
+              examples:
+                getStateInstance authorized:
+                  value:
+                    stateInstance: authorized
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/reboot:
+    get:
+      tags:
+        - Account
+      summary: Reboot account
+      description: Документация [Reboot](https://api.sdkwa.pro/en/docs/api/account/Reboot/)
+      operationId: rebootAccount
+      responses:
+        '200':
+          description: reboot
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '22'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 14:29:41 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isReboot:
+                    type: boolean
+                    example: true
+              examples:
+                reboot:
+                  value:
+                    isReboot: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/logout:
+    get:
+      tags:
+        - Account
+      summary: Logout account
+      description: Документация [Logout](https://api.sdkwa.pro/en/docs/api/account/Logout/)
+      operationId: logoutAccount
+      responses:
+        '200':
+          description: logout
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '22'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 14:24:29 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isLogout:
+                    type: boolean
+                    example: true
+              examples:
+                logout:
+                  value:
+                    isLogout: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/qr:
+    get:
+      tags:
+        - Account
+      summary: Get QR code
+      description: Документация [QR](https://api.sdkwa.pro/en/docs/api/account/QR/)
+      operationId: getQrCode
+      responses:
+        '200':
+          description: ''
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/requestRegistrationCode:
+    post:
+      tags:
+        - Account
+      summary: Request registration code
+      description: Документация [QR](https://api.sdkwa.pro/en/docs/api/account/QR/)
+      operationId: requestRegistrationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  example: sms
+                phoneNumber:
+                  type: number
+                  example: 7123456789
+            example:
+              method: sms
+              phoneNumber: 7123456789
+      responses:
+        '200':
+          description: ''
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/sendRegistrationCode:
+    post:
+      tags:
+        - Account
+      summary: Send registration code
+      description: Документация [QR](https://api.sdkwa.pro/en/docs/api/account/QR/)
+      operationId: sendRegistrationCode
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  example: '99999'
+            example:
+              code: '99999'
+      responses:
+        '200':
+          description: ''
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/SendButtons:
+    post:
+      tags:
+        - Sending
+        - Buttons
+      summary: Send Buttons
+      description: >-
+        Документация
+        [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)
+      operationId: sendButtons
+      parameters:
+        - name: x-uiid-instance-account
+          in: header
+          schema:
+            type: string
+            example: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                buttons:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      buttonId:
+                        type: string
+                        example: '1'
+                      buttonText:
+                        type: string
+                        example: test1
+                  example:
+                    - buttonId: '1'
+                      buttonText: test1
+                    - buttonId: '2'
+                      buttonText: test2
+                    - buttonId: '3'
+                      buttonText: test3
+                chatId:
+                  type: string
+                  example: 712345678910@c.us
+                footer:
+                  type: string
+                  example: Footer
+                message:
+                  type: string
+                  example: Hello
+            example:
+              buttons:
+                - buttonId: '1'
+                  buttonText: test1
+                - buttonId: '2'
+                  buttonText: test2
+                - buttonId: '3'
+                  buttonText: test3
+              chatId: 712345678910@c.us
+              footer: Footer
+              message: Hello
+      responses:
+        '200':
+          description: SendButtons
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 13:14:58 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    example: 3EB0C767D097B7C7C030
+              examples:
+                SendButtons:
+                  value:
+                    idMessage: 3EB0C767D097B7C7C030
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/SendListMessage:
+    post:
+      tags:
+        - Sending
+        - Buttons
+      summary: Send List Message
+      description: >-
+        Документация
+        [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)
+      operationId: sendListMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                buttonText:
+                  type: string
+                  example: Button text
+                chatId:
+                  type: string
+                  example: 7123456789@c.us
+                footer:
+                  type: string
+                  example: Footer
+                message:
+                  type: string
+                  example: Text
+                sections:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      rows:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            description:
+                              type: string
+                              example: Description
+                            rowId:
+                              type: string
+                              example: option1
+                            title:
+                              type: string
+                              example: Option 1
+                        example:
+                          - rowId: option1
+                            title: Option 1
+                          - description: Description
+                            rowId: option2
+                            title: Option 2
+                      title:
+                        type: string
+                        example: Section 1
+                  example:
+                    - rows:
+                        - rowId: option1
+                          title: Option 1
+                        - description: Description
+                          rowId: option2
+                          title: Option 2
+                      title: Section 1
+                    - rows:
+                        - rowId: option3
+                          title: Option 3
+                        - description: Description
+                          rowId: option4
+                          title: Option 4
+                      title: Section 2
+                title:
+                  type: string
+                  example: Title
+            example:
+              buttonText: Button text
+              chatId: 7123456789@c.us
+              footer: Footer
+              message: Text
+              sections:
+                - rows:
+                    - rowId: option1
+                      title: Option 1
+                    - description: Description
+                      rowId: option2
+                      title: Option 2
+                  title: Section 1
+                - rows:
+                    - rowId: option3
+                      title: Option 3
+                    - description: Description
+                      rowId: option4
+                      title: Option 4
+                  title: Section 2
+              title: Title
+      responses:
+        '200':
+          description: SendListMessage
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 13:14:58 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    example: 3EB0C767D097B7C7C030
+              examples:
+                SendListMessage:
+                  value:
+                    idMessage: 3EB0C767D097B7C7C030
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/SendTemplateButtons:
+    post:
+      tags:
+        - Sending
+        - Buttons
+      summary: Send Template Buttons
+      description: >-
+        Документация
+        [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)
+      operationId: sendTemplateButtons
+      parameters:
+        - name: x-uiid-instance-account
+          in: header
+          schema:
+            type: string
+            example: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 71234567891c.us
+                footer:
+                  type: string
+                  example: What kind of action will you choose?
+                message:
+                  type: string
+                  example: Hello
+                templateButtons:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      callButton:
+                        type: object
+                        properties:
+                          displayText:
+                            type: string
+                            example: Call us
+                          phoneNumber:
+                            type: string
+                            example: +1 (234) 5678-901
+                      index:
+                        type: number
+                        example: 1
+                      quickReplyButton:
+                        type: object
+                        properties:
+                          displayText:
+                            type: string
+                            example: Plain button
+                          id:
+                            type: string
+                            example: plainButtonId
+                      urlButton:
+                        type: object
+                        properties:
+                          displayText:
+                            type: string
+                            example: ⭐ Star us on GitHub!
+                          url:
+                            type: string
+                            example: https://github.com/Yard-Tean/docs
+                  example:
+                    - index: 1
+                      urlButton:
+                        displayText: ⭐ Star us on GitHub!
+                        url: https://github.com/Yard-Tean/docs
+                    - callButton:
+                        displayText: Call us
+                        phoneNumber: +1 (234) 5678-901
+                      index: 2
+                    - index: 3
+                      quickReplyButton:
+                        displayText: Plain button
+                        id: plainButtonId
+                title:
+                  type: string
+                  example: Title
+            example:
+              chatId: 71234567891c.us
+              footer: What kind of action will you choose?
+              message: Hello
+              templateButtons:
+                - index: 1
+                  urlButton:
+                    displayText: ⭐ Star us on GitHub!
+                    url: https://github.com/Yard-Tean/docs
+                - callButton:
+                    displayText: Call us
+                    phoneNumber: +1 (234) 5678-901
+                  index: 2
+                - index: 3
+                  quickReplyButton:
+                    displayText: Plain button
+                    id: plainButtonId
+              title: Title
+      responses:
+        '200':
+          description: SendTemplateButtons
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 13:14:58 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    example: 3EB0C767D097B7C7C030
+              examples:
+                SendTemplateButtons:
+                  value:
+                    idMessage: 3EB0C767D097B7C7C030
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/sendMessage:
+    post:
+      tags:
+        - Sending
+      summary: Send text message
+      description: >-
+        Документация
+        [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)
+      operationId: sendTextToGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 123456789012345678@c.us
+                message:
+                  type: string
+                  example: test
+            example:
+              chatId: 123456789012345678@c.us
+              message: test
+      responses:
+        '200':
+          description: sendMessage
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 13:14:58 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    example: 3EB0C767D097B7C7C030
+              examples:
+                sendMessage:
+                  value:
+                    idMessage: 3EB0C767D097B7C7C030
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/sendContact:
+    post:
+      tags:
+        - Sending
+      summary: Send contact
+      description: >-
+        Документация
+        [SendContact](https://api.sdkwa.pro/en/docs/api/sending/SendContact/)
+      operationId: sendContact
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 7900123456725@c.us
+                contact:
+                  type: object
+                  properties:
+                    company:
+                      type: string
+                      example: Train
+                    firstName:
+                      type: string
+                      example: David
+                    lastName:
+                      type: string
+                      example: David
+                    middleName:
+                      type: string
+                      example: David
+                    phoneContact:
+                      type: number
+                      example: 7900123456858
+            example:
+              chatId: 7900123456725@c.us
+              contact:
+                company: Train
+                firstName: David
+                lastName: David
+                middleName: David
+                phoneContact: 7900123456858
+      responses:
+        '200':
+          description: message.sendContact
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Wed, 06 May 2020 20:23:18 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    example: 3EB0DF31710A9123EC75
+              examples:
+                message.sendContact:
+                  value:
+                    idMessage: 3EB0DF31710A9123EC75
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/sendFileByUpload:
+    post:
+      tags:
+        - Sending
+      summary: Send video, audio, image, document
+      description: >-
+        Документация
+        [SendFileByUpload](https://api.sdkwa.pro/en/docs/api/sending/SendFileByUpload/)
+      operationId: sendVideoAudioImageDocument
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                caption:
+                  type: string
+                  example: Description
+                chatId:
+                  type: string
+                  example: 790012345673442@c.us
+                file:
+                  type: string
+                  format: binary
+                fileName:
+                  type: string
+                  example: window.jpg
+                quotedMessageId:
+                  type: string
+                  example: ''
+      responses:
+        '200':
+          description: sendFileByUpload
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 13:32:52 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    example: 3EB0EA03CB2EAFD864F6
+              examples:
+                sendFileByUpload:
+                  value:
+                    idMessage: 3EB0EA03CB2EAFD864F6
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/sendFileByUrl:
+    post:
+      tags:
+        - Sending
+      summary: Send video, audio, image, document via URL
+      description: >-
+        Документация
+        [SendFileByUrl](https://api.sdkwa.pro/en/docs/api/sending/SendFileByUrl/)
+      operationId: sendVideoAudioImageDocumentViaUrl
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                caption:
+                  type: string
+                  example: Horse
+                chatId:
+                  type: string
+                  example: 79001234567343@c.us
+                fileName:
+                  type: string
+                  example: horse.png
+                urlFile:
+                  type: string
+                  example: >-
+                    https://avatars.mds.yandex.net/get-pdb/477388/77f64197-87d2-42cf-9305-14f49c65f1da/s375
+            example:
+              caption: Horse
+              chatId: 79001234567343@c.us
+              fileName: horse.png
+              urlFile: >-
+                https://avatars.mds.yandex.net/get-pdb/477388/77f64197-87d2-42cf-9305-14f49c65f1da/s375
+      responses:
+        '200':
+          description: sendFileByUrl
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 13:25:37 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    example: 3EB075A72D884153EFC5
+              examples:
+                sendFileByUrl:
+                  value:
+                    idMessage: 3EB075A72D884153EFC5
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/sendLocation:
+    post:
+      tags:
+        - Sending
+      summary: Send location
+      description: >-
+        Документация
+        [SendLocation](https://api.sdkwa.pro/en/docs/api/sending/SendLocation/)
+      operationId: sendLocation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                address:
+                  type: string
+                  example: 613123, Sant Louis
+                chatId:
+                  type: string
+                  example: 790012345673452@c.us
+                latitude:
+                  type: number
+                  example: 70.9370129
+                longitude:
+                  type: number
+                  example: 89.8728409
+                nameLocation:
+                  type: string
+                  example: I'mm here
+            example:
+              address: 613123, Sant Louis
+              chatId: 790012345673452@c.us
+              latitude: 70.9370129
+              longitude: 89.8728409
+              nameLocation: I'mm here
+      responses:
+        '200':
+          description: message.sendLocation
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Wed, 06 May 2020 19:15:50 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    example: 3EB0133DEBFA6BD6C5AA
+              examples:
+                message.sendLocation:
+                  value:
+                    idMessage: 3EB0133DEBFA6BD6C5AA
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/sendLink:
+    post:
+      tags:
+        - Sending
+      summary: Send link
+      description: Документация [SendLink](https://api.sdkwa.pro/en/docs/api/sending/SendLink/)
+      operationId: sendLink
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 790012345672@c.us
+                urlLink:
+                  type: string
+                  example: https://api.sdkwa.pro
+            example:
+              chatId: 790012345672@c.us
+              urlLink: https://api.sdkwa.pro
+      responses:
+        '200':
+          description: message.sendLink
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Wed, 06 May 2020 20:26:45 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    example: 3EB0160E742127137282
+              examples:
+                message.sendLink:
+                  value:
+                    idMessage: 3EB0160E742127137282
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/uploadFile:
+    post:
+      tags:
+        - Sending
+      summary: Upload file
+      description: >-
+        Документация
+        [SendMessage](https://api.sdkwa.pro/en/docs/api/sending/SendMessage/)
+      operationId: uploadFile
+      requestBody:
+        content:
+          application/octet-stream: {}
+      responses:
+        '200':
+          description: sendMessage
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 13:14:58 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    example: 3EB0C767D097B7C7C030
+              examples:
+                sendMessage:
+                  value:
+                    idMessage: 3EB0C767D097B7C7C030
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/receiveNotification:
+    get:
+      tags:
+        - Receiving
+        - Receiving notification
+      summary: Receive notification
+      description: >-
+        Документация
+        [ReceiveNotification](https://api.sdkwa.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)
+      operationId: receiveNotification
+      responses:
+        '200':
+          description: ''
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/deleteNotification/{receiptId}:
+    delete:
+      tags:
+        - Receiving
+        - Receiving notification
+      summary: Delete notification
+      description: >-
+        Документация
+        [DeleteNotification](https://api.sdkwa.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)
+      operationId: deleteNotification
+      responses:
+        '200':
+          description: ''
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: receiptId
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/downloadFile/{idMessage}:
+    get:
+      tags:
+        - Receiving
+        - Get files
+      summary: Download file from incoming message
+      description: >-
+        Документация
+        [DownloadFile](https://api.sdkwa.pro/en/docs/api/receiving/files/DownloadFile/)
+      operationId: downloadFileFromIncomingMessage
+      responses:
+        '200':
+          description: ''
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: idMessage
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/getChatHistory:
+    post:
+      tags:
+        - Journals
+      summary: Get chat history
+      description: >-
+        Документация
+        [GetChatHistory](https://api.sdkwa.pro/en/docs/api/journals/GetChatHistory/)
+      operationId: getChatHistory
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 79005952023-1607343957@g.us
+                count:
+                  type: number
+                  example: 2000
+            example:
+              chatId: 79005952023-1607343957@g.us
+              count: 2000
+      responses:
+        '200':
+          description: getChatHistory
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '41'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 13:14:58 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    chatId:
+                      type: string
+                      example: 79001234567@c.us
+                    idMessage:
+                      type: string
+                      example: 3EB0C732BC93864C25FB
+                    statusMessage:
+                      type: string
+                      example: read
+                    textMessage:
+                      type: string
+                      example: Hello man
+                    timestamp:
+                      type: number
+                      example: 1587412276
+                    typeMessage:
+                      type: string
+                      example: textMessage
+                example:
+                  - chatId: 79001234567@c.us
+                    idMessage: 3EB0C732BC93864C25FB
+                    statusMessage: read
+                    textMessage: Hello man
+                    timestamp: 1587412276
+                    typeMessage: textMessage
+                  - chatId: 79001234567@c.us
+                    idMessage: 3EB0C37D09143B7F53A0
+                    statusMessage: read
+                    textMessage: Hello man
+                    timestamp: 1587412276
+                    typeMessage: textMessage
+              examples:
+                getChatHistory:
+                  value:
+                    - chatId: 79001234567@c.us
+                      idMessage: 3EB0C732BC93864C25FB
+                      statusMessage: read
+                      textMessage: Hello man
+                      timestamp: 1587412276
+                      typeMessage: textMessage
+                    - chatId: 79001234567@c.us
+                      idMessage: 3EB0C37D09143B7F53A0
+                      statusMessage: read
+                      textMessage: Hello man
+                      timestamp: 1587412276
+                      typeMessage: textMessage
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/lastOutgoingMessages:
+    get:
+      tags:
+        - Journals
+      summary: Get outgoing messages journal
+      description: >-
+        Документация
+        [LastOutgoingMessages](https://api.sdkwa.pro/en/docs/api/journals/LastOutgoingMessages/)
+      operationId: getOutgoingMessagesJournal
+      responses:
+        '200':
+          description: lastOutgoingMessages
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '2900'
+            Date:
+              schema:
+                type: string
+                example: Mon, 20 Apr 2020 20:01:05 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    chatId:
+                      type: string
+                      example: 79001234567@c.us
+                    idMessage:
+                      type: string
+                      example: 3EB0C732BC93864C25FB
+                    statusMessage:
+                      type: string
+                      example: read
+                    textMessage:
+                      type: string
+                      example: Hello man
+                    timestamp:
+                      type: number
+                      example: 1587412276
+                    typeMessage:
+                      type: string
+                      example: textMessage
+                example:
+                  - chatId: 79001234567@c.us
+                    idMessage: 3EB0C732BC93864C25FB
+                    statusMessage: read
+                    textMessage: Hello man
+                    timestamp: 1587412276
+                    typeMessage: textMessage
+                  - chatId: 79001234567@c.us
+                    idMessage: 3EB0C37D09143B7F53A0
+                    statusMessage: read
+                    textMessage: Hello man
+                    timestamp: 1587412276
+                    typeMessage: textMessage
+              examples:
+                lastOutgoingMessages:
+                  value:
+                    - chatId: 79001234567@c.us
+                      idMessage: 3EB0C732BC93864C25FB
+                      statusMessage: read
+                      textMessage: Hello man
+                      timestamp: 1587412276
+                      typeMessage: textMessage
+                    - chatId: 79001234567@c.us
+                      idMessage: 3EB0C37D09143B7F53A0
+                      statusMessage: read
+                      textMessage: Hello man
+                      timestamp: 1587412276
+                      typeMessage: textMessage
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/lastIncomingMessages:
+    get:
+      tags:
+        - Journals
+      summary: Get incoming messages journal
+      description: >-
+        Документация
+        [LastIncomingMessages](https://api.sdkwa.pro/en/docs/api/journals/LastIncomingMessages/)
+      operationId: getIncomingMessagesJournal
+      responses:
+        '200':
+          description: lastIncomingMessages
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '1643'
+            Date:
+              schema:
+                type: string
+                example: Mon, 20 Apr 2020 19:57:39 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    chatId:
+                      type: string
+                      example: 79001234567@c.us
+                    idMessage:
+                      type: string
+                      example: 8E078426472FACECDFC2787173F05459
+                    senderId:
+                      type: string
+                      example: 79001234567@c.us
+                    senderName:
+                      type: string
+                      example: Name
+                    textMessage:
+                      type: string
+                      example: Answer
+                    timestamp:
+                      type: number
+                      example: 1587412262
+                    typeMessage:
+                      type: string
+                      example: textMessage
+                example:
+                  - chatId: 79001234567@c.us
+                    idMessage: 8E078426472FACECDFC2787173F05459
+                    senderId: 79001234567@c.us
+                    senderName: Name
+                    textMessage: Answer
+                    timestamp: 1587412262
+                    typeMessage: textMessage
+                  - chatId: 79001234567@c.us
+                    idMessage: 75A35BA7745DB8FE6A8AD59C3F51C8CC
+                    senderId: 79001234567@c.us
+                    senderName: Name
+                    textMessage: Answer
+                    timestamp: 1587412279
+                    typeMessage: textMessage
+              examples:
+                lastIncomingMessages:
+                  value:
+                    - chatId: 79001234567@c.us
+                      idMessage: 8E078426472FACECDFC2787173F05459
+                      senderId: 79001234567@c.us
+                      senderName: Name
+                      textMessage: Answer
+                      timestamp: 1587412262
+                      typeMessage: textMessage
+                    - chatId: 79001234567@c.us
+                      idMessage: 75A35BA7745DB8FE6A8AD59C3F51C8CC
+                      senderId: 79001234567@c.us
+                      senderName: Name
+                      textMessage: Answer
+                      timestamp: 1587412279
+                      typeMessage: textMessage
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/clearMessagesQueue:
+    get:
+      tags:
+        - Queues
+      summary: Clear messages queue
+      description: >-
+        Документация
+        [ClearMessagesQueue](https://api.sdkwa.pro/en/docs/api/queues/ClearMessagesQueue/)
+      operationId: clearMessagesQueue
+      responses:
+        '200':
+          description: clearMessagesQueue
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '23'
+            Date:
+              schema:
+                type: string
+                example: Mon, 20 Apr 2020 19:53:58 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isCleared:
+                    type: boolean
+                    example: true
+              examples:
+                clearMessagesQueue:
+                  value:
+                    isCleared: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/showMessagesQueue:
+    get:
+      tags:
+        - Queues
+      summary: Show messages queue
+      description: >-
+        Документация
+        [ShowMessagesQueue](https://api.sdkwa.pro/en/docs/api/queues/ShowMessagesQueue/)
+      operationId: showMessagesQueue
+      responses:
+        '200':
+          description: showMessagesQueue
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '321'
+            Date:
+              schema:
+                type: string
+                example: Mon, 20 Apr 2020 19:50:48 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    chatId:
+                      type: string
+                      example: 79001234567@c.us
+                    message:
+                      type: string
+                      example: Hello man
+                    typeMessage:
+                      type: string
+                      example: textMessage
+                example:
+                  - chatId: 79001234567@c.us
+                    message: Hello man
+                    typeMessage: textMessage
+                  - chatId: 79001234567@c.us
+                    message: Hello man
+                    typeMessage: textMessage
+                  - chatId: 79001234567@c.us
+                    message: Hello man
+                    typeMessage: textMessage
+                  - chatId: 79001234567@c.us
+                    message: Hello man
+                    typeMessage: textMessage
+              examples:
+                showMessagesQueue:
+                  value:
+                    - chatId: 79001234567@c.us
+                      message: Hello man
+                      typeMessage: textMessage
+                    - chatId: 79001234567@c.us
+                      message: Hello man
+                      typeMessage: textMessage
+                    - chatId: 79001234567@c.us
+                      message: Hello man
+                      typeMessage: textMessage
+                    - chatId: 79001234567@c.us
+                      message: Hello man
+                      typeMessage: textMessage
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/updateGroupName:
+    post:
+      tags:
+        - Groups
+      summary: Change group name
+      description: >-
+        Документация
+        [UpdateGroupName](https://api.sdkwa.pro/en/docs/api/groups/UpdateGroupName/)
+      operationId: changeGroupName
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: string
+                  example: 79001234567-1587570015@g.us
+                groupName:
+                  type: string
+                  example: Group created by SDKWA+
+            example:
+              groupId: 79001234567-1587570015@g.us
+              groupName: Group created by SDKWA+
+      responses:
+        '200':
+          description: group.updateGroupName
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '29'
+            Date:
+              schema:
+                type: string
+                example: Tue, 28 Apr 2020 14:42:45 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  updateGroupName:
+                    type: boolean
+                    example: true
+              examples:
+                group.updateGroupName:
+                  value:
+                    updateGroupName: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/getGroupData:
+    post:
+      tags:
+        - Groups
+      summary: Get group data
+      description: >-
+        Документация
+        [GetGroupData](https://api.sdkwa.pro/en/docs/api/groups/GetGroupData/)
+      operationId: getGroupData
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: string
+                  example: 79001234567-1587570015@g.us
+            example:
+              groupId: 79001234567-1587570015@g.us
+      responses:
+        '200':
+          description: group.getGroupData
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '457'
+            Date:
+              schema:
+                type: string
+                example: Tue, 28 Apr 2020 14:32:20 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  creation:
+                    type: number
+                    example: 1587570015
+                  groupId:
+                    type: string
+                    example: 79001234567-1587570015@g.us
+                  groupInviteLink:
+                    type: string
+                    example: https://chat.whatsapp.com/xxxxxxxxxxxxxxxxxxxxxx
+                  owner:
+                    type: string
+                    example: 79001234567@c.us
+                  participants:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          example: 79001234567@c.us
+                        isAdmin:
+                          type: boolean
+                          example: true
+                        isSuperAdmin:
+                          type: boolean
+                          example: true
+                    example:
+                      - id: 79001234567@c.us
+                        isAdmin: true
+                        isSuperAdmin: true
+                      - id: 79001234568@c.us
+                        isAdmin: true
+                        isSuperAdmin: false
+                      - id: 79001234569@c.us
+                        isAdmin: false
+                        isSuperAdmin: false
+                  subject:
+                    type: string
+                    example: SDKWA Group
+                  subjectOwner:
+                    type: string
+                    example: 79001234567@c.us
+                  subjectTime:
+                    type: number
+                    example: 1587737715
+              examples:
+                group.getGroupData:
+                  value:
+                    creation: 1587570015
+                    groupId: 79001234567-1587570015@g.us
+                    groupInviteLink: https://chat.whatsapp.com/xxxxxxxxxxxxxxxxxxxxxx
+                    owner: 79001234567@c.us
+                    participants:
+                      - id: 79001234567@c.us
+                        isAdmin: true
+                        isSuperAdmin: true
+                      - id: 79001234568@c.us
+                        isAdmin: true
+                        isSuperAdmin: false
+                      - id: 79001234569@c.us
+                        isAdmin: false
+                        isSuperAdmin: false
+                    subject: SDKWA Group
+                    subjectOwner: 79001234567@c.us
+                    subjectTime: 1587737715
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/leaveGroup:
+    post:
+      tags:
+        - Groups
+      summary: Leave group
+      description: >-
+        Документация
+        [LeaveGroup](https://api.sdkwa.pro/en/docs/api/groups/LeaveGroup/)
+      operationId: leaveGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: string
+                  example: 79001234567-1587570015@g.us
+            example:
+              groupId: 79001234567-1587570015@g.us
+      responses:
+        '200':
+          description: group.leaveGroup
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '24'
+            Date:
+              schema:
+                type: string
+                example: Tue, 28 Apr 2020 14:58:22 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  leaveGroup:
+                    type: boolean
+                    example: true
+              examples:
+                group.leaveGroup:
+                  value:
+                    leaveGroup: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/setGroupAdmin:
+    post:
+      tags:
+        - Groups
+      summary: Set group admin rights
+      description: >-
+        Документация
+        [SetGroupAdmin](https://api.sdkwa.pro/en/docs/api/groups/SetGroupAdmin/)
+      operationId: setGroupAdminRights
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: string
+                  example: 79001234567-1587570015@g.us
+                participantChatId:
+                  type: string
+                  example: 79001234565@c.us
+            example:
+              groupId: 79001234567-1587570015@g.us
+              participantChatId: 79001234565@c.us
+      responses:
+        '200':
+          description: group.setGroupAdmin
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '27'
+            Date:
+              schema:
+                type: string
+                example: Tue, 28 Apr 2020 14:45:35 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  setGroupAdmin:
+                    type: boolean
+                    example: true
+              examples:
+                group.setGroupAdmin:
+                  value:
+                    setGroupAdmin: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/removeGroupParticipant:
+    post:
+      tags:
+        - Groups
+      summary: Delete group participant
+      description: >-
+        Документация
+        [RemoveGroupParticipant](https://api.sdkwa.pro/en/docs/api/groups/RemoveGroupParticipant/)
+      operationId: deleteGroupParticipant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: string
+                  example: 79001234567-1587570015@g.us
+                participantChatId:
+                  type: string
+                  example: 79001234565@c.us
+            example:
+              groupId: 79001234567-1587570015@g.us
+              participantChatId: 79001234565@c.us
+      responses:
+        '200':
+          description: group.removeGroupParticipant
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '31'
+            Date:
+              schema:
+                type: string
+                example: Tue, 28 Apr 2020 14:35:40 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  removeParticipant:
+                    type: boolean
+                    example: true
+              examples:
+                group.removeGroupParticipant:
+                  value:
+                    removeParticipant: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/removeAdmin:
+    post:
+      tags:
+        - Groups
+      summary: Remove group admin rights
+      description: >-
+        Документация
+        [RemoveAdmin](https://api.sdkwa.pro/en/docs/api/groups/RemoveAdmin/)
+      operationId: removeGroupAdminRights
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: string
+                  example: 79001234567-1587570015@g.us
+                participantChatId:
+                  type: string
+                  example: 79001234565@c.us
+            example:
+              groupId: 79001234567-1587570015@g.us
+              participantChatId: 79001234565@c.us
+      responses:
+        '200':
+          description: group.removeAdmin
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '25'
+            Date:
+              schema:
+                type: string
+                example: Tue, 28 Apr 2020 14:49:49 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  removeAdmin:
+                    type: boolean
+                    example: true
+              examples:
+                group.removeAdmin:
+                  value:
+                    removeAdmin: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/createGroup:
+    post:
+      tags:
+        - Groups
+      summary: Create group
+      description: >-
+        Документация
+        [CreateGroup](https://api.sdkwa.pro/en/docs/api/groups/CreateGroup/)
+      operationId: createGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatIds:
+                  type: array
+                  items:
+                    type: string
+                    example: 79001234568@c.us
+                  example:
+                    - 79001234568@c.us
+                    - 79001234569@c.us
+                groupName:
+                  type: string
+                  example: Group created by SDKWA
+            example:
+              chatIds:
+                - 79001234568@c.us
+                - 79001234569@c.us
+              groupName: Group created by SDKWA
+      responses:
+        '200':
+          description: group.createGroup
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '124'
+            Date:
+              schema:
+                type: string
+                example: Tue, 28 Apr 2020 14:27:29 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  chatId:
+                    type: string
+                    example: 79001234567-1587570015@g.us
+                  created:
+                    type: boolean
+                    example: true
+                  groupInviteLink:
+                    type: string
+                    example: https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXXXXXX
+              examples:
+                group.createGroup:
+                  value:
+                    chatId: 79001234567-1587570015@g.us
+                    created: true
+                    groupInviteLink: https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXXXXXX
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/addGroupParticipant:
+    post:
+      tags:
+        - Groups
+      summary: Add group participant
+      description: >-
+        Документация
+        [AddGroupParticipant](https://api.sdkwa.pro/en/docs/api/groups/AddGroupParticipant/)
+      operationId: addGroupParticipant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: string
+                  example: 79001234567-1587570015@g.us
+                participantChatId:
+                  type: string
+                  example: 79001234565@c.us
+            example:
+              groupId: 79001234567-1587570015@g.us
+              participantChatId: 79001234565@c.us
+      responses:
+        '200':
+          description: group.addGroupParticipant
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '28'
+            Date:
+              schema:
+                type: string
+                example: Tue, 28 Apr 2020 14:37:57 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  addParticipant:
+                    type: boolean
+                    example: true
+              examples:
+                group.addGroupParticipant:
+                  value:
+                    addParticipant: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/setGroupPicture:
+    post:
+      tags:
+        - Groups
+      summary: Set group picture
+      description: >-
+        Документация
+        [SetGroupPicture](https://api.sdkwa.pro/en/docs/api/account/SetGroupPicture/)
+      operationId: setGroupPicture
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                groupId:
+                  description: group ID, for example 74433384355-1585564682@g.us
+                  type: string
+                  example: 120363022730913588@g.us
+      responses:
+        '200':
+          description: setGroupPicture
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '26'
+            Date:
+              schema:
+                type: string
+                example: Tue, 21 Apr 2020 13:16:18 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: ''
+                  setGroupPicture:
+                    type: boolean
+                    example: true
+                  urlAvatar:
+                    type: string
+                    example: >-
+                      https://pps.whatsapp.net/v/t61.24694-24/138639660_724754321806449_9118612187814397965_n.jpg?oh=997b0bb13b6bbb750432a86d4b8d935d&oe=600****BB4
+              examples:
+                setGroupPicture:
+                  value:
+                    reason: ''
+                    setGroupPicture: true
+                    urlAvatar: >-
+                      https://pps.whatsapp.net/v/t61.24694-24/138639660_724754321806449_9118612187814397965_n.jpg?oh=997b0bb13b6bbb750432a86d4b8d935d&oe=600****BB4
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/readChat:
+    post:
+      tags:
+        - Read mark
+      summary: Mark chat as read
+      description: Документация [ReadChat](https://api.sdkwa.pro/en/docs/api/marks/ReadChat/)
+      operationId: markChatAsRead
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 79001234567@c.us
+            example:
+              chatId: 79001234567@c.us
+      responses:
+        '200':
+          description: message.readChat
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '21'
+            Date:
+              schema:
+                type: string
+                example: Wed, 06 May 2020 20:36:35 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  setRead:
+                    type: boolean
+                    example: true
+              examples:
+                message.readChat:
+                  value:
+                    setRead: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/getDeviceInfo:
+    get:
+      tags:
+        - Device (phone)
+      summary: Get device info
+      description: >-
+        Документация
+        [GetDeviceInfo](https://api.sdkwa.pro/en/docs/api/phone/GetDeviceInfo/)
+      operationId: getDeviceInfo
+      responses:
+        '200':
+          description: getDeviceInfo
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '123'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 14:32:54 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  battery:
+                    type: number
+                    example: 90
+                  deviceManufacturer:
+                    type: string
+                    example: Apple
+                  deviceModel:
+                    type: string
+                    example: iPhone 11
+                  osVersion:
+                    type: string
+                    example: 13.4.1
+                  platform:
+                    type: string
+                    example: iphone
+                  waVersion:
+                    type: string
+                    example: 2.20.42
+              examples:
+                getDeviceInfo:
+                  value:
+                    battery: 90
+                    deviceManufacturer: Apple
+                    deviceModel: iPhone 11
+                    osVersion: 13.4.1
+                    platform: iphone
+                    waVersion: 2.20.42
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/getContacts:
+    get:
+      tags:
+        - Service methods
+      summary: Get contacts
+      description: >-
+        Документация
+        [GetContacts](https://api.sdkwa.pro/en/docs/api/service/GetContacts/)
+      operationId: getContacts
+      responses:
+        '200':
+          description: getContacts
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '458'
+            Date:
+              schema:
+                type: string
+                example: Mon, 20 Apr 2020 19:54:33 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      example: 79001234567@c.us
+                    name:
+                      type: string
+                      example: David Davidson
+                    type:
+                      type: string
+                      example: user
+                example:
+                  - id: 79001234567@c.us
+                    name: David Davidson
+                    type: user
+                  - id: 79001234568@c.us
+                    name: David Davidson
+                    type: user
+                  - id: 79001234569-1479621234@g.us
+                    name: My group
+                    type: group
+              examples:
+                getContacts:
+                  value:
+                    - id: 79001234567@c.us
+                      name: David Davidson
+                      type: user
+                    - id: 79001234568@c.us
+                      name: David Davidson
+                      type: user
+                    - id: 79001234569-1479621234@g.us
+                      name: My group
+                      type: group
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/getChats:
+    get:
+      tags:
+        - Service methods
+      summary: Get chats
+      description: >-
+        Документация
+        [GetContacts](https://api.sdkwa.pro/en/docs/api/service/GetContacts/)
+      operationId: getChats
+      responses:
+        '200':
+          description: getChats
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '458'
+            Date:
+              schema:
+                type: string
+                example: Mon, 20 Apr 2020 19:54:33 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    archive:
+                      type: boolean
+                      example: false
+                    ephemeralExpiration:
+                      type: number
+                      example: 0
+                    ephemeralSettingTimestamp:
+                      type: number
+                      example: 0
+                    id:
+                      type: string
+                      example: 120363019978548724@g.us
+                    notSpam:
+                      type: boolean
+                      example: true
+                example:
+                  - archive: false
+                    ephemeralExpiration: 0
+                    ephemeralSettingTimestamp: 0
+                    id: 120363019978548724@g.us
+                    notSpam: true
+                  - archive: false
+                    ephemeralExpiration: 0
+                    ephemeralSettingTimestamp: 0
+                    id: 120363020283804841@g.us
+                    notSpam: true
+                  - archive: false
+                    ephemeralExpiration: 0
+                    ephemeralSettingTimestamp: 0
+                    id: 120363020957614065@g.us
+                    notSpam: true
+              examples:
+                getChats:
+                  value:
+                    - archive: false
+                      ephemeralExpiration: 0
+                      ephemeralSettingTimestamp: 0
+                      id: 120363019978548724@g.us
+                      notSpam: true
+                    - archive: false
+                      ephemeralExpiration: 0
+                      ephemeralSettingTimestamp: 0
+                      id: 120363020283804841@g.us
+                      notSpam: true
+                    - archive: false
+                      ephemeralExpiration: 0
+                      ephemeralSettingTimestamp: 0
+                      id: 120363020957614065@g.us
+                      notSpam: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/GetContactInfo:
+    get:
+      tags:
+        - Service methods
+      summary: Get contact info
+      description: >-
+        Документация
+        [GetContacts](https://api.sdkwa.pro/en/docs/api/service/GetContacts/)
+      operationId: getContactInfo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 7123456789@c.us
+            example:
+              chatId: 7123456789@c.us
+      responses:
+        '200':
+          description: GetContactInfo
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '458'
+            Date:
+              schema:
+                type: string
+                example: Mon, 20 Apr 2020 19:54:33 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  avatar:
+                    type: string
+                    example: >-
+                      https://pps.whatsapp.net/v/t61.24694-24/24_1349471992200940_2091838963901201896_n.jpg?ccb=11-4&oh=01_AVzZilQn10nj9M9cfQV4PW5dgdXOkiOuD_jCqP2MCXIpyA
+                  category:
+                    type: string
+                    example: Automotive Dealership
+                  description:
+                    type: string
+                    example: Official service
+                  email:
+                    type: string
+                    example: 24service@tt.tt
+                  name:
+                    type: string
+                    example: Dealer
+                  products:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        availability:
+                          type: string
+                          example: in stock
+                        description:
+                          type: string
+                          example: From 1000 r.
+                        id:
+                          type: string
+                          example: '42079728159'
+                        imageUrls:
+                          type: object
+                          properties:
+                            original:
+                              type: string
+                              example: >-
+                                https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVzn_O9azpKNRs1iPId0TQkGYk4D7HZFSQMeobvRiR
+                            requested:
+                              type: string
+                              example: >-
+                                https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVwYzx7CckCFf8F8xIIZ5m2AGdeC8YTnLyd29
+                        isHidden:
+                          type: boolean
+                          example: false
+                        name:
+                          type: string
+                          example: Repl
+                        price:
+                          type: number
+                          example: 12345
+                        reviewStatus:
+                          type: object
+                          properties:
+                            whatsapp:
+                              type: string
+                              example: APPROVED
+                    example:
+                      - availability: in stock
+                        description: From 1000 r.
+                        id: '42079728159'
+                        imageUrls:
+                          original: >-
+                            https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVzn_O9azpKNRs1iPId0TQkGYk4D7HZFSQMeobvRiR
+                          requested: >-
+                            https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVwYzx7CckCFf8F8xIIZ5m2AGdeC8YTnLyd29
+                        isHidden: false
+                        name: Repl
+                        price: 12345
+                        reviewStatus:
+                          whatsapp: APPROVED
+                      - availability: in stock
+                        id: '3545870328871389'
+                        imageUrls:
+                          original: >-
+                            https://mmg.whatsapp.net/v/t45.5328-4/261250418_4513761695371199_1710541959703469822_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=eps8lAw2_3MAX_mWW8K&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVx2wTCmzof0BoZDmIUpD328CtpJmlvEXGdVzew&o
+                          requested: >-
+                            https://mmg.whatsapp.net/v/t45.5328-4/261250418_4513761695371199_1710541959703469822_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=eps8lAw2_3MAX_mWW8K&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVxT3HnbR04qKZJSOeK4d8p-noZokqly9QbpYFK-c_8kSA&oe
+                        isHidden: false
+                        name: Stock
+                        price: 12345
+                        reviewStatus:
+                          whatsapp: APPROVED
+              examples:
+                GetContactInfo:
+                  value:
+                    avatar: >-
+                      https://pps.whatsapp.net/v/t61.24694-24/24_1349471992200940_2091838963901201896_n.jpg?ccb=11-4&oh=01_AVzZilQn10nj9M9cfQV4PW5dgdXOkiOuD_jCqP2MCXIpyA
+                    category: Automotive Dealership
+                    description: Official service
+                    email: 24service@tt.tt
+                    name: Dealer
+                    products:
+                      - availability: in stock
+                        description: From 1000 r.
+                        id: '42079728159'
+                        imageUrls:
+                          original: >-
+                            https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVzn_O9azpKNRs1iPId0TQkGYk4D7HZFSQMeobvRiR
+                          requested: >-
+                            https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVwYzx7CckCFf8F8xIIZ5m2AGdeC8YTnLyd29
+                        isHidden: false
+                        name: Repl
+                        price: 12345
+                        reviewStatus:
+                          whatsapp: APPROVED
+                      - availability: in stock
+                        id: '3545870328871389'
+                        imageUrls:
+                          original: >-
+                            https://mmg.whatsapp.net/v/t45.5328-4/261250418_4513761695371199_1710541959703469822_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=eps8lAw2_3MAX_mWW8K&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVx2wTCmzof0BoZDmIUpD328CtpJmlvEXGdVzew&o
+                          requested: >-
+                            https://mmg.whatsapp.net/v/t45.5328-4/261250418_4513761695371199_1710541959703469822_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=eps8lAw2_3MAX_mWW8K&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVxT3HnbR04qKZJSOeK4d8p-noZokqly9QbpYFK-c_8kSA&oe
+                        isHidden: false
+                        name: Stock
+                        price: 12345
+                        reviewStatus:
+                          whatsapp: APPROVED
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/setProfilePicture:
+    post:
+      tags:
+        - Service methods
+      summary: Set profile picture
+      description: >-
+        Документация
+        [SetProfilePicture](https://api.sdkwa.pro/en/docs/api/account/SetProfilePicture/)
+      operationId: setProfilePicture
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: setProfilePicture
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '26'
+            Date:
+              schema:
+                type: string
+                example: Tue, 21 Apr 2020 13:16:18 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            text/plain:
+              examples:
+                setProfilePicture:
+                  value: |-
+                    {
+                        "reason": '',
+                        "urlAvatar": "https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA",
+                        "setProfilePicture": true
+                    }
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/archiveChat:
+    post:
+      tags:
+        - Service methods
+      summary: Archive chat
+      description: >-
+        Документация
+        [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)
+      operationId: archiveChat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 79123456789756@c.us
+            example:
+              chatId: 79123456789756@c.us
+      responses:
+        '200':
+          description: archiveChat
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '190'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 14:40:40 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            text/plain:
+              examples:
+                archiveChat:
+                  value: ''
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/unarchiveChat:
+    post:
+      tags:
+        - Service methods
+      summary: Unarchive chat
+      description: >-
+        Документация
+        [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)
+      operationId: unarchiveChat
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 79123456789123@c.us
+            example:
+              chatId: 79123456789123@c.us
+      responses:
+        '200':
+          description: unarchiveChat
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '190'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 14:40:40 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            text/plain:
+              examples:
+                unarchiveChat:
+                  value: ''
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/deleteMessage:
+    post:
+      tags:
+        - Service methods
+      summary: Delete message
+      description: >-
+        Документация
+        [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)
+      operationId: deleteMessage
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 791234567893442@c.us
+                idMessage:
+                  type: string
+                  example: BAE5367237E13A87
+            example:
+              chatId: 791234567893442@c.us
+              idMessage: BAE5367237E13A87
+      responses:
+        '200':
+          description: deleteMessage
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '190'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 14:40:40 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            text/plain:
+              examples:
+                deleteMessage:
+                  value: ''
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/getAvatar:
+    post:
+      tags:
+        - Service methods
+      summary: Get avatar group
+      description: >-
+        Документация
+        [GetAvatar](https://api.sdkwa.pro/en/docs/api/service/GetAvatar/)
+      operationId: getAvatarGroup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  example: 79001234567-1581234048@g.us
+            example:
+              chatId: 79001234567-1581234048@g.us
+      responses:
+        '200':
+          description: getAvatar
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '190'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 14:40:40 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  existsWhatsapp:
+                    type: boolean
+                    example: true
+                  urlAvatar:
+                    type: string
+                    example: https://pps.whatsapp.net/v/avatar.jpg
+              examples:
+                getAvatar:
+                  value:
+                    existsWhatsapp: true
+                    urlAvatar: https://pps.whatsapp.net/v/avatar.jpg
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/checkWhatsapp:
+    post:
+      tags:
+        - Service methods
+      summary: Check WhatsApp availability
+      description: >-
+        Документация
+        [CheckWhatsapp](https://api.sdkwa.pro/en/docs/api/service/CheckWhatsapp/)
+      operationId: checkWhatsappAvailability
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phoneNumber:
+                  type: number
+                  example: 79001234561213
+            example:
+              phoneNumber: 79001234561213
+      responses:
+        '200':
+          description: checkWhatsapp
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '28'
+            Date:
+              schema:
+                type: string
+                example: Fri, 17 Apr 2020 14:35:46 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  existsWhatsapp:
+                    type: boolean
+                    example: true
+              examples:
+                checkWhatsapp:
+                  value:
+                    existsWhatsapp: true
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/setProfileName:
+    post:
+      tags:
+        - Service methods
+      summary: Set profile name
+      description: >-
+        Документация
+        [SetProfilePicture](https://api.sdkwa.pro/en/docs/api/account/SetProfilePicture/)
+      operationId: setProfileName
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: new name
+            example:
+              name: new name
+      responses:
+        '200':
+          description: setProfilePicture
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '26'
+            Date:
+              schema:
+                type: string
+                example: Tue, 21 Apr 2020 13:16:18 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            text/plain:
+              examples:
+                setProfilePicture:
+                  value: |-
+                    {
+                        "reason": '',
+                        "urlAvatar": "https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA",
+                        "setProfilePicture": true
+                    }
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /whatsapp/{idInstance}/setProfileStatus:
+    post:
+      tags:
+        - Service methods
+      summary: Set profile status
+      description: >-
+        Документация
+        [SetProfilePicture](https://api.sdkwa.pro/en/docs/api/account/SetProfilePicture/)
+      operationId: setProfileStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: new status
+            example:
+              status: new status
+      responses:
+        '200':
+          description: setProfilePicture
+          headers:
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '26'
+            Date:
+              schema:
+                type: string
+                example: Tue, 21 Apr 2020 13:16:18 GMT
+            Server:
+              schema:
+                type: string
+                example: nginx/1.10.3
+          content:
+            text/plain:
+              examples:
+                setProfilePicture:
+                  value: |-
+                    {
+                        "reason": '',
+                        "urlAvatar": "https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA",
+                        "setProfilePicture": true
+                    }
+    parameters:
+      - name: idInstance
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: apiTokenInstance
+        in: path
+        required: true
+        schema:
+          type: string
+  /api/v1/instance/user/instances/list:
+    post:
+      tags:
+        - instances management
+      summary: User instances list
+      description: User instances list
+      operationId: userInstancesList
+      parameters:
+        - name: x-ga-method
+          in: header
+          schema:
+            type: string
+            example: user.instances.list
+        - name: x-ga-user-id
+          in: header
+          schema:
+            type: string
+            example: '{{user-id}}'
+        - name: x-ga-user-token
+          in: header
+          schema:
+            type: string
+            example: '{{user-token}}'
+      requestBody:
+        content:
+          text/plain:
+            example: ''
+      responses:
+        '200':
+          description: ok
+          headers:
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: X-Requested-With
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '5690'
+            Date:
+              schema:
+                type: string
+                example: Thu, 02 Dec 2021 03:27:24 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"163a-dSOeW4TRNOtnUFhN4g1Toa3xlpU"
+            Server:
+              schema:
+                type: string
+                example: nginx/1.14.0 (Ubuntu)
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        apiTokenInstance:
+                          type: string
+                          example: 3e03ea9ff3324e228ae3dfdf4d48e409bfa1b1ad0b0c46bf8c
+                        deleted:
+                          type: boolean
+                          example: true
+                        emailUser:
+                          type: string
+                          example: admin@sdkwa.pro
+                        idInstance:
+                          type: number
+                          example: 1101000001
+                        partnerUserUiid:
+                          type: string
+                          example: ''
+                        timeCreated:
+                          type: string
+                          example: '2021-12-02T05:41:00'
+                        timeDeleted:
+                          type: string
+                          example: '2021-12-02T05:50:21'
+                        typeAccount:
+                          type: string
+                          example: ''
+                        typeInstance:
+                          type: string
+                          example: whatsapp
+                    example:
+                      - apiTokenInstance: 3e03ea9ff3324e228ae3dfdf4d48e409bfa1b1ad0b0c46bf8c
+                        deleted: true
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000001
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:00'
+                        timeDeleted: '2021-12-02T05:50:21'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 94237c81721f421da7f4dceb51b91aca027f991e86334d67a9
+                        deleted: true
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000002
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:35'
+                        timeDeleted: '2021-12-02T05:51:08'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: c397c24ed9b94e608c8fb0a0d16515bad86354d4990c499183
+                        deleted: true
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000003
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:35'
+                        timeDeleted: '2021-12-02T05:51:14'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: d94a4fa25e76472ab32f8bb6a453d9d0395e6a55b9f5461a88
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000004
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:36'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 046da3264bd441958792349a1bb79eed5b7c945a348c4057a6
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000005
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:37'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: bfe93e44ddcd4a4d8969ad69017b29704846f60c1990417a82
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000006
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:38'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: ea6b2d0e32e24d0b85ef9aa1492e5f663045a191f1354f5d81
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000007
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:38'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: d1d5b09cdd7548419153f058eddf2cb963af841295354432b2
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000008
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:40'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 5ea7c6bc10e742fd881ffd3521271aee01613b2d5d6147f7bd
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000009
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:41'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 396bf172115c4a1cafbc4ab12bff6ab3294066c0902b4f31a5
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000010
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:42'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: cfc10c1d4ab349beb6b087f7c8a44a61b285ccc12e69443090
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000011
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:43'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 14b13a3733ba4caeb26145b9f5efb510a37a7822293147d4a0
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000012
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:43'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 8ab8604c7abf484cb46ad58bc8f6fb9ab5aaa46f5b7d42f9be
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000013
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:44'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 39464e0d33f245008d9ed5ef1e15892dde7aa0e84586416d9b
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000014
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:45'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 6901a04c100d43e396420f4c90273b71bd42abefe7bd407d84
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000015
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:46'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 4a8f7e3cc4c14acfa01c43eb6735d81dfe304591c25e4aa29d
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000016
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:47'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 48bc986a5fba41949cd80326252307065cd1cb5682fc4cbc98
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000017
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:48'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 0ca9dfc385694c059084b78d1afbf76f76db8f59499e40ca86
+                        deleted: true
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000018
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:53'
+                        timeDeleted: '2021-12-02T05:56:01'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 9b289b55f2964fd0b1852f375fdd8f233eac324a79ee46a89a
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000019
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:49:46'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 2be110d129b144ecb2a867e487daa960b43b8acc24dc467988
+                        deleted: true
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000037
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T06:22:59'
+                        timeDeleted: '2021-12-02T06:23:49'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                  error:
+                    type: object
+                    properties: {}
+                  result:
+                    type: boolean
+                    example: true
+              examples:
+                ok:
+                  value:
+                    data:
+                      - apiTokenInstance: 3e03ea9ff3324e228ae3dfdf4d48e409bfa1b1ad0b0c46bf8c
+                        deleted: true
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000001
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:00'
+                        timeDeleted: '2021-12-02T05:50:21'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 94237c81721f421da7f4dceb51b91aca027f991e86334d67a9
+                        deleted: true
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000002
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:35'
+                        timeDeleted: '2021-12-02T05:51:08'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: c397c24ed9b94e608c8fb0a0d16515bad86354d4990c499183
+                        deleted: true
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000003
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:35'
+                        timeDeleted: '2021-12-02T05:51:14'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: d94a4fa25e76472ab32f8bb6a453d9d0395e6a55b9f5461a88
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000004
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:36'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 046da3264bd441958792349a1bb79eed5b7c945a348c4057a6
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000005
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:37'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: bfe93e44ddcd4a4d8969ad69017b29704846f60c1990417a82
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000006
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:38'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: ea6b2d0e32e24d0b85ef9aa1492e5f663045a191f1354f5d81
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000007
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:38'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: d1d5b09cdd7548419153f058eddf2cb963af841295354432b2
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000008
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:40'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 5ea7c6bc10e742fd881ffd3521271aee01613b2d5d6147f7bd
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000009
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:41'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 396bf172115c4a1cafbc4ab12bff6ab3294066c0902b4f31a5
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000010
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:42'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: cfc10c1d4ab349beb6b087f7c8a44a61b285ccc12e69443090
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000011
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:43'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 14b13a3733ba4caeb26145b9f5efb510a37a7822293147d4a0
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000012
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:43'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 8ab8604c7abf484cb46ad58bc8f6fb9ab5aaa46f5b7d42f9be
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000013
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:44'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 39464e0d33f245008d9ed5ef1e15892dde7aa0e84586416d9b
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000014
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:45'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 6901a04c100d43e396420f4c90273b71bd42abefe7bd407d84
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000015
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:46'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 4a8f7e3cc4c14acfa01c43eb6735d81dfe304591c25e4aa29d
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000016
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:47'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 48bc986a5fba41949cd80326252307065cd1cb5682fc4cbc98
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000017
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:48'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 0ca9dfc385694c059084b78d1afbf76f76db8f59499e40ca86
+                        deleted: true
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000018
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:41:53'
+                        timeDeleted: '2021-12-02T05:56:01'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 9b289b55f2964fd0b1852f375fdd8f233eac324a79ee46a89a
+                        deleted: false
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000019
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T05:49:46'
+                        timeDeleted: '0001-01-01T00:00:00'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                      - apiTokenInstance: 2be110d129b144ecb2a867e487daa960b43b8acc24dc467988
+                        deleted: true
+                        emailUser: admin@sdkwa.pro
+                        idInstance: 1101000037
+                        partnerUserUiid: ''
+                        timeCreated: '2021-12-02T06:22:59'
+                        timeDeleted: '2021-12-02T06:23:49'
+                        typeAccount: ''
+                        typeInstance: whatsapp
+                    error: {}
+                    result: true
+  /api/v1/instance/user/instance/createByOrder:
+    post:
+      tags:
+        - instances management
+      summary: Create new instance
+      description: |-
+        Параметр **period** может принимать значения:
+
+        *   month1 - продлить инстанс на 1 месяц
+        *   month3 - продлить инстанс на 3 месяца
+        *   month6 - продлить инстанс на 6 месяцев
+        *   month12 - продлить инстанс на 12 месяцев
+        *   day1 - продлить инстанс на 1 день
+      operationId: createNewInstance
+      parameters:
+        - name: x-ga-method
+          in: header
+          schema:
+            type: string
+            example: user.instance.create
+        - name: x-ga-user-id
+          in: header
+          schema:
+            type: string
+            example: '{{user-id}}'
+        - name: x-ga-user-token
+          in: header
+          schema:
+            type: string
+            example: '{{user-token}}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                period:
+                  type: string
+                  example: infinitely
+                tariff:
+                  type: string
+                  example: DEVELOPER
+            example:
+              period: infinitely
+              tariff: DEVELOPER
+      responses:
+        '200':
+          description: Not enough balance
+          headers:
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: '*'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '82'
+            Date:
+              schema:
+                type: string
+                example: Mon, 10 Jan 2022 05:22:53 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"52-4HYb2D771uKdofCgDLintregA4k"
+            Server:
+              schema:
+                type: string
+                example: nginx/1.14.0 (Ubuntu)
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties: {}
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: number
+                        example: 464
+                      description:
+                        type: string
+                        example: Not enough balance
+                  result:
+                    type: boolean
+                    example: false
+              examples:
+                Not enough balance:
+                  value:
+                    data: {}
+                    error:
+                      code: 464
+                      description: Not enough balance
+                    result: false
+  /api/v1/instance/user/instance/extendByOrder:
+    post:
+      tags:
+        - instances management
+      summary: Extend instance
+      description: |-
+        Параметр **period** может принимать значения:
+
+        *   month1 - продлить инстанс на 1 месяц
+        *   month3 - продлить инстанс на 3 месяца
+        *   month6 - продлить инстанс на 6 месяцев
+        *   month12 - продлить инстанс на 12 месяцев
+        *   day1 - продлить инстанс на 1 день
+      operationId: extendInstance
+      parameters:
+        - name: x-ga-method
+          in: header
+          schema:
+            type: string
+            example: user.instance.extend
+        - name: x-ga-user-id
+          in: header
+          schema:
+            type: string
+            example: '{{user-id}}'
+        - name: x-ga-user-token
+          in: header
+          schema:
+            type: string
+            example: '{{user-token}}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idInstance:
+                  type: number
+                  example: 1101000001
+                period:
+                  type: string
+                  example: month1
+                tariff:
+                  type: string
+                  example: BUSINESS
+            example:
+              idInstance: 1101000001
+              period: month1
+              tariff: BUSINESS
+      responses:
+        '200':
+          description: Not enough balance
+          headers:
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: '*'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '82'
+            Date:
+              schema:
+                type: string
+                example: Mon, 10 Jan 2022 05:25:53 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"52-4HYb2D771uKdofCgDLintregA4k"
+            Server:
+              schema:
+                type: string
+                example: nginx/1.14.0 (Ubuntu)
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties: {}
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: number
+                        example: 464
+                      description:
+                        type: string
+                        example: Not enough balance
+                  result:
+                    type: boolean
+                    example: false
+              examples:
+                Not enough balance:
+                  value:
+                    data: {}
+                    error:
+                      code: 464
+                      description: Not enough balance
+                    result: false
+  /api/v1/instance/user/instance/delete:
+    post:
+      tags:
+        - instances management
+      summary: Delete instance
+      description: Delete instance
+      operationId: deleteInstance
+      parameters:
+        - name: x-ga-method
+          in: header
+          schema:
+            type: string
+            example: user.instance.delete
+        - name: x-ga-user-id
+          in: header
+          schema:
+            type: string
+            example: '{{user-id}}'
+        - name: x-ga-user-token
+          in: header
+          schema:
+            type: string
+            example: '{{user-token}}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idInstance:
+                  type: number
+                  example: 1101000864
+            example:
+              idInstance: 1101000864
+      responses:
+        '200':
+          description: Not found
+          headers:
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: X-Requested-With
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '73'
+            Date:
+              schema:
+                type: string
+                example: Thu, 02 Dec 2021 03:24:02 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"49-u/LoPEJ768bzzGmDVEiDXVJ4vnM"
+            Server:
+              schema:
+                type: string
+                example: nginx/1.14.0 (Ubuntu)
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties: {}
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: number
+                        example: 404
+                      description:
+                        type: string
+                        example: Not found
+                  result:
+                    type: boolean
+                    example: false
+              examples:
+                Not found:
+                  value:
+                    data: {}
+                    error:
+                      code: 404
+                      description: Not found
+                    result: false
+  /api/v1/instance/user/instance/restore:
+    post:
+      tags:
+        - instances management
+      summary: Restore instance
+      description: Restore instance
+      operationId: restoreInstance
+      parameters:
+        - name: x-ga-method
+          in: header
+          schema:
+            type: string
+            example: user.instance.delete
+        - name: x-ga-user-id
+          in: header
+          schema:
+            type: string
+            example: '{{user-id}}'
+        - name: x-ga-user-token
+          in: header
+          schema:
+            type: string
+            example: '{{user-token}}'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idInstance:
+                  type: number
+                  example: 1101000864
+            example:
+              idInstance: 1101000864
+      responses:
+        '200':
+          description: Not found
+          headers:
+            Access-Control-Allow-Headers:
+              schema:
+                type: string
+                example: X-Requested-With
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Content-Length:
+              schema:
+                type: string
+                example: '73'
+            Date:
+              schema:
+                type: string
+                example: Thu, 02 Dec 2021 03:24:02 GMT
+            ETag:
+              schema:
+                type: string
+                example: W/"49-u/LoPEJ768bzzGmDVEiDXVJ4vnM"
+            Server:
+              schema:
+                type: string
+                example: nginx/1.14.0 (Ubuntu)
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties: {}
+                  error:
+                    type: object
+                    properties:
+                      code:
+                        type: number
+                        example: 404
+                      description:
+                        type: string
+                        example: Not found
+                  result:
+                    type: boolean
+                    example: false
+              examples:
+                Not found:
+                  value:
+                    data: {}
+                    error:
+                      code: 404
+                      description: Not found
+                    result: false
+tags:
+  - name: Account
+  - name: Sending
+  - name: Buttons
+  - name: Receiving
+  - name: Receiving notification
+  - name: Get files
+  - name: Journals
+  - name: Queues
+  - name: Groups
+  - name: Read mark
+  - name: Device (phone)
+  - name: Service methods
+  - name: instances management

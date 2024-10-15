@@ -4,28 +4,28 @@
 	"values": [
 		{
 			"key": "host",
-			"value": "https://api.wa.com",
+			"value": "https://api.sdkwa.pro",
 			"enabled": true
 		},
 		{
 			"key": "idInstance",
-			"value": "<your instance id>",
+			"value": "your instance id",
 			"enabled": true
 		},
 		{
 			"key": "apiTokenInstance",
-			"value": "<your api token>",
+			"value": "your api token",
 			"enabled": true
 		},
 		{
 			"key": "user-id",
-			"value": "<your user id>",
+			"value": "your user id",
 			"type": "default",
 			"enabled": true
 		},
 		{
 			"key": "user-token",
-			"value": "<your-user-token>",
+			"value": "your-user-token",
 			"type": "default",
 			"enabled": true
 		}
