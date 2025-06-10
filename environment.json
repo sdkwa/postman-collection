@@ -1,0 +1,36 @@
+{
+	"id": "acc739ca-ab4f-41bc-9234-06f23b741938",
+	"name": "SDKWA Developer",
+	"values": [
+		{
+			"key": "host",
+			"value": "https://api.sdkwa.pro",
+			"enabled": true
+		},
+		{
+			"key": "idInstance",
+			"value": "your instance id",
+			"enabled": true
+		},
+		{
+			"key": "apiTokenInstance",
+			"value": "your api token",
+			"enabled": true
+		},
+		{
+			"key": "user-id",
+			"value": "your user id",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "user-token",
+			"value": "your-user-token",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2023-05-25T12:37:45.229Z",
+	"_postman_exported_using": "Postman/10.14.2"
+}

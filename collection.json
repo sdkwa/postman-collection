@@ -1,0 +1,5113 @@
+{
+	"info": {
+		"_postman_id": "1469f76f-a4dc-4039-be0f-5b20e7297e09",
+		"name": "WASDK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Get account settings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/getSettings/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"getSettings",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "The method is aimed for getting the current account settings.\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `wid` | **string** | Account ID in WhatsApp |\n| `countryInstance` | **string** | Account country code in accordance with standard [ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2) |\n| `typeAccount` | **string** | Account type, possible variants: `WA_DESKTOP`, `WA_MOBILE` |\n| `releaseType` | **string** | Release type, possible variants: `STABLE`, `LATEST` |\n| `webhookUrl` | **string** | URL to receive incoming notifications |\n| `webhookUrlToken` | **string** | Token for connecting to your webhook server |\n| `delaySendMessagesMilliseconds` | **integer** | [Min message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md) in milliseconds |\n| `delaySendMessagesMaxMs` | **integer** | [Max message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md) in milliseconds |\n| `markIncomingMessagesReaded` | **string** | Mark incoming messages as read or not, possible variants: `yes`, `no`. Ignored if markIncomingMessagesReadedOnReply is 'yes'. |\n| `markIncomingMessagesReadedOnReply` | **string** | Mark incoming messages as read when sending a message to the chat via API, possible variants: `yes`, `no`. If 'yes', then markIncomingMessagesReaded setting is ignored. |\n| `outgoingWebhook` | **string** | Get notifications about outgoing messages sending / delivering / reading status, possible variants: `yes`, `no` |\n| `outgoingMessageWebhook` | **string** | Get notifications about messages sent from phone, possible variants: `yes`, `no` |\n| `stateWebhook` | **string** | Get notifications about changes in the account authorization status, possible variants: `yes`, `no` |\n| `incomingWebhook` | **string** | Get notifications about incoming messages and files, possible variants: `yes`, `no` |\n| `deviceWebhook` | **string** | Get notifications about the device (phone) and battery level, possible variants: `yes`, `no` |\n| `statusInstanceWebhook` | **string** | Get notifications about the account socket connection status change, possible variants: `yes`, `no` |"
+					},
+					"response": [
+						{
+							"name": "getSettings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getSettings/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getSettings",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Apr 2020 19:48:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "85"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"wid\": \"79001234567@c.us\", \n    \"countryInstance\": \"ru\",\n    \"typeAccount\": \"vip\",\n    \"webhookUrl\": \"https://mysite.com/webhook/wasdk/\",\n    \"delaySendMessagesMilliseconds\": 3000,\n    \"markIncomingMessagesReaded\": \"yes\",\n    \"outgoingWebhook\": \"yes\",\n    \"stateWebhook\": \"yes\",\n    \"incomingWebhook\": \"yes\",\n    \"deviceWebhook\": \"no\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Set account settings",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"webhookUrl\": \"\",\r\n    \"webhookUrlToken\": \"\",\r\n    \"delaySendMessagesMilliseconds\": 1000,\r\n    \"markIncomingMessagesReaded\": \"no\",\r\n    \"markIncomingMessagesReadedOnReply\": \"no\",\r\n    \"outgoingWebhook\": \"yes\",\r\n    \"outgoingMessageWebhook\": \"yes\",\r\n    \"outgoingAPIMessageWebhook\": \"no\",\r\n    \"incomingWebhook\": \"yes\",\r\n    \"stateWebhook\": \"yes\",\r\n    \"keepOnlineStatus\": \"no\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"setSettings",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SetSettings](https://sdkwa.pro/en/docs/api/account/SetSettings/)"
+					},
+					"response": [
+						{
+							"name": "setSettings",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"countryInstance\": \"ru\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"setSettings",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Apr 2020 13:16:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"saveSettings\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Get account state",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/getStateInstance/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"getStateInstance",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)"
+					},
+					"response": [
+						{
+							"name": "getStateInstance authorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getStateInstance/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getStateInstance",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:31:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"stateInstance\": \"authorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get warming phone status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/getWarmingPhoneStatus/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"getWarmingPhoneStatus",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)"
+					},
+					"response": [
+						{
+							"name": "getStateInstance authorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getStateInstance/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getStateInstance",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:31:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"stateInstance\": \"authorized\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Reboot account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/reboot/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"reboot",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [Reboot](https://sdkwa.pro/en/docs/api/account/Reboot/)"
+					},
+					"response": [
+						{
+							"name": "reboot",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/reboot/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"reboot",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:29:41 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "22"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"isReboot\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Logout account",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/logout/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"logout",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [Logout](https://sdkwa.pro/en/docs/api/account/Logout/)"
+					},
+					"response": [
+						{
+							"name": "logout",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/logout/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"logout",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:24:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "22"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"isLogout\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Get QR code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/qr/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"qr",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
+					},
+					"response": []
+				},
+				{
+					"name": "Request registration code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phoneNumber\": 7123456789,\r\n    \"method\": \"sms\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/requestRegistrationCode/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"requestRegistrationCode",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
+					},
+					"response": []
+				},
+				{
+					"name": "Send registration code",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"99999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/sendRegistrationCode/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"sendRegistrationCode",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sending",
+			"item": [
+				{
+					"name": "Buttons",
+					"item": [
+						{
+							"name": "Send Buttons",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-uiid-instance-account",
+										"value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"712345678910@c.us\",\r\n    \"message\": \"Hello\",\r\n    \"footer\": \"Footer\",\r\n    \"buttons\": [{\"buttonId\": \"1\", \"buttonText\": \"test1\"}, {\"buttonId\": \"2\", \"buttonText\": \"test2\"}, {\"buttonId\": \"3\", \"buttonText\": \"test3\"}]\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/SendButtons/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"SendButtons",
+										"{{apiTokenInstance}}"
+									]
+								},
+								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+							},
+							"response": [
+								{
+									"name": "SendButtons",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"message\": \"Hello man\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/waInstance{{idInstance}}/SendButtons/{{apiTokenInstance}}",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"waInstance{{idInstance}}",
+												"SendButtons",
+												"{{apiTokenInstance}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.10.3"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 17 Apr 2020 13:14:58 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "41"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Send List Message",
+							"protocolProfileBehavior": {
+								"disableUrlEncoding": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatId\": \"7123456789@c.us\",\r\n    \"message\": \"Text\",\r\n    \"title\": \"Title\",\r\n    \"footer\": \"Footer\",\r\n    \"buttonText\": \"Button text\",\r\n    \"sections\": [\r\n        {\r\n            \"title\": \"Section 1\",\r\n            \"rows\": [\r\n                {\r\n                    \"title\": \"Option 1\",\r\n                    \"rowId\": \"option1\"\r\n                },\r\n                {\r\n                    \"title\": \"Option 2\",\r\n                    \"rowId\": \"option2\",\r\n                    \"description\": \"Description\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Section 2\",\r\n            \"rows\": [\r\n                {\r\n                    \"title\": \"Option 3\",\r\n                    \"rowId\": \"option3\"\r\n                },\r\n                {\r\n                    \"title\": \"Option 4\",\r\n                    \"rowId\": \"option4\",\r\n                    \"description\": \"Description\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/SendListMessage/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"SendListMessage",
+										"{{apiTokenInstance}}"
+									]
+								},
+								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+							},
+							"response": [
+								{
+									"name": "SendListMessage",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"phoneNumber\": 79001234567,\r\n\t\"message\": \"Hello man\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/waInstance{{idInstance}}/SendListMessage/{{apiTokenInstance}}",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"waInstance{{idInstance}}",
+												"SendListMessage",
+												"{{apiTokenInstance}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.10.3"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 17 Apr 2020 13:14:58 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "41"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Send Template Buttons",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-uiid-instance-account",
+										"value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"71234567891c.us\",\r\n    \"title\": \"Title\",\r\n\t\"message\": \"Hello\",\r\n    \"footer\": \"What kind of action will you choose?\",\r\n    \"templateButtons\": [\r\n          \r\n            {\"index\": 1, \"urlButton\": {\"displayText\": \"⭐ Star us on GitHub!\", \"url\": \"https://github.com/Yard-Tean/docs\"}},\r\n            {\"index\": 2, \"callButton\": {\"displayText\": \"Call us\", \"phoneNumber\": \"+1 (234) 5678-901\"}},\r\n            {\"index\": 3, \"quickReplyButton\": {\"displayText\": \"Plain button\", \"id\": \"plainButtonId\"}}\r\n        ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/SendTemplateButtons/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"SendTemplateButtons",
+										"{{apiTokenInstance}}"
+									]
+								},
+								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+							},
+							"response": [
+								{
+									"name": "SendTemplateButtons",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"message\": \"Hello man\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{host}}/waInstance{{idInstance}}/SendTemplateButtons/{{apiTokenInstance}}",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"waInstance{{idInstance}}",
+												"SendTemplateButtons",
+												"{{apiTokenInstance}}"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.10.3"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 17 Apr 2020 13:14:58 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Content-Length",
+											"value": "41"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Send text",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"chatId\": \"7912345678910@c.us\",\r\n\t\"message\": \"Hello\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"sendMessage",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+					},
+					"response": [
+						{
+							"name": "sendMessage",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"message\": \"Hello man\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"sendMessage",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 13:14:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send text with quote",
+					"protocolProfileBehavior": {
+						"disableUrlEncoding": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\": \"712345678989@c.us\",\r\n    \"message\": \"Hello\",\r\n    \"quotedMessageId\":\"953CA00E623C66D9ECAF118B63EA6B8B\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"sendMessage",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+					},
+					"response": [
+						{
+							"name": "sendMessage",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"message\": \"Hello man\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"sendMessage",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 13:14:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send text to group",
+					"protocolProfileBehavior": {
+						"disableUrlEncoding": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\": \"123456789012345678@g.us\",\r\n    \"message\": \"test\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"sendMessage",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+					},
+					"response": [
+						{
+							"name": "sendMessage",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"message\": \"Hello man\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"sendMessage",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 13:14:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send contact",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"chatId\": \"7900123456725@c.us\",\r\n\t\"contact\": {\r\n\t\t\"phoneContact\": 7900123456858,\r\n    \t\"firstName\": \"David\",\r\n\t\t\"middleName\": \"David\",\r\n\t\t\"lastName\": \"David\",\r\n\t\t\"company\": \"Train\"\r\n\t}\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/sendContact/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"sendContact",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SendContact](https://sdkwa.pro/en/docs/api/sending/SendContact/)"
+					},
+					"response": [
+						{
+							"name": "message.sendContact",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"phoneNumber\": 7900123456789,\r\n\t\"contact\": {\r\n\t\t\"phoneContact\": 79001234567989,\r\n    \t\"firstName\": \"Boris\",\r\n\t\t\"middleName\": \"Boris\",\r\n\t\t\"lastName\": \"Boris\",\r\n\t\t\"company\": \"Train\"\r\n\t}\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/sendContact/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"sendContact",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 May 2020 20:23:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idMessage\": \"3EB0DF31710A9123EC75\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send video, audio, image, document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "chatId",
+									"value": "790012345673442@c.us",
+									"type": "text"
+								},
+								{
+									"key": "caption",
+									"value": "Description",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/mihai/Desktop/SB-409/window.jpg"
+								},
+								{
+									"key": "fileName",
+									"value": "window.jpg",
+									"type": "text"
+								},
+								{
+									"key": "quotedMessageId",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/sendFileByUpload/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"sendFileByUpload",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SendFileByUpload](https://sdkwa.pro/en/docs/api/sending/SendFileByUpload/)"
+					},
+					"response": [
+						{
+							"name": "sendFileByUpload",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "chatId",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "caption",
+											"value": "This is image",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/C:/Users/mihai/Desktop/SB-409/window.jpg"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/sendFileByUpload/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"sendFileByUpload",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 13:32:52 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idMessage\": \"3EB0EA03CB2EAFD864F6\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send video, audio, image, document via URL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \t\"chatId\": \"79001234567343@c.us\",\r\n\t\"urlFile\": \"https://avatars.mds.yandex.net/get-pdb/477388/77f64197-87d2-42cf-9305-14f49c65f1da/s375\",\r\n\t\"fileName\": \"horse.png\",\r\n\t\"caption\": \"Horse\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/sendFileByUrl/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"sendFileByUrl",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SendFileByUrl](https://sdkwa.pro/en/docs/api/sending/SendFileByUrl/)"
+					},
+					"response": [
+						{
+							"name": "sendFileByUrl",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \t\"chatId\": \"79001234567343@c.us\",\r\n\t\"urlFile\": \"https://avatars.mds.yandex.net/get-pdb/477388/77f64197-87d2-42cf-9305-14f49c65f1da/s375\",\r\n\t\"fileName\": \"horse.png\",\r\n\t\"caption\": \"Horse\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/sendFileByUrl/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"sendFileByUrl",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 13:25:37 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idMessage\": \"3EB075A72D884153EFC5\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send location",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\": \"790012345673452@c.us\",\r\n    \"nameLocation\": \"I'mm here\",\r\n    \"address\": \"613123, Sant Louis\",\r\n   \t\"latitude\": 70.9370129,\r\n    \"longitude\": 89.8728409\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/sendLocation/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"sendLocation",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SendLocation](https://sdkwa.pro/en/docs/api/sending/SendLocation/)"
+					},
+					"response": [
+						{
+							"name": "message.sendLocation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatId\": \"\",\r\n    \"nameLocation\": \"I'm here\",\r\n    \"address\": \"613123, Georgia\",\r\n   \t\"latitude\": 70.9370129,\r\n    \"longitude\": 89.8728409\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/sendLocation/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"sendLocation",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 May 2020 19:15:50 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idMessage\": \"3EB0133DEBFA6BD6C5AA\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send link",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"chatId\": \"790012345672@c.us\",\r\n\t\"urlLink\": \"https://sdkwa.pro\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/sendLink/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"sendLink",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SendLink](https://sdkwa.pro/en/docs/api/sending/SendLink/)"
+					},
+					"response": [
+						{
+							"name": "message.sendLink",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"790012345672@c.us\",\r\n\t\"urlLink\": \"https://www.youtube.com/watch?v=00000000000\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/sendLink/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"sendLink",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 May 2020 20:26:45 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idMessage\": \"3EB0160E742127137282\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Upload file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/uploadFile/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"uploadFile",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+					},
+					"response": [
+						{
+							"name": "sendMessage",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"phoneNumber\": 79001234567,\r\n\t\"message\": \"Hello man\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"sendMessage",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 13:14:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Receiving",
+			"item": [
+				{
+					"name": "Receiving notification",
+					"item": [
+						{
+							"name": "Receive notification",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/receiveNotification/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"receiveNotification",
+										"{{apiTokenInstance}}"
+									]
+								},
+								"description": "Документация [ReceiveNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)"
+							},
+							"response": []
+						},
+						{
+							"name": "Delete notification",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/deleteNotification/{{apiTokenInstance}}/{{receiptId}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"deleteNotification",
+										"{{apiTokenInstance}}",
+										"{{receiptId}}"
+									]
+								},
+								"description": "Документация [DeleteNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get files",
+					"item": [
+						{
+							"name": "Download file from incoming message",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/downloadFile/{{idMessage}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"downloadFile",
+										"{{idMessage}}"
+									]
+								},
+								"description": "Документация [DownloadFile](https://sdkwa.pro/en/docs/api/receiving/files/DownloadFile/)"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Journals",
+			"item": [
+				{
+					"name": "Get chat history",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"chatId\": \"79005952023-1607343957@g.us\",\r\n\t\"count\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/getChatHistory/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"getChatHistory",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetChatHistory](https://sdkwa.pro/en/docs/api/journals/GetChatHistory/)"
+					},
+					"response": [
+						{
+							"name": "getChatHistory",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"7123456789@c.us\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getChatHistory/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getChatHistory",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 13:14:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"idMessage\": \"3EB0C732BC93864C25FB\",\n        \"timestamp\": 1587412276,\n        \"statusMessage\": \"read\",\n        \"typeMessage\": \"textMessage\",\n        \"chatId\": \"79001234567@c.us\",\n        \"textMessage\": \"Hello man\"\n    },\n    {\n        \"idMessage\": \"3EB0C37D09143B7F53A0\",\n        \"timestamp\": 1587412276,\n        \"statusMessage\": \"read\",\n        \"typeMessage\": \"textMessage\",\n        \"chatId\": \"79001234567@c.us\",\n        \"textMessage\": \"Hello man\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get outgoing messages journal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/lastOutgoingMessages/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"lastOutgoingMessages",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [LastOutgoingMessages](https://sdkwa.pro/en/docs/api/journals/LastOutgoingMessages/)"
+					},
+					"response": [
+						{
+							"name": "lastOutgoingMessages",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/lastOutgoingMessages/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"lastOutgoingMessages",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Apr 2020 20:01:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2900"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"idMessage\": \"3EB0C732BC93864C25FB\",\n        \"timestamp\": 1587412276,\n        \"statusMessage\": \"read\",\n        \"typeMessage\": \"textMessage\",\n        \"chatId\": \"79001234567@c.us\",\n        \"textMessage\": \"Hello man\"\n    },\n    {\n        \"idMessage\": \"3EB0C37D09143B7F53A0\",\n        \"timestamp\": 1587412276,\n        \"statusMessage\": \"read\",\n        \"typeMessage\": \"textMessage\",\n        \"chatId\": \"79001234567@c.us\",\n        \"textMessage\": \"Hello man\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get incoming messages journal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/lastIncomingMessages/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"lastIncomingMessages",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [LastIncomingMessages](https://sdkwa.pro/en/docs/api/journals/LastIncomingMessages/)"
+					},
+					"response": [
+						{
+							"name": "lastIncomingMessages",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/lastIncomingMessages/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"lastIncomingMessages",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Apr 2020 19:57:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1643"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"idMessage\": \"8E078426472FACECDFC2787173F05459\",\n        \"timestamp\": 1587412262,\n        \"typeMessage\": \"textMessage\",\n        \"chatId\": \"79001234567@c.us\",\n        \"senderId\": \"79001234567@c.us\",\n        \"senderName\": \"Name\",\n        \"textMessage\": \"Answer\"\n    },\n    {\n        \"idMessage\": \"75A35BA7745DB8FE6A8AD59C3F51C8CC\",\n        \"timestamp\": 1587412279,\n        \"typeMessage\": \"textMessage\",\n        \"chatId\": \"79001234567@c.us\",\n        \"senderId\": \"79001234567@c.us\",\n        \"senderName\": \"Name\",\n        \"textMessage\": \"Answer\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Queues",
+			"item": [
+				{
+					"name": "Clear messages queue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/clearMessagesQueue/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"clearMessagesQueue",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [ClearMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ClearMessagesQueue/)"
+					},
+					"response": [
+						{
+							"name": "clearMessagesQueue",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/clearMessagesQueue/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"clearMessagesQueue",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Apr 2020 19:53:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "23"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"isCleared\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Show messages queue",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/showMessagesQueue/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"showMessagesQueue",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [ShowMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ShowMessagesQueue/)"
+					},
+					"response": [
+						{
+							"name": "showMessagesQueue",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/showMessagesQueue/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"showMessagesQueue",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Apr 2020 19:50:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "321"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"typeMessage\": \"textMessage\",\n        \"chatId\": \"79001234567@c.us\",\n        \"message\": \"Hello man\"\n    },\n    {\n        \"typeMessage\": \"textMessage\",\n        \"chatId\": \"79001234567@c.us\",\n        \"message\": \"Hello man\"\n    },\n    {\n        \"typeMessage\": \"textMessage\",\n        \"chatId\": \"79001234567@c.us\",\n        \"message\": \"Hello man\"\n    },\n    {\n        \"typeMessage\": \"textMessage\",\n        \"chatId\": \"79001234567@c.us\",\n        \"message\": \"Hello man\"\n    }\n]"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Groups",
+			"item": [
+				{
+					"name": "Change group name",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"groupId\": \"79001234567-1587570015@g.us\",\r\n\t\"groupName\": \"Group created by WASDK+\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/updateGroupName/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"updateGroupName",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [UpdateGroupName](https://sdkwa.pro/en/docs/api/groups/UpdateGroupName/)"
+					},
+					"response": [
+						{
+							"name": "group.updateGroupName",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"groupId\": \"79001234568-1581234048@g.us\",\r\n\t\"groupName\":\"Changed name by API third\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/updateGroupName/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"updateGroupName",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Apr 2020 14:42:45 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "29"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"updateGroupName\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Get group data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"groupId\": \"79001234567-1587570015@g.us\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/getGroupData/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"getGroupData",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetGroupData](https://sdkwa.pro/en/docs/api/groups/GetGroupData/)"
+					},
+					"response": [
+						{
+							"name": "group.getGroupData",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"groupId\": \"79001234567-1581234048@g.us\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getGroupData/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getGroupData",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Apr 2020 14:32:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "457"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n\t\"groupId\": \"79001234567-1587570015@g.us\",\n\t\"owner\": \"79001234567@c.us\",\n\t\"subject\": \"WASDK Group\",\n\t\"creation\": 1587570015,\n\t\"participants\": [\n\t\t{\n\t\t\t\"id\": \"79001234567@c.us\",\n\t\t\t\"isAdmin\": true,\n\t\t\t\"isSuperAdmin\": true\n\t\t},\n\t\t{\n\t\t\t\"id\": \"79001234568@c.us\",\n\t\t\t\"isAdmin\": true,\n\t\t\t\"isSuperAdmin\": false\n\t\t},\n\t\t{\n\t\t\t\"id\": \"79001234569@c.us\",\n\t\t\t\"isAdmin\": false,\n\t\t\t\"isSuperAdmin\": false\n\t\t}\n\t],\n\t\"subjectTime\": 1587737715,\n\t\"subjectOwner\": \"79001234567@c.us\",\n\t\"groupInviteLink\": \"https://chat.whatsapp.com/xxxxxxxxxxxxxxxxxxxxxx\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Leave group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"groupId\": \"79001234567-1587570015@g.us\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/leaveGroup/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"leaveGroup",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [LeaveGroup](https://sdkwa.pro/en/docs/api/groups/LeaveGroup/)"
+					},
+					"response": [
+						{
+							"name": "group.leaveGroup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"groupId\": \"79001234567-1581234048@g.us\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/leaveGroup/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"leaveGroup",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Apr 2020 14:58:22 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "24"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"leaveGroup\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Set group admin rights",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"groupId\": \"79001234567-1587570015@g.us\",\r\n\t\"participantChatId\": \"79001234565@c.us\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/setGroupAdmin/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"setGroupAdmin",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SetGroupAdmin](https://sdkwa.pro/en/docs/api/groups/SetGroupAdmin/)"
+					},
+					"response": [
+						{
+							"name": "group.setGroupAdmin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"groupId\": \"79001234567-1581234048@g.us\",\r\n\t\"participantChatId\": \"79001234568@c.us\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/setGroupAdmin/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"setGroupAdmin",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Apr 2020 14:45:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"setGroupAdmin\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete group participant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"groupId\": \"79001234567-1587570015@g.us\",\r\n\t\"participantChatId\": \"79001234565@c.us\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/removeGroupParticipant/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"removeGroupParticipant",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [RemoveGroupParticipant](https://sdkwa.pro/en/docs/api/groups/RemoveGroupParticipant/)"
+					},
+					"response": [
+						{
+							"name": "group.removeGroupParticipant",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"groupId\": \"79001234567-1581234048@g.us\",\r\n\t\"participantChatId\": \"79001234565@c.us\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/removeGroupParticipant/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"removeGroupParticipant",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Apr 2020 14:35:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "31"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"removeParticipant\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Remove group admin rights",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"groupId\": \"79001234567-1587570015@g.us\",\r\n\t\"participantChatId\": \"79001234565@c.us\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/removeAdmin/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"removeAdmin",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [RemoveAdmin](https://sdkwa.pro/en/docs/api/groups/RemoveAdmin/)"
+					},
+					"response": [
+						{
+							"name": "group.removeAdmin",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"groupId\": \"79001234567-1581234048@g.us\",\r\n    \"participantChatId\": \"79001234565@c.us\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/removeAdmin/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"removeAdmin",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Apr 2020 14:49:49 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "25"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"removeAdmin\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Create group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"groupName\": \"Group created by WASDK\",\r\n    \"chatIds\": [\r\n        \"79001234568@c.us\",\r\n        \"79001234569@c.us\"\r\n    ]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/createGroup/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"createGroup",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [CreateGroup](https://sdkwa.pro/en/docs/api/groups/CreateGroup/)"
+					},
+					"response": [
+						{
+							"name": "group.createGroup",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"groupName\": \"Group created by WASDK\",\r\n    \"chatIds\": [\r\n        \"79001234568@c.us\",\r\n        \"79001234569@c.us\"\r\n    ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/createGroup/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"createGroup",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Apr 2020 14:27:29 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "124"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"created\": true,\n    \"chatId\": \"79001234567-1587570015@g.us\",\n    \"groupInviteLink\": \"https://chat.whatsapp.com/XXXXXXXXXXXXXXXXXXXXXX\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add group participant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"groupId\": \"79001234567-1587570015@g.us\",\r\n\t\"participantChatId\": \"79001234565@c.us\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/addGroupParticipant/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"addGroupParticipant",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [AddGroupParticipant](https://sdkwa.pro/en/docs/api/groups/AddGroupParticipant/)"
+					},
+					"response": [
+						{
+							"name": "group.addGroupParticipant",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"groupId\": \"79001234567-1587570015@g.us\",\r\n\t\"participantChatId\": \"79001234565@c.us\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/addGroupParticipant/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"addGroupParticipant",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 28 Apr 2020 14:37:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"addParticipant\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Set group picture",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/E:/WASDK_docs/wasdk-logo.png"
+								},
+								{
+									"key": "groupId",
+									"value": "120363022730913588@g.us",
+									"description": "group ID, for example 74433384355-1585564682@g.us",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/setGroupPicture/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"setGroupPicture",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SetGroupPicture](https://sdkwa.pro/en/docs/api/account/SetGroupPicture/)"
+					},
+					"response": [
+						{
+							"name": "setGroupPicture",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "groupId",
+											"value": "120363022730913588@g.us",
+											"type": "text"
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/setGroupPicture/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"setGroupPicture",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Apr 2020 13:16:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"setGroupPicture\": true,\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/138639660_724754321806449_9118612187814397965_n.jpg?oh=997b0bb13b6bbb750432a86d4b8d935d&oe=600****BB4\",\n\t\"reason\": \"\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Read mark",
+			"item": [
+				{
+					"name": "Mark message as read",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"chatId\": \"79001234567@c.us\",\r\n\t\"idMessage\": \"B275A7AA0D6EF89BB9245169BDF174E6\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/readChat/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"readChat",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)"
+					},
+					"response": [
+						{
+							"name": "message.readChat",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"79001234567@c.us\",\r\n\t\"idMessage\": \"B275A7AA0D6EF89BB9245169BDF174E6\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/readChat/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"readChat",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 May 2020 20:36:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"setRead\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Mark chat as read",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"chatId\": \"79001234567@c.us\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/readChat/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"readChat",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)"
+					},
+					"response": [
+						{
+							"name": "message.readChat",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"79001234567@c.us\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/readChat/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"readChat",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 06 May 2020 20:36:35 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "21"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"setRead\": true\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Device (phone)",
+			"item": [
+				{
+					"name": "Get device info",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/getDeviceInfo/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"getDeviceInfo",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetDeviceInfo](https://sdkwa.pro/en/docs/api/phone/GetDeviceInfo/)"
+					},
+					"response": [
+						{
+							"name": "getDeviceInfo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getDeviceInfo/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getDeviceInfo",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:32:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "123"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"platform\": \"iphone\",\n    \"deviceManufacturer\": \"Apple\",\n    \"deviceModel\": \"iPhone 11\",\n    \"osVersion\": \"13.4.1\",\n    \"waVersion\": \"2.20.42\",\n    \"battery\": 90\n}"
+						}
+					]
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Service methods",
+			"item": [
+				{
+					"name": "Get contacts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/getContacts/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"getContacts",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
+					},
+					"response": [
+						{
+							"name": "getContacts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getContacts/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getContacts",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Apr 2020 19:54:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "458"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": \"79001234567@c.us\",\n        \"name\": \"David Davidson\",\n        \"type\": \"user\"\n    },\n    {\n        \"id\": \"79001234568@c.us\",\n        \"name\": \"David Davidson\",\n        \"type\": \"user\"\n    },\n    {\n        \"id\": \"79001234569-1479621234@g.us\",\n        \"name\": \"My group\",\n        \"type\": \"group\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get chats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/getChats/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"getChats",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
+					},
+					"response": [
+						{
+							"name": "getChats",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getContacts/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getContacts",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Apr 2020 19:54:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "458"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"archive\": false,\n        \"id\": \"120363019978548724@g.us\",\n        \"notSpam\": true,\n        \"ephemeralExpiration\": 0,\n        \"ephemeralSettingTimestamp\": 0\n    },\n    {\n        \"archive\": false,\n        \"id\": \"120363020283804841@g.us\",\n        \"notSpam\": true,\n        \"ephemeralExpiration\": 0,\n        \"ephemeralSettingTimestamp\": 0\n    },\n    {\n        \"archive\": false,\n        \"id\": \"120363020957614065@g.us\",\n        \"notSpam\": true,\n        \"ephemeralExpiration\": 0,\n        \"ephemeralSettingTimestamp\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get contact info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\": \"7123456789@c.us\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/GetContactInfo/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"GetContactInfo",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
+					},
+					"response": [
+						{
+							"name": "GetContactInfo",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/GetContactInfo/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"GetContactInfo",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 20 Apr 2020 19:54:33 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "458"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"avatar\": \"https://pps.whatsapp.net/v/t61.24694-24/24_1349471992200940_2091838963901201896_n.jpg?ccb=11-4&oh=01_AVzZilQn10nj9M9cfQV4PW5dgdXOkiOuD_jCqP2MCXIpyA\",\n    \"name\": \"Dealer\",\n    \"email\": \"24service@tt.tt\",\n    \"category\": \"Automotive Dealership\",\n    \"description\": \"Official service\",\n    \"products\": [\n        {\n            \"id\": \"42079728159\",\n            \"imageUrls\": {\n                \"requested\": \"https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVwYzx7CckCFf8F8xIIZ5m2AGdeC8YTnLyd29\",\n                \"original\": \"https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVzn_O9azpKNRs1iPId0TQkGYk4D7HZFSQMeobvRiR\"\n            },\n            \"reviewStatus\": {\n                \"whatsapp\": \"APPROVED\"\n            },\n            \"availability\": \"in stock\",\n            \"name\": \"Repl\",\n            \"description\": \"From 1000 r.\",\n            \"price\": 12345,\n            \"isHidden\": false\n        },\n        {\n            \"id\": \"3545870328871389\",\n            \"imageUrls\": {\n                \"requested\": \"https://mmg.whatsapp.net/v/t45.5328-4/261250418_4513761695371199_1710541959703469822_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=eps8lAw2_3MAX_mWW8K&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVxT3HnbR04qKZJSOeK4d8p-noZokqly9QbpYFK-c_8kSA&oe\",\n                \"original\": \"https://mmg.whatsapp.net/v/t45.5328-4/261250418_4513761695371199_1710541959703469822_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=eps8lAw2_3MAX_mWW8K&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVx2wTCmzof0BoZDmIUpD328CtpJmlvEXGdVzew&o\"\n            },\n            \"reviewStatus\": {\n                \"whatsapp\": \"APPROVED\"\n            },\n            \"availability\": \"in stock\",\n            \"name\": \"Stock\",\n            \"price\": 12345,\n            \"isHidden\": false\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Set profile picture",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/E:/download/тест 2.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/setProfilePicture/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"setProfilePicture",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
+					},
+					"response": [
+						{
+							"name": "setProfilePicture",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"setSettings",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Apr 2020 13:16:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"reason\": '',\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Archive chat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\": \"79123456789756@c.us\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/archiveChat/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"archiveChat",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+					},
+					"response": [
+						{
+							"name": "archiveChat",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatId\": \"\",\r\n    \"phoneNumber\": 79001234567\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/archiveChat/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"archiveChat",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:40:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "190"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Unarchive chat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\": \"79123456789123@c.us\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/unarchiveChat/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"unarchiveChat",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+					},
+					"response": [
+						{
+							"name": "unarchiveChat",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatId\": \"7123456789@c.us\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/unarchiveChat/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"unarchiveChat",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:40:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "190"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Delete message",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\": \"791234567893442@c.us\",\r\n    \"idMessage\": \"BAE5367237E13A87\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/deleteMessage/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"deleteMessage",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+					},
+					"response": [
+						{
+							"name": "deleteMessage",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatId\": \"791234567893442@c.us\",\r\n    \"idMessage\": \"BAE5367237E13A87\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getAvatar",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:40:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "190"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get avatar contact",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\": \"7900123456732@c.us\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"getAvatar",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+					},
+					"response": [
+						{
+							"name": "getAvatar",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n{\r\n    \"chatId\": \"7900123456732@c.us\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getAvatar",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:40:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "190"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"existsWhatsapp\": true,\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/avatar.jpg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get avatar group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\": \"79001234567-1581234048@g.us\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"getAvatar",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+					},
+					"response": [
+						{
+							"name": "getAvatar",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatId\": \"79001234567-1581234048@g.us\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"getAvatar",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:40:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "190"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"existsWhatsapp\": true,\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/avatar.jpg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Check WhatsApp availability",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"phoneNumber\": 79001234561213\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/checkWhatsapp/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"checkWhatsapp",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [CheckWhatsapp](https://sdkwa.pro/en/docs/api/service/CheckWhatsapp/)"
+					},
+					"response": [
+						{
+							"name": "checkWhatsapp",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"phoneNumber\": 7900123456734\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/checkWhatsapp/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"checkWhatsapp",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:35:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"existsWhatsapp\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Set profile name",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"new name\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/setProfileName/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"setProfileName",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
+					},
+					"response": [
+						{
+							"name": "setProfilePicture",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"setSettings",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Apr 2020 13:16:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"reason\": '',\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "Set profile status",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"new status\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/waInstance{{idInstance}}/setProfileStatus/{{apiTokenInstance}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"waInstance{{idInstance}}",
+								"setProfileStatus",
+								"{{apiTokenInstance}}"
+							]
+						},
+						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
+					},
+					"response": [
+						{
+							"name": "setProfilePicture",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"setSettings",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 21 Apr 2020 13:16:18 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "26"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"reason\": '',\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "instances management",
+			"item": [
+				{
+					"name": "User instances list",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-ga-method",
+								"value": "user.instances.list",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-ga-user-id",
+								"value": "{{user-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ga-user-token",
+								"value": "{{user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instance/user/instances/list",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instance",
+								"user",
+								"instances",
+								"list"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-ga-method",
+										"value": "user.getInstances",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-id",
+										"value": "{{user-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-token",
+										"value": "{{user-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/integration",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"integration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Dec 2021 03:27:24 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "5690"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-Requested-With"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"163a-dSOeW4TRNOtnUFhN4g1Toa3xlpU\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": true,\n    \"data\": [\n        {\n            \"idInstance\": 1101000001,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:00\",\n            \"timeDeleted\": \"2021-12-02T05:50:21\",\n            \"apiTokenInstance\": \"3e03ea9ff3324e228ae3dfdf4d48e409bfa1b1ad0b0c46bf8c\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000002,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:35\",\n            \"timeDeleted\": \"2021-12-02T05:51:08\",\n            \"apiTokenInstance\": \"94237c81721f421da7f4dceb51b91aca027f991e86334d67a9\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000003,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:35\",\n            \"timeDeleted\": \"2021-12-02T05:51:14\",\n            \"apiTokenInstance\": \"c397c24ed9b94e608c8fb0a0d16515bad86354d4990c499183\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000004,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:36\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"d94a4fa25e76472ab32f8bb6a453d9d0395e6a55b9f5461a88\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000005,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:37\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"046da3264bd441958792349a1bb79eed5b7c945a348c4057a6\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000006,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:38\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"bfe93e44ddcd4a4d8969ad69017b29704846f60c1990417a82\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000007,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:38\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"ea6b2d0e32e24d0b85ef9aa1492e5f663045a191f1354f5d81\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000008,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:40\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"d1d5b09cdd7548419153f058eddf2cb963af841295354432b2\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000009,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:41\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"5ea7c6bc10e742fd881ffd3521271aee01613b2d5d6147f7bd\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000010,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:42\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"396bf172115c4a1cafbc4ab12bff6ab3294066c0902b4f31a5\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000011,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:43\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"cfc10c1d4ab349beb6b087f7c8a44a61b285ccc12e69443090\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000012,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:43\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"14b13a3733ba4caeb26145b9f5efb510a37a7822293147d4a0\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000013,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:44\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"8ab8604c7abf484cb46ad58bc8f6fb9ab5aaa46f5b7d42f9be\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000014,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:45\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"39464e0d33f245008d9ed5ef1e15892dde7aa0e84586416d9b\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000015,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:46\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"6901a04c100d43e396420f4c90273b71bd42abefe7bd407d84\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000016,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:47\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"4a8f7e3cc4c14acfa01c43eb6735d81dfe304591c25e4aa29d\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000017,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:48\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"48bc986a5fba41949cd80326252307065cd1cb5682fc4cbc98\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000018,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:41:53\",\n            \"timeDeleted\": \"2021-12-02T05:56:01\",\n            \"apiTokenInstance\": \"0ca9dfc385694c059084b78d1afbf76f76db8f59499e40ca86\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000019,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T05:49:46\",\n            \"timeDeleted\": \"0001-01-01T00:00:00\",\n            \"apiTokenInstance\": \"9b289b55f2964fd0b1852f375fdd8f233eac324a79ee46a89a\",\n            \"deleted\": false,\n            \"emailUser\": \"admin@wasdk.pro\"\n        },\n        {\n            \"idInstance\": 1101000037,\n            \"typeInstance\": \"whatsapp\",\n            \"typeAccount\": \"\",\n            \"partnerUserUiid\": \"\",\n            \"timeCreated\": \"2021-12-02T06:22:59\",\n            \"timeDeleted\": \"2021-12-02T06:23:49\",\n            \"apiTokenInstance\": \"2be110d129b144ecb2a867e487daa960b43b8acc24dc467988\",\n            \"deleted\": true,\n            \"emailUser\": \"admin@wasdk.pro\"\n        }\n    ],\n    \"error\": {}\n}"
+						}
+					]
+				},
+				{
+					"name": "Create new instance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-ga-method",
+								"value": "user.instance.create",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-ga-user-id",
+								"value": "{{user-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ga-user-token",
+								"value": "{{user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tariff\":\"DEVELOPER\",\"period\":\"infinitely\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instance/user/instance/createByOrder",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instance",
+								"user",
+								"instance",
+								"createByOrder"
+							]
+						},
+						"description": "Параметр **period** может принимать значения:\n\n*   month1 - продлить инстанс на 1 месяц\n*   month3 - продлить инстанс на 3 месяца\n*   month6 - продлить инстанс на 6 месяцев\n*   month12 - продлить инстанс на 12 месяцев\n*   day1 - продлить инстанс на 1 день"
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-ga-method",
+										"value": "user.createInstance",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-id",
+										"value": "{{user-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-token",
+										"value": "{{user-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/integration",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"integration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Dec 2021 03:22:59 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "131"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-Requested-With"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"83-F9JIXG37k4Py17NfjFvongW3Txg\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": true,\n    \"data\": {\n        \"idInstance\": 1101000037,\n        \"apiTokenInstance\": \"2be110d129b144ecb2a867e487daa960b43b8acc24dc467988\"\n    },\n    \"error\": {}\n}"
+						},
+						{
+							"name": "Not enough balance",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-ga-method",
+										"value": "user.instance.create",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-id",
+										"value": "{{user-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-token",
+										"value": "{{user-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"tariff\": \"BUSINESS\",\r\n    \"period\": \"month1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/integration",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"integration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Jan 2022 05:22:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-4HYb2D771uKdofCgDLintregA4k\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": false,\n    \"data\": {},\n    \"error\": {\n        \"code\": 464,\n        \"description\": \"Not enough balance\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Extend instance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-ga-method",
+								"value": "user.instance.extend",
+								"type": "text"
+							},
+							{
+								"key": "x-ga-user-id",
+								"value": "{{user-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ga-user-token",
+								"value": "{{user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idInstance\": 1101000001,\r\n    \"tariff\": \"BUSINESS\",\r\n    \"period\": \"month1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instance/user/instance/extendByOrder",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instance",
+								"user",
+								"instance",
+								"extendByOrder"
+							]
+						},
+						"description": "Параметр **period** может принимать значения:\n\n*   month1 - продлить инстанс на 1 месяц\n*   month3 - продлить инстанс на 3 месяца\n*   month6 - продлить инстанс на 6 месяцев\n*   month12 - продлить инстанс на 12 месяцев\n*   day1 - продлить инстанс на 1 день"
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-ga-method",
+										"value": "user.instance.extend",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-id",
+										"value": "{{user-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-token",
+										"value": "{{user-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idInstance\": 1101000131,\r\n    \"tariff\": \"BUSINESS\",\r\n    \"period\": \"month1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/integration",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"integration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Jan 2022 05:25:30 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-BPL2ef+9PW4p55KuHOuaGwKggRM\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": true,\n    \"data\": {},\n    \"error\": {}\n}"
+						},
+						{
+							"name": "Not enough balance",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-ga-method",
+										"value": "user.instance.extend",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-id",
+										"value": "{{user-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-token",
+										"value": "{{user-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idInstance\": 1101000131,\r\n    \"tariff\": \"BUSINESS\",\r\n    \"period\": \"month1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/integration",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"integration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 10 Jan 2022 05:25:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "82"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "*"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"52-4HYb2D771uKdofCgDLintregA4k\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": false,\n    \"data\": {},\n    \"error\": {\n        \"code\": 464,\n        \"description\": \"Not enough balance\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete instance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-ga-method",
+								"value": "user.instance.delete",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-ga-user-id",
+								"value": "{{user-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ga-user-token",
+								"value": "{{user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idInstance\": 1101000864\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instance/user/instance/delete",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instance",
+								"user",
+								"instance",
+								"delete"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-ga-method",
+										"value": "user.deleteInstance",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-id",
+										"value": "{{user-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-token",
+										"value": "{{user-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idInstance\": 1101000037\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/integration",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"integration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Dec 2021 03:23:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-Requested-With"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-BPL2ef+9PW4p55KuHOuaGwKggRM\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": true,\n    \"data\": {},\n    \"error\": {}\n}"
+						},
+						{
+							"name": "Not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-ga-method",
+										"value": "user.deleteInstance",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-id",
+										"value": "{{user-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-token",
+										"value": "{{user-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idInstance\": 1101000037\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/integration",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"integration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Dec 2021 03:24:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-Requested-With"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"49-u/LoPEJ768bzzGmDVEiDXVJ4vnM\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": false,\n    \"data\": {},\n    \"error\": {\n        \"code\": 404,\n        \"description\": \"Not found\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Restore instance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-ga-method",
+								"value": "user.instance.delete",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "x-ga-user-id",
+								"value": "{{user-id}}",
+								"type": "text"
+							},
+							{
+								"key": "x-ga-user-token",
+								"value": "{{user-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idInstance\": 1101000864\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/api/v1/instance/user/instance/restore",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"instance",
+								"user",
+								"instance",
+								"restore"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "ok",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-ga-method",
+										"value": "user.deleteInstance",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-id",
+										"value": "{{user-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-token",
+										"value": "{{user-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idInstance\": 1101000037\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/integration",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"integration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Dec 2021 03:23:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "36"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-Requested-With"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"24-BPL2ef+9PW4p55KuHOuaGwKggRM\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": true,\n    \"data\": {},\n    \"error\": {}\n}"
+						},
+						{
+							"name": "Not found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "x-ga-method",
+										"value": "user.deleteInstance",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-id",
+										"value": "{{user-id}}",
+										"type": "text"
+									},
+									{
+										"key": "x-ga-user-token",
+										"value": "{{user-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"idInstance\": 1101000037\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/integration",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"integration"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.14.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 02 Dec 2021 03:24:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "X-Requested-With"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"49-u/LoPEJ768bzzGmDVEiDXVJ4vnM\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"result\": false,\n    \"data\": {},\n    \"error\": {\n        \"code\": 404,\n        \"description\": \"Not found\"\n    }\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
