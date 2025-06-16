@@ -53,9 +53,6 @@ paths:
         | `incomingWebhook`                 | **string**| Get notifications about incoming messages and files, possible variants: `yes`, `no`                         |
         | `deviceWebhook`                   | **string**| Get notifications about the device (phone) and battery level, possible variants: `yes`, `no`                |
         | `statusInstanceWebhook`           | **string**| Get notifications about the account socket connection status change, possible variants: `yes`, `no`         |
-      security:
-        - bearerAuth:
-            description: Pass the required `apiTokenInstance` parameter in the Authorization header as a Bearer token. Example: `Authorization: Bearer <apiTokenInstance>`
       parameters:
         - name: idInstance
           in: path
