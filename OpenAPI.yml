@@ -53,6 +53,8 @@ paths:
         | `incomingWebhook`                 | **string**| Get notifications about incoming messages and files, possible variants: `yes`, `no`                         |
         | `deviceWebhook`                   | **string**| Get notifications about the device (phone) and battery level, possible variants: `yes`, `no`                |
         | `statusInstanceWebhook`           | **string**| Get notifications about the account socket connection status change, possible variants: `yes`, `no`         |
+      security:
+        - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
@@ -272,8 +274,7 @@ paths:
         - Account
       summary: Get account state
       description: >-
-        Документация
-        [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)
+        The method gets the account state.
       security:
         - bearerAuth: []
       parameters:
@@ -318,8 +319,7 @@ paths:
         - Account
       summary: Get warming phone status
       description: >-
-        Документация
-        [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)
+        The method gets the account warming state.
       security:
         - bearerAuth: []
       parameters:
@@ -330,9 +330,45 @@ paths:
           required: true
       responses:
         '200':
-          description: Successful response
+          description: Successful response with warming phone status.
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+                properties:
+                  warmingType:
+                    type: string
+                    description: |
+                      Account warming option.
+                      Possible values:
+                        - USER_PHONES: Warming with only user phones
+                        - USER_AND_WORKERS_PHONES: Warming with user phones and phones from phone base
+                  status:
+                    type: number
+                    description: Account warming indicator level percent.
+                  isWarmingRunning:
+                    type: string
+                    description: |
+                      Account warming state.
+                      Possible values:
+                        - NOT_STARTED: Warming for account not started
+                        - STARTED: Warming is started.
+                  forWarming:
+                    type: number
+                    description: Phones for warming.
+                  notWarmed:
+                    type: number
+                    description: Not warmed phones.
+                  warmed:
+                    type: number
+                    description: Phones that were already warmed.
+              example:
+                warmingType: USER_AND_WORKERS_PHONES
+                status: 0.88
+                isWarmingRunning: STARTED
+                forWarming: 1
+                notWarmed: 2
+                warmed: 0
   /whatsapp/{idInstance}/reboot:
     get:
       tags:
