@@ -29,7 +29,27 @@ paths:
       tags:
         - Account
       summary: Get account settings
-      description: "The method get the current account settings.\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `wid` | **string** | Account ID in WhatsApp |\n| `countryInstance` | **string** | Account country code in accordance with standard\_[ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2) |\n| `typeAccount` | **string** | Account type, possible variants:\_`WA_DESKTOP`,\_`WA_MOBILE` |\n| `releaseType` | **string** | Release type, possible variants:\_`STABLE`,\_`LATEST` |\n| `webhookUrl` | **string** | URL to receive incoming notifications |\n| `webhookUrlToken` | **string** | Token for connecting to your webhook server |\n| `delaySendMessagesMilliseconds` | **integer** | [Min message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md)\_in milliseconds |\n| `delaySendMessagesMaxMs` | **integer** | [Max message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md)\_in milliseconds |\n| `markIncomingMessagesReaded` | **string** | Mark incoming messages as read or not, possible variants:\_`yes`,\_`no`. Ignored if markIncomingMessagesReadedOnReply is 'yes'. |\n| `markIncomingMessagesReadedOnReply` | **string** | Mark incoming messages as read when sending a message to the chat via API, possible variants:\_`yes`,\_`no`. If 'yes', then markIncomingMessagesReaded setting is ignored. |\n| `outgoingWebhook` | **string** | Get notifications about outgoing messages sending / delivering / reading status, possible variants:\_`yes`,\_`no` |\n| `outgoingMessageWebhook` | **string** | Get notifications about messages sent from phone, possible variants:\_`yes`,\_`no` |\n| `stateWebhook` | **string** | Get notifications about changes in the account authorization status, possible variants:\_`yes`,\_`no` |\n| `incomingWebhook` | **string** | Get notifications about incoming messages and files, possible variants:\_`yes`,\_`no` |\n| `deviceWebhook` | **string** | Get notifications about the device (phone) and battery level, possible variants:\_`yes`,\_`no` |\n| `statusInstanceWebhook` | **string** | Get notifications about the account socket connection status change, possible variants:\_`yes`,\_`no` |"
+        description: |-
+        The method get the current account settings.
+
+        | Parameter                         | Type      | Description                                                                                                 |
+        | --------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------- |
+        | `wid`                             | **string**| Account ID in WhatsApp                                                                                      |
+        | `countryInstance`                 | **string**| Account country code in accordance with standard [ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2)     |
+        | `typeAccount`                     | **string**| Account type, possible variants: `WA_DESKTOP`, `WA_MOBILE`                                                  |
+        | `releaseType`                     | **string**| Release type, possible variants: `STABLE`, `LATEST`                                                         |
+        | `webhookUrl`                      | **string**| URL to receive incoming notifications                                                                       |
+        | `webhookUrlToken`                 | **string**| Token for connecting to your webhook server                                                                 |
+        | `delaySendMessagesMilliseconds`   | **integer**| [Min message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md) in milliseconds |
+        | `delaySendMessagesMaxMs`          | **integer**| [Max message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md) in milliseconds |
+        | `markIncomingMessagesReaded`      | **string**| Mark incoming messages as read or not, possible variants: `yes`, `no`. Ignored if markIncomingMessagesReadedOnReply is 'yes'. |
+        | `markIncomingMessagesReadedOnReply`| **string**| Mark incoming messages as read when sending a message to the chat via API, possible variants: `yes`, `no`. If 'yes', then markIncomingMessagesReaded setting is ignored. |
+        | `outgoingWebhook`                 | **string**| Get notifications about outgoing messages sending / delivering / reading status, possible variants: `yes`, `no` |
+        | `outgoingMessageWebhook`          | **string**| Get notifications about messages sent from phone, possible variants: `yes`, `no`                            |
+        | `stateWebhook`                    | **string**| Get notifications about changes in the account authorization status, possible variants: `yes`, `no`         |
+        | `incomingWebhook`                 | **string**| Get notifications about incoming messages and files, possible variants: `yes`, `no`                         |
+        | `deviceWebhook`                   | **string**| Get notifications about the device (phone) and battery level, possible variants: `yes`, `no`                |
+        | `statusInstanceWebhook`           | **string**| Get notifications about the account socket connection status change, possible variants: `yes`, `no`         |
       security:
         - bearerAuth: []
       parameters:
