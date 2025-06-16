@@ -29,7 +29,7 @@ paths:
       tags:
         - Account
       summary: Get account settings
-      description: "The method is aimed for getting the current account settings.\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `wid` | **string** | Account ID in WhatsApp |\n| `countryInstance` | **string** | Account country code in accordance with standard\_[ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2) |\n| `typeAccount` | **string** | Account type, possible variants:\_`WA_DESKTOP`,\_`WA_MOBILE` |\n| `releaseType` | **string** | Release type, possible variants:\_`STABLE`,\_`LATEST` |\n| `webhookUrl` | **string** | URL to receive incoming notifications |\n| `webhookUrlToken` | **string** | Token for connecting to your webhook server |\n| `delaySendMessagesMilliseconds` | **integer** | [Min message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md)\_in milliseconds |\n| `delaySendMessagesMaxMs` | **integer** | [Max message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md)\_in milliseconds |\n| `markIncomingMessagesReaded` | **string** | Mark incoming messages as read or not, possible variants:\_`yes`,\_`no`. Ignored if markIncomingMessagesReadedOnReply is 'yes'. |\n| `markIncomingMessagesReadedOnReply` | **string** | Mark incoming messages as read when sending a message to the chat via API, possible variants:\_`yes`,\_`no`. If 'yes', then markIncomingMessagesReaded setting is ignored. |\n| `outgoingWebhook` | **string** | Get notifications about outgoing messages sending / delivering / reading status, possible variants:\_`yes`,\_`no` |\n| `outgoingMessageWebhook` | **string** | Get notifications about messages sent from phone, possible variants:\_`yes`,\_`no` |\n| `stateWebhook` | **string** | Get notifications about changes in the account authorization status, possible variants:\_`yes`,\_`no` |\n| `incomingWebhook` | **string** | Get notifications about incoming messages and files, possible variants:\_`yes`,\_`no` |\n| `deviceWebhook` | **string** | Get notifications about the device (phone) and battery level, possible variants:\_`yes`,\_`no` |\n| `statusInstanceWebhook` | **string** | Get notifications about the account socket connection status change, possible variants:\_`yes`,\_`no` |"
+      description: "The method get the current account settings.\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `wid` | **string** | Account ID in WhatsApp |\n| `countryInstance` | **string** | Account country code in accordance with standard\_[ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2) |\n| `typeAccount` | **string** | Account type, possible variants:\_`WA_DESKTOP`,\_`WA_MOBILE` |\n| `releaseType` | **string** | Release type, possible variants:\_`STABLE`,\_`LATEST` |\n| `webhookUrl` | **string** | URL to receive incoming notifications |\n| `webhookUrlToken` | **string** | Token for connecting to your webhook server |\n| `delaySendMessagesMilliseconds` | **integer** | [Min message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md)\_in milliseconds |\n| `delaySendMessagesMaxMs` | **integer** | [Max message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md)\_in milliseconds |\n| `markIncomingMessagesReaded` | **string** | Mark incoming messages as read or not, possible variants:\_`yes`,\_`no`. Ignored if markIncomingMessagesReadedOnReply is 'yes'. |\n| `markIncomingMessagesReadedOnReply` | **string** | Mark incoming messages as read when sending a message to the chat via API, possible variants:\_`yes`,\_`no`. If 'yes', then markIncomingMessagesReaded setting is ignored. |\n| `outgoingWebhook` | **string** | Get notifications about outgoing messages sending / delivering / reading status, possible variants:\_`yes`,\_`no` |\n| `outgoingMessageWebhook` | **string** | Get notifications about messages sent from phone, possible variants:\_`yes`,\_`no` |\n| `stateWebhook` | **string** | Get notifications about changes in the account authorization status, possible variants:\_`yes`,\_`no` |\n| `incomingWebhook` | **string** | Get notifications about incoming messages and files, possible variants:\_`yes`,\_`no` |\n| `deviceWebhook` | **string** | Get notifications about the device (phone) and battery level, possible variants:\_`yes`,\_`no` |\n| `statusInstanceWebhook` | **string** | Get notifications about the account socket connection status change, possible variants:\_`yes`,\_`no` |"
       security:
         - bearerAuth: []
       parameters:
@@ -169,26 +169,27 @@ paths:
       tags:
         - Account
       summary: Set account settings
-      description: >-
-Parameter | Type | Mandatory | Description
------ | ----- | ----- | -----
-`countryInstance` | **string** | No | Account country code in accordance with [ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2) standard
-`webhookUrl` | **string** | No | URL for sending notifications. If it is required to disable getting notifications, then specify an empty string
-`webhookUrlToken` | **string** | No | Token to access your notification server, if not required, then specify an empty string 
-`delaySendMessagesMilliseconds` | **integer** | No | [Min message sending delay](../send-messages-delay.md) in milliseconds
-`delaySendMessagesMaxMs` | **integer** | No | [Max message sending delay](../send-messages-delay.md) in milliseconds
-`markIncomingMessagesReaded` | **string** | No | Mark incoming messages as read or not, possible variants: `yes`,` no`. Ignored if markIncomingMessagesReadedOnReply is 'yes'.
-`markIncomingMessagesReadedOnReply` | **string** | No | Mark incoming messages as read when posting a message to the chat via API, possible variants: `yes`,` no`. If it is 'yes', then the markIncomingMessagesReaded setting is ignored.
-`outgoingWebhook` | **string** | No |Get notifications about outgoing messages sending/delivering/reading statuses, possible variants: `yes`,` no`
-`outgoingMessageWebhook` | **string** | No |Get notifications about messages sent from the phone, possible variants: `yes`,` no`
-`outgoingAPIMessageWebhook` | **string** | No |Get notifications about messages sent from the API, possible variants: `yes`,` no`
-`stateWebhook` | **string** | No |Get notifications about the account authorization state change, possible variants: `yes`,` no`
-`incomingWebhook` | **string** | No |Get notifications about incoming messages and files, possible variants: `yes`,` no`
-`deviceWebhook` | **string** | No |Get notifications about the device (phone) and battery level, possible variants: `yes`,` no`
-`statusInstanceWebhook` | **string** | No | Get notifications about the account socket connection status change, possible variants: `yes`,` no`
-`keepOnlineStatus` | **string** | Нет | Set statis "Online", possible values: `yes`, `no`
-`proxyInstance` | **string** | Нет | Specify the client's own proxy address. Passed in the format ip:port:login:password, for example 91.235.136.48:30217:user217:coh7ozeD
+      description: |-
+        The method set the current account settings.
 
+        | Parameter                       | Type     | Mandatory | Description                                                                                       |
+        |---------------------------------|----------|-----------|---------------------------------------------------------------------------------------------------|
+        | `countryInstance`               | string   | No        | Account country code in accordance with [ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2)    |
+        | `webhookUrl`                    | string   | No        | URL for sending notifications. To disable notifications, specify an empty string                  |
+        | `webhookUrlToken`               | string   | No        | Token to access your notification server, or empty string if not required                         |
+        | `delaySendMessagesMilliseconds` | integer  | No        | [Min message sending delay](../send-messages-delay.md) in milliseconds                            |
+        | `delaySendMessagesMaxMs`        | integer  | No        | [Max message sending delay](../send-messages-delay.md) in milliseconds                            |
+        | `markIncomingMessagesReaded`    | string   | No        | Mark incoming messages as read or not, possible values: `yes`, `no`. Ignored if ...OnReply is 'yes'|
+        | `markIncomingMessagesReadedOnReply` | string | No        | Mark incoming messages as read when posting a message via API, values: `yes`, `no`. If 'yes', ... |
+        | `outgoingWebhook`               | string   | No        | Get notifications about outgoing messages sending/delivering/reading statuses: `yes`, `no`        |
+        | `outgoingMessageWebhook`        | string   | No        | Get notifications about messages sent from the phone: `yes`, `no`                                 |
+        | `outgoingAPIMessageWebhook`     | string   | No        | Get notifications about messages sent from the API: `yes`, `no`                                   |
+        | `stateWebhook`                  | string   | No        | Get notifications about the account authorization state change: `yes`, `no`                       |
+        | `incomingWebhook`               | string   | No        | Get notifications about incoming messages and files: `yes`, `no`                                  |
+        | `deviceWebhook`                 | string   | No        | Get notifications about the device (phone) and battery level: `yes`, `no`                         |
+        | `statusInstanceWebhook`         | string   | No        | Get notifications about the account socket connection status change: `yes`, `no`                  |
+        | `keepOnlineStatus`              | string   | No        | Set status "Online", possible values: `yes`, `no`                                                 |
+        | `proxyInstance`                 | string   | No        | Specify the client's own proxy address in format ip:port:login:password                           |
       requestBody:
         content:
           application/json:
