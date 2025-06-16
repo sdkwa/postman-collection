@@ -29,7 +29,7 @@ paths:
       tags:
         - Account
       summary: Get account settings
-        description: |-
+      description: |-
         The method gets current account settings.
 
         | Parameter                         | Type      | Description                                                                                                 |
