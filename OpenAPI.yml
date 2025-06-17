@@ -2448,83 +2448,158 @@ paths:
                 - id: "79001234569-1479621234@g.us"
                   archive: false
                   notSpam: true
-  /whatsapp/{idInstance}/GetContactInfo:
+  /whatsapp/{idInstance}/getContactInfo:
     get:
       tags:
-        - Service methods
-      summary: Get contact info
-      description: >-
-        Документация
-        [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)
+        - Account
+      summary: Get contact information
+      description: >
+        This method retrieves detailed information about a contact, including name, avatar, email, business details, and product cards.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: Correspondent id.
+              required:
+                - chatId
+            example:
+              chatId: "71234567890@c.us"
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Mon, 20 Apr 2020 19:54:33 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '458'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Contact information including business and product details.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  avatar:
+                    type: string
+                    description: Avatar url.
+                  name:
+                    type: string
+                    description: >
+                      Contact name. If the contact is in the phone book, the name is taken from there. Otherwise, the WhatsApp profile name is used. If neither is available, the field is empty.
+                  email:
+                    type: string
+                    description: Contact e-mail.
+                  category:
+                    type: string
+                    description: Business contact category.
+                  description:
+                    type: string
+                    description: Business contact description.
+                  products:
+                    type: array
+                    description: Contact product cards.
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          description: Product id.
+                        imageUrls:
+                          type: object
+                          properties:
+                            requested:
+                              type: string
+                              description: Requested image url.
+                            original:
+                              type: string
+                              description: Original image url.
+                        reviewStatus:
+                          type: object
+                          properties:
+                            whatsapp:
+                              type: string
+                              description: Product review status.
+                        availability:
+                          type: string
+                          description: Product availability.
+                        name:
+                          type: string
+                          description: Product name.
+                        description:
+                          type: string
+                          description: Product description.
+                        price:
+                          type: string
+                          nullable: true
+                          description: Product price.
+                        isHidden:
+                          type: boolean
+                          description: Product visibility flag.
+                  chatId:
+                    type: string
+                    description: Correspondent id.
+                  lastSeen:
+                    type: string
+                    nullable: true
+                    description: Last seen timestamp.
+                  isArchive:
+                    type: boolean
+                    description: Archive status.
+                  isDisappearing:
+                    type: boolean
+                    description: Disappearing messages status.
+                  isMute:
+                    type: boolean
+                    description: Mute status.
+                  messageExpiration:
+                    type: integer
+                    description: Message expiration time.
+                  muteExpiration:
+                    type: string
+                    nullable: true
+                    description: Mute expiration time.
               example:
-                avatar: >-
-                  https://pps.whatsapp.net/v/t61.24694-24/24_1349471992200940_2091838963901201896_n.jpg?ccb=11-4&oh=01_AVzZilQn10nj9M9cfQV4PW5dgdXOkiOuD_jCqP2MCXIpyA
-                name: Dealer
-                email: 24service@tt.tt
-                category: Automotive Dealership
-                description: Official service
+                avatar: "https://pps.whatsapp.net/v/t61.24694-24/24_1349471992200940_2091838963901201896_n.jpg?ccb=11-4&oh=01_AVzZilQn10nj9M9cfQV4PW5dgdXOkiOuD_jCqP2MCXIpyA"
+                name: "Dealer"
+                email: "test@test.com"
+                category: "Fish ind"
+                description: "Unnoficial"
                 products:
-                  - id: '42079728159'
+                  - id: "42079728151"
                     imageUrls:
-                      requested: >-
-                        https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVwYzx7CckCFf8F8xIIZ5m2AGdeC8YTnLyd29
-                      original: >-
-                        https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVzn_O9azpKNRs1iPId0TQkGYk4D7HZFSQMeobvRiR
+                      requested: "https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVwYzx7CckCFf8F8xIIZ5m2AGdeC8YTnLyd29"
+                      original: "https://mmg.whatsapp.net/v/t45.5328-4/263329037_6625110154227932_2879714823340281709_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=NKICbZlqfPMAX9077mo&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVzn_O9azpKNRs1iPId0TQkGYk4D7HZFSQMeobvRiR"
                     reviewStatus:
-                      whatsapp: APPROVED
-                    availability: in stock
-                    name: Repl
-                    description: From 1000 r.
-                    price: 12345
+                      whatsapp: "APPROVED"
+                    availability: "in stock"
+                    name: "Replacement"
+                    description: "From 1000 RUB"
+                    price: null
                     isHidden: false
-                  - id: '3545870328871389'
+                  - id: "3545870328871389"
                     imageUrls:
-                      requested: >-
-                        https://mmg.whatsapp.net/v/t45.5328-4/261250418_4513761695371199_1710541959703469822_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=eps8lAw2_3MAX_mWW8K&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVxT3HnbR04qKZJSOeK4d8p-noZokqly9QbpYFK-c_8kSA&oe
-                      original: >-
-                        https://mmg.whatsapp.net/v/t45.5328-4/261250418_4513761695371199_1710541959703469822_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=eps8lAw2_3MAX_mWW8K&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVx2wTCmzof0BoZDmIUpD328CtpJmlvEXGdVzew&o
+                      requested: "https://mmg.whatsapp.net/v/t45.5328-4/261250418_4513761695371199_1710541959703469822_n.jpg?stp=dst-jpg_p100x100&ccb=1-7&_nc_sid=c48759&_nc_ohc=eps8lAw2_3MAX_mWW8K&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVxT3HnbR04qKZJSOeK4d8p-noZokqly9QbpYFK-c_8kSA&oe"
+                      original: "https://mmg.whatsapp.net/v/t45.5328-4/261250418_4513761695371199_1710541959703469822_n.jpg?ccb=1-7&_nc_sid=c48759&_nc_ohc=eps8lAw2_3MAX_mWW8K&_nc_ad=z-m&_nc_cid=0&_nc_ht=mmg.whatsapp.net&oh=01_AVx2wTCmzof0BoZDmIUpD328CtpJmlvEXGdVzew&o"
                     reviewStatus:
-                      whatsapp: APPROVED
-                    availability: in stock
-                    name: Stock
-                    price: 12345
+                      whatsapp: "APPROVED"
+                    availability: "in stock"
+                    name: "Technical maintenance"
+                    price: null
                     isHidden: false
+                chatId: "71234567890@c.us"
+                lastSeen: null
+                isArchive: false
+                isDisappearing: false
+                isMute: false
+                messageExpiration: 0
+                muteExpiration: null
   /whatsapp/{idInstance}/setProfilePicture:
     post:
       tags:
