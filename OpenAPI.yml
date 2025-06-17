@@ -760,17 +760,17 @@ paths:
                 summary: Sending a message to a personal chat
                 value:
                   chatId: "11001234567@c.us"
-                  message: "I use GREEN-API to send this message to you!"
+                  message: "hello world"
               group:
                 summary: Sending a message to a group chat
                 value:
                   chatId: "11001234567-1581234048@g.us"
-                  message: "I use GREEN-API to send this message to you!"
+                  message: "hello world"
               quoted:
                 summary: Sending a quoted message
                 value:
                   chatId: "11001234567@c.us"
-                  message: "I use GREEN-API to send this message to you!"
+                  message: "hello world"
                   quotedMessageId: "361B0E63F2FDF95903B6A9C9A102F34B"
       responses:
         '200':
