@@ -2955,309 +2955,215 @@ paths:
   /whatsapp/{idInstance}/setProfileName:
     post:
       tags:
-        - Service methods
+        - Account
       summary: Set profile name
-      description: >-
-        Документация
-        [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                name: new name
+      description: >
+        This method sets a new profile name for the account.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /whatsapp/{idInstance}/setProfileStatus:
-    post:
-      tags:
-        - Service methods
-      summary: Set profile status
-      description: >-
-        Документация
-        [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)
+          description: Unique instance identifier.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               type: object
-              example:
-                status: new status
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: idInstance
-          in: path
-          schema:
-            type: string
-          required: true
+              properties:
+                name:
+                  type: string
+                  description: New profile name.
+              required:
+                - name
+            example:
+              name: "new name"
       responses:
         '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v1/instance/user/instances/list:
-    post:
-      tags:
-        - instances management
-      summary: User instances list
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example: ''
-      parameters:
-        - name: x-ga-user-id
-          in: header
-          schema:
-            type: string
-          example: '{{user-id}}'
-        - name: x-ga-user-token
-          in: header
-          schema:
-            type: string
-          example: '{{user-token}}'
-      responses:
-        '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.14.0 (Ubuntu)
-            Date:
-              schema:
-                type: string
-                example: Thu, 02 Dec 2021 03:27:24 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '5690'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Access-Control-Allow-Headers:
-              schema:
-                type: string
-                example: X-Requested-With
-            ETag:
-              schema:
-                type: string
-                example: W/"163a-dSOeW4TRNOtnUFhN4g1Toa3xlpU"
+          description: Profile name set successfully. The response body is empty.
           content:
             application/json:
               schema:
                 type: object
+                description: Empty response body.
+              example: {}
+  /whatsapp/{idInstance}/setProfileStatus:
+    post:
+      tags:
+        - Account
+      summary: Set profile status
+      description: >
+        This method sets a new status message for the account.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idInstance
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  description: New profile status.
+              required:
+                - status
+            example:
+              status: "new status"
+      responses:
+        '200':
+          description: Profile status set successfully. The response body is empty.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: Empty response body.
+              example: {}
+  /api/v1/instance/user/instances/list:
+    post:
+      tags:
+        - Instances
+      summary: Get user account instances
+      description: >
+        This method retrieves all account instances created by the user.
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: x-user-id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User ID.
+        - name: x-user-token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User token.
+      responses:
+        '200':
+          description: List of all account instances created by the user.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                    description: Operation result flag.
+                  error:
+                    type: object
+                    description: Error details (empty if successful).
+                  data:
+                    type: array
+                    description: List of account instances.
+                    items:
+                      type: object
+                      properties:
+                        idInstance:
+                          type: string
+                          description: Instance identifier.
+                        apiTokenInstance:
+                          type: string
+                          description: API token for the instance.
+                        typeInstance:
+                          type: string
+                          description: Messenger type for the instance.
+                        timeCreated:
+                          type: string
+                          description: Instance creation time.
+                        timeDeleted:
+                          type: string
+                          nullable: true
+                          description: Instance deletion time.
+                        deleted:
+                          type: boolean
+                          description: Indicates if the instance is deleted.
+                        tariff:
+                          type: string
+                          description: Instance tariff plan.
+                        expirationDate:
+                          type: string
+                          nullable: true
+                          description: Instance payment expiration date.
+                        isExpired:
+                          type: boolean
+                          description: Indicates if the payment is overdue.
+                        name:
+                          type: string
+                          description: Instance name.
+                        typeAccount:
+                          type: string
+                          description: Account type (WA_DESKTOP or WA_MOBILE).
+                        releaseType:
+                          type: string
+                          description: Release type (STABLE or LATEST).
               example:
                 result: true
-                data:
-                  - idInstance: 1101000001
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:00'
-                    timeDeleted: '2021-12-02T05:50:21'
-                    apiTokenInstance: 3e03ea9ff3324e228ae3dfdf4d48e409bfa1b1ad0b0c46bf8c
-                    deleted: true
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000002
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:35'
-                    timeDeleted: '2021-12-02T05:51:08'
-                    apiTokenInstance: 94237c81721f421da7f4dceb51b91aca027f991e86334d67a9
-                    deleted: true
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000003
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:35'
-                    timeDeleted: '2021-12-02T05:51:14'
-                    apiTokenInstance: c397c24ed9b94e608c8fb0a0d16515bad86354d4990c499183
-                    deleted: true
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000004
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:36'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: d94a4fa25e76472ab32f8bb6a453d9d0395e6a55b9f5461a88
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000005
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:37'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: 046da3264bd441958792349a1bb79eed5b7c945a348c4057a6
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000006
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:38'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: bfe93e44ddcd4a4d8969ad69017b29704846f60c1990417a82
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000007
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:38'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: ea6b2d0e32e24d0b85ef9aa1492e5f663045a191f1354f5d81
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000008
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:40'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: d1d5b09cdd7548419153f058eddf2cb963af841295354432b2
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000009
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:41'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: 5ea7c6bc10e742fd881ffd3521271aee01613b2d5d6147f7bd
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000010
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:42'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: 396bf172115c4a1cafbc4ab12bff6ab3294066c0902b4f31a5
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000011
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:43'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: cfc10c1d4ab349beb6b087f7c8a44a61b285ccc12e69443090
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000012
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:43'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: 14b13a3733ba4caeb26145b9f5efb510a37a7822293147d4a0
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000013
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:44'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: 8ab8604c7abf484cb46ad58bc8f6fb9ab5aaa46f5b7d42f9be
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000014
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:45'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: 39464e0d33f245008d9ed5ef1e15892dde7aa0e84586416d9b
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000015
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:46'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: 6901a04c100d43e396420f4c90273b71bd42abefe7bd407d84
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000016
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:47'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: 4a8f7e3cc4c14acfa01c43eb6735d81dfe304591c25e4aa29d
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000017
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:48'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: 48bc986a5fba41949cd80326252307065cd1cb5682fc4cbc98
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000018
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:41:53'
-                    timeDeleted: '2021-12-02T05:56:01'
-                    apiTokenInstance: 0ca9dfc385694c059084b78d1afbf76f76db8f59499e40ca86
-                    deleted: true
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000019
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T05:49:46'
-                    timeDeleted: '0001-01-01T00:00:00'
-                    apiTokenInstance: 9b289b55f2964fd0b1852f375fdd8f233eac324a79ee46a89a
-                    deleted: false
-                    emailUser: admin@wasdk.pro
-                  - idInstance: 1101000037
-                    typeInstance: whatsapp
-                    typeAccount: ''
-                    partnerUserUiid: ''
-                    timeCreated: '2021-12-02T06:22:59'
-                    timeDeleted: '2021-12-02T06:23:49'
-                    apiTokenInstance: 2be110d129b144ecb2a867e487daa960b43b8acc24dc467988
-                    deleted: true
-                    emailUser: admin@wasdk.pro
                 error: {}
+                data:
+                  - idInstance: "1101000000"
+                    tariff: "DEVELOPER"
+                    typeInstance: "whatsapp"
+                    deleted: false
+                    apiTokenInstance: "1f2485e80f474293b935f77d78c64e76fa4bdceb417a4998a4"
+                    expirationDate: null
+                    isExpired: false
+                    name: "Instance 1101000000"
+                    timeCreated: "2023-04-25T17:44:24"
+                    timeDeleted: "2023-04-25T17:44:20"
+                    typeAccount: "WA_DESKTOP"
+                    releaseType: "STABLE"
+                  - idInstance: "1101000001"
+                    tariff: "UNLIMITED"
+                    typeInstance: "whatsapp"
+                    deleted: false
+                    apiTokenInstance: "c8b0474542154e0ead529eb3861ca5f483c346eb00564f64a7"
+                    expirationDate: null
+                    isExpired: false
+                    name: "Mailing 1"
+                    timeCreated: "2023-03-15T19:24:28"
+                    timeDeleted: null
+                    typeAccount: "WA_DESKTOP"
+                    releaseType: "STABLE"
+                  - idInstance: "1101000002"
+                    tariff: "BUSINESS"
+                    typeInstance: "whatsapp"
+                    deleted: false
+                    apiTokenInstance: "35d8b4907f8e494289b1d5f999e3582940ceffc413bf4a76b1"
+                    expirationDate: null
+                    isExpired: false
+                    name: "Mailing 2"
+                    timeCreated: "2023-03-16T10:44:03"
+                    timeDeleted: null
+                    typeAccount: "WA_DESKTOP"
+                    releaseType: "STABLE"
+        '400':
+          description: Error retrieving instances.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  error:
+                    type: string
+              example:
+                result: false
+                error: "Invalid user token"
   /api/v1/instance/user/instance/createByOrder:
     post:
       tags:
@@ -3280,12 +3186,12 @@ paths:
                 tariff: DEVELOPER
                 period: infinitely
       parameters:
-        - name: x-ga-user-id
+        - name: x-user-id
           in: header
           schema:
             type: string
           example: '{{user-id}}'
-        - name: x-ga-user-token
+        - name: x-user-token
           in: header
           schema:
             type: string
@@ -3374,17 +3280,17 @@ paths:
                 tariff: BUSINESS
                 period: month1
       parameters:
-        - name: x-ga-method
+        - name: x-method
           in: header
           schema:
             type: string
           example: user.instance.extend
-        - name: x-ga-user-id
+        - name: x-user-id
           in: header
           schema:
             type: string
           example: '{{user-id}}'
-        - name: x-ga-user-token
+        - name: x-user-token
           in: header
           schema:
             type: string
@@ -3461,12 +3367,12 @@ paths:
               example:
                 idInstance: 1101000864
       parameters:
-        - name: x-ga-user-id
+        - name: x-user-id
           in: header
           schema:
             type: string
           example: '{{user-id}}'
-        - name: x-ga-user-token
+        - name: x-user-token
           in: header
           schema:
             type: string
@@ -3543,12 +3449,12 @@ paths:
               example:
                 idInstance: 1101000864
       parameters:
-        - name: x-ga-user-id
+        - name: x-user-id
           in: header
           schema:
             type: string
           example: '{{user-id}}'
-        - name: x-ga-user-token
+        - name: x-user-token
           in: header
           schema:
             type: string
