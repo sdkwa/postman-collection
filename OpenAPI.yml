@@ -13,7 +13,16 @@ components:
       schema:
         type: string
       description: >
-        The `x-user-id` header specifies the unique user identifier required for authenticating API requests. You can find your user ID in the Account Access Settings section of your Personal Account on the [Profile](https://en-cabinet.sdkwa.pro/changePassword) page. This header must be included in all requests that require user authentication.
+        The `x-user-id` header specifies the unique user identifier required for authenticating API requests. You can find your user ID in the Account Access Settings section of your Personal Account on the [Profile](https://cabinet.sdkwa.pro/changePassword) page. This header must be included in all requests that require user authentication.
+    XUserTokenHeader:
+      name: x-user-token
+      in: header
+      required: true
+      schema:
+        type: string
+      description: >
+        The `x-user-token` header provides the account access key required for authenticating API requests. You can find your user token in the Account Access Settings section of your Personal Account on the [Profile](https://cabinet.sdkwa.pro/changePassword) page. This header must be included in all requests that require user authentication.
+
   securitySchemes:
     bearerAuth:
       type: http
@@ -3048,12 +3057,7 @@ paths:
         - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/XUserIdHeader'
-        - name: x-user-token
-          in: header
-          required: true
-          schema:
-            type: string
-          description: User token.
+        - $ref: '#/components/parameters/XUserTokenHeader'
       responses:
         '200':
           description: List of all account instances created by the user.
@@ -3177,12 +3181,7 @@ paths:
         - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/XUserIdHeader'
-        - name: x-user-token
-          in: header
-          required: true
-          schema:
-            type: string
-          description: User token.
+        - $ref: '#/components/parameters/XUserTokenHeader'
       requestBody:
         required: true
         content:
@@ -3360,12 +3359,7 @@ paths:
         - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/XUserIdHeader'
-        - name: x-user-token
-          in: header
-          required: true
-          schema:
-            type: string
-          description: User token.
+        - $ref: '#/components/parameters/XUserTokenHeader'
       requestBody:
         required: true
         content:
@@ -3551,12 +3545,7 @@ paths:
         - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/XUserIdHeader'
-        - name: x-user-token
-          in: header
-          required: true
-          schema:
-            type: string
-          description: User token.
+        - $ref: '#/components/parameters/XUserTokenHeader'
       requestBody:
         required: true
         content:
@@ -3621,12 +3610,7 @@ paths:
         - ApiKeyAuth: []
       parameters:
         - $ref: '#/components/parameters/XUserIdHeader'
-        - name: x-user-token
-          in: header
-          required: true
-          schema:
-            type: string
-          description: User token.
+        - $ref: '#/components/parameters/XUserTokenHeader'
       requestBody:
         required: true
         content:
