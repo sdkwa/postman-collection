@@ -564,28 +564,93 @@ paths:
       tags:
         - Account
       summary: Request registration code
-      description: Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)
+      description: The method is designed to receive a phone number registration code via SMS or a call.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               type: object
-              example:
-                phoneNumber: 7123456789
-                method: sms
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: idInstance
-          in: path
-          schema:
-            type: string
-          required: true
+              properties:
+                phoneNumber:
+                  type: number
+                  description: Phone number with country code, for example 7123456789
+                method:
+                  type: string
+                  enum: [sms, voice]
+                  description: Request type. `voice` or `sms` is supported.
+              required:
+                - phoneNumber
+                - method
+            example:
+              phoneNumber: 7123456789
+              method: sms
       responses:
         '200':
-          description: Successful response
+          description: Successful response with registration code request status.
           content:
-            application/json: {}
+            application/json:
+              schema:
+                oneOf:
+                  - type: object
+                    properties:
+                      flash_type:
+                        type: number
+                        description: System parameter
+                      login:
+                        type: string
+                        description: Phone number
+                      length:
+                        type: string
+                        description: Code length. The default value is 6. Present only for successful sending.
+                      method:
+                        type: string
+                        description: Code getting method. Present only for successful submission.
+                      reason:
+                        type: string
+                        description: The reason why it is not possible to receive the code.
+                      retry_after:
+                        type: number
+                        description: Countdown in seconds until the next attempt
+                      sms_wait:
+                        type: number
+                        description: Countdown in seconds until next sms attempt
+                      status:
+                        type: string
+                        description: The status of the current request. For example, sent - the code has been sent, fail - an unsuccessful attempt
+                      voice_wait:
+                        type: string
+                        description: Countdown in seconds until the next attempt to request a code on a call
+                      wa_old_wait:
+                        type: string
+                        description: Countdown of the time during which the received code is active
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum: [alreadyLogged]
+                        description: Indicates the account is already logged in.
+                      message:
+                        type: string
+                        description: instance account already authorized
+              examples:
+                success:
+                  summary: Successful code request
+                  value:
+                    flash_type: 0
+                    login: "7123456789"
+                    length: "6"
+                    method: "sms"
+                    status: "sent"
+                    retry_after: 0
+                    sms_wait: 0
+                    voice_wait: "0"
+                    wa_old_wait: "300"
+                alreadyLogged:
+                  summary: Account already logged in
+                  value:
+                    type: "alreadyLogged"
+                    message: "instance account already authorized"
   /whatsapp/{idInstance}/sendRegistrationCode/:
     post:
       tags:
