@@ -888,11 +888,22 @@ paths:
     post:
       tags:
         - Sending
-      summary: Send video, audio, image, document
-      description: >-
-        Документация
-        [SendFileByUpload](https://sdkwa.pro/en/docs/api/sending/SendFileByUpload/)
+      summary: Send file by upload
+      description: >
+        This method allows you to send a file by uploading it using form-data. The file message is placed in the sending queue, and the sending rate is controlled by the Message sending delay parameter.
+        Video, audio, and image files are sent in a way that allows them to be viewed or played natively in WhatsApp. Documents are also sent as in native WhatsApp. The file type and sending method are determined by the file extension. Captions can be added to images and videos only.
+        The maximum allowed file size is 100 MB.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idInstance
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique instance identifier.
       requestBody:
+        required: true
         content:
           multipart/form-data:
             schema:
@@ -900,56 +911,42 @@ paths:
               properties:
                 chatId:
                   type: string
-                  example: 790012345673442@c.us
-                caption:
-                  type: string
-                  example: Description
+                  description: Chat Id (personal or group)
                 file:
                   type: string
                   format: binary
+                  description: Outgoing file to be sent
                 fileName:
                   type: string
-                  example: window.jpg
+                  description: File name, including extension
+                caption:
+                  type: string
+                  description: Caption for the file (applies to images and videos only)
                 quotedMessageId:
                   type: string
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: idInstance
-          in: path
-          schema:
-            type: string
-          required: true
+                  description: Quoted message ID. If present, the message will be sent quoting the specified chat message.
+              required:
+                - chatId
+                - file
+            example:
+              chatId: "11001234567@c.us"
+              file: (binary)
+              fileName: "window.jpg"
+              caption: "Description"
+              quotedMessageId: "361B0E63F2FDF95903B6A9C9A102F34B"
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Fri, 17 Apr 2020 13:32:52 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '41'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Successful response with sent message ID.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  idMessage:
+                    type: string
+                    description: Sent message Id
               example:
-                idMessage: 3EB0EA03CB2EAFD864F6
+                idMessage: "3EB0C767D097B7C7C030"
   /whatsapp{idInstance}/sendFileByUrl:
     post:
       tags:
