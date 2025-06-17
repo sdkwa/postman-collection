@@ -739,7 +739,7 @@ paths:
               properties:
                 chatId:
                   type: string
-                  description: Chat Id (personal or group)
+                  description: Chat Id (personal like 11001234567@c.us or group like 11001234567-1581234048@g.us)
                 message:
                   type: string
                   description: Message text. Emoji 😃 characters supported. Max length 4096 characters.
@@ -785,81 +785,105 @@ paths:
                     description: Sent message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /whatsapp{idInstance}/sendMessage:
+  /whatsapp/{idInstance}/sendContact:
     post:
       tags:
         - Sending
-      summary: Send text to group
-      description: >-
-        Документация
-        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                chatId: 123456789012345678@g.us
-                message: test
+      summary: Send contact
+      description: >
+        This method allows you to send a contact card message to a chat. The contact message is placed in the sending queue and does not require a linked device at the time of sending.
+        Messages will remain in the queue for up to 24 hours until the account is authorized.
+        The rate at which messages are sent from the queue is controlled by the Message sending delay parameter.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
-      responses:
-        '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Fri, 17 Apr 2020 13:14:58 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '41'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                idMessage: 3EB0C767D097B7C7C030
-  /whatsapp{idInstance}/sendContact:
-    post:
-      tags:
-        - Sending
-      summary: Send contact
-      description: >-
-        Документация
-        [SendContact](https://sdkwa.pro/en/docs/api/sending/SendContact/)
+          description: Unique instance identifier.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               type: object
-              example:
-                chatId: 7900123456725@c.us
+              properties:
+                chatId:
+                  type: string
+                  description: Chat Id (personal or group)
                 contact:
-                  phoneContact: 7900123456858
-                  firstName: David
-                  middleName: David
-                  lastName: David
-                  company: Train
+                  type: object
+                  required:
+                    - phoneContact
+                  properties:
+                    phoneContact:
+                      type: integer
+                      description: Contact phone number in international format (no +), 11 or 12 digits
+                    firstName:
+                      type: string
+                      description: Contact first name (required if middleName, lastName, and company are not specified)
+                    middleName:
+                      type: string
+                      description: Contact middle name (required if firstName, lastName, and company are not specified)
+                    lastName:
+                      type: string
+                      description: Contact last name (required if firstName, middleName, and company are not specified)
+                    company:
+                      type: string
+                      description: Contact company name (required if firstName, middleName, and lastName are not specified)
+                quotedMessageId:
+                  type: string
+                  description: Quoted message ID. If present, the message will be sent quoting the specified chat message.
+              required:
+                - chatId
+                - contact
+            examples:
+              personal:
+                summary: Sending a contact to a personal chat
+                value:
+                  chatId: "11001234567@c.us"
+                  contact:
+                    phoneContact: 79001234568
+                    firstName: "Artem"
+                    middleName: "Petrovich"
+                    lastName: "Evpatoriysky"
+                    company: "Bicycle"
+              group:
+                summary: Sending a contact to a group chat
+                value:
+                  chatId: "11001234567-1581234048@g.us"
+                  contact:
+                    phoneContact: 79001234568
+                    firstName: "Artem"
+                    middleName: "Petrovich"
+                    lastName: "Evpatoriysky"
+                    company: "Bicycle"
+              quoted:
+                summary: Sending a quoted contact message
+                value:
+                  chatId: "11001234567@c.us"
+                  quotedMessageId: "361B0E63F2FDF95903B6A9C9A102F34B"
+                  contact:
+                    phoneContact: 79001234568
+                    firstName: "Artem"
+                    middleName: "Petrovich"
+                    lastName: "Evpatoriysky"
+                    company: "Bicycle"
+      responses:
+        '200':
+          description: Successful response with outgoing message ID.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  idMessage:
+                    type: string
+                    description: Outgoing message Id
+              example:
+                idMessage: "3EB0C767D097B7C7C030"
       security:
         - bearerAuth: []
       parameters:
