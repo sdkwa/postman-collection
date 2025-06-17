@@ -5,6 +5,15 @@ info:
 servers:
   - url: http://api.sdkwa.pro
 components:
+  parameters:
+    XUserIdHeader:
+      name: x-user-id
+      in: header
+      required: true
+      schema:
+        type: string
+      description: >
+        The `x-user-id` header specifies the unique user identifier required for authenticating API requests. You can find your user ID in the Account Access Settings section of your Personal Account on the [Profile](https://en-cabinet.sdkwa.pro/changePassword) page. This header must be included in all requests that require user authentication.
   securitySchemes:
     bearerAuth:
       type: http
@@ -3038,12 +3047,7 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: x-user-id
-          in: header
-          required: true
-          schema:
-            type: string
-          description: User ID.
+        - $ref: '#/components/parameters/XUserIdHeader'
         - name: x-user-token
           in: header
           required: true
@@ -3172,12 +3176,7 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: x-user-id
-          in: header
-          required: true
-          schema:
-            type: string
-          description: User ID.
+        - $ref: '#/components/parameters/XUserIdHeader'
         - name: x-user-token
           in: header
           required: true
@@ -3360,12 +3359,7 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: x-user-id
-          in: header
-          required: true
-          schema:
-            type: string
-          description: User ID.
+        - $ref: '#/components/parameters/XUserIdHeader'
         - name: x-user-token
           in: header
           required: true
@@ -3556,12 +3550,7 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: x-user-id
-          in: header
-          required: true
-          schema:
-            type: string
-          description: User ID.
+        - $ref: '#/components/parameters/XUserIdHeader'
         - name: x-user-token
           in: header
           required: true
@@ -3631,12 +3620,7 @@ paths:
       security:
         - ApiKeyAuth: []
       parameters:
-        - name: x-user-id
-          in: header
-          required: true
-          schema:
-            type: string
-          description: User ID.
+        - $ref: '#/components/parameters/XUserIdHeader'
         - name: x-user-token
           in: header
           required: true
