@@ -2603,12 +2603,21 @@ paths:
   /whatsapp/{idInstance}/setProfilePicture:
     post:
       tags:
-        - Service methods
+        - Account
       summary: Set profile picture
-      description: >-
-        Документация
-        [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)
+      description: >
+        This method sets a new profile picture for the account by uploading a JPEG image file.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idInstance
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique instance identifier.
       requestBody:
+        required: true
         content:
           multipart/form-data:
             schema:
@@ -2617,45 +2626,32 @@ paths:
                 file:
                   type: string
                   format: binary
-      parameters:
-        - name: idInstance
-          in: path
-          schema:
-            type: string
-          required: true
+                  description: JPEG image file to set as the profile picture.
+              required:
+                - file
+            example:
+              file: (binary)
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Tue, 21 Apr 2020 13:16:18 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '26'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Indicates whether the profile picture was successfully set and provides the URL of the new picture.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  setProfilePicture:
+                    type: boolean
+                    description: Result flag for setting the profile picture.
+                  urlAvatar:
+                    type: string
+                    description: URL of the set profile picture.
+                  reason:
+                    type: string
+                    description: Reason why the picture was not set (empty if successful).
               example:
-                reason: ''
-                urlAvatar: >-
-                  https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA
                 setProfilePicture: true
+                urlAvatar: "https://pps.whatsapp.net/v/t61.24******-24/23**********_********23704_************77468_n.jpg?ccb=11-4&oh=**********b6ccc377d6332abad7d0bb&oe=********"
+                reason: ""
   /whatsapp/{idInstance}/archiveChat:
     post:
       tags:
