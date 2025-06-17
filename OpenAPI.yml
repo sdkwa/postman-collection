@@ -1203,131 +1203,86 @@ paths:
                     typeMessage: "textMessage"
                     textMessageData:
                       textMessage: "hello world"
-  /whatsapp/{idInstance}/deleteNotification/12:
+  /whatsapp/{idInstance}/deleteNotification/{receiptId}:
     delete:
       tags:
-        - Receiving > Receiving notification
+        - Receiving
       summary: Delete notification
-      description: >-
-        Документация
-        [DeleteNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)
+      description: >
+        This method deletes an incoming notification from the notification queue using the specified `receiptId`. After you receive and process a notification, call this method to permanently remove it from the queue. Once deleted, the notification is considered processed, and the next call to ReceiveNotification will return the next notification in FIFO order. Notifications are stored in the queue for 24 hours.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
+          description: Unique instance identifier.
+        - name: receiptId
+          in: path
           required: true
+          schema:
+            type: integer
+          description: Receipt Id for deleting an incoming notification received by the ReceiveNotification method.
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.24.0 (Ubuntu)
-            Date:
-              schema:
-                type: string
-                example: Fri, 11 Oct 2024 11:12:32 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '15'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Vary:
-              schema:
-                type: string
-                example: Access-Control-Request-Headers
-            Content-Security-Policy:
-              schema:
-                type: string
-                example: >-
-                  default-src 'self';base-uri
-                  'self';block-all-mixed-content;font-src 'self' https:
-                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
-                  'none';script-src 'self';script-src-attr 'none';style-src
-                  'self' https: 'unsafe-inline';upgrade-insecure-requests
-            X-DNS-Prefetch-Control:
-              schema:
-                type: string
-                example: 'off'
-            Expect-CT:
-              schema:
-                type: string
-                example: max-age=0
-            X-Frame-Options:
-              schema:
-                type: string
-                example: SAMEORIGIN
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Download-Options:
-              schema:
-                type: string
-                example: noopen
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            X-Permitted-Cross-Domain-Policies:
-              schema:
-                type: string
-                example: none
-            Referrer-Policy:
-              schema:
-                type: string
-                example: no-referrer
-            X-XSS-Protection:
-              schema:
-                type: integer
-                example: '0'
-            ETag:
-              schema:
-                type: string
-                example: W/"f-ayLlCL3PuzXSThdu78iReSEjl6Y"
+          description: Result of deleting the incoming notification.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  result:
+                    type: boolean
+                    description: >
+                      Incoming notification deleting result: `true` if the notification was successfully deleted from the queue; `false` if the notification was not deleted (for example, if it was already deleted or the receiptId is invalid).
               example:
                 result: true
-  /waInstance{idInstance}/downloadFile/{idMessage}:
-    get:
+  /whatsapp/{idInstance}/downloadFile/{idMessage}:
+    post:
       tags:
-        - Receiving > Get files
-      summary: Download file from incoming message
-      description: >-
-        Документация
-        [DownloadFile](https://sdkwa.pro/en/docs/api/receiving/files/DownloadFile/)
+        - Sending
+      summary: Download file
+      description: >
+        This method allows you to download incoming and outgoing files. Links to incoming files are provided in incoming messages and can also be obtained using the LastIncomingMessages method. Outgoing file links are available via the LastOutgoingMessages method. The storage period for files, and thus the ability to download them, is limited by WhatsApp.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
         - name: idMessage
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Message Id from incoming messages or file sending methods.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: Chat Id, e.g., 7900023125@c.us
+              required:
+                - chatId
+            example:
+              chatId: "790000312312@c.us"
       responses:
         '200':
-          description: Successful response
+          description: File content as a binary stream.
           content:
-            application/json: {}
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
   /whatsapp/{idInstance}/getChatHistory:
     post:
       tags:
