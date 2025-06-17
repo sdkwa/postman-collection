@@ -1338,7 +1338,7 @@ paths:
                       description: Message Id.
                     statusMessage:
                       type: string
-                      description: Outgoing message status (only for outgoing messages): sent, delivered, or read.
+                      description: Outgoing message status (only for outgoing messages) sent, delivered, or read.
                     typeMessage:
                       type: string
                       description: Message type (e.g., textMessage, imageMessage, videoMessage, documentMessage, audioMessage, locationMessage, contactMessage, extendedTextMessage).
