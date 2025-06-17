@@ -1812,54 +1812,48 @@ paths:
     post:
       tags:
         - Groups
-      summary: Change group name
-      description: >-
-        Документация
-        [UpdateGroupName](https://sdkwa.pro/en/docs/api/groups/UpdateGroupName/)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                groupId: 79001234567-1587570015@g.us
-                groupName: Group created by WASDK+
+      summary: Update group name
+      description: >
+        This method changes the name of a group chat for the specified instance.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                groupId:
+                  type: string
+                  description: Group chat Id.
+                groupName:
+                  type: string
+                  description: New group chat name.
+              required:
+                - groupId
+                - groupName
+            example:
+              groupId: "11001234567-1587570015@g.us"
+              groupName: "Group created by Basis API+"
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Tue, 28 Apr 2020 14:42:45 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '29'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Indicates whether the group name was successfully changed.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  updateGroupName:
+                    type: boolean
+                    description: Group name change flag.
               example:
                 updateGroupName: true
   /whatsapp/{idInstance}/getGroupData:
