@@ -47,241 +47,206 @@ paths:
     get:
       tags:
         - Account
-      summary: Get account settings
-      description: |-
-        The method gets current account settings.
-
-        | Parameter                         | Type      | Description                                                                                                 |
-        | --------------------------------- | --------- | ----------------------------------------------------------------------------------------------------------- |
-        | `wid`                             | **string**| Account ID in WhatsApp                                                                                      |
-        | `countryInstance`                 | **string**| Account country code in accordance with standard [ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2)     |
-        | `typeAccount`                     | **string**| Account type, possible variants: `WA_DESKTOP`, `WA_MOBILE`                                                  |
-        | `releaseType`                     | **string**| Release type, possible variants: `STABLE`, `LATEST`                                                         |
-        | `webhookUrl`                      | **string**| URL to receive incoming notifications                                                                       |
-        | `webhookUrlToken`                 | **string**| Token for connecting to your webhook server                                                                 |
-        | `delaySendMessagesMilliseconds`   | **integer**| [Min message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md) in milliseconds |
-        | `delaySendMessagesMaxMs`          | **integer**| [Max message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md) in milliseconds |
-        | `markIncomingMessagesReaded`      | **string**| Mark incoming messages as read or not, possible variants: `yes`, `no`. Ignored if markIncomingMessagesReadedOnReply is 'yes'. |
-        | `markIncomingMessagesReadedOnReply`| **string**| Mark incoming messages as read when sending a message to the chat via API, possible variants: `yes`, `no`. If 'yes', then markIncomingMessagesReaded setting is ignored. |
-        | `outgoingWebhook`                 | **string**| Get notifications about outgoing messages sending / delivering / reading status, possible variants: `yes`, `no` |
-        | `outgoingMessageWebhook`          | **string**| Get notifications about messages sent from phone, possible variants: `yes`, `no`                            |
-        | `stateWebhook`                    | **string**| Get notifications about changes in the account authorization status, possible variants: `yes`, `no`         |
-        | `incomingWebhook`                 | **string**| Get notifications about incoming messages and files, possible variants: `yes`, `no`                         |
-        | `deviceWebhook`                   | **string**| Get notifications about the device (phone) and battery level, possible variants: `yes`, `no`                |
-        | `statusInstanceWebhook`           | **string**| Get notifications about the account socket connection status change, possible variants: `yes`, `no`         |
+      summary: Get current account settings
+      description: >
+        This method retrieves the current settings for the specified account instance, including webhook configuration, message delay, and notification preferences.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.24.0 (Ubuntu)
-            Date:
-              schema:
-                type: string
-                example: Thu, 10 Oct 2024 10:22:47 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '560'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Vary:
-              schema:
-                type: string
-                example: Access-Control-Request-Headers
-            Content-Security-Policy:
-              schema:
-                type: string
-                example: >-
-                  default-src 'self';base-uri 'self';font-src 'self' https:
-                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
-                  data:;object-src 'none';script-src 'self';script-src-attr
-                  'none';style-src 'self' https:
-                  'unsafe-inline';upgrade-insecure-requests
-            Cross-Origin-Embedder-Policy:
-              schema:
-                type: string
-                example: require-corp
-            Cross-Origin-Opener-Policy:
-              schema:
-                type: string
-                example: same-origin
-            Cross-Origin-Resource-Policy:
-              schema:
-                type: string
-                example: same-origin
-            X-DNS-Prefetch-Control:
-              schema:
-                type: string
-                example: 'off'
-            X-Frame-Options:
-              schema:
-                type: string
-                example: SAMEORIGIN
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Download-Options:
-              schema:
-                type: string
-                example: noopen
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            Origin-Agent-Cluster:
-              schema:
-                type: string
-                example: '?1'
-            X-Permitted-Cross-Domain-Policies:
-              schema:
-                type: string
-                example: none
-            Referrer-Policy:
-              schema:
-                type: string
-                example: no-referrer
-            X-XSS-Protection:
-              schema:
-                type: integer
-                example: '0'
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Access-Control-Allow-Methods:
-              schema:
-                type: string
-                example: GET,PUT,POST,DELETE
-            Access-Control-Allow-Headers:
-              schema:
-                type: string
-                example: Content-Type, Accept
-            ETag:
-              schema:
-                type: string
-                example: W/"26c-4dwUF3WcorkkO2ZkC+B5NLUfud4"
+          description: Current account settings.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  wid:
+                    type: string
+                    description: Account ID in WhatsApp.
+                  countryInstance:
+                    type: string
+                    description: Account country code (ISO 3166-2).
+                  typeAccount:
+                    type: string
+                    description: Account type (e.g., WA_DESKTOP, WA_MOBILE).
+                  releaseType:
+                    type: string
+                    description: Release type (e.g., STABLE, LATEST).
+                  webhookUrl:
+                    type: string
+                    description: URL to receive incoming notifications.
+                  webhookUrlToken:
+                    type: string
+                    description: Token for connecting to your webhook server.
+                  delaySendMessagesMilliseconds:
+                    type: integer
+                    description: Minimum message sending delay in milliseconds.
+                  delaySendMessagesMaxMs:
+                    type: integer
+                    description: Maximum message sending delay in milliseconds.
+                  markIncomingMessagesReaded:
+                    type: string
+                    description: Mark incoming messages as read ("yes" or "no").
+                  markIncomingMessagesReadedOnReply:
+                    type: string
+                    description: Mark incoming messages as read when replying via API ("yes" or "no").
+                  outgoingWebhook:
+                    type: string
+                    description: Notifications for outgoing message status ("yes" or "no").
+                  outgoingMessageWebhook:
+                    type: string
+                    description: Notifications for messages sent from phone ("yes" or "no").
+                  stateWebhook:
+                    type: string
+                    description: Notifications for account authorization status changes ("yes" or "no").
+                  incomingWebhook:
+                    type: string
+                    description: Notifications for incoming messages and files ("yes" or "no").
+                  deviceWebhook:
+                    type: string
+                    description: Notifications about device and battery level ("yes" or "no").
+                  statusInstanceWebhook:
+                    type: string
+                    description: Notifications about account socket connection status changes ("yes" or "no").
+                  sendFromUTC:
+                    type: string
+                    description: Time to start sending messages (UTC).
+                  sendToUTC:
+                    type: string
+                    description: Time to stop sending messages (UTC).
               example:
-                wid: ''
-                countryInstance: ''
-                typeAccount: WA_DESKTOP
-                webhookUrl: http://184.107.167.193:4001/webhook
-                webhookUrlToken: ''
-                delaySendMessagesMilliseconds: 1000
-                delaySendMessagesMaxMs: 1000
-                markIncomingMessagesReaded: 'yes'
-                markIncomingMessagesReadedOnReply: 'no'
-                sharedSession: 'no'
-                proxyInstance: system proxy
-                outgoingWebhook: 'no'
-                outgoingMessageWebhook: 'no'
-                outgoingAPIMessageWebhook: 'no'
-                incomingWebhook: 'yes'
-                deviceWebhook: 'no'
-                statusInstanceWebhook: 'yes'
-                stateWebhook: 'no'
-                enableMessagesHistory: 'yes'
-                keepOnlineStatus: 'no'
+                wid: "11001234567@c.us"
+                countryInstance: "ru"
+                typeAccount: "vip"
+                webhookUrl: "https://mysite.com/webhook/sdkwa.pro/"
+                webhookUrlToken: ""
+                delaySendMessagesMilliseconds: 3000
+                markIncomingMessagesReaded: "yes"
+                markIncomingMessagesReadedOnReply: "no"
+                outgoingWebhook: "yes"
+                outgoingMessageWebhook: "yes"
+                stateWebhook: "yes"
+                incomingWebhook: "yes"
+                deviceWebhook: "no"
+                statusInstanceWebhook: "yes"
+                sendFromUTC: "12:00"
+                sendToUTC: "18:00"
   /whatsapp/{idInstance}/setSettings:
     post:
       tags:
         - Account
       summary: Set account settings
-      description: |-
-        The method sets current account settings.
-
-        | Parameter                       | Type     | Mandatory | Description                                                                                       |
-        |---------------------------------|----------|-----------|---------------------------------------------------------------------------------------------------|
-        | `countryInstance`               | string   | No        | Account country code in accordance with [ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2)    |
-        | `webhookUrl`                    | string   | No        | URL for sending notifications. To disable notifications, specify an empty string                  |
-        | `webhookUrlToken`               | string   | No        | Token to access your notification server, or empty string if not required                         |
-        | `delaySendMessagesMilliseconds` | integer  | No        | [Min message sending delay](../send-messages-delay.md) in milliseconds                            |
-        | `delaySendMessagesMaxMs`        | integer  | No        | [Max message sending delay](../send-messages-delay.md) in milliseconds                            |
-        | `markIncomingMessagesReaded`    | string   | No        | Mark incoming messages as read or not, possible values: `yes`, `no`. Ignored if ...OnReply is 'yes'|
-        | `markIncomingMessagesReadedOnReply` | string | No        | Mark incoming messages as read when posting a message via API, values: `yes`, `no`. If 'yes', ... |
-        | `outgoingWebhook`               | string   | No        | Get notifications about outgoing messages sending/delivering/reading statuses: `yes`, `no`        |
-        | `outgoingMessageWebhook`        | string   | No        | Get notifications about messages sent from the phone: `yes`, `no`                                 |
-        | `outgoingAPIMessageWebhook`     | string   | No        | Get notifications about messages sent from the API: `yes`, `no`                                   |
-        | `stateWebhook`                  | string   | No        | Get notifications about the account authorization state change: `yes`, `no`                       |
-        | `incomingWebhook`               | string   | No        | Get notifications about incoming messages and files: `yes`, `no`                                  |
-        | `deviceWebhook`                 | string   | No        | Get notifications about the device (phone) and battery level: `yes`, `no`                         |
-        | `statusInstanceWebhook`         | string   | No        | Get notifications about the account socket connection status change: `yes`, `no`                  |
-        | `keepOnlineStatus`              | string   | No        | Set status "Online", possible values: `yes`, `no`                                                 |
-        | `proxyInstance`                 | string   | No        | Specify the client's own proxy address in format ip:port:login:password                           |
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                webhookUrl: ''
-                webhookUrlToken: ''
-                delaySendMessagesMilliseconds: 1000
-                markIncomingMessagesReaded: 'no'
-                markIncomingMessagesReadedOnReply: 'no'
-                outgoingWebhook: 'yes'
-                outgoingMessageWebhook: 'yes'
-                outgoingAPIMessageWebhook: 'no'
-                incomingWebhook: 'yes'
-                stateWebhook: 'yes'
-                keepOnlineStatus: 'no'
+      description: >
+        This method updates the account settings for the specified instance. When this method is called, the account is rebooted. You can specify any combination of settings parameters; at least one parameter must be provided.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                countryInstance:
+                  type: string
+                  description: Account country code (ISO 3166-2).
+                webhookUrl:
+                  type: string
+                  description: URL for sending notifications. Use an empty string to disable notifications.
+                webhookUrlToken:
+                  type: string
+                  description: Token to access your notification server, or empty string if not required.
+                delaySendMessagesMilliseconds:
+                  type: integer
+                  description: Minimum message sending delay in milliseconds.
+                delaySendMessagesMaxMs:
+                  type: integer
+                  description: Maximum message sending delay in milliseconds.
+                markIncomingMessagesReaded:
+                  type: string
+                  description: Mark incoming messages as read ("yes" or "no").
+                markIncomingMessagesReadedOnReply:
+                  type: string
+                  description: Mark incoming messages as read when replying via API ("yes" or "no").
+                outgoingWebhook:
+                  type: string
+                  description: Notifications for outgoing message status ("yes" or "no").
+                outgoingMessageWebhook:
+                  type: string
+                  description: Notifications for messages sent from phone ("yes" or "no").
+                outgoingAPIMessageWebhook:
+                  type: string
+                  description: Notifications for messages sent from API ("yes" or "no").
+                stateWebhook:
+                  type: string
+                  description: Notifications for account authorization status changes ("yes" or "no").
+                incomingWebhook:
+                  type: string
+                  description: Notifications for incoming messages and files ("yes" or "no").
+                deviceWebhook:
+                  type: string
+                  description: Notifications about device and battery level ("yes" or "no").
+                statusInstanceWebhook:
+                  type: string
+                  description: Notifications about account socket connection status changes ("yes" or "no").
+                keepOnlineStatus:
+                  type: string
+                  description: Set status "Online" ("yes" or "no").
+                proxyInstance:
+                  type: string
+                  description: Client proxy address in the format ip:port:login:password.
+                sendFromUTC:
+                  type: string
+                  description: Time to start sending messages (UTC). Must be used together with sendToUTC.
+                sendToUTC:
+                  type: string
+                  description: Time to stop sending messages (UTC). Must be used together with sendFromUTC.
+            examples:
+              general:
+                summary: General settings update
+                value:
+                  countryInstance: "ru"
+                  webhookUrl: "https://mysite.com/webhook/sdkwa.pro/"
+                  webhookUrlToken: ""
+                  delaySendMessagesMilliseconds: 1000
+                  markIncomingMessagesReaded: "no"
+                  markIncomingMessagesReadedOnReply: "no"
+                  outgoingWebhook: "yes"
+                  outgoingMessageWebhook: "yes"
+                  stateWebhook: "yes"
+                  incomingWebhook: "yes"
+                  deviceWebhook: "no"
+                  statusInstanceWebhook: "yes"
+              timeInterval:
+                summary: Set sending time interval
+                value:
+                  sendFromUTC: "09:00"
+                  sendToUTC: "15:00"
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Tue, 21 Apr 2020 13:16:18 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '26'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Indicates whether the settings were successfully saved.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  saveSettings:
+                    type: boolean
+                    description: Flag that the settings are saved.
               example:
                 saveSettings: true
   /whatsapp/{idInstance}/getStateInstance:
