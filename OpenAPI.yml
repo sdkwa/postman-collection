@@ -2304,52 +2304,54 @@ paths:
     post:
       tags:
         - Read mark
-      summary: Mark message as read
-      description: Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                chatId: 79001234567@c.us
-                idMessage: B275A7AA0D6EF89BB9245169BDF174E6
+      summary: Mark chat messages as read
+      description: >
+        This method marks messages in a chat as read. You can mark either all messages or a specific message in the chat as read.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: Chat Id.
+                idMessage:
+                  type: string
+                  description: ID of the incoming message to mark as read. If omitted, all unread messages in the chat will be marked as read.
+              required:
+                - chatId
+            examples:
+              singleMessage:
+                summary: Mark a single message as read
+                value:
+                  chatId: "11001234567@c.us"
+                  idMessage: "B275A7AA0D6EF89BB9245169BDF174E6"
+              allMessages:
+                summary: Mark all messages as read
+                value:
+                  chatId: "11001234567@c.us"
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Wed, 06 May 2020 20:36:35 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '21'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Indicates whether the messages were successfully marked as read.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  setRead:
+                    type: boolean
+                    description: Messages read mark flag.
               example:
                 setRead: true
   /whatsapp/{idInstance}/readChat/:
