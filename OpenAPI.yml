@@ -656,27 +656,61 @@ paths:
       tags:
         - Account
       summary: Send registration code
-      description: Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                code: '99999'
+      description: >
+        The method is intended for sending the phone number registration code received via SMS or call.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: The registration code received via SMS or call.
+              required:
+                - code
+            example:
+              code: "999999"
       responses:
         '200':
-          description: Successful response
+          description: Response indicating the result of sending the registration code.
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    description: Message type, possible values are `error`, `alreadyLogged`.
+                  message:
+                    type: string
+                    description: The content of the message. Varies depending on the value of the `type` field.
+              examples:
+                success:
+                  summary: Successful code submission
+                  value:
+                    type: ""
+                    message: "Registration code accepted"
+                error:
+                  summary: Error response
+                  value:
+                    type: "error"
+                    message: "Invalid code"
+                alreadyLogged:
+                  summary: Already logged in response
+                  value:
+                    type: "alreadyLogged"
+                    message: "instance account already authorized"
   /whatsapp/{idInstance}/sendMessage:
     post:
       tags:
