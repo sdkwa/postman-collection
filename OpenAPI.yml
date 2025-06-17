@@ -254,46 +254,39 @@ paths:
       tags:
         - Account
       summary: Get account state
-      description: >-
-        The method gets the account state.
+      description: >
+        This method retrieves the current state of the account instance. Possible states include:
+        - `notAuthorized`: The account is not authorized. See the QR code authorization instructions.
+        - `authorized`: The account is authorized and ready to use.
+        - `blocked`: The account is banned.
+        - `starting`: The account is starting up or in maintenance mode. It may take up to 5 minutes to become authorized, or the instance may have a non-working user proxy.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Fri, 17 Apr 2020 14:31:40 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '35'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Current state of the account instance.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  stateInstance:
+                    type: string
+                    description: >
+                      Account state. Possible values:
+                        - `notAuthorized`: Account is not authorized.
+                        - `authorized`: Account is authorized.
+                        - `blocked`: Account is banned.
+                        - `starting`: Account is starting up or in maintenance mode.
               example:
-                stateInstance: authorized
+                stateInstance: "authorized"
   /whatsapp/{idInstance}/getWarmingPhoneStatus:
     get:
       tags:
