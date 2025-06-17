@@ -3033,7 +3033,7 @@ paths:
   /api/v1/instance/user/instances/list:
     post:
       tags:
-        - instances management
+        - Instances management
       summary: Get user account instances
       description: >
         This method retrieves all account instances created by the user.
