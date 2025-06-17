@@ -348,191 +348,115 @@ paths:
       tags:
         - Account
       summary: Reboot account
-      description: The method reboots the whatsapp account.
+      description: >
+        This method reboots the specified WhatsApp account instance.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Fri, 17 Apr 2020 14:29:41 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '22'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Indicates whether the WhatsApp account was successfully rebooted.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  isReboot:
+                    type: boolean
+                    description: Result of rebooting WhatsApp account.
               example:
                 isReboot: true
   /whatsapp/{idInstance}/logout:
     get:
       tags:
         - Account
-      summary: Logout account. 
-      description: The method logout the account from whatsapp. 
+      summary: Logout account
+      description: >
+        This method logs out the specified WhatsApp account instance.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Fri, 17 Apr 2020 14:24:29 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '22'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Indicates whether the WhatsApp account was successfully logged out.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  isLogout:
+                    type: boolean
+                    description: WhatsApp account logging out result.
               example:
                 isLogout: true
   /whatsapp/{idInstance}/qr:
     get:
       tags:
         - Account
-      summary: Get QR code
-      description: |
-        The method retrieves a QR code.
-        To authorize your account, scan the QR code using the WhatsApp Business app on your phone.
-        Alternatively, you can obtain a QR code and complete authorization from your profile.
+      summary: Get QR code for account authorization
+      description: >
+        This method returns a QR code for authorizing your WhatsApp account. 
+        Scan the QR code using the WhatsApp Business app on your phone. 
+        The QR code is updated every 20 seconds, so it is recommended to request this method with a 1-second delay. 
+        If the account is already authorized, you must log out before requesting a new QR code.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.24.0 (Ubuntu)
-            Date:
-              schema:
-                type: string
-                example: Thu, 10 Oct 2024 13:29:54 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '6310'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Vary:
-              schema:
-                type: string
-                example: Access-Control-Request-Headers
-            Content-Security-Policy:
-              schema:
-                type: string
-                example: >-
-                  default-src 'self';base-uri
-                  'self';block-all-mixed-content;font-src 'self' https:
-                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
-                  'none';script-src 'self';script-src-attr 'none';style-src
-                  'self' https: 'unsafe-inline';upgrade-insecure-requests
-            X-DNS-Prefetch-Control:
-              schema:
-                type: string
-                example: 'off'
-            Expect-CT:
-              schema:
-                type: string
-                example: max-age=0
-            X-Frame-Options:
-              schema:
-                type: string
-                example: SAMEORIGIN
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Download-Options:
-              schema:
-                type: string
-                example: noopen
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            X-Permitted-Cross-Domain-Policies:
-              schema:
-                type: string
-                example: none
-            Referrer-Policy:
-              schema:
-                type: string
-                example: no-referrer
-            X-XSS-Protection:
-              schema:
-                type: integer
-                example: '0'
-            ETag:
-              schema:
-                type: string
-                example: W/"18a6-t8GmZk9fNlyTxVDMtD6nyHE9bQQ"
+          description: QR code or status message for account authorization.
           content:
             application/json:
               schema:
                 type: object
-              example:
-                type: qrCode
-                message: >-
-                  iVBORw0KGgoAAAANSUhEUgAAARQAAAEU534Ml5AAAlrrgoe11rrkYa21LnlYa61LHtZa65utda65GGttS55WGutSxutyhrbUueVhrrUse1lrrkoe11rrkYa21LnlYa61LfvhI5W+q+E0qU8UXKicVb6hMFV+oTBUnKlPFGypTxaQyVbyh8kbFGypvVEwqJxWTyt9U8cXDWmtd8rDWWpc8rLXWJT9cVnGTyhcqb1S8oTJVnFRMKlPFpDJVTConFZPKicpJxRsqJypvqEwVU8UbKicVb1T8poqbVG56WGutSx7WWuuSh7XWuuSHX6byRsUbKlPFFyonFVPFGypfqJxUTCpTxaTyhspUMamcVEwqU8WkMlW8ofKFyknFicpvUnmj4jc9rLXWJQ9rrXXJw1prXfLD+qsqbqqYVKaKNyomlanipOJE5URlqviiYlKZKiaVqeJE5Y2KSeX/ycNaa13ysNZalzystdYlP/yfUZkq3lA5UZkqTiomlZtUTlTeUDlReaPipOILlaliUnmj4kTlC5Wp4v/Jw1prXfKw1lqXPKy11iU//LKKv6niDZWpYlKZKt5QmSomlZOKSeWNiknlpOINlaliUpkqJpUvKiaVqWJSOVGZKqaKN1Smipsq/iUPa611ycNaa13ysNZal/xwmcq/RGWquEllqviiYlKZKiaVqWJSmSomlROVqeI3VUwqU8WkMlVMKlPFpDJVTCpTxaQyVbyhMlWcqPzLHtZa65KHtda65GGttS754aOKf1nFScUXFZPKTRVvqNxU8YbKVDGpTBWTyonKFypvVNykMlWcVPwveVhrrUse1lrrkoe11rrE/uADlaliUrmp4kTlpOJE5Y2KL1SmihOVqeILlZsqJpU3KiaVqeJE5aTiRGWqmFRuqjhRuaniNz2stdYlD2utdcnDWmtd8sNlKl9UvKFyU8WkMlVMKm9UnKhMFVPFicobFScqU8WkclIxqUwVJxW/SWWquKniDZWTihOVE5Wp4qaHtda65GGttS55WGutS374qGJSOamYVCaVk4q/qWJSOan4omJSmSreqJhUTlSmikllqrhJ5Y2KqeJEZao4UZkqJpU3VKaKk4pJZaqYKt5QmSq+eFhrrUse1lrrkoe11rrkh8sqTlSmijdUvlCZKiaVqeJvUnlDZao4qTipmFSmihOVLyomlS9UTlSmihOVqWJ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
+                properties:
+                  type:
+                    type: string
+                    description: >
+                      Message type. Possible values:
+                        - `qrCode`: QR code image returned.
+                        - `error`: An error occurred.
+                        - `alreadyLogged`: Account is already authorized.
+                  message:
+                    type: string
+                    description: >
+                      Message content. For `qrCode`, this is a base64-encoded PNG image. 
+                      For `error`, this is an error description. 
+                      For `alreadyLogged`, this is a status message.
+              examples:
+                qrCode:
+                  summary: QR code image
+                  value:
+                    type: "qrCode"
+                    message: "iVBORw0KGgoAAAANSUhEUgAA..." # base64 string
+                error:
+                  summary: Error occurred
+                  value:
+                    type: "error"
+                    message: "Instance has auth. You need to make log out"
+                alreadyLogged:
+                  summary: Account already authorized
+                  value:
+                    type: "alreadyLogged"
+                    message: "instance account already authorized"
   /whatsapp/{idInstance}/requestRegistrationCode:
     post:
       tags:
