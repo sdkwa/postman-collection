@@ -2705,162 +2705,192 @@ paths:
   /whatsapp/{idInstance}/unarchiveChat:
     post:
       tags:
-        - Service methods
+        - Account
       summary: Unarchive chat
-      description: >-
-        Документация
-        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                chatId: 79123456789123@c.us
+      description: >
+        This method unarchives a chat for the specified user or group chat Id.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: User or group chat Id to unarchive.
+              required:
+                - chatId
+            example:
+              chatId: "120363043968066561@g.us"
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Fri, 17 Apr 2020 14:40:40 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '190'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Chat unarchived successfully. The response body is empty.
           content:
             application/json:
               schema:
                 type: object
+                description: Empty response body.
               example: {}
+        '400':
+          description: Cannot unarchive chat because the last message was not found in the chat.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              example:
+                error: "ArchiveChatError: cannot archive chat cause last message not found in chat"
   /whatsapp/{idInstance}/deleteMessage:
     post:
       tags:
-        - Service methods
+        - Messages
       summary: Delete message
-      description: >-
-        Документация
-        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                chatId: 791234567893442@c.us
-                idMessage: BAE5367237E13A87
+      description: >
+        This method deletes a message from a chat using the specified chat and message IDs.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: User or group chat Id.
+                idMessage:
+                  type: string
+                  description: ID of the message to delete.
+              required:
+                - chatId
+                - idMessage
+            example:
+              chatId: "120363043968066561@g.us"
+              idMessage: "BAE5F4886F6F2D05"
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Fri, 17 Apr 2020 14:40:40 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '190'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Message deleted successfully. The response body is empty.
           content:
             application/json:
               schema:
                 type: object
+                description: Empty response body.
               example: {}
+        '400':
+          description: Chat or message not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              examples:
+                chatNotFound:
+                  summary: Chat not found
+                  value:
+                    error: "chatId not found"
+                messageNotFound:
+                  summary: Message not found
+                  value:
+                    error: "ID message notfound"
   /whatsapp/{idInstance}/getAvatar:
     post:
       tags:
-        - Service methods
-      summary: Get avatar contact
-      description: >-
-        Документация
-        [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                chatId: 7900123456732@c.us
+        - Account
+      summary: Get avatar
+      description: >
+        This method returns the avatar URL for a user or group chat. If the avatar is not set or the user does not have a WhatsApp account, the URL will be empty.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: User or group chat Id.
+              required:
+                - chatId
+            examples:
+              userAvatar:
+                summary: Get user avatar
+                value:
+                  chatId: "11001234567@c.us"
+              groupAvatar:
+                summary: Get group chat avatar
+                value:
+                  chatId: "11001234567-1581234048@g.us"
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Fri, 17 Apr 2020 14:40:40 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '190'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Avatar information for the specified user or group chat.
           content:
             application/json:
               schema:
                 type: object
-              example:
-                existsWhatsapp: true
-                urlAvatar: https://pps.whatsapp.net/v/avatar.jpg
+                properties:
+                  existsWhatsapp:
+                    type: boolean
+                    description: Indicates if the WhatsApp account exists for the specified chatId.
+                  urlAvatar:
+                    type: string
+                    description: URL to the avatar image. Empty if not set or account does not exist.
+                  reason:
+                    type: string
+                    description: Reason why the avatar could not be checked (e.g., invalid chatId or timeout).
+              examples:
+                success:
+                  summary: Avatar found
+                  value:
+                    existsWhatsapp: true
+                    urlAvatar: "https://pps.whatsapp.net/v/link/to/the/image"
+                notFound:
+                  summary: No avatar or account does not exist
+                  value:
+                    existsWhatsapp: false
+                    urlAvatar: ""
+                badRequest:
+                  summary: Invalid chatId format
+                  value:
+                    existsWhatsapp: false
+                    urlAvatar: ""
+                    reason: "bad request data"
+                timeout:
+                  summary: Timeout exceeded
+                  value:
+                    existsWhatsapp: false
+                    urlAvatar: ""
+                    reason: "get avatar timeout limit exceeded"
   /whatsapp/{idInstance}/checkWhatsapp:
     post:
       tags:
