@@ -1560,61 +1560,180 @@ paths:
     get:
       tags:
         - Journals
-      summary: Get incoming messages journal
-      description: >-
-        Документация
-        [LastIncomingMessages](https://sdkwa.pro/en/docs/api/journals/LastIncomingMessages/)
+      summary: Get last incoming messages
+      description: >
+        This method retrieves the most recent incoming messages for the account. By default, it returns messages received in the last 24 hours. You can specify a different time period in minutes using the `minutes` query parameter.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+        - name: minutes
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 1440
+          description: Time period in minutes for which to return incoming messages (default is 1440 minutes, i.e., 24 hours).
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Mon, 20 Apr 2020 19:57:39 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '1643'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Array of incoming messages received by the account.
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idMessage:
+                      type: string
+                      description: Incoming message Id.
+                    timestamp:
+                      type: integer
+                      description: Message acceptance time in UNIX format.
+                    typeMessage:
+                      type: string
+                      description: Message type (e.g., textMessage, imageMessage, videoMessage, documentMessage, audioMessage, locationMessage, contactMessage, extendedTextMessage, quotedMessage, buttonsMessage, templateMessage, listMessage, buttonsResponseMessage, templateButtonsReplyMessage, listResponseMessage).
+                    chatId:
+                      type: string
+                      description: Chat Id where the message was received.
+                    senderId:
+                      type: string
+                      description: Message sender Id.
+                    senderName:
+                      type: string
+                      description: Message sender name.
+                    textMessage:
+                      type: string
+                      description: Text message (for textMessage type).
+                    downloadUrl:
+                      type: string
+                      description: Download link for files (for imageMessage, videoMessage, documentMessage, audioMessage).
+                    caption:
+                      type: string
+                      description: File caption.
+                    location:
+                      type: object
+                      description: Location object (for locationMessage type).
+                      properties:
+                        nameLocation:
+                          type: string
+                          description: Location name.
+                        address:
+                          type: string
+                          description: Location address.
+                        latitude:
+                          type: number
+                          format: double
+                          description: Location latitude.
+                        longitude:
+                          type: number
+                          format: double
+                          description: Location longitude.
+                        jpegThumbnail:
+                          type: string
+                          description: Base64-encoded image preview.
+                    contact:
+                      type: object
+                      description: Contact object (for contactMessage type).
+                      properties:
+                        displayName:
+                          type: string
+                          description: Contact display name.
+                        vcard:
+                          type: string
+                          description: VCard structure.
+                    extendedTextMessage:
+                      type: object
+                      description: Link data object (for extendedTextMessage type).
+                      properties:
+                        text:
+                          type: string
+                          description: Link text.
+                        description:
+                          type: string
+                          description: Link description.
+                        title:
+                          type: string
+                          description: Link title.
+                        previewType:
+                          type: string
+                          description: Link preview type.
+                        jpegThumbnail:
+                          type: string
+                          description: Base64-encoded image preview.
+                        stanzaId:
+                          type: string
+                          description: Quoted message ID.
+                        participant:
+                          type: string
+                          description: Recipient chat ID.
+                    quotedMessage:
+                      type: object
+                      description: Quoted message data object (present if the message is a quote).
               example:
-                - idMessage: 8E078426472FACECDFC2787173F05459
-                  timestamp: 1587412262
-                  typeMessage: textMessage
-                  chatId: 79001234567@c.us
-                  senderId: 79001234567@c.us
-                  senderName: Name
-                  textMessage: Answer
-                - idMessage: 75A35BA7745DB8FE6A8AD59C3F51C8CC
-                  timestamp: 1587412279
-                  typeMessage: textMessage
-                  chatId: 79001234567@c.us
-                  senderId: 79001234567@c.us
-                  senderName: Name
-                  textMessage: Answer
+                - idMessage: "DE8CFFA93B95237B077F8FA08331A0B5"
+                  timestamp: 1587129319
+                  typeMessage: "textMessage"
+                  chatId: "11001234567@c.us"
+                  senderId: "11001234567@c.us"
+                  senderName: "Nikolay"
+                  textMessage: "Hi"
+                - idMessage: "EA0BD1AE042DC4F3609867126309D67C"
+                  timestamp: 1587147598
+                  typeMessage: "imageMessage"
+                  chatId: "11001234567@c.us"
+                  senderId: "11001234567@c.us"
+                  senderName: "Nikolay"
+                  downloadUrl: "https://{{apiHost}}/waInstance1234/downloadFile/EA1BD1AE042DC4F3609867126309D67C"
+                  caption: "What do you think?"
+                - idMessage: "DE8CFFA93B95237B077F8FA08331A0B5"
+                  timestamp: 1587129319
+                  typeMessage: "locationMessage"
+                  chatId: "71234567891@c.us"
+                  senderId: "1234567891@c.us"
+                  senderName: "Nikolay"
+                  location:
+                    nameLocation: "I'm here, come"
+                    address: "614111, Perm"
+                    latitude: 53.9370129
+                    longitude: 54.8728409
+                    jpegThumbnail: "/9j/4AAQSkZJRgABAQAAAQABAAD/2wB=="
+                - idMessage: "DE8CFFA93B95237B077F8FA08331A0B5"
+                  timestamp: 1587129319
+                  typeMessage: "contactMessage"
+                  chatId: "1234567891@c.us"
+                  senderId: "71234567891@c.us"
+                  senderName: "Nikolay"
+                  contact:
+                    displayName: "Victor Petrov"
+                    vcard: "BEGIN:VCARD\nVERSION:3.0\nN:Andreevich;Victor;;;\nFN:Victor Andreevich\nORG:Image\nTITLE:\nitem1.TEL;waid=79099291652:+7 123 456-78-91\nitem1.X-ABLabel:Mobile\nEND:VCARD"
+                - idMessage: "DE8CFFA93B95237B077F8FA08331A0B5"
+                  timestamp: 1587129319
+                  typeMessage: "extendedTextMessage"
+                  chatId: "1234567891@c.us"
+                  senderId: "71234567891@c.us"
+                  senderName: "Nikolay"
+                  extendedTextMessage:
+                    text: "https://www.youtube.com/watch?v=9lO06Zxhu8*8*"
+                    description: "Video clip"
+                    title: "Cool video clip"
+                    previewType: "video"
+                    jpegThumbnail: "/9j/4AAQSkZJRgABAQAAAQABAAD/2wB=="
+                - idMessage: "6195B3523153621DFDFC184D3317E80D"
+                  timestamp: 1603182280
+                  typeMessage: "quotedMessage"
+                  chatId: "71234567891@c.us"
+                  senderId: "71234567891@c.us"
+                  senderName: "Mine"
+                  textMessage: "Quote test"
+                  extendedTextMessage:
+                    stanzaId: "3A6424373F90A939B3C8"
+                    participant: "71987654321@c.us"
   /whatsapp/{idInstance}/clearMessagesQueue:
     get:
       tags:
