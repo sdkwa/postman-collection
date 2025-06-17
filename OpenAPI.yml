@@ -884,44 +884,6 @@ paths:
                     description: Outgoing message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: idInstance
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Wed, 06 May 2020 20:23:18 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '41'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                idMessage: 3EB0DF31710A9123EC75
   /whatsapp/{idInstance}/sendFileByUpload:
     post:
       tags:
