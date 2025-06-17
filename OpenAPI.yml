@@ -1286,68 +1286,155 @@ paths:
   /whatsapp/{idInstance}/getChatHistory:
     post:
       tags:
-        - Journals
+        - Sending
       summary: Get chat history
-      description: >-
-        Документация
-        [GetChatHistory](https://sdkwa.pro/en/docs/api/journals/GetChatHistory/)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                chatId: 79192533586@c.us
-                count: 2000
+      description: >
+        This method returns the message history for a specified chat. The response includes both sent and received messages, sorted by timestamp in descending order.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                chatId:
+                  type: string
+                  description: Personal or group chat Id for which to retrieve message history.
+                count:
+                  type: integer
+                  description: Number of messages to retrieve (default is 100).
+              required:
+                - chatId
+            example:
+              chatId: "11001234567@c.us"
+              count: 10
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Fri, 17 Apr 2020 13:14:58 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '41'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: List of chat messages, including both incoming and outgoing messages, sorted by timestamp descending.
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                      description: Message direction, either 'outgoing' or 'incoming'.
+                    timestamp:
+                      type: integer
+                      description: UNIX timestamp of when the message was sent.
+                    idMessage:
+                      type: string
+                      description: Message Id.
+                    statusMessage:
+                      type: string
+                      description: Outgoing message status (only for outgoing messages): sent, delivered, or read.
+                    typeMessage:
+                      type: string
+                      description: Message type (e.g., textMessage, imageMessage, videoMessage, documentMessage, audioMessage, locationMessage, contactMessage, extendedTextMessage).
+                    chatId:
+                      type: string
+                      description: Chat Id.
+                    senderId:
+                      type: string
+                      description: Sender Id (only for incoming messages).
+                    senderName:
+                      type: string
+                      description: Sender name (only for incoming messages).
+                    textMessage:
+                      type: string
+                      description: Message text (for textMessage type).
+                    downloadUrl:
+                      type: string
+                      description: Download link for files (for imageMessage, videoMessage, documentMessage, audioMessage).
+                    caption:
+                      type: string
+                      description: File caption (for imageMessage, videoMessage, documentMessage).
+                    location:
+                      type: object
+                      description: Location object (for locationMessage type).
+                      properties:
+                        nameLocation:
+                          type: string
+                          description: Location name.
+                        address:
+                          type: string
+                          description: Location address.
+                        latitude:
+                          type: number
+                          format: double
+                          description: Location latitude.
+                        longitude:
+                          type: number
+                          format: double
+                          description: Location longitude.
+                        jpegThumbnail:
+                          type: string
+                          description: Base64-encoded image preview.
+                    contact:
+                      type: object
+                      description: Contact object (for contactMessage type).
+                      properties:
+                        displayName:
+                          type: string
+                          description: Contact display name.
+                        vcard:
+                          type: string
+                          description: VCard structure.
+                    extendedTextMessage:
+                      type: object
+                      description: Link data object (for extendedTextMessage type).
+                      properties:
+                        text:
+                          type: string
+                          description: Link text.
+                        description:
+                          type: string
+                          description: Link description.
+                        title:
+                          type: string
+                          description: Link title.
+                        previewType:
+                          type: string
+                          description: Link preview type.
+                        jpegThumbnail:
+                          type: string
+                          description: Base64-encoded image preview.
               example:
-                - idMessage: 3EB0C732BC93864C25FB
-                  timestamp: 1587412276
-                  statusMessage: read
-                  typeMessage: textMessage
-                  chatId: 79001234567@c.us
-                  textMessage: Hello man
-                - idMessage: 3EB0C37D09143B7F53A0
-                  timestamp: 1587412276
-                  statusMessage: read
-                  typeMessage: textMessage
-                  chatId: 79001234567@c.us
-                  textMessage: Hello man
+                - type: "incoming"
+                  timestamp: 1603964449
+                  idMessage: "3AADDD555CB0822C0539"
+                  typeMessage: "textMessage"
+                  chatId: "11001234567@c.us"
+                  senderId: "11001234567@c.us"
+                  senderName: "Andrew Sh"
+                  textMessage: "I use GREEN-API to get this message from you!"
+                - type: "outgoing"
+                  timestamp: 1603964445
+                  idMessage: "3EB08816FEBCCC3FACD2"
+                  statusMessage: "read"
+                  typeMessage: "textMessage"
+                  chatId: "11001234567@c.us"
+                  textMessage: "I use GREEN-API to send this message to you!"
+                - type: "incoming"
+                  timestamp: 1603964444
+                  idMessage: "3AA45F9F285C5249CDFC"
+                  typeMessage: "imageMessage"
+                  chatId: "11001234567@c.us"
+                  senderId: "11001234567@c.us"
+                  senderName: "Andrew Sh"
+                  downloadUrl: "https://{{apiHost}}/waInstance9075/downloadFile/download-file-id"
+                  caption: "GREEN-API Logo"
   /whatsapp/{idInstance}/lastOutgoingMessages:
     get:
       tags:
