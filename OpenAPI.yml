@@ -1157,119 +1157,52 @@ paths:
   /whatsapp/{idInstance}/receiveNotification:
     get:
       tags:
-        - Receiving > Receiving notification
+        - Receiving
       summary: Receive notification
-      description: >-
-        Документация
-        [ReceiveNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)
+      description: >
+        This method retrieves a single incoming notification from the notifications queue. The method waits up to 5 seconds for a notification to arrive. If no notification is received within this period, an empty response is returned. If a notification is available, it is returned immediately.
+        After processing a notification, you must remove it from the queue using the DeleteNotification method. Notifications are stored in the queue for 24 hours and are delivered in FIFO (first-in, first-out) order.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.24.0 (Ubuntu)
-            Date:
-              schema:
-                type: string
-                example: Fri, 11 Oct 2024 11:12:53 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '456'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            Vary:
-              schema:
-                type: string
-                example: Access-Control-Request-Headers
-            Content-Security-Policy:
-              schema:
-                type: string
-                example: >-
-                  default-src 'self';base-uri
-                  'self';block-all-mixed-content;font-src 'self' https:
-                  data:;frame-ancestors 'self';img-src 'self' data:;object-src
-                  'none';script-src 'self';script-src-attr 'none';style-src
-                  'self' https: 'unsafe-inline';upgrade-insecure-requests
-            X-DNS-Prefetch-Control:
-              schema:
-                type: string
-                example: 'off'
-            Expect-CT:
-              schema:
-                type: string
-                example: max-age=0
-            X-Frame-Options:
-              schema:
-                type: string
-                example: SAMEORIGIN
-            Strict-Transport-Security:
-              schema:
-                type: string
-                example: max-age=15552000; includeSubDomains
-            X-Download-Options:
-              schema:
-                type: string
-                example: noopen
-            X-Content-Type-Options:
-              schema:
-                type: string
-                example: nosniff
-            X-Permitted-Cross-Domain-Policies:
-              schema:
-                type: string
-                example: none
-            Referrer-Policy:
-              schema:
-                type: string
-                example: no-referrer
-            X-XSS-Protection:
-              schema:
-                type: integer
-                example: '0'
-            ETag:
-              schema:
-                type: string
-                example: W/"1c8-eAmbYP0QjN+sdny3zQa0NoiY8bo"
+          description: Successful response with the next incoming notification, or empty if none is available.
           content:
             application/json:
               schema:
                 type: object
+                properties:
+                  receiptId:
+                    type: integer
+                    description: Receipt Id for deleting the incoming notification using the DeleteNotification method.
+                  body:
+                    type: object
+                    description: Incoming notification object.
               example:
-                receiptId: 13
+                receiptId: 1234567
                 body:
-                  typeWebhook: incomingMessageReceived
+                  typeWebhook: "incomingMessageReceived"
                   instanceData:
-                    idInstance: 1101000000
-                    wid: 712345678910@c.us
-                    typeInstance: whatsapp
-                  timestamp: 1728645168
-                  idMessage: 653A37E275146F8C06B2686D3DCDADD2
+                    idInstance: 1234
+                    wid: "11001234567@c.us"
+                    typeInstance: "whatsapp"
+                  timestamp: 1588091580
+                  idMessage: "F7AEC1B7086ECDC7E6E45923F5EDB825"
                   senderData:
-                    chatId: 712345678911@c.us
-                    chatName: example
-                    sender: 712345678911@c.us
-                    senderName: example
+                    chatId: "79001234568@c.us"
+                    sender: "79001234568@c.us"
+                    senderName: "sdkwa"
                   messageData:
-                    typeMessage: textMessage
+                    typeMessage: "textMessage"
                     textMessageData:
-                      textMessage: hello
+                      textMessage: "hello world"
   /whatsapp/{idInstance}/deleteNotification/12:
     delete:
       tags:
