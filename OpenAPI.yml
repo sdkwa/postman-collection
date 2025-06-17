@@ -1122,25 +1122,38 @@ paths:
       tags:
         - Sending
       summary: Upload file
-      description: >-
-        Документация
-        [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)
-      requestBody:
-        content:
-          text/plain: {}
+      description: >
+        This method uploads a file to storage for later sending to a recipient. Use this method if you cannot send a file directly with SendFileByUrl. The response returns a link to the uploaded file, which can be reused with the SendFileByUrl method. Uploaded file links are valid for 14 days.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+            example: "<file binary data>"
       responses:
         '200':
-          description: Successful response
+          description: Successful response with file link.
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+                properties:
+                  urlFile:
+                    type: string
+                    description: Link to the uploaded file
+              example:
+                urlFile: "https://sdkwa.pro/1101000001/56b8dd93-8cc5-4ad7-a989-d58a26a924a6.jpeg"
   /whatsapp/{idInstance}/receiveNotification:
     get:
       tags:
