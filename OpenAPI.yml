@@ -1418,14 +1418,14 @@ paths:
                   chatId: "11001234567@c.us"
                   senderId: "11001234567@c.us"
                   senderName: "Andrew Sh"
-                  textMessage: "I use GREEN-API to get this message from you!"
+                  textMessage: "I use SDKWA to get this message from you!"
                 - type: "outgoing"
                   timestamp: 1603964445
                   idMessage: "3EB08816FEBCCC3FACD2"
                   statusMessage: "read"
                   typeMessage: "textMessage"
                   chatId: "11001234567@c.us"
-                  textMessage: "I use GREEN-API to send this message to you!"
+                  textMessage: "hello world"
                 - type: "incoming"
                   timestamp: 1603964444
                   idMessage: "3AA45F9F285C5249CDFC"
@@ -1433,8 +1433,8 @@ paths:
                   chatId: "11001234567@c.us"
                   senderId: "11001234567@c.us"
                   senderName: "Andrew Sh"
-                  downloadUrl: "https://{{apiHost}}/waInstance9075/downloadFile/download-file-id"
-                  caption: "GREEN-API Logo"
+                  downloadUrl: "https://sdkwa.pro/ffsdfsdfsdfh.jpg"
+                  caption: "SDKWA Logo"
   /whatsapp/{idInstance}/lastOutgoingMessages:
     get:
       tags:
@@ -1804,7 +1804,7 @@ paths:
               example:
                 - typeMessage: "textMessage"
                   chatId: "11001234567@c.us"
-                  message: "I use GREEN-API to send this message to you!"
+                  message: "hello world"
                 - typeMessage: "imageMessage"
                   chatId: "11001234567@c.us"
                   fileName: "image.jpg"
@@ -3167,354 +3167,534 @@ paths:
   /api/v1/instance/user/instance/createByOrder:
     post:
       tags:
-        - instances management
-      summary: Create new instance
-      description: |-
-        Параметр **period** может принимать значения:
-
-        *   month1 - продлить инстанс на 1 месяц
-        *   month3 - продлить инстанс на 3 месяца
-        *   month6 - продлить инстанс на 6 месяцев
-        *   month12 - продлить инстанс на 12 месяцев
-        *   day1 - продлить инстанс на 1 день
+        - Instances management
+      summary: Create new user instance
+      description: >
+        This method creates a new user instance with the specified tariff and period.
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: x-user-id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User ID.
+        - name: x-user-token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User token.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               type: object
-              example:
-                tariff: DEVELOPER
-                period: infinitely
-      parameters:
-        - name: x-user-id
-          in: header
-          schema:
-            type: string
-          example: '{{user-id}}'
-        - name: x-user-token
-          in: header
-          schema:
-            type: string
-          example: '{{user-token}}'
+              properties:
+                tariff:
+                  type: string
+                  description: Instance rate.
+                period:
+                  type: string
+                  description: Instance rate period (e.g., 'infinitely', 'month1', 'month3', 'month6', 'month12', 'day1').
+                paymentType:
+                  type: string
+                  description: Payment system type (optional, e.g., 'PAYPAL').
+              required:
+                - tariff
+                - period
+            example:
+              tariff: "DEVELOPER"
+              period: "infinitely"
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.14.0 (Ubuntu)
-            Date:
-              schema:
-                type: string
-                example: Thu, 02 Dec 2021 03:22:59 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '131'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Access-Control-Allow-Headers:
-              schema:
-                type: string
-                example: X-Requested-With
-            ETag:
-              schema:
-                type: string
-                example: W/"83-F9JIXG37k4Py17NfjFvongW3Txg"
+          description: Instance created successfully. Returns instance and order details.
           content:
             application/json:
               schema:
                 type: object
-              examples:
-                example-0:
-                  summary: ok
-                  value:
-                    result: true
-                    data:
-                      idInstance: 1101000037
-                      apiTokenInstance: 2be110d129b144ecb2a867e487daa960b43b8acc24dc467988
-                    error: {}
-                example-1:
-                  summary: Not enough balance
-                  value:
-                    result: false
-                    data: {}
-                    error:
-                      code: 464
-                      description: Not enough balance
+                properties:
+                  result:
+                    type: boolean
+                    description: Operation result flag.
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Instance unique identifier.
+                      typeAccount:
+                        type: string
+                        description: Account type.
+                      releaseType:
+                        type: string
+                        description: Release type.
+                      orderDate:
+                        type: string
+                        description: Order creation date.
+                      orderNumber:
+                        type: string
+                        description: Order number.
+                      payDate:
+                        type: string
+                        nullable: true
+                        description: Payment date.
+                      paySumm:
+                        type: string
+                        description: Payment sum.
+                      payCurrency:
+                        type: string
+                        nullable: true
+                        description: Payment currency.
+                      sum:
+                        type: string
+                        description: Total sum.
+                      currency:
+                        type: string
+                        description: Currency.
+                      tariff:
+                        type: object
+                        properties:
+                          user:
+                            type: string
+                          email:
+                            type: string
+                          id:
+                            type: string
+                          caption:
+                            type: string
+                          sum:
+                            type: string
+                          currency:
+                            type: string
+                          periods:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                period:
+                                  type: string
+                          partnerId:
+                            type: string
+                          pool:
+                            type: integer
+                      period:
+                        type: string
+                        description: Selected period.
+                      user:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          email:
+                            type: string
+                      idInstance:
+                        type: integer
+                        description: Instance ID.
+                      typeOrder:
+                        type: string
+                        description: Order type.
+                      paymentURL:
+                        type: string
+                        description: Payment URL.
+                      isConfirmed:
+                        type: boolean
+                        description: Confirmation flag.
+                  error:
+                    type: object
+                    description: Error details (empty if successful).
+              example:
+                result: true
+                data:
+                  id: "98343715-5729-4629-a2f5-a59a520a0826"
+                  typeAccount: "WA_DESKTOP"
+                  releaseType: "STABLE"
+                  orderDate: "2023-05-25T13:20:22"
+                  orderNumber: "00000001017"
+                  payDate: null
+                  paySumm: "0.00"
+                  payCurrency: null
+                  sum: "0.00"
+                  currency: "rub"
+                  tariff:
+                    user: "fdsg-c836-4308-a73c-gdf"
+                    email: "mail@mail.en"
+                    id: "DEVELOPER"
+                    caption: "DEVELOPER"
+                    sum: "0.00"
+                    currency: "rub"
+                    periods:
+                      - period: "infinitely"
+                    partnerId: "11010000-0000-0000-0000-000000000000"
+                    pool: 1101
+                  period: "infinitely"
+                  user:
+                    id: "a057758c-c836-4308-a73c-aaasd"
+                    email: "mail@mail.en"
+                  idInstance: 1101000871
+                  typeOrder: "CREATE_INSTANCE"
+                  paymentURL: ""
+                  isConfirmed: true
+                error: {}
+        '400':
+          description: Error creating instance.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  error:
+                    type: string
+              example:
+                result: false
+                error: "Invalid parameters"
   /api/v1/instance/user/instance/extendByOrder:
     post:
       tags:
-        - instances management
-      summary: Extend instance
-      description: |-
-        Параметр **period** может принимать значения:
-
-        *   month1 - продлить инстанс на 1 месяц
-        *   month3 - продлить инстанс на 3 месяца
-        *   month6 - продлить инстанс на 6 месяцев
-        *   month12 - продлить инстанс на 12 месяцев
-        *   day1 - продлить инстанс на 1 день
+        - Instances management
+      summary: Extend paid user instance
+      description: >
+        This method renews a paid user instance for the specified period and tariff.
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: x-user-id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User ID.
+        - name: x-user-token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User token.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               type: object
-              example:
-                idInstance: 1101000001
-                tariff: BUSINESS
-                period: month1
-      parameters:
-        - name: x-method
-          in: header
-          schema:
-            type: string
-          example: user.instance.extend
-        - name: x-user-id
-          in: header
-          schema:
-            type: string
-          example: '{{user-id}}'
-        - name: x-user-token
-          in: header
-          schema:
-            type: string
-          example: '{{user-token}}'
+              properties:
+                idInstance:
+                  type: integer
+                  description: Account instance ID.
+                tariff:
+                  type: string
+                  description: Instance rate.
+                period:
+                  type: string
+                  description: Instance rate period (e.g., 'infinitely', 'month1', 'month3', 'month6', 'month12', 'day1').
+                paymentType:
+                  type: string
+                  description: Payment system type (optional, e.g., 'PAYPAL').
+              required:
+                - idInstance
+                - tariff
+                - period
+            example:
+              idInstance: 1101000001
+              tariff: "BUSINESS"
+              period: "month1"
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.14.0 (Ubuntu)
-            Date:
-              schema:
-                type: string
-                example: Mon, 10 Jan 2022 05:25:30 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '36'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Access-Control-Allow-Headers:
-              schema:
-                type: string
-                example: '*'
-            ETag:
-              schema:
-                type: string
-                example: W/"24-BPL2ef+9PW4p55KuHOuaGwKggRM"
+          description: Instance renewed successfully. Returns renewal and order details.
           content:
             application/json:
               schema:
                 type: object
-              examples:
-                example-0:
-                  summary: ok
-                  value:
-                    result: true
-                    data: {}
-                    error: {}
-                example-1:
-                  summary: Not enough balance
-                  value:
-                    result: false
-                    data: {}
-                    error:
-                      code: 464
-                      description: Not enough balance
+                properties:
+                  result:
+                    type: boolean
+                    description: Operation result flag.
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        description: Order unique identifier.
+                      typeAccount:
+                        type: string
+                        description: Account type.
+                      releaseType:
+                        type: string
+                        description: Release type.
+                      orderDate:
+                        type: string
+                        description: Order creation date.
+                      orderNumber:
+                        type: string
+                        description: Order number.
+                      payDate:
+                        type: string
+                        nullable: true
+                        description: Payment date.
+                      paySumm:
+                        type: string
+                        description: Payment sum.
+                      payCurrency:
+                        type: string
+                        nullable: true
+                        description: Payment currency.
+                      summ:
+                        type: string
+                        description: Total sum.
+                      currency:
+                        type: string
+                        description: Currency.
+                      tariff:
+                        type: object
+                        properties:
+                          user:
+                            type: string
+                          email:
+                            type: string
+                          id:
+                            type: string
+                          caption:
+                            type: string
+                          sum:
+                            type: string
+                          currency:
+                            type: string
+                          periods:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                period:
+                                  type: string
+                          partnerId:
+                            type: string
+                          pool:
+                            type: integer
+                      period:
+                        type: string
+                        description: Selected period.
+                      user:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                          email:
+                            type: string
+                      idInstance:
+                        type: integer
+                        description: Instance ID.
+                      typeOrder:
+                        type: string
+                        description: Order type.
+                      paymentURL:
+                        type: string
+                        description: Payment URL.
+                      isConfirmed:
+                        type: boolean
+                        description: Confirmation flag.
+                  error:
+                    type: object
+                    description: Error details (empty if successful).
+              example:
+                result: true
+                data:
+                  id: "968b3d7e-88d3-4aac-99be-7d37303e7356"
+                  typeAccount: "WA_DESKTOP"
+                  releaseType: "STABLE"
+                  orderDate: "2023-05-25T14:00:51"
+                  orderNumber: "00000001018"
+                  payDate: null
+                  paySumm: "0.00"
+                  payCurrency: null
+                  summ: "300.00"
+                  currency: "rub"
+                  tariff:
+                    user: "a057758c-c836-4308-a73c-016316687ee8"
+                    email: "mail@mail.en"
+                    id: "BUSINESS"
+                    caption: "BUSINESS"
+                    sum: "300.00"
+                    currency: "rub"
+                    periods:
+                      - period: "month1"
+                      - period: "month3"
+                      - period: "month6"
+                      - period: "month12"
+                    partnerId: "11010000-0000-0000-0000-000000000000"
+                    pool: 1101
+                  period: "month1"
+                  user:
+                    id: "a057758c-c836-4308-a73c-ajafy"
+                    email: "mail@mail.en"
+                  idInstance: 1101000001
+                  typeOrder: "EXTEND_INSTANCE"
+                  paymentURL: ""
+                  isConfirmed: false
+                error: {}
+        '400':
+          description: Error renewing instance.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  error:
+                    type: string
+              example:
+                result: false
+                error: "Invalid parameters"
   /api/v1/instance/user/instance/delete:
     post:
       tags:
-        - instances management
-      summary: Delete instance
+        - Instances management
+      summary: Delete user instance
+      description: >
+        This method deletes a user instance by its ID.
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: x-user-id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User ID.
+        - name: x-user-token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User token.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               type: object
-              example:
-                idInstance: 1101000864
-      parameters:
-        - name: x-user-id
-          in: header
-          schema:
-            type: string
-          example: '{{user-id}}'
-        - name: x-user-token
-          in: header
-          schema:
-            type: string
-          example: '{{user-token}}'
+              properties:
+                idInstance:
+                  type: integer
+                  description: Account instance ID.
+              required:
+                - idInstance
+            example:
+              idInstance: 1101000871
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.14.0 (Ubuntu)
-            Date:
-              schema:
-                type: string
-                example: Thu, 02 Dec 2021 03:23:48 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '36'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Access-Control-Allow-Headers:
-              schema:
-                type: string
-                example: X-Requested-With
-            ETag:
-              schema:
-                type: string
-                example: W/"24-BPL2ef+9PW4p55KuHOuaGwKggRM"
+          description: Instance deleted successfully.
           content:
             application/json:
               schema:
                 type: object
-              examples:
-                example-0:
-                  summary: ok
-                  value:
-                    result: true
-                    data: {}
-                    error: {}
-                example-1:
-                  summary: Not found
-                  value:
-                    result: false
-                    data: {}
-                    error:
-                      code: 404
-                      description: Not found
+                properties:
+                  result:
+                    type: boolean
+                    description: Operation result flag.
+                  data:
+                    type: object
+                    properties:
+                      deleteInstanceAccount:
+                        type: boolean
+                        description: Flag indicating if the instance was deleted.
+                  error:
+                    type: object
+                    description: Error details (empty if successful).
+              example:
+                result: true
+                data:
+                  deleteInstanceAccount: true
+                error: {}
+        '400':
+          description: Error deleting instance.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  error:
+                    type: string
+              example:
+                result: false
+                error: "Invalid parameters"
   /api/v1/instance/user/instance/restore:
     post:
       tags:
-        - instances management
-      summary: Restore instance
+        - Instances management
+      summary: Restore user instance
+      description: >
+        This method restores a user instance by its ID.
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: x-user-id
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User ID.
+        - name: x-user-token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: User token.
       requestBody:
+        required: true
         content:
           application/json:
             schema:
               type: object
-              example:
-                idInstance: 1101000864
-      parameters:
-        - name: x-user-id
-          in: header
-          schema:
-            type: string
-          example: '{{user-id}}'
-        - name: x-user-token
-          in: header
-          schema:
-            type: string
-          example: '{{user-token}}'
+              properties:
+                idInstance:
+                  type: integer
+                  description: Account instance ID.
+              required:
+                - idInstance
+            example:
+              idInstance: 1101000871
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.14.0 (Ubuntu)
-            Date:
-              schema:
-                type: string
-                example: Thu, 02 Dec 2021 03:23:48 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json; charset=utf-8
-            Content-Length:
-              schema:
-                type: integer
-                example: '36'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-            X-Powered-By:
-              schema:
-                type: string
-                example: Express
-            Access-Control-Allow-Origin:
-              schema:
-                type: string
-                example: '*'
-            Access-Control-Allow-Headers:
-              schema:
-                type: string
-                example: X-Requested-With
-            ETag:
-              schema:
-                type: string
-                example: W/"24-BPL2ef+9PW4p55KuHOuaGwKggRM"
+          description: Instance restored successfully.
           content:
             application/json:
               schema:
                 type: object
-              examples:
-                example-0:
-                  summary: ok
-                  value:
-                    result: true
-                    data: {}
-                    error: {}
-                example-1:
-                  summary: Not found
-                  value:
-                    result: false
-                    data: {}
-                    error:
-                      code: 404
-                      description: Not found
+                properties:
+                  result:
+                    type: boolean
+                    description: Operation result flag.
+                  data:
+                    type: object
+                    properties:
+                      restoreInstanceAccount:
+                        type: boolean
+                        description: Flag indicating if the instance was restored.
+                  error:
+                    type: object
+                    description: Error details (empty if successful).
+              example:
+                result: true
+                data:
+                  restoreInstanceAccount: true
+                error: {}
+        '400':
+          description: Error restoring instance.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  error:
+                    type: string
+              example:
+                result: false
+                error: "Invalid parameters"
