@@ -18,8 +18,6 @@ tags:
   - name: Account
   - name: Sending
   - name: Receiving
-  - name: Receiving > Receiving notification
-  - name: Receiving > Get files
   - name: Journals
   - name: Queues
   - name: Groups
