@@ -2354,176 +2354,100 @@ paths:
                     description: Messages read mark flag.
               example:
                 setRead: true
-  /whatsapp/{idInstance}/readChat/:
-    post:
-      tags:
-        - Read mark
-      summary: Mark chat as read
-      description: Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                chatId: 79001234567@c.us
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: idInstance
-          in: path
-          schema:
-            type: string
-          required: true
-      responses:
-        '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Wed, 06 May 2020 20:36:35 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '21'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
-          content:
-            application/json:
-              schema:
-                type: object
-              example:
-                setRead: true
   /whatsapp/{idInstance}/getContacts:
     get:
       tags:
-        - Service methods
+        - Account
       summary: Get contacts
-      description: >-
-        Документация
-        [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)
+      description: >
+        This method retrieves a list of contacts for the current account, including both users and group chats.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
+          description: Unique instance identifier.
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Mon, 20 Apr 2020 19:54:33 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '458'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Array of contacts for the current account.
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: User or group chat Id.
+                    name:
+                      type: string
+                      description: >
+                        Contact name. If the contact is saved in the phonebook, the name is taken from there. If not, the name is taken from the WhatsApp account. If neither is available, the field is empty.
+                    type:
+                      type: string
+                      description: Contact type (`user` for individual contacts, `group` for group chats).
               example:
-                - id: 79001234567@c.us
-                  name: David Davidson
-                  type: user
-                - id: 79001234568@c.us
-                  name: David Davidson
-                  type: user
-                - id: 79001234569-1479621234@g.us
-                  name: My group
-                  type: group
-  /waInstance{idInstance}/getChats/{apiTokenInstance}:
+                - id: "11001234567@c.us"
+                  name: "Ivan Petrov"
+                  type: "user"
+                - id: "79001234568@c.us"
+                  name: "Lyusya Sidorova"
+                  type: "user"
+                - id: "79001234569-1479621234@g.us"
+                  name: "My group"
+                  type: "group"
+  /whatsapp/{idInstance}/getChats:
     get:
       tags:
-        - Service methods
+        - Account
       summary: Get chats
-      description: >-
-        Документация
-        [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)
+      description: >
+        This method retrieves a list of all chats for the current account, including both user and group chats.
       security:
         - bearerAuth: []
       parameters:
         - name: idInstance
           in: path
+          required: true
           schema:
             type: string
-          required: true
-        - name: apiTokenInstance
-          in: path
-          schema:
-            type: string
-          required: true
+          description: Unique instance identifier.
       responses:
         '200':
-          description: OK
-          headers:
-            Server:
-              schema:
-                type: string
-                example: nginx/1.10.3
-            Date:
-              schema:
-                type: string
-                example: Mon, 20 Apr 2020 19:54:33 GMT
-            Content-Type:
-              schema:
-                type: string
-                example: application/json
-            Content-Length:
-              schema:
-                type: integer
-                example: '458'
-            Connection:
-              schema:
-                type: string
-                example: keep-alive
+          description: Array of chats for the current account.
           content:
             application/json:
               schema:
-                type: object
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: User or group chat Id.
+                    notSpam:
+                      type: boolean
+                      description: Indicates if the chat is not marked as spam.
+                    disappearingMode:
+                      type: string
+                      description: Chat disappearing mode.
+                    archive:
+                      type: boolean
+                      description: Indicates if the chat is archived.
               example:
-                - archive: false
-                  id: 120363019978548724@g.us
+                - id: "11001234567@c.us"
+                  archive: false
                   notSpam: true
-                  ephemeralExpiration: 0
-                  ephemeralSettingTimestamp: 0
-                - archive: false
-                  id: 120363020283804841@g.us
+                - id: "79001234568@c.us"
+                  archive: false
                   notSpam: true
-                  ephemeralExpiration: 0
-                  ephemeralSettingTimestamp: 0
-                - archive: false
-                  id: 120363020957614065@g.us
+                - id: "79001234569-1479621234@g.us"
+                  archive: false
                   notSpam: true
-                  ephemeralExpiration: 0
-                  ephemeralSettingTimestamp: 0
   /whatsapp/{idInstance}/GetContactInfo:
     get:
       tags:
