@@ -457,7 +457,7 @@ paths:
                   value:
                     type: "alreadyLogged"
                     message: "instance account already authorized"
- /whatsapp/{idInstance}/getAuthorizationCode:
+  /whatsapp/{idInstance}/getAuthorizationCode:
     post:
       tags:
         - Account
