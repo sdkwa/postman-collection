@@ -457,6 +457,82 @@ paths:
                   value:
                     type: "alreadyLogged"
                     message: "instance account already authorized"
+ /whatsapp/{idInstance}/getAuthorizationCode:
+    post:
+      tags:
+        - Account
+      summary: Get authorization code by phone number
+      description: >
+        This method is used to authorize an instance by phone number as an alternative to QR code authorization.
+        The official WhatsApp or WhatsApp Business app must be installed on your phone. 
+        Use the "Link device" -> "Link with phone number" option in the app, then call this method with your phone number in international format (without + or 00).
+        The response will contain a status and an authorization code. The code is valid for about 2.5 minutes.
+        If the instance is already authorized, you must log out first.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idInstance
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phoneNumber:
+                  type: integer
+                  description: Phone number in international format without + or 00.
+              required:
+                - phoneNumber
+            example:
+              phoneNumber: 441234567890
+      responses:
+        '200':
+          description: Authorization code response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: boolean
+                    description: >
+                      Status of code retrieval. 
+                      true - code received successfully; 
+                      false - code not received (instance already authorized or error occurred).
+                  code:
+                    type: string
+                    description: Authorization code (valid for 2 minutes).
+              examples:
+                success:
+                  summary: Code received successfully
+                  value:
+                    status: true
+                    code: "8G9VR9QT"
+                alreadyLogged:
+                  summary: Instance already logged
+                  value:
+                    status: false
+                    code: ""
+        '400':
+          description: Validation error.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+              examples:
+                validationFailed:
+                  summary: Validation failed
+                  value:
+                    error: "Validation failed. Details: Wrong format. 'phoneNumber' must contain valid phone number using only digits like 712345678989"
   /whatsapp/{idInstance}/requestRegistrationCode:
     post:
       tags:
