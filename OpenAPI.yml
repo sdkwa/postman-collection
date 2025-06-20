@@ -461,7 +461,7 @@ paths:
     post:
       tags:
         - Account
-      summary: Get authorization code by phone number
+      summary: Get authorization code for account authorization
       description: >
         This method is used to authorize an instance by phone number as an alternative to QR code authorization.
         The official WhatsApp or WhatsApp Business app must be installed on your phone. 
