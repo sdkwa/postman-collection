@@ -466,8 +466,8 @@ paths:
         This method is used to authorize an instance by phone number as an alternative to QR code authorization.
         The official WhatsApp or WhatsApp Business app must be installed on your phone. 
         Use the "Link device" -> "Link with phone number" option in the app, then call this method with your phone number in international format (without + or 00).
-        The response will contain a status and an authorization code. The code is valid for about 2.5 minutes.
-        If the instance is already authorized, you must log out first.
+        The response will contain a status and an authorization code. The code is valid for about 2 minutes.
+        If the instance is already logged, you must log out first.
       security:
         - bearerAuth: []
       parameters:
