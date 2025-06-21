@@ -515,7 +515,7 @@ paths:
                     status: true
                     code: "8G9VR9QT"
         '400':
-          description: Validation error.
+          description: Validation error or instance already logged.
           content:
             application/json:
               schema:
@@ -525,23 +525,9 @@ paths:
                     type: string
               examples:
                 validationFailed:
-                  summary: Validation failed
+                  summary: Validation failed or instance already logged
                   value:
-                    error: "Validation failed. Details: Wrong format. 'phoneNumber' must contain valid phone number using only digits like 712345678989"
-        '400':
-          description: Instance already logged
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-              examples:
-                validationFailed:
-                  summary: Instance already logged
-                  value:
-                    error: "Instance already logged"
+                    error: "Validation failed means that 'phoneNumber' must contain valid phone number using only digits like 712345678989"
   /whatsapp/{idInstance}/requestRegistrationCode:
     post:
       tags:
