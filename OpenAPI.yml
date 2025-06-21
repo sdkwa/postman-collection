@@ -540,6 +540,9 @@ paths:
                 instanceAlreadyLogged:
                   summary: Instance already logged
                   value: "Instance already logged"
+                WaConnectionClosedException:
+                  summary: "Connection to whatsapp was closed"
+                  value: "Connection to whatsapp was closed due reason Instance has auth. You need to make log out"
   /whatsapp/{idInstance}/requestRegistrationCode:
     post:
       tags:
