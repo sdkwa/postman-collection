@@ -490,7 +490,7 @@ paths:
               required:
                 - phoneNumber
             example:
-              phoneNumber: 441234567890
+              phoneNumber: 712345678989
       responses:
         '200':
           description: Authorization code response.
