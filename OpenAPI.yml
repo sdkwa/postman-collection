@@ -521,13 +521,25 @@ paths:
               schema:
                 type: object
                 properties:
-                  error:
+                  statusCode:
+                    type: integer
+                  timestamp:
+                    type: string
+                  path:
+                    type: string
+                  message:
                     type: string
               examples:
                 validationFailed:
-                  summary: Validation failed or instance already logged
+                  summary: Validation failed
                   value:
-                    error: "Validation failed means that 'phoneNumber' must contain valid phone number using only digits like 712345678989"
+                    statusCode: 400
+                    timestamp: "2023-06-21T09:20:39.876Z"
+                    path: "/whatsapp/1101000001/getAuthorizationCode"
+                    message: "Validation failed. Details: Wrong format. 'phoneNumber' must contain contain country code and only digits"
+                instanceAlreadyLogged:
+                  summary: Instance already logged
+                  value: "Instance already logged"
   /whatsapp/{idInstance}/requestRegistrationCode:
     post:
       tags:
