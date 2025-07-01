@@ -830,20 +830,20 @@ paths:
                   chatId: "11001234567@c.us"
                   contact:
                     phoneContact: 79001234568
-                    firstName: "Artem"
-                    middleName: "Petrovich"
-                    lastName: "Evpatoriysky"
-                    company: "Bicycle"
+                    firstName: "Joe"
+                    middleName: "Mr"
+                    lastName: "Johnson"
+                    company: "FirstAqua"
               group:
                 summary: Sending a contact to a group chat
                 value:
                   chatId: "11001234567-1581234048@g.us"
                   contact:
                     phoneContact: 79001234568
-                    firstName: "Artem"
-                    middleName: "Petrovich"
-                    lastName: "Evpatoriysky"
-                    company: "Bicycle"
+                    firstName: "Joe"
+                    middleName: "Mr"
+                    lastName: "Johnson"
+                    company: "FirstAqua"
               quoted:
                 summary: Sending a quoted contact message
                 value:
@@ -851,10 +851,10 @@ paths:
                   quotedMessageId: "361B0E63F2FDF95903B6A9C9A102F34B"
                   contact:
                     phoneContact: 79001234568
-                    firstName: "Artem"
-                    middleName: "Petrovich"
-                    lastName: "Evpatoriysky"
-                    company: "Bicycle"
+                    firstName: "Joe"
+                    middleName: "Mr"
+                    lastName: "Johnson"
+                    company: "FirstAqua"
       responses:
         '200':
           description: Successful response with outgoing message ID.
