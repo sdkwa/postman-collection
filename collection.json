@@ -1,8 +1,10 @@
 {
 	"info": {
-		"_postman_id": "1469f76f-a4dc-4039-be0f-5b20e7297e09",
-		"name": "WASDK",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "60221fd7-7fcc-4596-b670-43c1f2ea20dc",
+		"name": "SDK WA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27883198",
+		"_collection_link": "https://universal-eclipse-719239.postman.co/workspace/test~2784e00c-181a-41d3-a403-612582d524b2/collection/27883198-60221fd7-7fcc-4596-b670-43c1f2ea20dc?action=share&source=collection_link&creator=27883198"
 	},
 	"item": [
 		{
@@ -11,36 +13,46 @@
 				{
 					"name": "Get account settings",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getSettings/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/getSettings",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getSettings",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"getSettings"
 							]
 						},
 						"description": "The method is aimed for getting the current account settings.\n\n| Parameter | Type | Description |\n| --- | --- | --- |\n| `wid` | **string** | Account ID in WhatsApp |\n| `countryInstance` | **string** | Account country code in accordance with standard [ISO 3166-2](https://ru.wikipedia.org/wiki/ISO_3166-2) |\n| `typeAccount` | **string** | Account type, possible variants: `WA_DESKTOP`, `WA_MOBILE` |\n| `releaseType` | **string** | Release type, possible variants: `STABLE`, `LATEST` |\n| `webhookUrl` | **string** | URL to receive incoming notifications |\n| `webhookUrlToken` | **string** | Token for connecting to your webhook server |\n| `delaySendMessagesMilliseconds` | **integer** | [Min message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md) in milliseconds |\n| `delaySendMessagesMaxMs` | **integer** | [Max message sending delay](https://file+.vscode-resource.vscode-cdn.net/d:/work/stroy/docs/en/docs/api/send-messages-delay.md) in milliseconds |\n| `markIncomingMessagesReaded` | **string** | Mark incoming messages as read or not, possible variants: `yes`, `no`. Ignored if markIncomingMessagesReadedOnReply is 'yes'. |\n| `markIncomingMessagesReadedOnReply` | **string** | Mark incoming messages as read when sending a message to the chat via API, possible variants: `yes`, `no`. If 'yes', then markIncomingMessagesReaded setting is ignored. |\n| `outgoingWebhook` | **string** | Get notifications about outgoing messages sending / delivering / reading status, possible variants: `yes`, `no` |\n| `outgoingMessageWebhook` | **string** | Get notifications about messages sent from phone, possible variants: `yes`, `no` |\n| `stateWebhook` | **string** | Get notifications about changes in the account authorization status, possible variants: `yes`, `no` |\n| `incomingWebhook` | **string** | Get notifications about incoming messages and files, possible variants: `yes`, `no` |\n| `deviceWebhook` | **string** | Get notifications about the device (phone) and battery level, possible variants: `yes`, `no` |\n| `statusInstanceWebhook` | **string** | Get notifications about the account socket connection status change, possible variants: `yes`, `no` |"
 					},
 					"response": [
 						{
-							"name": "getSettings",
+							"name": "Get account settings",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/getSettings/{{apiTokenInstance}}",
+									"raw": "{{host}}/whatsapp/{{idInstance}}/getSettings",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"waInstance{{idInstance}}",
-										"getSettings",
-										"{{apiTokenInstance}}"
+										"whatsapp",
+										"{{idInstance}}",
+										"getSettings"
 									]
 								}
 							},
@@ -50,33 +62,123 @@
 							"header": [
 								{
 									"key": "Server",
-									"value": "nginx/1.10.3"
+									"value": "nginx/1.24.0 (Ubuntu)"
 								},
 								{
 									"key": "Date",
-									"value": "Mon, 20 Apr 2020 19:48:22 GMT"
+									"value": "Thu, 10 Oct 2024 10:22:47 GMT"
 								},
 								{
 									"key": "Content-Type",
-									"value": "application/json"
+									"value": "application/json; charset=utf-8"
 								},
 								{
 									"key": "Content-Length",
-									"value": "85"
+									"value": "560"
 								},
 								{
 									"key": "Connection",
 									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET,PUT,POST,DELETE"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type, Accept"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"26c-4dwUF3WcorkkO2ZkC+B5NLUfud4\""
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"wid\": \"79001234567@c.us\", \n    \"countryInstance\": \"ru\",\n    \"typeAccount\": \"vip\",\n    \"webhookUrl\": \"https://mysite.com/webhook/wasdk/\",\n    \"delaySendMessagesMilliseconds\": 3000,\n    \"markIncomingMessagesReaded\": \"yes\",\n    \"outgoingWebhook\": \"yes\",\n    \"stateWebhook\": \"yes\",\n    \"incomingWebhook\": \"yes\",\n    \"deviceWebhook\": \"no\"\n}"
+							"body": "{\n    \"wid\": \"\",\n    \"countryInstance\": \"\",\n    \"typeAccount\": \"WA_DESKTOP\",\n    \"webhookUrl\": \"http://184.107.167.193:4001/webhook\",\n    \"webhookUrlToken\": \"\",\n    \"delaySendMessagesMilliseconds\": 1000,\n    \"delaySendMessagesMaxMs\": 1000,\n    \"markIncomingMessagesReaded\": \"yes\",\n    \"markIncomingMessagesReadedOnReply\": \"no\",\n    \"sharedSession\": \"no\",\n    \"proxyInstance\": \"system proxy\",\n    \"outgoingWebhook\": \"no\",\n    \"outgoingMessageWebhook\": \"no\",\n    \"outgoingAPIMessageWebhook\": \"no\",\n    \"incomingWebhook\": \"yes\",\n    \"deviceWebhook\": \"no\",\n    \"statusInstanceWebhook\": \"yes\",\n    \"stateWebhook\": \"no\",\n    \"enableMessagesHistory\": \"yes\",\n    \"keepOnlineStatus\": \"no\"\n}"
 						}
 					]
 				},
 				{
 					"name": "Set account settings",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -89,17 +191,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/setSettings",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setSettings",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"setSettings"
 							]
 						},
-						"description": "Документация [SetSettings](https://sdkwa.pro/en/docs/api/account/SetSettings/)"
+						"description": "Документация [SetSettings](https://wasdk.pro/en/docs/api/account/SetSettings/)"
 					},
 					"response": [
 						{
@@ -161,20 +263,30 @@
 				{
 					"name": "Get account state",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getStateInstance/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/getStateInstance",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getStateInstance",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"getStateInstance"
 							]
 						},
-						"description": "Документация [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)"
+						"description": "Документация [GetStateInstance](https://wasdk.pro/en/docs/api/account/GetStateInstance/)"
 					},
 					"response": [
 						{
@@ -227,86 +339,60 @@
 				{
 					"name": "Get warming phone status",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getWarmingPhoneStatus/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/getWarmingPhoneStatus",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getWarmingPhoneStatus",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"getWarmingPhoneStatus"
 							]
 						},
-						"description": "Документация [GetStateInstance](https://sdkwa.pro/en/docs/api/account/GetStateInstance/)"
+						"description": "Документация [GetStateInstance](https://wasdk.pro/en/docs/api/account/GetStateInstance/)"
 					},
-					"response": [
-						{
-							"name": "getStateInstance authorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/getStateInstance/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"getStateInstance",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 17 Apr 2020 14:31:40 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "35"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"stateInstance\": \"authorized\"\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "Reboot account",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/reboot/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/reboot",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"reboot",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"reboot"
 							]
 						},
-						"description": "Документация [Reboot](https://sdkwa.pro/en/docs/api/account/Reboot/)"
+						"description": "Документация [Reboot](https://wasdk.pro/en/docs/api/account/Reboot/)"
 					},
 					"response": [
 						{
@@ -359,20 +445,30 @@
 				{
 					"name": "Logout account",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/logout/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/logout",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"logout",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"logout"
 							]
 						},
-						"description": "Документация [Logout](https://sdkwa.pro/en/docs/api/account/Logout/)"
+						"description": "Документация [Logout](https://wasdk.pro/en/docs/api/account/Logout/)"
 					},
 					"response": [
 						{
@@ -425,26 +521,304 @@
 				{
 					"name": "Get QR code",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/qr/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/qr",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"qr",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"qr"
 							]
 						},
-						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
+						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+					},
+					"response": [
+						{
+							"name": "Get QR code",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/whatsapp/{{idInstance}}/qr",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"whatsapp",
+										"{{idInstance}}",
+										"qr"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.24.0 (Ubuntu)"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 10 Oct 2024 13:29:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "6310"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Method"
+								},
+								{
+									"key": "Vary",
+									"value": "Access-Control-Request-Headers"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"18a6-t8GmZk9fNlyTxVDMtD6nyHE9bQQ\""
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"type\": \"qrCode\",\n    \"message\": \"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\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getPairingCode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phoneNumber\": 790012345673452\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/getPairingCode",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{messenger}}",
+								"{{idInstance}}",
+								"getPairingCode"
+							]
+						},
+						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
 					},
 					"response": []
 				},
 				{
-					"name": "Request registration code",
+					"name": "sendConfirmationCode",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phoneNumber\": 790012345673452\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/sendConfirmationCode",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{messenger}}",
+								"{{idInstance}}",
+								"sendConfirmationCode"
+							]
+						},
+						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+					},
+					"response": []
+				},
+				{
+					"name": "signInWithConfirmationCode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"JpkyJeAM8dQ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/signInWithConfirmationCode",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{messenger}}",
+								"{{idInstance}}",
+								"signInWithConfirmationCode"
+							]
+						},
+						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+					},
+					"response": []
+				},
+				{
+					"name": "createApp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"title\",\r\n    \"shortName\": \"shortName\",\r\n    \"url\": \"https:sdkwa.pro\",\r\n    \"description\": \"description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/createApp",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{messenger}}",
+								"{{idInstance}}",
+								"createApp"
+							]
+						},
+						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+					},
+					"response": []
+				},
+				{
+					"name": "requestAuthorizationCode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -457,23 +831,33 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/requestRegistrationCode/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/requestAuthorizationCode",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"requestRegistrationCode",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"requestAuthorizationCode"
 							]
 						},
-						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
+						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
 					},
 					"response": []
 				},
 				{
 					"name": "Send registration code",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -486,17 +870,48 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendRegistrationCode/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/sendRegistrationCode/",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
+								"{{messenger}}",
+								"{{idInstance}}",
 								"sendRegistrationCode",
-								"{{apiTokenInstance}}"
+								""
 							]
 						},
-						"description": "Документация [QR](https://sdkwa.pro/en/docs/api/account/QR/)"
+						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+					},
+					"response": []
+				},
+				{
+					"name": "getInstance",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{messenger}}/getInstance",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{messenger}}",
+								"getInstance"
+							]
+						}
 					},
 					"response": []
 				}
@@ -506,285 +921,23 @@
 			"name": "Sending",
 			"item": [
 				{
-					"name": "Buttons",
-					"item": [
-						{
-							"name": "Send Buttons",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-uiid-instance-account",
-										"value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\t\"chatId\": \"712345678910@c.us\",\r\n    \"message\": \"Hello\",\r\n    \"footer\": \"Footer\",\r\n    \"buttons\": [{\"buttonId\": \"1\", \"buttonText\": \"test1\"}, {\"buttonId\": \"2\", \"buttonText\": \"test2\"}, {\"buttonId\": \"3\", \"buttonText\": \"test3\"}]\r\n\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/SendButtons/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"SendButtons",
-										"{{apiTokenInstance}}"
-									]
-								},
-								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
-							},
-							"response": [
-								{
-									"name": "SendButtons",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"message\": \"Hello man\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{host}}/waInstance{{idInstance}}/SendButtons/{{apiTokenInstance}}",
-											"host": [
-												"{{host}}"
-											],
-											"path": [
-												"waInstance{{idInstance}}",
-												"SendButtons",
-												"{{apiTokenInstance}}"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Server",
-											"value": "nginx/1.10.3"
-										},
-										{
-											"key": "Date",
-											"value": "Fri, 17 Apr 2020 13:14:58 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "Content-Length",
-											"value": "41"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Send List Message",
-							"protocolProfileBehavior": {
-								"disableUrlEncoding": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"chatId\": \"7123456789@c.us\",\r\n    \"message\": \"Text\",\r\n    \"title\": \"Title\",\r\n    \"footer\": \"Footer\",\r\n    \"buttonText\": \"Button text\",\r\n    \"sections\": [\r\n        {\r\n            \"title\": \"Section 1\",\r\n            \"rows\": [\r\n                {\r\n                    \"title\": \"Option 1\",\r\n                    \"rowId\": \"option1\"\r\n                },\r\n                {\r\n                    \"title\": \"Option 2\",\r\n                    \"rowId\": \"option2\",\r\n                    \"description\": \"Description\"\r\n                }\r\n            ]\r\n        },\r\n        {\r\n            \"title\": \"Section 2\",\r\n            \"rows\": [\r\n                {\r\n                    \"title\": \"Option 3\",\r\n                    \"rowId\": \"option3\"\r\n                },\r\n                {\r\n                    \"title\": \"Option 4\",\r\n                    \"rowId\": \"option4\",\r\n                    \"description\": \"Description\"\r\n                }\r\n            ]\r\n        }\r\n    ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/SendListMessage/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"SendListMessage",
-										"{{apiTokenInstance}}"
-									]
-								},
-								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
-							},
-							"response": [
-								{
-									"name": "SendListMessage",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"phoneNumber\": 79001234567,\r\n\t\"message\": \"Hello man\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{host}}/waInstance{{idInstance}}/SendListMessage/{{apiTokenInstance}}",
-											"host": [
-												"{{host}}"
-											],
-											"path": [
-												"waInstance{{idInstance}}",
-												"SendListMessage",
-												"{{apiTokenInstance}}"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Server",
-											"value": "nginx/1.10.3"
-										},
-										{
-											"key": "Date",
-											"value": "Fri, 17 Apr 2020 13:14:58 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "Content-Length",
-											"value": "41"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Send Template Buttons",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "x-uiid-instance-account",
-										"value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\t\"chatId\": \"71234567891c.us\",\r\n    \"title\": \"Title\",\r\n\t\"message\": \"Hello\",\r\n    \"footer\": \"What kind of action will you choose?\",\r\n    \"templateButtons\": [\r\n          \r\n            {\"index\": 1, \"urlButton\": {\"displayText\": \"⭐ Star us on GitHub!\", \"url\": \"https://github.com/Yard-Tean/docs\"}},\r\n            {\"index\": 2, \"callButton\": {\"displayText\": \"Call us\", \"phoneNumber\": \"+1 (234) 5678-901\"}},\r\n            {\"index\": 3, \"quickReplyButton\": {\"displayText\": \"Plain button\", \"id\": \"plainButtonId\"}}\r\n        ]\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/SendTemplateButtons/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"SendTemplateButtons",
-										"{{apiTokenInstance}}"
-									]
-								},
-								"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
-							},
-							"response": [
-								{
-									"name": "SendTemplateButtons",
-									"originalRequest": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"message\": \"Hello man\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{host}}/waInstance{{idInstance}}/SendTemplateButtons/{{apiTokenInstance}}",
-											"host": [
-												"{{host}}"
-											],
-											"path": [
-												"waInstance{{idInstance}}",
-												"SendTemplateButtons",
-												"{{apiTokenInstance}}"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Server",
-											"value": "nginx/1.10.3"
-										},
-										{
-											"key": "Date",
-											"value": "Fri, 17 Apr 2020 13:14:58 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "Content-Length",
-											"value": "41"
-										},
-										{
-											"key": "Connection",
-											"value": "keep-alive"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
-								}
-							]
-						}
-					]
-				},
-				{
 					"name": "Send text",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"chatId\": \"7912345678910@c.us\",\r\n\t\"message\": \"Hello\"\r\n}",
+							"raw": "{\r\n\t\"chatId\": \"790012345673452@c.us\",\r\n\t\"message\": \"Hello\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -792,17 +945,111 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/sendMessage",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendMessage",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+					},
+					"response": [
+						{
+							"name": "sendMessage",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"message\": \"Hello man\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"sendMessage",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 13:14:58 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Send link",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"chatId\": \"@ripreal\",\r\n\t\"message\": \"https://github.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/sendMessage",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{messenger}}",
+								"{{idInstance}}",
+								"sendMessage"
+							]
+						},
+						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -867,6 +1114,16 @@
 						"disableUrlEncoding": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -879,17 +1136,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/sendMessage",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendMessage",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -954,6 +1211,16 @@
 						"disableUrlEncoding": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -966,17 +1233,16 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}{{idInstance}}/sendMessage",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendMessage",
-								"{{apiTokenInstance}}"
+								"{{messenger}}{{idInstance}}",
+								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
 					},
 					"response": [
 						{
@@ -1038,11 +1304,21 @@
 				{
 					"name": "Send contact",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"chatId\": \"7900123456725@c.us\",\r\n\t\"contact\": {\r\n\t\t\"phoneContact\": 7900123456858,\r\n    \t\"firstName\": \"David\",\r\n\t\t\"middleName\": \"David\",\r\n\t\t\"lastName\": \"David\",\r\n\t\t\"company\": \"Train\"\r\n\t}\r\n}\r\n",
+							"raw": "{\r\n\t\"chatId\": \"790012345673452@c.us\",\r\n\t\"contact\": {\r\n\t\t\"phoneContact\": 7900123456858,\r\n    \t\"firstName\": \"David\",\r\n\t\t\"middleName\": \"David\",\r\n\t\t\"lastName\": \"David\",\r\n\t\t\"company\": \"Train\"\r\n\t}\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1050,17 +1326,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendContact/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/sendContact",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendContact",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"sendContact"
 							]
 						},
-						"description": "Документация [SendContact](https://sdkwa.pro/en/docs/api/sending/SendContact/)"
+						"description": "Документация [SendContact](https://wasdk.pro/en/docs/api/sending/SendContact/)"
 					},
 					"response": [
 						{
@@ -1122,6 +1398,16 @@
 				{
 					"name": "Send video, audio, image, document",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -1141,7 +1427,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/mihai/Desktop/SB-409/window.jpg"
+									"src": []
 								},
 								{
 									"key": "fileName",
@@ -1157,17 +1443,17 @@
 							]
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendFileByUpload/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/sendFileByUpload",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendFileByUpload",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"sendFileByUpload"
 							]
 						},
-						"description": "Документация [SendFileByUpload](https://sdkwa.pro/en/docs/api/sending/SendFileByUpload/)"
+						"description": "Документация [SendFileByUpload](https://wasdk.pro/en/docs/api/sending/SendFileByUpload/)"
 					},
 					"response": [
 						{
@@ -1245,11 +1531,21 @@
 				{
 					"name": "Send video, audio, image, document via URL",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \t\"chatId\": \"79001234567343@c.us\",\r\n\t\"urlFile\": \"https://avatars.mds.yandex.net/get-pdb/477388/77f64197-87d2-42cf-9305-14f49c65f1da/s375\",\r\n\t\"fileName\": \"horse.png\",\r\n\t\"caption\": \"Horse\"\r\n}",
+							"raw": "{\r\n   \t\"chatId\": \"79001234567343@c.us\",\r\n\t\"urlFile\": \"https://surepulse-images.s3.us-east-1.amazonaws.com/uploads/photos/24dd013f7b5d4427af70bfd027eb2b2814ea3d9e-1015-rbawyoming1.jpg\",\r\n\t\"fileName\": \"window.jpg\",\r\n\t\"caption\": \"window\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1257,17 +1553,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendFileByUrl/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/sendFileByUrl",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendFileByUrl",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"sendFileByUrl"
 							]
 						},
-						"description": "Документация [SendFileByUrl](https://sdkwa.pro/en/docs/api/sending/SendFileByUrl/)"
+						"description": "Документация [SendFileByUrl](https://wasdk.pro/en/docs/api/sending/SendFileByUrl/)"
 					},
 					"response": [
 						{
@@ -1329,6 +1625,16 @@
 				{
 					"name": "Send location",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -1341,17 +1647,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendLocation/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/sendLocation",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"sendLocation",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"sendLocation"
 							]
 						},
-						"description": "Документация [SendLocation](https://sdkwa.pro/en/docs/api/sending/SendLocation/)"
+						"description": "Документация [SendLocation](https://wasdk.pro/en/docs/api/sending/SendLocation/)"
 					},
 					"response": [
 						{
@@ -1411,92 +1717,18 @@
 					]
 				},
 				{
-					"name": "Send link",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\t\"chatId\": \"790012345672@c.us\",\r\n\t\"urlLink\": \"https://sdkwa.pro\"\r\n}\r\n",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/sendLink/{{apiTokenInstance}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"waInstance{{idInstance}}",
-								"sendLink",
-								"{{apiTokenInstance}}"
-							]
-						},
-						"description": "Документация [SendLink](https://sdkwa.pro/en/docs/api/sending/SendLink/)"
-					},
-					"response": [
-						{
-							"name": "message.sendLink",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\t\"chatId\": \"790012345672@c.us\",\r\n\t\"urlLink\": \"https://www.youtube.com/watch?v=00000000000\"\r\n}\r\n",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/sendLink/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"sendLink",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 06 May 2020 20:26:45 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "41"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"idMessage\": \"3EB0160E742127137282\"\n}"
-						}
-					]
-				},
-				{
 					"name": "Upload file",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -1504,74 +1736,19 @@
 							"file": {}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/uploadFile/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/uploadFile",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"uploadFile",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"uploadFile"
 							]
 						},
-						"description": "Документация [SendMessage](https://sdkwa.pro/en/docs/api/sending/SendMessage/)"
+						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
 					},
-					"response": [
-						{
-							"name": "sendMessage",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\t\"chatId\": \"\",\r\n\t\"phoneNumber\": 79001234567,\r\n\t\"message\": \"Hello man\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/sendMessage/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"sendMessage",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 17 Apr 2020 13:14:58 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "41"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"idMessage\": \"3EB0C767D097B7C7C030\"\n}"
-						}
-					]
+					"response": []
 				}
 			]
 		},
@@ -1584,43 +1761,268 @@
 						{
 							"name": "Receive notification",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{apiTokenInstance}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/receiveNotification/{{apiTokenInstance}}",
+									"raw": "{{host}}/{{messenger}}/{{idInstance}}/receiveNotification",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"waInstance{{idInstance}}",
-										"receiveNotification",
-										"{{apiTokenInstance}}"
+										"{{messenger}}",
+										"{{idInstance}}",
+										"receiveNotification"
 									]
 								},
-								"description": "Документация [ReceiveNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)"
+								"description": "Документация [ReceiveNotification](https://wasdk.pro/en/docs/api/receiving/technology-http-api/ReceiveNotification/)"
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Receive notification",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/whatsapp/{{idInstance}}/receiveNotification",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"whatsapp",
+												"{{idInstance}}",
+												"receiveNotification"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.24.0 (Ubuntu)"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 11 Oct 2024 11:12:53 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "456"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "Expect-CT",
+											"value": "max-age=0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"1c8-eAmbYP0QjN+sdny3zQa0NoiY8bo\""
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"receiptId\": 13,\n    \"body\": {\n        \"typeWebhook\": \"incomingMessageReceived\",\n        \"instanceData\": {\n            \"idInstance\": 1101000000,\n            \"wid\": \"712345678910@c.us\",\n            \"typeInstance\": \"whatsapp\"\n        },\n        \"timestamp\": 1728645168,\n        \"idMessage\": \"653A37E275146F8C06B2686D3DCDADD2\",\n        \"senderData\": {\n            \"chatId\": \"712345678911@c.us\",\n            \"chatName\": \"example\",\n            \"sender\": \"712345678911@c.us\",\n            \"senderName\": \"example\"\n        },\n        \"messageData\": {\n            \"typeMessage\": \"textMessage\",\n            \"textMessageData\": {\n                \"textMessage\": \"hello\"\n            }\n        }\n    }\n}"
+								}
+							]
 						},
 						{
 							"name": "Delete notification",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{apiTokenInstance}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/deleteNotification/{{apiTokenInstance}}/{{receiptId}}",
+									"raw": "{{host}}/{{messenger}}/{{idInstance}}/deleteNotification/12",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"waInstance{{idInstance}}",
+										"{{messenger}}",
+										"{{idInstance}}",
 										"deleteNotification",
-										"{{apiTokenInstance}}",
-										"{{receiptId}}"
+										"12"
 									]
 								},
-								"description": "Документация [DeleteNotification](https://sdkwa.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)"
+								"description": "Документация [DeleteNotification](https://wasdk.pro/en/docs/api/receiving/technology-http-api/DeleteNotification/)"
 							},
-							"response": []
+							"response": [
+								{
+									"name": "Delete notification",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/whatsapp/{{idInstance}}/deleteNotification/12",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"whatsapp",
+												"{{idInstance}}",
+												"deleteNotification",
+												"12"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Server",
+											"value": "nginx/1.24.0 (Ubuntu)"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 11 Oct 2024 11:12:32 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "15"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "Expect-CT",
+											"value": "max-age=0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=15552000; includeSubDomains"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"f-ayLlCL3PuzXSThdu78iReSEjl6Y\""
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"result\": true\n}"
+								}
+							]
 						}
 					]
 				},
@@ -1630,20 +2032,31 @@
 						{
 							"name": "Download file from incoming message",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{apiTokenInstance}}",
+											"type": "string"
+										}
+									]
+								},
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/downloadFile/{{idMessage}}",
+									"raw": "{{host}}/{{messenger}}/{{idInstance}}/downloadFile/{{idMessage}}",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
-										"waInstance{{idInstance}}",
+										"{{messenger}}",
+										"{{idInstance}}",
 										"downloadFile",
 										"{{idMessage}}"
 									]
 								},
-								"description": "Документация [DownloadFile](https://sdkwa.pro/en/docs/api/receiving/files/DownloadFile/)"
+								"description": "Документация [DownloadFile](https://wasdk.pro/en/docs/api/receiving/files/DownloadFile/)"
 							},
 							"response": []
 						}
@@ -1657,11 +2070,21 @@
 				{
 					"name": "Get chat history",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"chatId\": \"79005952023-1607343957@g.us\",\r\n\t\"count\": 2000\r\n}",
+							"raw": "{\r\n\t\"chatId\": \"790012345673452@c.us\",\r\n\t\"count\": 2000\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1669,17 +2092,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getChatHistory/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/getChatHistory",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getChatHistory",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"getChatHistory"
 							]
 						},
-						"description": "Документация [GetChatHistory](https://sdkwa.pro/en/docs/api/journals/GetChatHistory/)"
+						"description": "Документация [GetChatHistory](https://wasdk.pro/en/docs/api/journals/GetChatHistory/)"
 					},
 					"response": [
 						{
@@ -1741,20 +2164,30 @@
 				{
 					"name": "Get outgoing messages journal",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/lastOutgoingMessages/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/lastOutgoingMessages",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"lastOutgoingMessages",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"lastOutgoingMessages"
 							]
 						},
-						"description": "Документация [LastOutgoingMessages](https://sdkwa.pro/en/docs/api/journals/LastOutgoingMessages/)"
+						"description": "Документация [LastOutgoingMessages](https://wasdk.pro/en/docs/api/journals/LastOutgoingMessages/)"
 					},
 					"response": [
 						{
@@ -1807,20 +2240,30 @@
 				{
 					"name": "Get incoming messages journal",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/lastIncomingMessages/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/lastIncomingMessages",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"lastIncomingMessages",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"lastIncomingMessages"
 							]
 						},
-						"description": "Документация [LastIncomingMessages](https://sdkwa.pro/en/docs/api/journals/LastIncomingMessages/)"
+						"description": "Документация [LastIncomingMessages](https://wasdk.pro/en/docs/api/journals/LastIncomingMessages/)"
 					},
 					"response": [
 						{
@@ -1898,20 +2341,30 @@
 				{
 					"name": "Clear messages queue",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/clearMessagesQueue/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/clearMessagesQueue",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"clearMessagesQueue",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"clearMessagesQueue"
 							]
 						},
-						"description": "Документация [ClearMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ClearMessagesQueue/)"
+						"description": "Документация [ClearMessagesQueue](https://wasdk.pro/en/docs/api/queues/ClearMessagesQueue/)"
 					},
 					"response": [
 						{
@@ -1964,20 +2417,30 @@
 				{
 					"name": "Show messages queue",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/showMessagesQueue/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/showMessagesQueue",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"showMessagesQueue",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"showMessagesQueue"
 							]
 						},
-						"description": "Документация [ShowMessagesQueue](https://sdkwa.pro/en/docs/api/queues/ShowMessagesQueue/)"
+						"description": "Документация [ShowMessagesQueue](https://wasdk.pro/en/docs/api/queues/ShowMessagesQueue/)"
 					},
 					"response": [
 						{
@@ -2035,6 +2498,16 @@
 				{
 					"name": "Change group name",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2047,17 +2520,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/updateGroupName/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/updateGroupName",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"updateGroupName",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"updateGroupName"
 							]
 						},
-						"description": "Документация [UpdateGroupName](https://sdkwa.pro/en/docs/api/groups/UpdateGroupName/)"
+						"description": "Документация [UpdateGroupName](https://wasdk.pro/en/docs/api/groups/UpdateGroupName/)"
 					},
 					"response": [
 						{
@@ -2119,6 +2592,16 @@
 				{
 					"name": "Get group data",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2131,17 +2614,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getGroupData/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/getGroupData",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getGroupData",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"getGroupData"
 							]
 						},
-						"description": "Документация [GetGroupData](https://sdkwa.pro/en/docs/api/groups/GetGroupData/)"
+						"description": "Документация [GetGroupData](https://wasdk.pro/en/docs/api/groups/GetGroupData/)"
 					},
 					"response": [
 						{
@@ -2203,6 +2686,16 @@
 				{
 					"name": "Leave group",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2215,17 +2708,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/leaveGroup/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/leaveGroup",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"leaveGroup",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"leaveGroup"
 							]
 						},
-						"description": "Документация [LeaveGroup](https://sdkwa.pro/en/docs/api/groups/LeaveGroup/)"
+						"description": "Документация [LeaveGroup](https://wasdk.pro/en/docs/api/groups/LeaveGroup/)"
 					},
 					"response": [
 						{
@@ -2287,6 +2780,16 @@
 				{
 					"name": "Set group admin rights",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2299,17 +2802,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setGroupAdmin/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/setGroupAdmin",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setGroupAdmin",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"setGroupAdmin"
 							]
 						},
-						"description": "Документация [SetGroupAdmin](https://sdkwa.pro/en/docs/api/groups/SetGroupAdmin/)"
+						"description": "Документация [SetGroupAdmin](https://wasdk.pro/en/docs/api/groups/SetGroupAdmin/)"
 					},
 					"response": [
 						{
@@ -2371,6 +2874,16 @@
 				{
 					"name": "Delete group participant",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2383,17 +2896,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/removeGroupParticipant/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/removeGroupParticipant",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"removeGroupParticipant",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"removeGroupParticipant"
 							]
 						},
-						"description": "Документация [RemoveGroupParticipant](https://sdkwa.pro/en/docs/api/groups/RemoveGroupParticipant/)"
+						"description": "Документация [RemoveGroupParticipant](https://wasdk.pro/en/docs/api/groups/RemoveGroupParticipant/)"
 					},
 					"response": [
 						{
@@ -2455,6 +2968,16 @@
 				{
 					"name": "Remove group admin rights",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2467,17 +2990,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/removeAdmin/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/removeAdmin",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"removeAdmin",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"removeAdmin"
 							]
 						},
-						"description": "Документация [RemoveAdmin](https://sdkwa.pro/en/docs/api/groups/RemoveAdmin/)"
+						"description": "Документация [RemoveAdmin](https://wasdk.pro/en/docs/api/groups/RemoveAdmin/)"
 					},
 					"response": [
 						{
@@ -2539,6 +3062,16 @@
 				{
 					"name": "Create group",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2551,17 +3084,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/createGroup/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/createGroup",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"createGroup",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"createGroup"
 							]
 						},
-						"description": "Документация [CreateGroup](https://sdkwa.pro/en/docs/api/groups/CreateGroup/)"
+						"description": "Документация [CreateGroup](https://wasdk.pro/en/docs/api/groups/CreateGroup/)"
 					},
 					"response": [
 						{
@@ -2623,6 +3156,16 @@
 				{
 					"name": "Add group participant",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2635,17 +3178,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/addGroupParticipant/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/addGroupParticipant",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"addGroupParticipant",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"addGroupParticipant"
 							]
 						},
-						"description": "Документация [AddGroupParticipant](https://sdkwa.pro/en/docs/api/groups/AddGroupParticipant/)"
+						"description": "Документация [AddGroupParticipant](https://wasdk.pro/en/docs/api/groups/AddGroupParticipant/)"
 					},
 					"response": [
 						{
@@ -2707,6 +3250,16 @@
 				{
 					"name": "Set group picture",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2726,17 +3279,17 @@
 							]
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setGroupPicture/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/setGroupPicture",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setGroupPicture",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"setGroupPicture"
 							]
 						},
-						"description": "Документация [SetGroupPicture](https://sdkwa.pro/en/docs/api/account/SetGroupPicture/)"
+						"description": "Документация [SetGroupPicture](https://wasdk.pro/en/docs/api/account/SetGroupPicture/)"
 					},
 					"response": [
 						{
@@ -2814,6 +3367,16 @@
 				{
 					"name": "Mark message as read",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2826,17 +3389,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/readChat/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/readChat",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"readChat",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"readChat"
 							]
 						},
-						"description": "Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)"
+						"description": "Документация [ReadChat](https://wasdk.pro/en/docs/api/marks/ReadChat/)"
 					},
 					"response": [
 						{
@@ -2898,6 +3461,16 @@
 				{
 					"name": "Mark chat as read",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2910,17 +3483,18 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/readChat/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/readChat/",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
+								"{{messenger}}",
+								"{{idInstance}}",
 								"readChat",
-								"{{apiTokenInstance}}"
+								""
 							]
 						},
-						"description": "Документация [ReadChat](https://sdkwa.pro/en/docs/api/marks/ReadChat/)"
+						"description": "Документация [ReadChat](https://wasdk.pro/en/docs/api/marks/ReadChat/)"
 					},
 					"response": [
 						{
@@ -3002,116 +3576,35 @@
 			]
 		},
 		{
-			"name": "Device (phone)",
-			"item": [
-				{
-					"name": "Get device info",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getDeviceInfo/{{apiTokenInstance}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"waInstance{{idInstance}}",
-								"getDeviceInfo",
-								"{{apiTokenInstance}}"
-							]
-						},
-						"description": "Документация [GetDeviceInfo](https://sdkwa.pro/en/docs/api/phone/GetDeviceInfo/)"
-					},
-					"response": [
-						{
-							"name": "getDeviceInfo",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/getDeviceInfo/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"getDeviceInfo",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 17 Apr 2020 14:32:54 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "123"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"platform\": \"iphone\",\n    \"deviceManufacturer\": \"Apple\",\n    \"deviceModel\": \"iPhone 11\",\n    \"osVersion\": \"13.4.1\",\n    \"waVersion\": \"2.20.42\",\n    \"battery\": 90\n}"
-						}
-					]
-				}
-			],
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			]
-		},
-		{
 			"name": "Service methods",
 			"item": [
 				{
 					"name": "Get contacts",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getContacts/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/getContacts",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getContacts",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"getContacts"
 							]
 						},
-						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
+						"description": "Документация [GetContacts](https://wasdk.pro/en/docs/api/service/GetContacts/)"
 					},
 					"response": [
 						{
@@ -3164,20 +3657,30 @@
 				{
 					"name": "Get chats",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getChats/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/getChats",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getChats",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"getChats"
 							]
 						},
-						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
+						"description": "Документация [GetContacts](https://wasdk.pro/en/docs/api/service/GetContacts/)"
 					},
 					"response": [
 						{
@@ -3233,6 +3736,16 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"body": {
@@ -3245,17 +3758,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/GetContactInfo/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/GetContactInfo",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"GetContactInfo",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"GetContactInfo"
 							]
 						},
-						"description": "Документация [GetContacts](https://sdkwa.pro/en/docs/api/service/GetContacts/)"
+						"description": "Документация [GetContacts](https://wasdk.pro/en/docs/api/service/GetContacts/)"
 					},
 					"response": [
 						{
@@ -3316,22 +3829,22 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/E:/download/тест 2.jpg"
+									"src": []
 								}
 							]
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setProfilePicture/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/setProfilePicture",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setProfilePicture",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"setProfilePicture"
 							]
 						},
-						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
+						"description": "Документация [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)"
 					},
 					"response": [
 						{
@@ -3392,13 +3905,23 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"reason\": '',\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
+							"body": "{\n    \"reason\": \"\",\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
 						}
 					]
 				},
 				{
 					"name": "Archive chat",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -3411,17 +3934,111 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/archiveChat/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/archiveChat",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"archiveChat",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"archiveChat"
 							]
 						},
-						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)"
+					},
+					"response": [
+						{
+							"name": "archiveChat",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"chatId\": \"\",\r\n    \"phoneNumber\": 79001234567\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/waInstance{{idInstance}}/archiveChat/{{apiTokenInstance}}",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"waInstance{{idInstance}}",
+										"archiveChat",
+										"{{apiTokenInstance}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Server",
+									"value": "nginx/1.10.3"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Apr 2020 14:40:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "190"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "block chat",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"chatId\": \"79123456789756@c.us\",\r\n    \"block\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/blockChat",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{messenger}}",
+								"{{idInstance}}",
+								"blockChat"
+							]
+						},
+						"description": "Документация [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3483,6 +4100,16 @@
 				{
 					"name": "Unarchive chat",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -3495,17 +4122,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/unarchiveChat/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/unarchiveChat",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"unarchiveChat",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"unarchiveChat"
 							]
 						},
-						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3567,6 +4194,16 @@
 				{
 					"name": "Delete message",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -3579,17 +4216,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/deleteMessage/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/deleteMessage",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"deleteMessage",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"deleteMessage"
 							]
 						},
-						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3651,6 +4288,16 @@
 				{
 					"name": "Get avatar contact",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -3663,17 +4310,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/getAvatar",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getAvatar",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"getAvatar"
 							]
 						},
-						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [GetAvatar](https://wasdk.pro/en/docs/api/service/GetAvatar/)"
 					},
 					"response": [
 						{
@@ -3733,13 +4380,23 @@
 					]
 				},
 				{
-					"name": "Get avatar group",
+					"name": "Check WhatsApp availability",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"chatId\": \"79001234567-1581234048@g.us\"\r\n}",
+							"raw": "{\r\n\t\"phoneNumber\": 79001234561213\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3747,27 +4404,27 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/checkWhatsapp",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"getAvatar",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"checkWhatsapp"
 							]
 						},
-						"description": "Документация [GetAvatar](https://sdkwa.pro/en/docs/api/service/GetAvatar/)"
+						"description": "Документация [CheckWhatsapp](https://wasdk.pro/en/docs/api/service/CheckWhatsapp/)"
 					},
 					"response": [
 						{
-							"name": "getAvatar",
+							"name": "checkWhatsapp",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"chatId\": \"79001234567-1581234048@g.us\"\r\n}",
+									"raw": "{\r\n\t\"phoneNumber\": 7900123456734\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -3775,13 +4432,13 @@
 									}
 								},
 								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/getAvatar/{{apiTokenInstance}}",
+									"raw": "{{host}}/waInstance{{idInstance}}/checkWhatsapp/{{apiTokenInstance}}",
 									"host": [
 										"{{host}}"
 									],
 									"path": [
 										"waInstance{{idInstance}}",
-										"getAvatar",
+										"checkWhatsapp",
 										"{{apiTokenInstance}}"
 									]
 								}
@@ -3796,7 +4453,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 17 Apr 2020 14:40:40 GMT"
+									"value": "Fri, 17 Apr 2020 14:35:46 GMT"
 								},
 								{
 									"key": "Content-Type",
@@ -3804,7 +4461,7 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "190"
+									"value": "28"
 								},
 								{
 									"key": "Connection",
@@ -3812,18 +4469,28 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"existsWhatsapp\": true,\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/avatar.jpg\"\n}"
+							"body": "{\n    \"existsWhatsapp\": true\n}"
 						}
 					]
 				},
 				{
-					"name": "Check WhatsApp availability",
+					"name": "Check Contact availability",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"phoneNumber\": 79001234561213\r\n}",
+							"raw": "{\r\n\t\"contact\": \"79001234561213\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3831,17 +4498,17 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/checkWhatsapp/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/checkContact",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"checkWhatsapp",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"checkContact"
 							]
 						},
-						"description": "Документация [CheckWhatsapp](https://sdkwa.pro/en/docs/api/service/CheckWhatsapp/)"
+						"description": "Документация [CheckWhatsapp](https://wasdk.pro/en/docs/api/service/CheckWhatsapp/)"
 					},
 					"response": [
 						{
@@ -3903,6 +4570,16 @@
 				{
 					"name": "Set profile name",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -3915,84 +4592,33 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setProfileName/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/setProfileName",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setProfileName",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"setProfileName"
 							]
 						},
-						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
+						"description": "Документация [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)"
 					},
-					"response": [
-						{
-							"name": "setProfilePicture",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": []
-										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"setSettings",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 21 Apr 2020 13:16:18 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "26"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"reason\": '',\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
-						}
-					]
+					"response": []
 				},
 				{
 					"name": "Set profile status",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -4005,80 +4631,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/waInstance{{idInstance}}/setProfileStatus/{{apiTokenInstance}}",
+							"raw": "{{host}}/{{messenger}}/{{idInstance}}/setProfileStatus",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"waInstance{{idInstance}}",
-								"setProfileStatus",
-								"{{apiTokenInstance}}"
+								"{{messenger}}",
+								"{{idInstance}}",
+								"setProfileStatus"
 							]
 						},
-						"description": "Документация [SetProfilePicture](https://sdkwa.pro/en/docs/api/account/SetProfilePicture/)"
+						"description": "Документация [SetProfilePicture](https://wasdk.pro/en/docs/api/account/SetProfilePicture/)"
 					},
-					"response": [
-						{
-							"name": "setProfilePicture",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": []
-										}
-									],
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{host}}/waInstance{{idInstance}}/setSettings/{{apiTokenInstance}}",
-									"host": [
-										"{{host}}"
-									],
-									"path": [
-										"waInstance{{idInstance}}",
-										"setSettings",
-										"{{apiTokenInstance}}"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Server",
-									"value": "nginx/1.10.3"
-								},
-								{
-									"key": "Date",
-									"value": "Tue, 21 Apr 2020 13:16:18 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "26"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"reason\": '',\n    \"urlAvatar\": \"https://pps.whatsapp.net/v/t61.24694-24/308483571_1207971116429213_502077014284387099_n.jpg?ccb=11-4&oh=01_AVx1GN64qIhU3ug2vwiTtEKuRaiG3JdQJokfCkvVJ9Ym-Q&oe=634487CA\",\n    \"setProfilePicture\": true\n}"
-						}
-					]
+					"response": []
 				}
 			]
 		},
@@ -4088,21 +4653,31 @@
 				{
 					"name": "User instances list",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
-								"key": "x-ga-method",
-								"value": "user.instances.list",
+								"key": "",
+								"value": "",
 								"type": "text",
 								"disabled": true
 							},
 							{
-								"key": "x-ga-user-id",
+								"key": "x-user-id",
 								"value": "{{user-id}}",
 								"type": "text"
 							},
 							{
-								"key": "x-ga-user-token",
+								"key": "x-user-token",
 								"value": "{{user-token}}",
 								"type": "text"
 							}
@@ -4230,19 +4805,19 @@
 								"disabled": true
 							},
 							{
-								"key": "x-ga-user-id",
+								"key": "x-user-id",
 								"value": "{{user-id}}",
 								"type": "text"
 							},
 							{
-								"key": "x-ga-user-token",
+								"key": "x-user-token",
 								"value": "{{user-token}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\"tariff\":\"DEVELOPER\",\"period\":\"infinitely\"}",
+							"raw": "{\"tariff\":\"DEVELOPER\",\"period\":\"infinitely\", \"typeAccount\": \"TG_DESKTOP\"}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4442,17 +5017,18 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "x-ga-method",
-								"value": "user.instance.extend",
-								"type": "text"
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
 							},
 							{
-								"key": "x-ga-user-id",
+								"key": "x-user-id",
 								"value": "{{user-id}}",
 								"type": "text"
 							},
 							{
-								"key": "x-ga-user-token",
+								"key": "x-user-token",
 								"value": "{{user-token}}",
 								"type": "text"
 							}
@@ -4659,25 +5235,25 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "x-ga-method",
-								"value": "user.instance.delete",
+								"key": "",
+								"value": "",
 								"type": "text",
 								"disabled": true
 							},
 							{
-								"key": "x-ga-user-id",
+								"key": "x-user-id",
 								"value": "{{user-id}}",
 								"type": "text"
 							},
 							{
-								"key": "x-ga-user-token",
+								"key": "x-user-token",
 								"value": "{{user-token}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idInstance\": 1101000864\r\n}",
+							"raw": "{\r\n    \"idInstance\": 1101000014\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -4876,25 +5452,25 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "x-ga-method",
-								"value": "user.instance.delete",
+								"key": "",
+								"value": "",
 								"type": "text",
 								"disabled": true
 							},
 							{
-								"key": "x-ga-user-id",
+								"key": "x-user-id",
 								"value": "{{user-id}}",
 								"type": "text"
 							},
 							{
-								"key": "x-ga-user-token",
+								"key": "x-user-token",
 								"value": "{{user-token}}",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idInstance\": 1101000864\r\n}",
+							"raw": "{\r\n    \"idInstance\": 1101000014\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5087,9 +5663,44 @@
 						}
 					]
 				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		}
 	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{apiTokenInstance}}",
+				"type": "string"
+			}
+		]
+	},
 	"event": [
 		{
 			"listen": "prerequest",
