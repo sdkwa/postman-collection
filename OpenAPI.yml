@@ -3,7 +3,14 @@ info:
   title: SDK WA
   version: 1.0.0
 servers:
-  - url: http://api.sdkwa.pro
+  - url: '{host}/{messenger}'
+    variables:
+      host:
+        default: 'http://api.sdkwa.pro'
+        description: 'API host URL'
+      messenger:
+        default: 'whatsapp'
+        description: 'Messenger type'
 components:
   parameters:
     XUserIdHeader:
@@ -43,7 +50,7 @@ tags:
   - name: Service methods
   - name: instances management
 paths:
-  /whatsapp/{idInstance}/getSettings:
+  /{idInstance}/getSettings:
     get:
       tags:
         - Account
@@ -138,7 +145,7 @@ paths:
                 statusInstanceWebhook: "yes"
                 sendFromUTC: "12:00"
                 sendToUTC: "18:00"
-  /whatsapp/{idInstance}/setSettings:
+  /{idInstance}/setSettings:
     post:
       tags:
         - Account
@@ -249,7 +256,7 @@ paths:
                     description: Flag that the settings are saved.
               example:
                 saveSettings: true
-  /whatsapp/{idInstance}/getStateInstance:
+  /{idInstance}/getStateInstance:
     get:
       tags:
         - Account
@@ -287,7 +294,7 @@ paths:
                         - `starting`: Account is starting up or in maintenance mode.
               example:
                 stateInstance: "authorized"
-  /whatsapp/{idInstance}/getWarmingPhoneStatus:
+  /{idInstance}/getWarmingPhoneStatus:
     get:
       tags:
         - Account
@@ -343,7 +350,7 @@ paths:
                 forWarming: 1
                 notWarmed: 2
                 warmed: 0
-  /whatsapp/{idInstance}/reboot:
+  /{idInstance}/reboot:
     get:
       tags:
         - Account
@@ -372,7 +379,7 @@ paths:
                     description: Result of rebooting WhatsApp account.
               example:
                 isReboot: true
-  /whatsapp/{idInstance}/logout:
+  /{idInstance}/logout:
     get:
       tags:
         - Account
@@ -401,7 +408,7 @@ paths:
                     description: WhatsApp account logging out result.
               example:
                 isLogout: true
-  /whatsapp/{idInstance}/qr:
+  /{idInstance}/qr:
     get:
       tags:
         - Account
@@ -457,7 +464,7 @@ paths:
                   value:
                     type: "alreadyLogged"
                     message: "instance account already authorized"
-  /whatsapp/{idInstance}/getAuthorizationCode:
+  /{idInstance}/getAuthorizationCode:
     post:
       tags:
         - Account
@@ -535,7 +542,7 @@ paths:
                   value:
                     statusCode: 400
                     timestamp: "2023-06-21T09:20:39.876Z"
-                    path: "/whatsapp/1101000001/getAuthorizationCode"
+                    path: "/1101000001/getAuthorizationCode"
                     message: "Validation failed. Details: Wrong format. 'phoneNumber' must contain contain country code and only digits"
                 instanceAlreadyLogged:
                   summary: Instance already logged
@@ -543,7 +550,7 @@ paths:
                 WaConnectionClosedException:
                   summary: "Connection to whatsapp was closed"
                   value: "Connection to whatsapp was closed due reason Instance has auth. You need to make log out"
-  /whatsapp/{idInstance}/requestRegistrationCode:
+  /{idInstance}/requestRegistrationCode:
     post:
       tags:
         - Account
@@ -635,7 +642,7 @@ paths:
                   value:
                     type: "alreadyLogged"
                     message: "instance account already authorized"
-  /whatsapp/{idInstance}/sendRegistrationCode/:
+  /{idInstance}/sendRegistrationCode/:
     post:
       tags:
         - Account
@@ -695,7 +702,296 @@ paths:
                   value:
                     type: "alreadyLogged"
                     message: "instance account already authorized"
-  /whatsapp/{idInstance}/sendMessage:
+  /{idInstance}/getPairingCode:
+    post:
+      tags:
+        - Account
+      summary: Get pairing code
+      description: >
+        This method is used to get a pairing code for WhatsApp account authorization.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idInstance
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phoneNumber:
+                  type: integer
+                  description: Phone number for pairing.
+              required:
+                - phoneNumber
+            example:
+              phoneNumber: 790012345673452
+      responses:
+        '200':
+          description: Pairing code response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      pairingCode:
+                        type: string
+                        description: The pairing code.
+              example:
+                result: true
+                data:
+                  pairingCode: "ABC123"
+  /{idInstance}/sendConfirmationCode:
+    post:
+      tags:
+        - Account
+      summary: Send confirmation code
+      description: >
+        This method is used to send a confirmation code for WhatsApp account authorization.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idInstance
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phoneNumber:
+                  type: integer
+                  description: Phone number to send confirmation code to.
+              required:
+                - phoneNumber
+            example:
+              phoneNumber: 790012345673452
+      responses:
+        '200':
+          description: Confirmation code sent.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  message:
+                    type: string
+              example:
+                result: true
+                message: "Confirmation code sent"
+  /{idInstance}/signInWithConfirmationCode:
+    post:
+      tags:
+        - Account
+      summary: Sign in with confirmation code
+      description: >
+        This method is used to sign in using a confirmation code.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idInstance
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: Confirmation code.
+              required:
+                - code
+            example:
+              code: "JpkyJeAM8dQ"
+      responses:
+        '200':
+          description: Sign in response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  message:
+                    type: string
+              example:
+                result: true
+                message: "Successfully signed in"
+  /{idInstance}/createApp:
+    post:
+      tags:
+        - Account
+      summary: Create app
+      description: >
+        This method is used to create an application for WhatsApp Business.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idInstance
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: Application title.
+                shortName:
+                  type: string
+                  description: Application short name.
+                url:
+                  type: string
+                  description: Application URL.
+                description:
+                  type: string
+                  description: Application description.
+              required:
+                - title
+                - shortName
+                - url
+                - description
+            example:
+              title: "title"
+              shortName: "shortName"
+              url: "https:sdkwa.pro"
+              description: "description"
+      responses:
+        '200':
+          description: App creation response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      appId:
+                        type: string
+                        description: Created application ID.
+              example:
+                result: true
+                data:
+                  appId: "app123"
+  /{idInstance}/requestAuthorizationCode:
+    post:
+      tags:
+        - Account
+      summary: Request authorization code
+      description: >
+        This method is used to request an authorization code for account setup.
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idInstance
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Unique instance identifier.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                phoneNumber:
+                  type: integer
+                  description: Phone number for authorization.
+                method:
+                  type: string
+                  description: Method for receiving code (e.g., "sms").
+              required:
+                - phoneNumber
+                - method
+            example:
+              phoneNumber: 7123456789
+              method: "sms"
+      responses:
+        '200':
+          description: Authorization code request response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  message:
+                    type: string
+              example:
+                result: true
+                message: "Authorization code sent"
+  /getInstance:
+    post:
+      tags:
+        - Account
+      summary: Get instance
+      description: >
+        This method is used to get instance information.
+      security: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Instance information.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: boolean
+                  data:
+                    type: object
+                    properties:
+                      instanceId:
+                        type: string
+                        description: Instance identifier.
+              example:
+                result: true
+                data:
+                  instanceId: "instance123"
+  /{idInstance}/sendMessage:
     post:
       tags:
         - Sending
@@ -769,7 +1065,7 @@ paths:
                     description: Sent message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /whatsapp/{idInstance}/sendContact:
+  /{idInstance}/sendContact:
     post:
       tags:
         - Sending
@@ -868,7 +1164,7 @@ paths:
                     description: Outgoing message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /whatsapp/{idInstance}/sendFileByUpload:
+  /{idInstance}/sendFileByUpload:
     post:
       tags:
         - Sending
@@ -931,7 +1227,7 @@ paths:
                     description: Sent message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /whatsapp/{idInstance}/sendFileByUrl:
+  /{idInstance}/sendFileByUrl:
     post:
       tags:
         - Sending
@@ -1014,7 +1310,7 @@ paths:
                     description: Outgoing message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /whatsapp/{idInstance}/sendLocation:
+  /{idInstance}/sendLocation:
     post:
       tags:
         - Sending
@@ -1101,7 +1397,7 @@ paths:
                     description: Outgoing message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /whatsapp/{idInstance}/uploadFile:
+  /{idInstance}/uploadFile:
     post:
       tags:
         - Sending
@@ -1138,7 +1434,7 @@ paths:
                     description: Link to the uploaded file
               example:
                 urlFile: "https://sdkwa.pro/1101000001/56b8dd93-8cc5-4ad7-a989-d58a26a924a6.jpeg"
-  /whatsapp/{idInstance}/receiveNotification:
+  /{idInstance}/receiveNotification:
     get:
       tags:
         - Receiving
@@ -1187,7 +1483,7 @@ paths:
                     typeMessage: "textMessage"
                     textMessageData:
                       textMessage: "hello world"
-  /whatsapp/{idInstance}/deleteNotification/{receiptId}:
+  /{idInstance}/deleteNotification/{receiptId}:
     delete:
       tags:
         - Receiving
@@ -1223,7 +1519,7 @@ paths:
                       Incoming notification deleting result: `true` if the notification was successfully deleted from the queue; `false` if the notification was not deleted (for example, if it was already deleted or the receiptId is invalid).
               example:
                 result: true
-  /whatsapp/{idInstance}/downloadFile/{idMessage}:
+  /{idInstance}/downloadFile/{idMessage}:
     post:
       tags:
         - Sending
@@ -1267,7 +1563,7 @@ paths:
               schema:
                 type: string
                 format: binary
-  /whatsapp/{idInstance}/getChatHistory:
+  /{idInstance}/getChatHistory:
     post:
       tags:
         - Sending
@@ -1419,7 +1715,7 @@ paths:
                   senderName: "Andrew Sh"
                   downloadUrl: "https://sdkwa.pro/ffsdfsdfsdfh.jpg"
                   caption: "SDKWA Logo"
-  /whatsapp/{idInstance}/lastOutgoingMessages:
+  /{idInstance}/lastOutgoingMessages:
     get:
       tags:
         - Journals
@@ -1540,7 +1836,7 @@ paths:
                   chatId: "11001234567@c.us"
                   downloadUrl: "https://{{apiHost}}/waInstance1234/downloadFile/3EB0BDDC94BFDFB3D4FA"
                   caption: "What do you think?"
-  /whatsapp/{idInstance}/lastIncomingMessages:
+  /{idInstance}/lastIncomingMessages:
     get:
       tags:
         - Journals
@@ -1718,7 +2014,7 @@ paths:
                   extendedTextMessage:
                     stanzaId: "3A6424373F90A939B3C8"
                     participant: "71987654321@c.us"
-  /whatsapp/{idInstance}/clearMessagesQueue:
+  /{idInstance}/clearMessagesQueue:
     get:
       tags:
         - Queues
@@ -1747,7 +2043,7 @@ paths:
                     description: Flag indicating if the messages queue was cleared.
               example:
                 isCleared: true
-  /whatsapp/{idInstance}/showMessagesQueue:
+  /{idInstance}/showMessagesQueue:
     get:
       tags:
         - Queues
@@ -1792,7 +2088,7 @@ paths:
                 - typeMessage: "imageMessage"
                   chatId: "11001234567@c.us"
                   fileName: "image.jpg"
-  /whatsapp/{idInstance}/updateGroupName:
+  /{idInstance}/updateGroupName:
     post:
       tags:
         - Groups
@@ -1840,7 +2136,7 @@ paths:
                     description: Group name change flag.
               example:
                 updateGroupName: true
-  /whatsapp/{idInstance}/getGroupData:
+  /{idInstance}/getGroupData:
     post:
       tags:
         - Groups
@@ -1932,7 +2228,7 @@ paths:
                 subjectTime: 1587737715
                 subjectOwner: "11001234567@c.us"
                 groupInviteLink: "https://chat.whatsapp.com/xxxxxxxxxxxxxxxxxxxxxx"
-  /whatsapp/{idInstance}/leaveGroup:
+  /{idInstance}/leaveGroup:
     post:
       tags:
         - Groups
@@ -1975,7 +2271,7 @@ paths:
                     description: Leave group flag.
               example:
                 leaveGroup: true
-  /whatsapp/{idInstance}/setGroupAdmin:
+  /{idInstance}/setGroupAdmin:
     post:
       tags:
         - Groups
@@ -2023,7 +2319,7 @@ paths:
                     description: Flag indicating if the participant was set as administrator.
               example:
                 setGroupAdmin: true
-  /whatsapp/{idInstance}/removeGroupParticipant:
+  /{idInstance}/removeGroupParticipant:
     post:
       tags:
         - Groups
@@ -2071,7 +2367,7 @@ paths:
                     description: Group participant removal flag.
               example:
                 removeParticipant: true
-  /whatsapp/{idInstance}/removeAdmin:
+  /{idInstance}/removeAdmin:
     post:
       tags:
         - Groups
@@ -2119,7 +2415,7 @@ paths:
                     description: Flag indicating if admin rights were removed.
               example:
                 removeAdmin: true
-  /whatsapp/{idInstance}/createGroup:
+  /{idInstance}/createGroup:
     post:
       tags:
         - Groups
@@ -2179,7 +2475,7 @@ paths:
                 created: true
                 chatId: "11001234567-1587570015@g.us"
                 groupInviteLink: "https://chat.whatsapp.com/xxxxxxxxxxxxxxxxxxxxxx"
-  /whatsapp/{idInstance}/addGroupParticipant:
+  /{idInstance}/addGroupParticipant:
     post:
       tags:
         - Groups
@@ -2227,7 +2523,7 @@ paths:
                     description: Flag indicating if the participant was added to the group chat.
               example:
                 addParticipant: true
-  /whatsapp/{idInstance}/setGroupPicture:
+  /{idInstance}/setGroupPicture:
     post:
       tags:
         - Groups
@@ -2284,7 +2580,7 @@ paths:
                 setGroupPicture: true
                 urlAvatar: "https://pps.whatsapp.net/v/t61.24694-24/138639660_724754321806449_9118612187814397965_n.jpg?oh=997b0bb13b6bbb750432a86d4b8d935d&oe=600****BB4"
                 reason: ""
-  /whatsapp/{idInstance}/readChat:
+  /{idInstance}/readChat:
     post:
       tags:
         - Read mark
@@ -2338,7 +2634,7 @@ paths:
                     description: Messages read mark flag.
               example:
                 setRead: true
-  /whatsapp/{idInstance}/getContacts:
+  /{idInstance}/getContacts:
     get:
       tags:
         - Account
@@ -2384,7 +2680,7 @@ paths:
                 - id: "79001234569-1479621234@g.us"
                   name: "My group"
                   type: "group"
-  /whatsapp/{idInstance}/getChats:
+  /{idInstance}/getChats:
     get:
       tags:
         - Account
@@ -2432,7 +2728,7 @@ paths:
                 - id: "79001234569-1479621234@g.us"
                   archive: false
                   notSpam: true
-  /whatsapp/{idInstance}/getContactInfo:
+  /{idInstance}/getContactInfo:
     get:
       tags:
         - Account
@@ -2584,7 +2880,7 @@ paths:
                 isMute: false
                 messageExpiration: 0
                 muteExpiration: null
-  /whatsapp/{idInstance}/setProfilePicture:
+  /{idInstance}/setProfilePicture:
     post:
       tags:
         - Account
@@ -2636,7 +2932,7 @@ paths:
                 setProfilePicture: true
                 urlAvatar: "https://pps.whatsapp.net/v/t61.24******-24/23**********_********23704_************77468_n.jpg?ccb=11-4&oh=**********b6ccc377d6332abad7d0bb&oe=********"
                 reason: ""
-  /whatsapp/{idInstance}/archiveChat:
+  /{idInstance}/archiveChat:
     post:
       tags:
         - Account
@@ -2686,7 +2982,7 @@ paths:
                     type: string
               example:
                 error: "ArchiveChatError: cannot archive chat cause last message not found in chat"
-  /whatsapp/{idInstance}/unarchiveChat:
+  /{idInstance}/unarchiveChat:
     post:
       tags:
         - Account
@@ -2736,7 +3032,7 @@ paths:
                     type: string
               example:
                 error: "ArchiveChatError: cannot archive chat cause last message not found in chat"
-  /whatsapp/{idInstance}/deleteMessage:
+  /{idInstance}/deleteMessage:
     post:
       tags:
         - Messages
@@ -2798,7 +3094,7 @@ paths:
                   summary: Message not found
                   value:
                     error: "ID message notfound"
-  /whatsapp/{idInstance}/getAvatar:
+  /{idInstance}/getAvatar:
     post:
       tags:
         - Account
@@ -2875,7 +3171,7 @@ paths:
                     existsWhatsapp: false
                     urlAvatar: ""
                     reason: "get avatar timeout limit exceeded"
-  /whatsapp/{idInstance}/checkWhatsapp:
+  /{idInstance}/checkWhatsapp:
     post:
       tags:
         - Account
@@ -2936,7 +3232,7 @@ paths:
                   summary: Timeout exceeded
                   value:
                     error: "check phone number timeout limit exceeded"
-  /whatsapp/{idInstance}/setProfileName:
+  /{idInstance}/setProfileName:
     post:
       tags:
         - Account
@@ -2975,7 +3271,7 @@ paths:
                 type: object
                 description: Empty response body.
               example: {}
-  /whatsapp/{idInstance}/setProfileStatus:
+  /{idInstance}/setProfileStatus:
     post:
       tags:
         - Account
@@ -3017,7 +3313,7 @@ paths:
   /api/v1/instance/user/instances/list:
     post:
       tags:
-        - Instances management
+        - instances management
       summary: Get user account instances
       description: >
         This method retrieves all account instances created by the user.
@@ -3141,7 +3437,7 @@ paths:
   /api/v1/instance/user/instance/createByOrder:
     post:
       tags:
-        - Instances management
+        - instances management
       summary: Create new user instance
       description: >
         This method creates a new user instance with the specified tariff and period.
@@ -3319,7 +3615,7 @@ paths:
   /api/v1/instance/user/instance/extendByOrder:
     post:
       tags:
-        - Instances management
+        - instances management
       summary: Extend paid user instance
       description: >
         This method renews a paid user instance for the specified period and tariff.
@@ -3505,7 +3801,7 @@ paths:
   /api/v1/instance/user/instance/delete:
     post:
       tags:
-        - Instances management
+        - instances management
       summary: Delete user instance
       description: >
         This method deletes a user instance by its ID.
@@ -3570,7 +3866,7 @@ paths:
   /api/v1/instance/user/instance/restore:
     post:
       tags:
-        - Instances management
+        - instances management
       summary: Restore user instance
       description: >
         This method restores a user instance by its ID.
