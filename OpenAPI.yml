@@ -17,14 +17,14 @@ components:
       schema:
         type: string
         default: 'whatsapp'
-      description: Messenger type identifier.
+      description: Messenger type identifier. Available: whatsapp, telegram.
     IdInstanceParameter:
       name: idInstance
       in: path
       required: true
       schema:
         type: string
-      description: Unique instance identifier.
+      description: Unique instance identifier. See the [Profile](https://cabinet.sdkwa.pro) page in your Personal Account for your instance ID.
     XUserIdHeader:
       name: x-user-id
       in: header
