@@ -18,6 +18,13 @@ components:
         type: string
         default: 'whatsapp'
       description: Messenger type identifier.
+    IdInstanceParameter:
+      name: idInstance
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique instance identifier.
     XUserIdHeader:
       name: x-user-id
       in: header
@@ -66,12 +73,7 @@ paths:
         - bearerAuth: []
       parameters:
         - $ref: '#/components/parameters/MessengerParameter'
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: Current account settings.
@@ -162,12 +164,7 @@ paths:
         - bearerAuth: []
       parameters:
         - $ref: '#/components/parameters/MessengerParameter'
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -278,12 +275,7 @@ paths:
         - bearerAuth: []
       parameters:
         - $ref: '#/components/parameters/MessengerParameter'
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: Current state of the account instance.
@@ -313,11 +305,7 @@ paths:
         - bearerAuth: []
       parameters:
         - $ref: '#/components/parameters/MessengerParameter'
-        - name: idInstance
-          in: path
-          schema:
-            type: string
-          required: true
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: Successful response with warming phone status.
@@ -370,12 +358,7 @@ paths:
         - bearerAuth: []
       parameters:
         - $ref: '#/components/parameters/MessengerParameter'
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: Indicates whether the WhatsApp account was successfully rebooted.
@@ -399,12 +382,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: Indicates whether the WhatsApp account was successfully logged out.
@@ -431,12 +410,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: QR code or status message for account authorization.
@@ -488,12 +463,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -662,12 +633,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -722,12 +689,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -772,12 +735,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -817,12 +776,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -862,12 +817,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -927,12 +878,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -1017,12 +964,7 @@ paths:
         - bearerAuth: []
       parameters:
         - $ref: '#/components/parameters/MessengerParameter'
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -1090,12 +1032,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -1189,12 +1127,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -1252,12 +1186,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -1334,12 +1264,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -1420,12 +1346,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -1458,12 +1380,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: Successful response with the next incoming notification, or empty if none is available.
@@ -1506,12 +1424,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
         - name: receiptId
           in: path
           required: true
@@ -1542,12 +1456,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
         - name: idMessage
           in: path
           required: true
@@ -1586,12 +1496,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -1738,12 +1644,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
         - name: minutes
           in: query
           required: false
@@ -1859,12 +1761,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
         - name: minutes
           in: query
           required: false
@@ -2037,12 +1935,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: Indicates whether the messages queue was successfully cleared.
@@ -2066,12 +1960,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: Array of messages currently in the sending queue.
@@ -2111,12 +2001,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2159,12 +2045,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2251,12 +2133,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2294,12 +2172,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2342,12 +2216,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2390,12 +2260,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2438,12 +2304,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2498,12 +2360,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2546,12 +2404,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2603,12 +2457,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2657,12 +2507,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: Array of contacts for the current account.
@@ -2703,12 +2549,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       responses:
         '200':
           description: Array of chats for the current account.
@@ -2751,12 +2593,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2903,12 +2741,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -2955,12 +2789,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -3005,12 +2835,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -3055,12 +2881,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -3117,12 +2939,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -3194,12 +3012,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -3255,12 +3069,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
@@ -3294,12 +3104,8 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: idInstance
-          in: path
-          required: true
-          schema:
-            type: string
-          description: Unique instance identifier.
+        - $ref: '#/components/parameters/MessengerParameter'
+        - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
         content:
