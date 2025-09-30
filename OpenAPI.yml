@@ -3,16 +3,21 @@ info:
   title: SDK WA
   version: 1.0.0
 servers:
-  - url: '{host}/{messenger}'
+  - url: '{host}'
     variables:
       host:
         default: 'http://api.sdkwa.pro'
         description: 'API host URL'
-      messenger:
-        default: 'whatsapp'
-        description: 'Messenger type'
 components:
   parameters:
+    MessengerParameter:
+      name: messenger
+      in: path
+      required: true
+      schema:
+        type: string
+        default: 'whatsapp'
+      description: Messenger type identifier.
     XUserIdHeader:
       name: x-user-id
       in: header
@@ -50,7 +55,7 @@ tags:
   - name: Service methods
   - name: instances management
 paths:
-  /{idInstance}/getSettings:
+  /{messenger}/{idInstance}/getSettings:
     get:
       tags:
         - Account
@@ -60,6 +65,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - $ref: '#/components/parameters/MessengerParameter'
         - name: idInstance
           in: path
           required: true
@@ -145,7 +151,7 @@ paths:
                 statusInstanceWebhook: "yes"
                 sendFromUTC: "12:00"
                 sendToUTC: "18:00"
-  /{idInstance}/setSettings:
+  /{messenger}/{idInstance}/setSettings:
     post:
       tags:
         - Account
@@ -155,6 +161,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - $ref: '#/components/parameters/MessengerParameter'
         - name: idInstance
           in: path
           required: true
@@ -256,7 +263,7 @@ paths:
                     description: Flag that the settings are saved.
               example:
                 saveSettings: true
-  /{idInstance}/getStateInstance:
+  /{messenger}/{idInstance}/getStateInstance:
     get:
       tags:
         - Account
@@ -270,6 +277,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - $ref: '#/components/parameters/MessengerParameter'
         - name: idInstance
           in: path
           required: true
@@ -294,7 +302,7 @@ paths:
                         - `starting`: Account is starting up or in maintenance mode.
               example:
                 stateInstance: "authorized"
-  /{idInstance}/getWarmingPhoneStatus:
+  /{messenger}/{idInstance}/getWarmingPhoneStatus:
     get:
       tags:
         - Account
@@ -304,6 +312,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - $ref: '#/components/parameters/MessengerParameter'
         - name: idInstance
           in: path
           schema:
@@ -350,7 +359,7 @@ paths:
                 forWarming: 1
                 notWarmed: 2
                 warmed: 0
-  /{idInstance}/reboot:
+  /{messenger}/{idInstance}/reboot:
     get:
       tags:
         - Account
@@ -360,6 +369,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - $ref: '#/components/parameters/MessengerParameter'
         - name: idInstance
           in: path
           required: true
@@ -379,7 +389,7 @@ paths:
                     description: Result of rebooting WhatsApp account.
               example:
                 isReboot: true
-  /{idInstance}/logout:
+  /{messenger}/{idInstance}/logout:
     get:
       tags:
         - Account
@@ -408,7 +418,7 @@ paths:
                     description: WhatsApp account logging out result.
               example:
                 isLogout: true
-  /{idInstance}/qr:
+  /{messenger}/{idInstance}/qr:
     get:
       tags:
         - Account
@@ -464,7 +474,7 @@ paths:
                   value:
                     type: "alreadyLogged"
                     message: "instance account already authorized"
-  /{idInstance}/getAuthorizationCode:
+  /{messenger}/{idInstance}/getAuthorizationCode:
     post:
       tags:
         - Account
@@ -550,7 +560,7 @@ paths:
                 WaConnectionClosedException:
                   summary: "Connection to whatsapp was closed"
                   value: "Connection to whatsapp was closed due reason Instance has auth. You need to make log out"
-  /{idInstance}/requestRegistrationCode:
+  /{messenger}/{idInstance}/requestRegistrationCode:
     post:
       tags:
         - Account
@@ -642,7 +652,7 @@ paths:
                   value:
                     type: "alreadyLogged"
                     message: "instance account already authorized"
-  /{idInstance}/sendRegistrationCode/:
+  /{messenger}/{idInstance}/sendRegistrationCode/:
     post:
       tags:
         - Account
@@ -702,7 +712,7 @@ paths:
                   value:
                     type: "alreadyLogged"
                     message: "instance account already authorized"
-  /{idInstance}/getPairingCode:
+  /{messenger}/{idInstance}/getPairingCode:
     post:
       tags:
         - Account
@@ -752,7 +762,7 @@ paths:
                 result: true
                 data:
                   pairingCode: "ABC123"
-  /{idInstance}/sendConfirmationCode:
+  /{messenger}/{idInstance}/sendConfirmationCode:
     post:
       tags:
         - Account
@@ -797,7 +807,7 @@ paths:
               example:
                 result: true
                 message: "Confirmation code sent"
-  /{idInstance}/signInWithConfirmationCode:
+  /{messenger}/{idInstance}/signInWithConfirmationCode:
     post:
       tags:
         - Account
@@ -842,7 +852,7 @@ paths:
               example:
                 result: true
                 message: "Successfully signed in"
-  /{idInstance}/createApp:
+  /{messenger}/{idInstance}/createApp:
     post:
       tags:
         - Account
@@ -907,7 +917,7 @@ paths:
                 result: true
                 data:
                   appId: "app123"
-  /{idInstance}/requestAuthorizationCode:
+  /{messenger}/{idInstance}/requestAuthorizationCode:
     post:
       tags:
         - Account
@@ -957,7 +967,7 @@ paths:
               example:
                 result: true
                 message: "Authorization code sent"
-  /getInstance:
+  /{messenger}/getInstance:
     post:
       tags:
         - Account
@@ -965,6 +975,8 @@ paths:
       description: >
         This method is used to get instance information.
       security: []
+      parameters:
+        - $ref: '#/components/parameters/MessengerParameter'
       requestBody:
         required: false
         content:
@@ -991,7 +1003,7 @@ paths:
                 result: true
                 data:
                   instanceId: "instance123"
-  /{idInstance}/sendMessage:
+  /{messenger}/{idInstance}/sendMessage:
     post:
       tags:
         - Sending
@@ -1004,6 +1016,7 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - $ref: '#/components/parameters/MessengerParameter'
         - name: idInstance
           in: path
           required: true
@@ -1065,7 +1078,7 @@ paths:
                     description: Sent message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /{idInstance}/sendContact:
+  /{messenger}/{idInstance}/sendContact:
     post:
       tags:
         - Sending
@@ -1164,7 +1177,7 @@ paths:
                     description: Outgoing message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /{idInstance}/sendFileByUpload:
+  /{messenger}/{idInstance}/sendFileByUpload:
     post:
       tags:
         - Sending
@@ -1227,7 +1240,7 @@ paths:
                     description: Sent message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /{idInstance}/sendFileByUrl:
+  /{messenger}/{idInstance}/sendFileByUrl:
     post:
       tags:
         - Sending
@@ -1310,7 +1323,7 @@ paths:
                     description: Outgoing message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /{idInstance}/sendLocation:
+  /{messenger}/{idInstance}/sendLocation:
     post:
       tags:
         - Sending
@@ -1397,7 +1410,7 @@ paths:
                     description: Outgoing message Id
               example:
                 idMessage: "3EB0C767D097B7C7C030"
-  /{idInstance}/uploadFile:
+  /{messenger}/{idInstance}/uploadFile:
     post:
       tags:
         - Sending
@@ -1434,7 +1447,7 @@ paths:
                     description: Link to the uploaded file
               example:
                 urlFile: "https://sdkwa.pro/1101000001/56b8dd93-8cc5-4ad7-a989-d58a26a924a6.jpeg"
-  /{idInstance}/receiveNotification:
+  /{messenger}/{idInstance}/receiveNotification:
     get:
       tags:
         - Receiving
@@ -1483,7 +1496,7 @@ paths:
                     typeMessage: "textMessage"
                     textMessageData:
                       textMessage: "hello world"
-  /{idInstance}/deleteNotification/{receiptId}:
+  /{messenger}/{idInstance}/deleteNotification/{receiptId}:
     delete:
       tags:
         - Receiving
@@ -1519,7 +1532,7 @@ paths:
                       Incoming notification deleting result: `true` if the notification was successfully deleted from the queue; `false` if the notification was not deleted (for example, if it was already deleted or the receiptId is invalid).
               example:
                 result: true
-  /{idInstance}/downloadFile/{idMessage}:
+  /{messenger}/{idInstance}/downloadFile/{idMessage}:
     post:
       tags:
         - Sending
@@ -1563,7 +1576,7 @@ paths:
               schema:
                 type: string
                 format: binary
-  /{idInstance}/getChatHistory:
+  /{messenger}/{idInstance}/getChatHistory:
     post:
       tags:
         - Sending
@@ -1715,7 +1728,7 @@ paths:
                   senderName: "Andrew Sh"
                   downloadUrl: "https://sdkwa.pro/ffsdfsdfsdfh.jpg"
                   caption: "SDKWA Logo"
-  /{idInstance}/lastOutgoingMessages:
+  /{messenger}/{idInstance}/lastOutgoingMessages:
     get:
       tags:
         - Journals
@@ -1836,7 +1849,7 @@ paths:
                   chatId: "11001234567@c.us"
                   downloadUrl: "https://{{apiHost}}/waInstance1234/downloadFile/3EB0BDDC94BFDFB3D4FA"
                   caption: "What do you think?"
-  /{idInstance}/lastIncomingMessages:
+  /{messenger}/{idInstance}/lastIncomingMessages:
     get:
       tags:
         - Journals
@@ -2014,7 +2027,7 @@ paths:
                   extendedTextMessage:
                     stanzaId: "3A6424373F90A939B3C8"
                     participant: "71987654321@c.us"
-  /{idInstance}/clearMessagesQueue:
+  /{messenger}/{idInstance}/clearMessagesQueue:
     get:
       tags:
         - Queues
@@ -2043,7 +2056,7 @@ paths:
                     description: Flag indicating if the messages queue was cleared.
               example:
                 isCleared: true
-  /{idInstance}/showMessagesQueue:
+  /{messenger}/{idInstance}/showMessagesQueue:
     get:
       tags:
         - Queues
@@ -2088,7 +2101,7 @@ paths:
                 - typeMessage: "imageMessage"
                   chatId: "11001234567@c.us"
                   fileName: "image.jpg"
-  /{idInstance}/updateGroupName:
+  /{messenger}/{idInstance}/updateGroupName:
     post:
       tags:
         - Groups
@@ -2136,7 +2149,7 @@ paths:
                     description: Group name change flag.
               example:
                 updateGroupName: true
-  /{idInstance}/getGroupData:
+  /{messenger}/{idInstance}/getGroupData:
     post:
       tags:
         - Groups
@@ -2228,7 +2241,7 @@ paths:
                 subjectTime: 1587737715
                 subjectOwner: "11001234567@c.us"
                 groupInviteLink: "https://chat.whatsapp.com/xxxxxxxxxxxxxxxxxxxxxx"
-  /{idInstance}/leaveGroup:
+  /{messenger}/{idInstance}/leaveGroup:
     post:
       tags:
         - Groups
@@ -2271,7 +2284,7 @@ paths:
                     description: Leave group flag.
               example:
                 leaveGroup: true
-  /{idInstance}/setGroupAdmin:
+  /{messenger}/{idInstance}/setGroupAdmin:
     post:
       tags:
         - Groups
@@ -2319,7 +2332,7 @@ paths:
                     description: Flag indicating if the participant was set as administrator.
               example:
                 setGroupAdmin: true
-  /{idInstance}/removeGroupParticipant:
+  /{messenger}/{idInstance}/removeGroupParticipant:
     post:
       tags:
         - Groups
@@ -2367,7 +2380,7 @@ paths:
                     description: Group participant removal flag.
               example:
                 removeParticipant: true
-  /{idInstance}/removeAdmin:
+  /{messenger}/{idInstance}/removeAdmin:
     post:
       tags:
         - Groups
@@ -2415,7 +2428,7 @@ paths:
                     description: Flag indicating if admin rights were removed.
               example:
                 removeAdmin: true
-  /{idInstance}/createGroup:
+  /{messenger}/{idInstance}/createGroup:
     post:
       tags:
         - Groups
@@ -2475,7 +2488,7 @@ paths:
                 created: true
                 chatId: "11001234567-1587570015@g.us"
                 groupInviteLink: "https://chat.whatsapp.com/xxxxxxxxxxxxxxxxxxxxxx"
-  /{idInstance}/addGroupParticipant:
+  /{messenger}/{idInstance}/addGroupParticipant:
     post:
       tags:
         - Groups
@@ -2523,7 +2536,7 @@ paths:
                     description: Flag indicating if the participant was added to the group chat.
               example:
                 addParticipant: true
-  /{idInstance}/setGroupPicture:
+  /{messenger}/{idInstance}/setGroupPicture:
     post:
       tags:
         - Groups
@@ -2580,7 +2593,7 @@ paths:
                 setGroupPicture: true
                 urlAvatar: "https://pps.whatsapp.net/v/t61.24694-24/138639660_724754321806449_9118612187814397965_n.jpg?oh=997b0bb13b6bbb750432a86d4b8d935d&oe=600****BB4"
                 reason: ""
-  /{idInstance}/readChat:
+  /{messenger}/{idInstance}/readChat:
     post:
       tags:
         - Read mark
@@ -2634,7 +2647,7 @@ paths:
                     description: Messages read mark flag.
               example:
                 setRead: true
-  /{idInstance}/getContacts:
+  /{messenger}/{idInstance}/getContacts:
     get:
       tags:
         - Account
@@ -2680,7 +2693,7 @@ paths:
                 - id: "79001234569-1479621234@g.us"
                   name: "My group"
                   type: "group"
-  /{idInstance}/getChats:
+  /{messenger}/{idInstance}/getChats:
     get:
       tags:
         - Account
@@ -2728,7 +2741,7 @@ paths:
                 - id: "79001234569-1479621234@g.us"
                   archive: false
                   notSpam: true
-  /{idInstance}/getContactInfo:
+  /{messenger}/{idInstance}/getContactInfo:
     get:
       tags:
         - Account
@@ -2880,7 +2893,7 @@ paths:
                 isMute: false
                 messageExpiration: 0
                 muteExpiration: null
-  /{idInstance}/setProfilePicture:
+  /{messenger}/{idInstance}/setProfilePicture:
     post:
       tags:
         - Account
@@ -2932,7 +2945,7 @@ paths:
                 setProfilePicture: true
                 urlAvatar: "https://pps.whatsapp.net/v/t61.24******-24/23**********_********23704_************77468_n.jpg?ccb=11-4&oh=**********b6ccc377d6332abad7d0bb&oe=********"
                 reason: ""
-  /{idInstance}/archiveChat:
+  /{messenger}/{idInstance}/archiveChat:
     post:
       tags:
         - Account
@@ -2982,7 +2995,7 @@ paths:
                     type: string
               example:
                 error: "ArchiveChatError: cannot archive chat cause last message not found in chat"
-  /{idInstance}/unarchiveChat:
+  /{messenger}/{idInstance}/unarchiveChat:
     post:
       tags:
         - Account
@@ -3032,7 +3045,7 @@ paths:
                     type: string
               example:
                 error: "ArchiveChatError: cannot archive chat cause last message not found in chat"
-  /{idInstance}/deleteMessage:
+  /{messenger}/{idInstance}/deleteMessage:
     post:
       tags:
         - Messages
@@ -3094,7 +3107,7 @@ paths:
                   summary: Message not found
                   value:
                     error: "ID message notfound"
-  /{idInstance}/getAvatar:
+  /{messenger}/{idInstance}/getAvatar:
     post:
       tags:
         - Account
@@ -3171,7 +3184,7 @@ paths:
                     existsWhatsapp: false
                     urlAvatar: ""
                     reason: "get avatar timeout limit exceeded"
-  /{idInstance}/checkWhatsapp:
+  /{messenger}/{idInstance}/checkWhatsapp:
     post:
       tags:
         - Account
@@ -3232,7 +3245,7 @@ paths:
                   summary: Timeout exceeded
                   value:
                     error: "check phone number timeout limit exceeded"
-  /{idInstance}/setProfileName:
+  /{messenger}/{idInstance}/setProfileName:
     post:
       tags:
         - Account
@@ -3271,7 +3284,7 @@ paths:
                 type: object
                 description: Empty response body.
               example: {}
-  /{idInstance}/setProfileStatus:
+  /{messenger}/{idInstance}/setProfileStatus:
     post:
       tags:
         - Account
