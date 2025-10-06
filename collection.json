@@ -544,7 +544,7 @@
 								"qr"
 							]
 						},
-						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+						"description": ""
 					},
 					"response": [
 						{
@@ -667,7 +667,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"phoneNumber\": 790012345673452\r\n}",
+							"raw": "{\r\n    \"phoneNumber\": 79192533586\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -685,124 +685,7 @@
 								"getPairingCode"
 							]
 						},
-						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
-					},
-					"response": []
-				},
-				{
-					"name": "sendConfirmationCode",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{apiTokenInstance}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"phoneNumber\": 790012345673452\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/{{messenger}}/{{idInstance}}/sendConfirmationCode",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{messenger}}",
-								"{{idInstance}}",
-								"sendConfirmationCode"
-							]
-						},
-						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
-					},
-					"response": []
-				},
-				{
-					"name": "signInWithConfirmationCode",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{apiTokenInstance}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"code\": \"JpkyJeAM8dQ\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/{{messenger}}/{{idInstance}}/signInWithConfirmationCode",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{messenger}}",
-								"{{idInstance}}",
-								"signInWithConfirmationCode"
-							]
-						},
-						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
-					},
-					"response": []
-				},
-				{
-					"name": "createApp",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{apiTokenInstance}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"title\": \"title\",\r\n    \"shortName\": \"shortName\",\r\n    \"url\": \"https:sdkwa.pro\",\r\n    \"description\": \"description\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/{{messenger}}/{{idInstance}}/createApp",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"{{messenger}}",
-								"{{idInstance}}",
-								"createApp"
-							]
-						},
-						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+						"description": ""
 					},
 					"response": []
 				},
@@ -841,7 +724,7 @@
 								"requestAuthorizationCode"
 							]
 						},
-						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+						"description": ""
 					},
 					"response": []
 				},
@@ -881,7 +764,7 @@
 								""
 							]
 						},
-						"description": "Документация [QR](https://wasdk.pro/en/docs/api/account/QR/)"
+						"description": ""
 					},
 					"response": []
 				},
@@ -937,7 +820,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"chatId\": \"790012345673452@c.us\",\r\n\t\"message\": \"Hello\"\r\n}",
+							"raw": "{\r\n\t\"chatId\": \"712345678989@c.us\",\r\n\t\"message\": \"Hello\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -955,7 +838,7 @@
 								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+						"description": ""
 					},
 					"response": [
 						{
@@ -1031,7 +914,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"chatId\": \"@ripreal\",\r\n\t\"message\": \"https://github.com\"\r\n}",
+							"raw": "{\r\n\t\"chatId\": \"@sdkwa\",\r\n\t\"message\": \"https://github.com\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1049,7 +932,7 @@
 								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+						"description": ""
 					},
 					"response": [
 						{
@@ -1146,7 +1029,7 @@
 								"sendMessage"
 							]
 						},
-						"description": "Документация [SendMessage](https://wasdk.pro/en/docs/api/sending/SendMessage/)"
+						"description": ""
 					},
 					"response": [
 						{
@@ -1318,7 +1201,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"chatId\": \"790012345673452@c.us\",\r\n\t\"contact\": {\r\n\t\t\"phoneContact\": 7900123456858,\r\n    \t\"firstName\": \"David\",\r\n\t\t\"middleName\": \"David\",\r\n\t\t\"lastName\": \"David\",\r\n\t\t\"company\": \"Train\"\r\n\t}\r\n}\r\n",
+							"raw": "{\r\n\t\"chatId\": \"712345678989@c.us\",\r\n\t\"contact\": {\r\n\t\t\"phoneContact\": 7900123456858,\r\n    \t\"firstName\": \"David\",\r\n\t\t\"middleName\": \"David\",\r\n\t\t\"lastName\": \"David\",\r\n\t\t\"company\": \"Train\"\r\n\t}\r\n}\r\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -5687,6 +5570,127 @@
 							""
 						]
 					}
+				}
+			]
+		},
+		{
+			"name": "telegram apps",
+			"item": [
+				{
+					"name": "sendConfirmationCode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phoneNumber\": 712345678989\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/telegram/{{idInstance}}/sendConfirmationCode",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"telegram",
+								"{{idInstance}}",
+								"sendConfirmationCode"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "createApp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"title\",\r\n    \"shortName\": \"shortName\",\r\n    \"url\": \"https://sdkwa.pro\",\r\n    \"description\": \"description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/telegram/{{idInstance}}/createApp",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"telegram",
+								"{{idInstance}}",
+								"createApp"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "signInWithConfirmationCode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{apiTokenInstance}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"code\": \"JpkyJeAM8dQ\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/telegram{{idInstance}}/signInWithConfirmationCode",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"telegram{{idInstance}}",
+								"signInWithConfirmationCode"
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
 		}

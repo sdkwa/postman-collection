@@ -725,17 +725,23 @@ paths:
                 result: true
                 data:
                   pairingCode: "ABC123"
-  /{messenger}/{idInstance}/sendConfirmationCode:
+  /telegram/{idInstance}/sendConfirmationCode:
     post:
       tags:
-        - Account
+        - Telegram Apps
       summary: Send confirmation code
       description: >
-        This method is used to send a confirmation code for WhatsApp account authorization.
+        This method is used to send a confirmation code for Telegram account authorization.
       security:
         - bearerAuth: []
       parameters:
-        - $ref: '#/components/parameters/MessengerParameter'
+        - name: messenger
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [telegram]
+          description: Messenger type identifier (telegram).
         - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
@@ -766,17 +772,23 @@ paths:
               example:
                 result: true
                 message: "Confirmation code sent"
-  /{messenger}/{idInstance}/signInWithConfirmationCode:
+  /telegram/{idInstance}/signInWithConfirmationCode:
     post:
       tags:
-        - Account
+        - Telegram Apps
       summary: Sign in with confirmation code
       description: >
-        This method is used to sign in using a confirmation code.
+        This method is used to sign in using a confirmation code for Telegram.
       security:
         - bearerAuth: []
       parameters:
-        - $ref: '#/components/parameters/MessengerParameter'
+        - name: messenger
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [telegram]
+          description: Messenger type identifier (telegram).
         - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
@@ -807,17 +819,23 @@ paths:
               example:
                 result: true
                 message: "Successfully signed in"
-  /{messenger}/{idInstance}/createApp:
+  /telegram/{idInstance}/createApp:
     post:
       tags:
-        - Account
+        - Telegram Apps
       summary: Create app
       description: >
-        This method is used to create an application for WhatsApp Business.
+        This method is used to create an application for Telegram Business.
       security:
         - bearerAuth: []
       parameters:
-        - $ref: '#/components/parameters/MessengerParameter'
+        - name: messenger
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [telegram]
+          description: Messenger type identifier (telegram).
         - $ref: '#/components/parameters/IdInstanceParameter'
       requestBody:
         required: true
